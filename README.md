@@ -68,8 +68,9 @@ python evaluate.py --ae data/msrs_ae.pt --probe data/msrs_probe.pt --prior topha
 Multi-seed stability, downstream detection/segmentation, and the SOTA baselines
 (PIAFusion / SPGFusion) are reproduced by `sota_runners/multiseed_vif.py`,
 `sota_runners/det_eval_fused.py`, `sota_runners/seg_eval_fused.py`, and
-`sota_runners/{run_piafusion,run_spgfusion}.py`. See `SOTA_RESULTS.md` for the
-aggregated numbers.
+`sota_runners/{run_piafusion,run_spgfusion}.py`. The bootstrap 95% confidence
+interval for the probe-vs-mean downstream detection gap is computed by
+`sota_runners/det_ci.py`. See `SOTA_RESULTS.md` for the aggregated numbers.
 
 ## Note on baselines and checkpoints
 
