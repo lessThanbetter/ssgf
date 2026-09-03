@@ -1,0 +1,10 @@
+# Install a CUDA-enabled torch for your 3080Ti (11 GB), e.g.:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+torch>=2.1
+numpy
+pillow
+opencv-python-headless
+scikit-image
+scipy
+tqdm
+pyyaml
