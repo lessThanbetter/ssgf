@@ -1,5 +1,15 @@
 # SOTA baseline results (uniform protocol)
 
+> **Note on numbers.** The tables below were produced by an **early training run**
+> of the backbone/probe. They are kept in this repository for transparency, but the
+> **official numbers of the submitted manuscript** are those of the stabilized
+> seed-2026 model (`data/msrs_ae.pt` + `data/msrs_probe.pt`, 30 epochs, `lr=1e-3`),
+> which are reproduced by `sota_runners/recompute_tabfusion.py`,
+> `sota_runners/recompute_quant_table.py`, `sota_runners/det_eval_fused.py` and
+> `sota_runners/seg_eval_fused.py`. If any number here differs from the manuscript
+> tables, the manuscript (stable seed-2026) is authoritative. Run the scripts above
+> with the official checkpoints to regenerate a single consistent table.
+
 All fused at `max_side=512` (rounded to a multiple of 16 for model
 compatibility). Metrics via `ssgf/utils/metrics.py`; sources resized to the fused
 size before comparison. Detection = fixed YOLO11n on LLVIP test (300 images,
