@@ -83,7 +83,8 @@ class MaskDataset(torch.utils.data.Dataset):
     """(source image, semantic mask) pairs for probe distillation.
 
     Each sample randomly takes either the visible or the infrared source and its
-    corresponding teacher mask (from ``U2Net`` pseudo-labels), so the probe learns
+corresponding teacher mask (the morphological top-hat targetness prior of the paper,
+or another map produced by ``gen_masks.py``), so the probe learns
     to map either modality's features to a semantic-importance map.
     """
 

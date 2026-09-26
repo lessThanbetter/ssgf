@@ -1,12 +1,16 @@
-"""Generate U2-Net pseudo-label masks for a VIS/IR pair dataset.
+"""Generate the probe's teacher masks for a VIS/IR pair dataset.
 
 Runs on the server (GPU). Writes ``out/vis/<name>.png`` and ``out/ir/<name>.png``
 so the probe can be distilled with ``train --mode probe``.
 
+``--prior`` selects the teacher. The paper distils the probe against the
+morphological top-hat targetness prior, which is ``--prior tophat``; the flag also
+accepts a path to an ONNX saliency model, which the earlier design used and the
+paper does not.
+
 Usage:
-    python gen_masks.py --root /root/autodl-tmp/ssgf/data/tno_trial \
-        --prior /root/autodl-tmp/ssgf/third_party/u2netp.onnx \
-        --out /root/autodl-tmp/ssgf/data/tno_masks
+    python gen_masks.py --root <MSRS>/train --vis_dir vi --ir_dir ir \
+        --prior tophat --out data/msrs_masks_tophat
 """
 
 from __future__ import annotations

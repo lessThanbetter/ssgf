@@ -113,7 +113,16 @@ def scd(a: np.ndarray, b: np.ndarray, f: np.ndarray) -> float:
 
 
 def vifp(ref: np.ndarray, dist: np.ndarray, sigma_nsq: float = 2.0) -> float:
-    """Single-image pixel VIF between a reference and a distorted image."""
+    """Single-image pixel VIF between a reference and a distorted image.
+
+    This is the variant used for the reported tables. It accumulates all four
+    Gaussian widths on the full-resolution grid and keeps ``sigma_nsq`` at 2.0,
+    which is the reference value for 8-bit input, while the arrays here are in
+    [0, 1]. ``vifp_reference`` below implements the reference construction with
+    decimation between scales and a noise variance expressed in the units of the
+    input; the two differ, and Sec. 3 of the paper and Supplementary Sec. 8 report
+    the consequence.
+    """
     ref, dist = _to_gray(ref), _to_gray(dist)
     num, den = 0.0, 0.0
     for scale in range(1, 5):
@@ -137,11 +146,43 @@ def vifp(ref: np.ndarray, dist: np.ndarray, sigma_nsq: float = 2.0) -> float:
     return float(num / (den + 1e-9))
 
 
+def vifp_reference(ref: np.ndarray, dist: np.ndarray) -> float:
+    """Single-image pixel VIF in the reference construction.
+
+    Differences from :func:`vifp`: the Gaussian width at scale ``s`` is
+    ``window / 5`` rather than ``2**(s-1)``, both images are decimated by two
+    between scales so that each scale is accumulated at its own resolution, and the
+    noise variance is 2.0 expressed in the units of the input, that is 2 / 255**2
+    for arrays in [0, 1].
+    """
+    ref, dist = _to_gray(ref).copy(), _to_gray(dist).copy()
+    sigma_nsq = 2.0 / (255.0 ** 2)
+    num, den = 0.0, 0.0
+    for scale in range(1, 5):
+        n = 2 ** (4 - scale + 1) + 1
+        g = _gauss_kernel(n, n / 5.0)
+        if scale > 1:
+            ref = ndi.convolve(ref, g, mode="nearest")[::2, ::2]
+            dist = ndi.convolve(dist, g, mode="nearest")[::2, ::2]
+        mu1 = ndi.convolve(ref, g, mode="nearest")
+        mu2 = ndi.convolve(dist, g, mode="nearest")
+        s11 = ndi.convolve(ref * ref, g, mode="nearest") - mu1 * mu1
+        s22 = ndi.convolve(dist * dist, g, mode="nearest") - mu2 * mu2
+        s12 = ndi.convolve(ref * dist, g, mode="nearest") - mu1 * mu2
+        g_map = np.clip(s12 / (s11 + 1e-9), 0, 1)
+        sv_sq = s22 - g_map * s12
+        sv_sq[sv_sq < 0] = 0
+        num += np.sum(np.log10(1 + g_map ** 2 * s11 / (sv_sq + sigma_nsq)))
+        den += np.sum(np.log10(1 + s11 / sigma_nsq))
+    return float(num / (den + 1e-9))
+
+
 def report(fused: np.ndarray, vis: np.ndarray, ir: np.ndarray) -> dict:
     """Compute the metric suite for one fused output."""
     f, a, b = _to_gray(fused), _to_gray(vis), _to_gray(ir)
     d = {
         "EN": entropy(f),
+        "VIF_ref": (vifp_reference(a, f) + vifp_reference(b, f)) / 2,
         "SD": std(f),
         "SF": spatial_frequency(f),
         "AG": average_gradient(f),

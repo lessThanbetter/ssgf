@@ -1,7 +1,9 @@
-# Target-Aware Semantic Saliency Fusion (SSGF)
+# Fidelity Metrics Do Not Predict Target-Centric Detection
 
-Official code for "Target-Aware Semantic Saliency Fusion for Visible and Infrared
-Images".
+Official code for "Fidelity Metrics Do Not Predict Target-Centric Detection: The
+Evaluator Determines the Ranking of Visible-Infrared Fusion Rules". The method the
+paper introduces is a target-aware semantic saliency fusion rule, instantiated with
+a morphological top-hat targetness prior and a distilled probe.
 
 We argue that the semantic that should drive visible--infrared fusion is
 **targetness** (whether a pixel belongs to a small bright or dark thermal target),
@@ -40,6 +42,8 @@ pip install -r requirements.txt
 - `train_classifier.py`  train the CSF classification-saliency baseline classifier
 - `seg_downstream.py`  downstream semantic segmentation (UNet mIoU)
 - `det_eval.py`  downstream detection (LLVIP YOLO) mAP evaluation
+- `analysis/`  the scripts that produced the detection tables, the paired intervals
+  and the VIF schedule comparison; see `analysis/README.md` for the mapping
 - `sota_runners/`  helpers to run PIAFusion / SPGFusion and reproduce every table/figure
 - `data/`  trained checkpoints (small)
 
@@ -47,16 +51,23 @@ pip install -r requirements.txt
 
 Prepare masks and data first:
 ```bash
-python gen_masks.py --msrs <MSRS-root> --out data/msrs_masks_tophat
+python gen_masks.py --root <MSRS>/train --vis_dir vi --ir_dir ir \
+    --prior tophat --out data/msrs_masks_tophat
 ```
+The `--prior` argument selects the teacher map. The paper distils the probe against
+the morphological top-hat targetness prior, so it is `tophat` here; the flag also
+accepts a path to an ONNX saliency model, which the earlier design used and the
+paper does not.
 Train the reconstruction auto-encoder and distil the probe (the official model):
 ```bash
 python -m ssgf.train --mode ae   --root <MSRS>/train --vis_dir vi --ir_dir ir \
-    --out data/msrs_ae.pt --cfg seed=2026 epochs=30 lr=1e-3
+    --out data/msrs_ae.pt --cfg seed=2026 epochs=30 lr=2e-3
 python -m ssgf.train --mode probe --root <MSRS>/train --vis_dir vi --ir_dir ir \
     --mask_vis_dir data/msrs_masks_tophat/vis --mask_ir_dir data/msrs_masks_tophat/ir \
-    --ae_ckpt data/msrs_ae.pt --out data/msrs_probe.pt --cfg seed=2026 epochs=30 lr=1e-3
+    --ae_ckpt data/msrs_ae.pt --out data/msrs_probe.pt --cfg seed=2026 epochs=30 lr=2e-3
 ```
+The default in `ssgf/config/defaults.py` is also `lr=2e-3`, matching the Methods
+section of the paper.
 Fusion metrics on the three test sets:
 ```bash
 python evaluate.py --ae data/msrs_ae.pt --probe data/msrs_probe.pt --prior tophat \
@@ -68,16 +79,29 @@ python evaluate.py --ae data/msrs_ae.pt --probe data/msrs_probe.pt --prior topha
 Multi-seed stability, downstream detection/segmentation, and the SOTA baselines
 (PIAFusion / SPGFusion) are reproduced by `sota_runners/multiseed_vif.py`,
 `sota_runners/det_eval_fused.py`, `sota_runners/seg_eval_fused.py`, and
-`sota_runners/{run_piafusion,run_spgfusion}.py`. The bootstrap 95% confidence
-interval for the probe-vs-mean downstream detection gap is computed by
-`sota_runners/det_ci.py`. See `SOTA_RESULTS.md` for the aggregated numbers.
+`sota_runners/{run_piafusion,run_spgfusion}.py`. The detection tables, the paired
+bootstrap intervals, the architecture and seed comparisons and the VIF schedule
+comparison are produced by the scripts in `analysis/`; `analysis/README.md` maps
+each script to the paper table it fills. Note that `sota_runners/det_ci.py` is a
+legacy routine that was not used for the paper's intervals. See `SOTA_RESULTS.md`
+for the aggregated numbers.
+
+The three-way comparison of the reported fidelity index against the reference pixel
+VIF is produced by `analysis/vif_reference_rescore.py`, which takes one fused-image
+directory per method. The reference construction is implemented as
+`ssgf.utils.metrics.vifp_reference`, and `report()` now carries both `VIF` and
+`VIF_ref`.
 
 ## Note on baselines and checkpoints
 
 The small checkpoints needed to reproduce the main tables (`msrs_ae.pt`,
-`msrs_probe.pt`, `msrs_csf.pt`, `data/btl/*.pt`) are included in `data/`. The
-detection (LLVIP YOLO) and segmentation (UNet) weights are trained with the scripts
-above; the IFCNN / DenseFuse weights can be retrained with `run_baselines.py`.
+`msrs_probe.pt`, `msrs_csf.pt`) are included in `data/`. The detection weights for
+the LLVIP and FLIR runs of the paper, the adaptation checkpoints of Section 5, the
+fused-image outputs and the per-image detection scores are archived with the frozen
+runs rather than in this repository, because of their size; the scripts in
+`analysis/` state which inputs each of them reads. The segmentation weights are
+trainable with `seg_downstream.py` and the IFCNN / DenseFuse weights with
+`run_baselines.py`.
 
 ## Citation
 
