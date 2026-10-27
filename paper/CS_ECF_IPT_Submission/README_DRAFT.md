@@ -13,7 +13,7 @@ with author checks, not yet journal-submission ready
   per-checkpoint results, direct-baseline comparison, validation record, and
   thermal controls.
 - `cover_letter.tex` and `cover_letter.pdf` — compiled editor-facing draft.
-- `references.bib` — 25 verified entries covering recent IPT positioning,
+- `references.bib` — 27 verified entries covering recent IPT positioning,
   representative classical and deep fusion families, detectors, uncertainty,
   and risk control. Broader domain synthesis remains desirable.
 - `REFERENCE_VERIFICATION.md` — DOI-backed verification ledger.
@@ -30,6 +30,8 @@ with author checks, not yet journal-submission ready
 - Direct comparison with Always CDF: +0.0102 AP50;
   run-cluster-by-group 95% CI [-0.00057, +0.02980], including zero.
 - LLVIP direct CDF contrast: -0.0057; M3FD +0.0147; DroneVehicle +0.0217.
+- Zero-shot YOLOv9t: CS-ECF +0.0250 over visible and +0.0060 over CDF.
+- Zero-shot YOLOv10s: CS-ECF +0.0213 over visible and -0.0059 over CDF.
 - No-shield worst loss: -0.0584; CS-ECF worst loss: -0.0040.
 - DroneVehicle best/last gains: +0.0251 / +0.0293.
 - Thermal mask advantage over global injection: +0.0007 AP50.

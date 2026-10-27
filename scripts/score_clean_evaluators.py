@@ -60,6 +60,12 @@ def image_dir(kind: str, root: Path) -> Path:
         return root / "k1_native" / "imgs" / kind
     if kind in {"ensemble", "ifcnn", "densefuse"}:
         return root / "eval_fused" / kind / "images"
+    if kind == "cdf":
+        return (
+            root
+            / "test_candidates"
+            / "consensus_intersection_pixel_mean_ifcnn_q095_a020_s05"
+        )
     return root / "sota_outs" / {
         "csf": "csf_llvip_native",
         "piafusion": "pia_llvip_native_fp16",
@@ -152,6 +158,7 @@ def main() -> None:
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--inputs", nargs="+", default=INPUTS)
     parser.add_argument("--limit", type=int)
+    parser.add_argument("--filter-class", type=int)
     args = parser.parse_args()
 
     root = Path(args.root)
@@ -218,6 +225,11 @@ def main() -> None:
                     pred_boxes = result.boxes.xyxy.cpu().numpy().astype(np.float32)
                     pred_classes = result.boxes.cls.cpu().numpy().astype(np.int64)
                     conf = result.boxes.conf.cpu().numpy().astype(np.float32)
+                    if args.filter_class is not None:
+                        keep = pred_classes == args.filter_class
+                        pred_boxes = pred_boxes[keep]
+                        pred_classes = pred_classes[keep]
+                        conf = conf[keep]
                     gt_boxes, gt_classes = ground_truth[stem]
                     rows.append(
                         (

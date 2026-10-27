@@ -21,6 +21,8 @@ Key frozen results:
 - training-run-by-group hierarchical 95% CI `[+0.0026, +0.0261]`;
 - direct dataset-balanced difference from Always CDF `+0.0102`, with a
   training-run-by-group interval `[-0.00057, +0.02980]` that includes zero;
+- two unused COCO-pretrained evaluators improved over visible by `+0.021` to
+  `+0.025` AP50, while their differences from Always CDF still crossed zero;
 - no-shield worst loss `-0.0584`, CS-ECF worst loss `-0.0040`;
 - DroneVehicle independent-test gains `+0.0251 / +0.0293`;
 - thermal-mask advantage over global injection `+0.0007 AP50`;
@@ -33,6 +35,8 @@ Artifacts:
 - `scripts/make_ipt_fig*.py` — publication figures;
 - `scripts/analyze_csecf_vs_cdf.py` — reconstruction and paired bootstrap for
   the strongest fixed CDF baseline;
+- `scripts/analyze_independent_evaluators.py` — frozen-policy check on unused
+  YOLOv9t and YOLOv10s evaluators;
 - `analysis/cs_ecf/` — analysis and interval-reproduction scripts;
 - `results/selective_fusion/` — aggregate JSON, source-data CSV and per-image
   compressed score files;

@@ -43,16 +43,16 @@
             country={China}}
 
 \begin{abstract}
-Infrared--visible image fusion is commonly treated as a preprocessing step
-whose output should benefit any downstream detector. In practice, the same
-fused image may improve one detector and degrade another because utility
-depends on the learned representation and confidence calibration. We introduce
+Infrared--visible fusion utility is usually assumed to benefit any downstream
+detector. In practice, the same fused image may improve one detector and degrade
+another because utility depends on detector representation and confidence
+calibration. We introduce
 Confidence-Shielded Evaluator-Conditioned Fusion (CS-ECF), a label-free policy
 that evaluates visible, CDF, PIAFusion, and SPGFusion candidates with the target
 detector. CS-ECF averages each candidate's five highest detection confidences
 and uses a fused input only when its score reaches 1.5 times the visible score;
-otherwise, it falls back to the visible image. The margin was frozen on
-validation data before testing.
+otherwise, it falls back to the visible image. The margin was frozen before
+testing.
 
 We evaluated CS-ECF on a fixed-split LLVIP test set, grouped six-class M3FD, and
 the official DroneVehicle test subset, comprising 12 detector checkpoints. Nine
@@ -61,9 +61,10 @@ of 0.0133 and a training-run-by-group 95\% interval of [0.0026, 0.0261]. Against
 the stronger Always CDF baseline, the balanced difference was 0.0102
 [-0.00057, 0.02980], with no interval separation from zero; the point estimate
 was concentrated in M3FD and DroneVehicle and was negative on LLVIP. Removing
-the shield increased the worst AP50 loss from 0.0040 to 0.0584.
-The two DroneVehicle checkpoints improved by 0.0251 and 0.0293 but share one
-training run. M3FD gains were concentrated in the people class, and LLVIP
+the shield increased the worst AP50 loss from 0.0040 to 0.0584. On two unused
+zero-shot evaluators, gains over visible were 0.021--0.025 AP50, but differences
+from CDF crossed zero. Correlated DroneVehicle checkpoints improved by 0.0251
+and 0.0293. M3FD gains were concentrated in the people class, and LLVIP
 intervals crossed zero. These results support risk-controlled
 evaluator-conditioned fusion, not uniform class improvement or dominance over
 the strongest fixed input. Serial candidate generation and four detector
@@ -406,6 +407,44 @@ The defensible contribution is risk-controlled evaluator-conditioned
 arbitration and its observed trade-off, not dominance over the strongest fixed
 input.
 
+\subsection{Independent zero-shot evaluator confirmation}
+
+To test whether the result was tied to the evaluator families used during
+policy development, we applied the already frozen selector to two COCO-pretrained
+models that were not trained, validated, or used to choose the policy:
+YOLOv9t and YOLOv10s \cite{wang2024yolov9,wang2024yolov10}. We retained only
+their person-class detections and used the same top-five score, 1.5 margin, and
+four candidate images. Neither model was fine-tuned on LLVIP.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Frozen-policy confirmation on two zero-shot evaluators. Values in the
+second column are visible / Always CDF / no-shield / CS-ECF AP50. Intervals
+resample LLVIP scene groups.}
+\label{tab:independent}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Evaluator & AP50 (V/CDF/NS/CS) &
+CS-ECF \(-\) visible & CS-ECF \(-\) CDF \\
+\midrule
+YOLOv9t & .7698 / .7888 / .8216 / .7948 &
+\(+.0250~[+.0053,+.0523]\) & \(+.0060~[-.0277,+.0374]\) \\
+YOLOv10s & .8344 / .8617 / .8699 / .8557 &
+\(+.0213~[+.0037,+.0431]\) & \(-.0059~[-.0254,+.0192]\) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Both unused evaluators improved relative to visible, while neither provided a
+separated advantage over Always CDF. The external check therefore supports the
+evaluator-conditioned gain over the visible baseline but not CDF superiority.
+The shield's tail effect was also mixed: on YOLOv10s it reduced the worst scene
+loss from \(0.0337\) to \(0.0038\), whereas on YOLOv9t the worst scene loss was
+\(0.0167\) with the shield and \(0.0011\) without it. This heterogeneity is
+reported as a boundary of the risk-control claim.
+
 \subsection{The shield is a risk-control mechanism}
 
 Without the shield, the policy selected fused candidates on most LLVIP and
@@ -510,6 +549,12 @@ vehicle-focused evaluation. Its small balanced advantage should therefore not
 be read as a demonstrated replacement for CDF everywhere: the interval
 included zero.
 
+The two zero-shot checkpoints point in the same direction for the visible
+baseline: CS-ECF gains of 0.021 and 0.025 AP50 had scene intervals above zero.
+They again fail to separate CS-ECF from Always CDF. This independent check
+therefore supports portability of the evaluator-conditioned gain, while
+reinforcing that the fixed CDF baseline remains competitive.
+
 Two boundaries constrain the interpretation. First, the strongest M3FD effect
 is class-specific: people detection improves substantially while the remaining
 classes are nearly unchanged. The selected thermal evidence is therefore most
@@ -541,6 +586,8 @@ policy improved nine checkpoints, produced a dataset-balanced AP50 gain of
 0.0133, and reduced the worst observed degradation from 0.0584 to 0.0040. The
 dataset-balanced gain over the stronger Always CDF baseline was 0.0102, with a
 run-cluster by group interval that included zero. The
+two unused zero-shot evaluators also improved over visible by 0.021--0.025 AP50,
+without separating from Always CDF. The
 evidence supports risk-controlled, pedestrian-centric infrared--visible
 detection; it does not support uniform six-class improvement, and the additional
 cost of SPGFusion and four detector evaluations must be considered in

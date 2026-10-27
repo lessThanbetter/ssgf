@@ -22,6 +22,8 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--amp", action="store_true")
+    parser.add_argument("--no-plots", action="store_true")
+    parser.add_argument("--non-deterministic", action="store_true")
     args = parser.parse_args()
 
     cls = RTDETR if args.kind == "rtdetr" else YOLO
@@ -33,8 +35,10 @@ def main() -> None:
         batch=args.batch,
         seed=args.seed,
         device=0,
+        deterministic=not args.non_deterministic,
         workers=args.workers,
         amp=args.amp,
+        plots=not args.no_plots,
         project=args.project,
         name=args.name,
         exist_ok=True,

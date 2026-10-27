@@ -72,6 +72,19 @@ resamples training-run clusters and scene/frame groups within each dataset.
 The interval includes zero. The result supports a conditional risk-analysis
 hypothesis, not a demonstrated average advantage or dominance over Always CDF.
 
+## Independent zero-shot evaluator check
+
+Two COCO-pretrained evaluators that were not used in policy construction were
+scored on the same 300 LLVIP test pairs with person-only outputs:
+
+| Evaluator | Visible | CDF | No shield | CS-ECF | CS-ECF - visible CI | CS-ECF - CDF CI |
+|---|---:|---:|---:|---:|---:|---:|
+| YOLOv9t | 0.7698 | 0.7888 | 0.8216 | 0.7948 | `[+0.0053,+0.0523]` | `[-0.0277,+0.0374]` |
+| YOLOv10s | 0.8344 | 0.8617 | 0.8699 | 0.8557 | `[+0.0037,+0.0431]` | `[-0.0254,+0.0192]` |
+
+Both unused evaluators support improvement over visible. Neither supports
+dominance over Always CDF. See `results/independent_evaluators/`.
+
 ## Shield ablation
 
 | Scope | No-shield positive | No-shield mean | No-shield worst | Shield positive | Shield mean | Shield worst |

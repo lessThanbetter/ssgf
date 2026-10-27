@@ -27,6 +27,8 @@ converter; records were also cross-checked by exact title and year.
 | yang2025lfdt | 10.1016/j.inffus.2024.102639 | verified |
 | redmon2016yolo | 10.1109/CVPR.2016.91 | verified |
 | zhao2024rtdetr | 10.1109/CVPR52733.2024.01605 | verified |
+| wang2024yolov9 | 10.1007/978-3-031-72751-1_1 | verified |
+| wang2024yolov10 | 10.52202/079017-3429 | verified |
 | abdar2021uncertainty | 10.1016/j.inffus.2021.05.008 | verified |
 | gawlikowski2023uncertainty | 10.1007/s10462-023-10562-9 | verified |
 | chow1970reject | 10.1109/TIT.1970.1054406 | verified |
@@ -34,7 +36,7 @@ converter; records were also cross-checked by exact title and year.
 
 ## Boundary
 
-All journal and conference entries in the current 25-entry `references.bib`
+All journal and conference entries in the current 27-entry `references.bib`
 have DOI-backed Crossref records. The Ultralytics entry is a software citation
 to the official repository. The bibliography now supports the fusion,
 detector-architecture and uncertainty context, but it remains shorter than a

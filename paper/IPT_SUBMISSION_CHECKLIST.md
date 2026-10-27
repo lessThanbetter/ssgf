@@ -11,7 +11,7 @@ archive, and unverified current IPT instructions.**
 
 Reasons:
 
-- the bibliography is a verified 25-entry set rather than a full domain review;
+- the bibliography is a verified 27-entry set rather than a full domain review;
 - exact current IPT author-instruction limits and declarations still need
   verification;
 - the administrative declarations were inherited from the existing manuscript
@@ -31,6 +31,7 @@ Reasons:
 | Main figures | required | four figures exported and QA'd | `figures_cs_ecf_ipt/` |
 | Tables | required | included in compiled draft | `CS_ECF_IPT_Submission/main.tex` |
 | Supplementary information | required if referenced | compiled | `supplementary.tex` and `supplementary.pdf` |
+| Independent evaluator check | internal evidence | two zero-shot COCO models | `INDEPENDENT_EVALUATOR_CHECK.md`; `results/independent_evaluators/` |
 | Data availability | required | inherited and adapted for the current datasets | compiled in `main.tex` |
 | Code availability | required | inherited GitHub/Zenodo/MIT statement | compiled in `main.tex` |
 | CRediT contributions | required | inherited from existing drafts | compiled in `main.tex` |
@@ -53,6 +54,7 @@ Reasons:
 - thermal-top-hat stratification and thermal-mask/global ablation;
 - standardized serial latency estimate `706.3 ms`;
 - paired CS-ECF versus Always CDF comparison with direct intervals;
+- independent zero-shot YOLOv9t/YOLOv10s confirmation;
 - verified 2024–2026 IPT fusion/detection exemplars in `IPT_TARGETING.md`.
 
 ## Cross-file consistency checks
@@ -74,6 +76,8 @@ The following canonical values must remain identical everywhere:
 | Serial latency estimate | 706.3 ms |
 | CS-ECF minus Always CDF, balanced | +0.0102 |
 | Direct-comparison hierarchical CI | [-0.00057,+0.02980] |
+| Zero-shot gain over visible | +0.0213 to +0.0250 AP50 |
+| Zero-shot gain over CDF | -0.0059 to +0.0060 AP50 |
 
 ## Author checks
 

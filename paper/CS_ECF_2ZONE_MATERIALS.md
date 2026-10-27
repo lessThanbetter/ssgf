@@ -17,6 +17,8 @@
    `[+0.0026,+0.0261]`；
 4. DroneVehicle 独立 test 的两个 checkpoint 均正，组合 group
    CI 为 `[+0.0002,+0.0406]`。
+5. 两个未参与策略构造的零样本 YOLOv9t/YOLOv10s 相对 visible 分别提升
+   `+0.0250/+0.0213 AP50`，但相对 Always CDF 仍无分离优势。
 
 M3FD 的总体增益仍几乎全部来自 `people` 类，因此论文必须写成
 pedestrian/people-centric 的条件性结论。

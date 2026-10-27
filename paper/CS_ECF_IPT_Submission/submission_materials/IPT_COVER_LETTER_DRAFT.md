@@ -37,6 +37,12 @@ DroneVehicle and was not present on LLVIP. We therefore describe a
 risk-control and conditional-generalization contribution, not dominance over
 the best fixed fusion input.
 
+Two COCO-pretrained evaluators that were not used in policy construction
+provided an independent check. CS-ECF improved AP50 over visible by 0.0213 and
+0.0250, with scene-group intervals above zero; neither result separated from
+Always CDF. This supports portability of the visible-baseline gain while
+retaining the stated boundary.
+
 We believe the work is relevant to the journal's readership because it addresses
 how thermal information should be admitted into a deployed detection system,
 uses real infrared–visible datasets, and reports both the benefit and cost of
