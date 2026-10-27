@@ -18,7 +18,9 @@ Key frozen results:
 
 - 12 confirmatory detector checkpoints; 9 positive;
 - dataset-balanced AP50 gain `+0.0133`;
-- detector-by-group hierarchical 95% CI `[+0.0028, +0.0213]`;
+- training-run-by-group hierarchical 95% CI `[+0.0026, +0.0261]`;
+- direct dataset-balanced difference from Always CDF `+0.0102`, with a
+  training-run-by-group interval `[-0.00057, +0.02980]` that includes zero;
 - no-shield worst loss `-0.0584`, CS-ECF worst loss `-0.0040`;
 - DroneVehicle independent-test gains `+0.0251 / +0.0293`;
 - thermal-mask advantage over global injection `+0.0007 AP50`;
@@ -29,6 +31,8 @@ Artifacts:
 - `ssgf/fusion/confidence_shield.py` — frozen selector;
 - `scripts/generate_consensus_detail.py` — CDF candidate generation;
 - `scripts/make_ipt_fig*.py` — publication figures;
+- `scripts/analyze_csecf_vs_cdf.py` — reconstruction and paired bootstrap for
+  the strongest fixed CDF baseline;
 - `analysis/cs_ecf/` — analysis and interval-reproduction scripts;
 - `results/selective_fusion/` — aggregate JSON, source-data CSV and per-image
   compressed score files;

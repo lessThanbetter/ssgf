@@ -24,8 +24,8 @@ input decisions across all checkpoint–image trials for LLVIP (8 × 300), M3FD
 ## Fig. 3 | Risk–return trade-off of fusion-input policies
 
 **a**, Dataset-balanced mean AP50 change versus worst-checkpoint AP50 change for
-five policies. The CS-ECF horizontal error bar is the model-by-group hierarchical
-95% interval `[+0.0028,+0.0213]`. **b**, Paired checkpoint changes under the
+five policies. The CS-ECF horizontal error bar is the training-run-by-group hierarchical
+95% interval `[+0.0026,+0.0261]`. **b**, Paired checkpoint changes under the
 unshielded selector and CS-ECF, sorted by the unshielded result. Green segments
 indicate that the shield improves the checkpoint contrast and red segments
 indicate a reduction. The shield sacrifices part of the high mean gain on

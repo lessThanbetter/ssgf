@@ -19,7 +19,7 @@ plt.rcParams.update(
     {
         "font.family": "sans-serif",
         "font.sans-serif": ["Arial", "DejaVu Sans", "Liberation Sans"],
-        "font.size": 7,
+        "font.size": 7.5,
         "svg.fonttype": "none",
         "pdf.fonttype": 42,
     }
@@ -69,9 +69,9 @@ def pretty_checkpoint(name):
 def main():
     apply_style()
     data = load_json("confirmatory_policy_comparison.json")
-    group_summary = load_json("confidence_shield_group_hierarchical.json")
+    cluster_summary = load_json("csecf_vs_cdf_paired.json")
     source_rows = []
-    fig = plt.figure(figsize=(7.2, 4.9))
+    fig = plt.figure(figsize=(6.25, 4.75))
     grid = fig.add_gridspec(1, 2, width_ratios=[1.0, 1.3], wspace=0.62)
 
     ax = fig.add_subplot(grid[0])
@@ -81,8 +81,8 @@ def main():
         y = 100 * row["min_gain"]
         xerr = None
         if policy == "cs_ecf":
-            low, high = group_summary["aggregate"][
-                "dataset_balanced_hierarchical_group_ci95"
+            low, high = cluster_summary["dataset_balanced"][
+                "visible_run_cluster_by_group_ci95"
             ]
             xerr = [
                 [100 * (row["dataset_balanced_mean"] - low)],
@@ -119,7 +119,7 @@ def main():
             (x, y),
             xytext=offsets[policy],
             textcoords="offset points",
-            fontsize=6.2,
+            fontsize=6.7,
             color=COLORS["dark"],
             ha="right" if policy in {"always_cdf", "no_shield"} else "left",
             annotation_clip=True,
@@ -131,12 +131,12 @@ def main():
                 "dataset_balanced_mean_ap50_points": round(x, 6),
                 "worst_checkpoint_ap50_points": round(y, 6),
                 "mean_ci_low_points": (
-                    round(100 * group_summary["aggregate"]["dataset_balanced_hierarchical_group_ci95"][0], 6)
+                    round(100 * cluster_summary["dataset_balanced"]["visible_run_cluster_by_group_ci95"][0], 6)
                     if policy == "cs_ecf"
                     else ""
                 ),
                 "mean_ci_high_points": (
-                    round(100 * group_summary["aggregate"]["dataset_balanced_hierarchical_group_ci95"][1], 6)
+                    round(100 * cluster_summary["dataset_balanced"]["visible_run_cluster_by_group_ci95"][1], 6)
                     if policy == "cs_ecf"
                     else ""
                 ),

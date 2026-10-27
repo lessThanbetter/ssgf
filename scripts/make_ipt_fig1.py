@@ -19,7 +19,7 @@ plt.rcParams.update(
     {
         "font.family": "sans-serif",
         "font.sans-serif": ["Arial", "DejaVu Sans", "Liberation Sans"],
-        "font.size": 7,
+        "font.size": 7.5,
         "svg.fonttype": "none",
         "pdf.fonttype": 42,
     }
@@ -76,7 +76,7 @@ def main():
             )
     matrix = np.asarray(matrix)
 
-    fig = plt.figure(figsize=(7.2, 6.4))
+    fig = plt.figure(figsize=(6.25, 6.0))
     grid = fig.add_gridspec(
         2,
         1,
@@ -115,7 +115,7 @@ def main():
                 f"{value:+.1f}",
                 ha="center",
                 va="center",
-                fontsize=5.8,
+                fontsize=6.4,
                 color=text_color,
                 fontweight="bold" if col_index == 4 else "normal",
             )
@@ -161,7 +161,7 @@ def main():
     ax2.set_xticks(x)
     ax2.set_xticklabels([label for _, label in DATASETS])
     ax2.set_ylabel("Mean AP50 change (points)")
-    ax2.legend(ncol=3, loc="upper right", fontsize=5.8)
+    ax2.legend(ncol=3, loc="upper right", fontsize=6.2)
     add_panel_label(ax2, "b", x=-0.12, y=1.03)
     ax2.set_title("Dataset-level mean sign reversals", loc="left", pad=6)
 

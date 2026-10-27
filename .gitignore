@@ -9,6 +9,8 @@ __pycache__/
 *.blg
 *.bbl
 *.spl
+*.fdb_latexmk
+*.fls
 *.pdf
 *.png
 *.svg
@@ -28,6 +30,7 @@ figures/
 !paper/COVER_LETTER_CS_ECF_IPT_WorkingDraft_v1.pdf
 !paper/CS_ECF_IPT_Submission/main.pdf
 !paper/CS_ECF_IPT_Submission/cover_letter.pdf
+!paper/CS_ECF_IPT_Submission/supplementary.pdf
 !paper/CS_ECF_IPT_Submission/figures/
 !paper/CS_ECF_IPT_Submission/figures/*.pdf
 !paper/figures_cs_ecf_ipt/*.pdf

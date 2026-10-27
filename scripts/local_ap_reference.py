@@ -16,7 +16,10 @@ def compute_ap(recall, precision):
     mpre = np.concatenate(([1.0], precision, [0.0]))
     mpre = np.flip(np.maximum.accumulate(np.flip(mpre)))
     x = np.linspace(0, 1, 101)
-    return float(np.trapezoid(np.interp(x, mrec, mpre), x))
+    trapezoid = getattr(np, "trapezoid", None)
+    if trapezoid is None:  # NumPy < 2.0
+        trapezoid = np.trapz
+    return float(trapezoid(np.interp(x, mrec, mpre), x))
 
 
 def ap_per_class(tp, conf, pred_cls, target_cls):

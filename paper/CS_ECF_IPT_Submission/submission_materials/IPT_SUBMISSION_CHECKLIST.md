@@ -6,18 +6,18 @@ Target: Infrared Physics & Technology (Elsevier)
 ## Submission readiness
 
 **Ready with author checks for the identified manuscript; journal submission is
-still blocked by the incomplete domain bibliography, missing supplementary file,
-and unverified current IPT instructions.**
+still blocked by the incomplete domain bibliography, an unversioned Zenodo
+archive, and unverified current IPT instructions.**
 
 Reasons:
 
-- the bibliography is a verified 11-entry seed set rather than a complete domain
-  review;
+- the bibliography is a verified 25-entry set rather than a full domain review;
 - exact current IPT author-instruction limits and declarations still need
   verification;
 - the administrative declarations were inherited from the existing manuscript
   family and require final author confirmation;
-- a supplementary file has not yet been assembled.
+- the supplementary file is assembled and compiled, but must be rechecked after
+  the final main-text changes.
 
 ## Deliverable matrix
 
@@ -30,7 +30,7 @@ Reasons:
 | Keywords | required | supplied | `IPT_KEYWORDS.txt` |
 | Main figures | required | four figures exported and QA'd | `figures_cs_ecf_ipt/` |
 | Tables | required | included in compiled draft | `CS_ECF_IPT_Submission/main.tex` |
-| Supplementary information | required if referenced | appendix plan outstanding | not started |
+| Supplementary information | required if referenced | compiled | `supplementary.tex` and `supplementary.pdf` |
 | Data availability | required | inherited and adapted for the current datasets | compiled in `main.tex` |
 | Code availability | required | inherited GitHub/Zenodo/MIT statement | compiled in `main.tex` |
 | CRediT contributions | required | inherited from existing drafts | compiled in `main.tex` |
@@ -47,11 +47,12 @@ Reasons:
 - DroneVehicle 2-checkpoint independent official-test subset;
 - DroneVehicle source archive size/hash and fixed-group manifest retained;
 - dataset-balanced AP50 gain `+0.0133`;
-- detector-by-group hierarchical CI `[+0.0028,+0.0213]`;
+- training-run-by-group hierarchical CI `[+0.0026,+0.0261]`;
 - no-shield worst loss `-0.0584`, shield worst loss `-0.0040`;
 - class-aware M3FD analysis showing a people-specific effect;
 - thermal-top-hat stratification and thermal-mask/global ablation;
 - standardized serial latency estimate `706.3 ms`;
+- paired CS-ECF versus Always CDF comparison with direct intervals;
 - verified 2024–2026 IPT fusion/detection exemplars in `IPT_TARGETING.md`.
 
 ## Cross-file consistency checks
@@ -63,7 +64,7 @@ The following canonical values must remain identical everywhere:
 | Confirmatory checkpoints | 12 |
 | Positive checkpoints | 9 |
 | Dataset-balanced AP50 gain | +0.0133 |
-| Model-by-group hierarchical CI | [+0.0028,+0.0213] |
+| Training-run-by-group hierarchical CI | [+0.0026,+0.0261] |
 | No-shield worst AP50 loss | -0.0584 |
 | CS-ECF worst AP50 loss | -0.0040 |
 | DroneVehicle best gain | +0.0251 |
@@ -71,6 +72,8 @@ The following canonical values must remain identical everywhere:
 | DroneVehicle group CI | [+0.0002,+0.0406] |
 | Thermal-mask advantage over global | +0.0007 |
 | Serial latency estimate | 706.3 ms |
+| CS-ECF minus Always CDF, balanced | +0.0102 |
+| Direct-comparison hierarchical CI | [-0.00057,+0.02980] |
 
 ## Author checks
 
@@ -81,7 +84,8 @@ The following canonical values must remain identical everywhere:
 - Confirm that the cover-letter assertion “not previously published / not under
   consideration” is complete; the reviewed drafts contain no separate preprint
   identifier or related-manuscript list.
-- Update the Zenodo record from the IPT submission tag before submission.
+- Create a new Zenodo version for the CS-ECF submission. The existing DOI
+  resolves to the preceding study.
 - Confirm the expanded AI-assisted-work disclosure.
 - Add reviewer suggestions only if the IPT portal requests them.
 
@@ -92,7 +96,8 @@ The following canonical values must remain identical everywhere:
 2. Expand the verified bibliography into a complete related-work synthesis.
 3. Review the compiled Elsevier preprint and resolve remaining layout choices.
 4. Expand the seed bibliography and incorporate verified dataset/method papers.
-5. Confirm the inherited administrative declarations and update Zenodo.
-6. Re-run numerical consistency checks and compile the submission PDF.
+5. Confirm the inherited administrative declarations and create a new Zenodo
+   version.
+6. Re-run numerical consistency checks and compile both PDFs.
 7. Only then generate the IPT submission zip.
 

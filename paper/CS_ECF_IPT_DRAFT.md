@@ -65,7 +65,7 @@ evaluated the frozen policy on LLVIP, a grouped six-class M3FD test set, and
 three consecutive groups from the official DroneVehicle test split, comprising
 12 detector checkpoints. Nine checkpoints improved, the dataset-balanced AP50
 gain was 0.0133, and the model-by-group hierarchical 95% interval was
-[0.0028, 0.0213]. Removing the shield introduced a worst AP50 loss of 0.0584,
+[0.0026, 0.0261]. Removing the shield introduced a worst AP50 loss of 0.0584,
 whereas the frozen policy limited the worst loss to 0.0040. The two
 DroneVehicle checkpoints improved by 0.0251 and 0.0293, although they belong to
 the same training run. Gains on the six-class M3FD benchmark were concentrated
@@ -258,7 +258,7 @@ values must not be summed as an end-to-end peak.
 Across the 12 confirmatory checkpoints, the same candidate library produced
 both positive and negative gains. CS-ECF improved nine checkpoints; its
 dataset-balanced AP50 gain was 0.0133, with a model-by-group hierarchical 95%
-interval of [0.0028, 0.0213]. The unshielded selector improved only seven of 12
+interval of [0.0026, 0.0261]. The unshielded selector improved only seven of 12
 checkpoints, had a larger dataset-balanced mean of 0.0332, and produced a worst
 loss of 0.0584. The shield therefore traded part of the high-end gain for a
 substantial reduction in tail risk.
@@ -389,7 +389,7 @@ SPGFusion and four detector evaluations must be considered in deployment.
 |---|---|---|
 | Fusion utility depends on the detector checkpoint | Positive and negative gains across 12 checkpoints for the same four candidates | supported |
 | CS-ECF reduces tail degradation | Worst gain -0.0040 vs -0.0584 for no-shield | supported |
-| CS-ECF improves dataset-balanced AP50 | +0.0133; model×group CI [0.0028,0.0213] | supported, conditional |
+| CS-ECF improves dataset-balanced AP50 | +0.0133; training-run×group CI [0.0026,0.0261] | supported, conditional |
 | DroneVehicle test confirms transfer | best +0.0251; last +0.0293; group CI [0.0002,0.0406] | supported, same training family |
 | Gains generalize uniformly across six M3FD classes | Other five classes change by ≤0.0003 | rejected |
 | Always CDF is fully dominated | Always CDF positive on 10/12 checkpoints | rejected |

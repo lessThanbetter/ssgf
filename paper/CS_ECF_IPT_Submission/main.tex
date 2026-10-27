@@ -3,10 +3,12 @@
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
 \usepackage{graphicx}
+\usepackage{float}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{siunitx}
 \usepackage{seqsplit}
+\usepackage[a4paper,margin=2.4cm]{geometry}
 
 \graphicspath{{figures/}}
 \hypersetup{hidelinks}
@@ -43,29 +45,29 @@
 \begin{abstract}
 Infrared--visible image fusion is commonly treated as a preprocessing step
 whose output should benefit any downstream detector. In practice, the same
-fused image may improve one detector, leave another unchanged, and degrade a
-third because detection utility depends on the learned detector representation
-and confidence calibration. We introduce Confidence-Shielded
-Evaluator-Conditioned Fusion (CS-ECF), a label-free input-arbitration policy
+fused image may improve one detector and degrade another because utility
+depends on the learned representation and confidence calibration. We introduce
+Confidence-Shielded Evaluator-Conditioned Fusion (CS-ECF), a label-free policy
 that evaluates visible, CDF, PIAFusion, and SPGFusion candidates with the target
-detector itself. CS-ECF averages each candidate's five highest detection
-confidences and permits a fused input only when its confidence exceeds that of
-the visible image by a factor of 1.5; otherwise, it falls back to the visible
-image. The margin was fixed on validation data before confirmatory testing. We
-evaluated the frozen policy on LLVIP, a grouped six-class M3FD test set, and
-three consecutive groups from the official DroneVehicle test split, comprising
-12 detector checkpoints. Nine checkpoints improved, the dataset-balanced AP50
-gain was 0.0133, and the model-by-group hierarchical 95\% interval was
-[0.0028, 0.0213]. Removing the shield introduced a worst AP50 loss of 0.0584,
-whereas the frozen policy limited the worst loss to 0.0040. The two
-DroneVehicle checkpoints improved by 0.0251 and 0.0293, although they belong to
-the same training run. M3FD gains were concentrated in the people class, and
-LLVIP intervals crossed zero. These results support CS-ECF as a risk-controlled
-evaluator-aware fusion-input system for pedestrian-centric and mixed
-infrared--visible detection; they do not support uniform improvement across all
-object classes. Under a standardized serial benchmark, candidate generation and
-four detector evaluations required approximately \SI{0.71}{s} per image pair,
-dominated by SPGFusion.
+detector. CS-ECF averages each candidate's five highest detection confidences
+and uses a fused input only when its score reaches 1.5 times the visible score;
+otherwise, it falls back to the visible image. The margin was frozen on
+validation data before testing.
+
+We evaluated CS-ECF on a fixed-split LLVIP test set, grouped six-class M3FD, and
+the official DroneVehicle test subset, comprising 12 detector checkpoints. Nine
+checkpoints improved over the visible input, with a dataset-balanced AP50 gain
+of 0.0133 and a training-run-by-group 95\% interval of [0.0026, 0.0261]. Against
+the stronger Always CDF baseline, the balanced difference was 0.0102
+[-0.00057, 0.02980], with no interval separation from zero; the point estimate
+was concentrated in M3FD and DroneVehicle and was negative on LLVIP. Removing
+the shield increased the worst AP50 loss from 0.0040 to 0.0584.
+The two DroneVehicle checkpoints improved by 0.0251 and 0.0293 but share one
+training run. M3FD gains were concentrated in the people class, and LLVIP
+intervals crossed zero. These results support risk-controlled
+evaluator-conditioned fusion, not uniform class improvement or dominance over
+the strongest fixed input. Serial candidate generation and four detector
+evaluations required approximately \SI{0.71}{s} per image pair.
 \end{abstract}
 
 \begin{keyword}
@@ -83,7 +85,7 @@ sensors with thermal evidence that can remain available when illumination is
 poor, smoke reduces contrast, or targets have weak visual texture. This
 complementarity has motivated pixel-, feature-, and network-based fusion methods
 for surveillance, autonomous perception, and thermal imaging systems.
-\cite{mudavath2026review,zhang2020,tang2022,zhang2026}
+\cite{ma2019survey,mudavath2026review,zhu2017tophat,zhang2020,ma2019fusiongan,li2019densefuse,xu2022u2fusion,li2021rfn,yi2024diffif,yang2025lfdt}
 In detection-oriented applications, the value of a fused image is not determined
 by visual appeal alone; it is the change in detector outputs under a specified
 operating condition.
@@ -93,8 +95,9 @@ one detector on one benchmark. This design assumes that a globally preferred
 fusion result remains preferable across detector architectures and training
 seeds. The assumption is fragile because detectors differ in receptive fields,
 confidence calibration, training data, and sensitivity to high-frequency
-detail. Consequently, a fusion rule that improves one evaluator may reduce the
-average precision (AP) of another on the same image.
+detail \cite{abdar2021uncertainty,gawlikowski2023uncertainty}. Consequently, a
+fusion rule that improves one evaluator may reduce the average precision (AP)
+of another on the same image.
 
 Per-image selection offers a natural response: run several fusion candidates
 and choose the one with the strongest detector response. Yet unconstrained
@@ -102,11 +105,14 @@ selection converts small calibration differences into frequent input switches
 and can produce severe losses when a spurious high-confidence response is
 mistaken for improved detection. The problem is therefore not only to predict
 which fused image looks best, but to decide when the evidence is strong enough
-to depart from the visible-image safety baseline.
+to depart from the visible-image safety baseline, a decision related to the
+classical reject option in recognition \cite{chow1970reject}.
 
 Recent infrared--visible fusion and detection studies have optimized shared
 fusion networks, cross-modal feature fusion, or hierarchical detectors
-\cite{zhao2025cmifdf,gao2026coifsd,an2026mrtdetr,zhang2026hffn}. These studies
+\cite{zhao2025cmifdf,gao2026coifsd,an2026mrtdetr,zhang2026hffn}.
+General-purpose detectors provide the evaluator side of this problem
+\cite{redmon2016yolo,zhao2024rtdetr}. These studies
 establish the relevance of joint fusion and detection, but they generally train
 or optimize a detector-fusion system. They do not establish a label-free
 arbitration rule whose switching threshold is fixed independently of the
@@ -196,34 +202,90 @@ tests. The selector uses no test labels and makes no class-specific decision.
 
 \subsection{Datasets and evaluators}
 
-LLVIP supplies a 300-image pedestrian test set spanning seven scenes
-\cite{jia2021}. M3FD supplies a grouped six-class test set of 200 images
-\cite{liu2022}, split by consecutive frame groups to reduce adjacent-frame
-leakage; the detector families are YOLO26n and YOLOv8n. DroneVehicle contributes
-300 image pairs from three fixed consecutive
-100-frame groups of the official test archive. The groups were selected with a
-predefined seed of 2037 before evaluation. The YOLO11x-OBB best and last
-checkpoints were both evaluated. The source archive has 4,430,343,899 bytes and
-SHA-256
+LLVIP uses a fixed 1,350/150/300 train/validation/test split
+\cite{jia2021}. The split was formed from non-empty official training labels
+and the official 300-image test set. Train/test, validation/test and
+train/validation stem intersections are all empty; the three partitions
+contain 4,479, 419 and 744 pedestrian boxes. The eight LLVIP confirmatory
+checkpoints are YOLO11n trained on visible images, a modality-agnostic YOLO11n
+control, YOLO26n seeds 0--2, RT-DETR-l, and YOLOv8n seeds 0 and 1. YOLO11n
+seed 0 is used for each YOLO11n family; four independently trained runs of each
+family are retained as a seed sensitivity analysis. All best checkpoints were
+selected using the 150 validation images, not the scored test images.
+
+M3FD contributes a grouped six-class split of 1,600 training, 400 validation
+and 200 test images \cite{liu2022}. Frames are partitioned by consecutive
+100-frame group using a fixed group seed, so adjacent frames do not cross
+splits. The two frame groups in the test set are specified in the released
+manifest. One YOLO26n and one YOLOv8n visible-trained six-class evaluator were
+selected on the validation groups.
+
+DroneVehicle contributes 300 image pairs from three fixed consecutive
+100-frame groups of the official test archive \cite{sun2022}. The groups were
+selected with a predefined seed of 2037 before evaluation. The YOLO11x-OBB
+best and last checkpoints come from one 150-epoch training run (batch size 32,
+640-pixel input, seed 0). Because these checkpoints share training data, they
+are treated as one model cluster rather than independent architectures. The
+source archive has 4,430,343,899 bytes and SHA-256
 \texttt{\seqsplit{94BF47E493E7A57FD5D900439F614F339E7B6C7181E4D781BCFEBAEB963FFD8E}}
-\cite{sun2022}.
-All OBB outputs use a confidence floor of 0.001 and an NMS IoU threshold of 0.7.
+to identify the exact release used for the test groups.
 
 \begin{table}[t]
 \centering
 \small
-\caption{Datasets and confirmatory evaluation units.}
+\caption{Training, validation and confirmatory test partitions. The
+DroneVehicle counts are not reconstructed locally; its checkpoints use the
+public training and validation partitions recorded by the released model
+recipe. The evaluated images come only from the official test archive.}
 \label{tab:data}
-\begin{tabular}{@{}llrrl@{}}
+\begin{tabular}{@{}lrrrl@{}}
 \toprule
-Dataset & Split & Images & Classes & Evaluation groups \\
+Dataset & Train & Validation & Test & Evaluation groups \\
 \midrule
-LLVIP & Official test & 300 & 1 & 7 scenes \\
-M3FD & Grouped test & 200 & 6 & 2 frame groups \\
-DroneVehicle & Official test subset & 300 & 1 OBB vehicle & 3 frame groups \\
+LLVIP & 1,350 & 150 & 300 & 7 scene groups \\
+M3FD & 1,600 & 400 & 200 & 2 frame groups \\
+DroneVehicle & public train & public validation & 300 & 3 frame groups \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{table}[t]
+\centering
+\small
+\caption{Evaluator inventory. ``Checkpoints'' counts only the confirmatory
+models used in the policy comparison; additional independent runs are retained
+for sensitivity analysis.}
+\label{tab:evaluators}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.65cm}
+>{\raggedright\arraybackslash}p{2.35cm}
+>{\raggedright\arraybackslash}p{2.6cm}
+>{\raggedright\arraybackslash}p{2.65cm}r@{}}
+\toprule
+Dataset & Evaluator & Training input & Seed / checkpoint & Checkpoints \\
+\midrule
+LLVIP & YOLO11n & visible & seed 0 & 1 \\
+LLVIP & YOLO11n & visible + infrared & seed 0 & 1 \\
+LLVIP & YOLO26n & visible & seeds 0, 1, 2 & 3 \\
+LLVIP & RT-DETR-l & visible & seed 0 & 1 \\
+LLVIP & YOLOv8n & visible & seeds 0, 1 & 2 \\
+M3FD & YOLO26n & visible, six classes & seed 0 & 1 \\
+M3FD & YOLOv8n & visible, six classes & seed 0 & 1 \\
+Drone\-Vehicle & YOLO11x\-OBB & VIS, vehicle OBB & best/last, one run & 2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Detection evaluation.}
+Predictions use a 640-pixel inference size and a confidence floor of
+\(0.001\). For YOLO models, non-maximum suppression uses an IoU threshold of
+\(0.7\). At each class and each IoU threshold from 0.50 to 0.95 in steps of
+0.05, predicted boxes are assigned to ground-truth boxes by one-to-one
+maximum-cardinality matching over valid pairs. The resulting true-positive
+flags and confidence scores are pooled across images within a checkpoint and
+integrated over the 101-point interpolated precision-recall curve using
+Ultralytics 8.4.189 \cite{jocher2026ultralytics}. AP50 is the mean over the
+classes present in the dataset; AP50--95 further averages the ten IoU
+thresholds.
 
 \subsection{Statistical analysis}
 
@@ -232,10 +294,18 @@ images within a checkpoint. Image bootstrap intervals resample images within a
 checkpoint. Group bootstrap intervals resample scenes or consecutive frame
 groups and are the primary clustered intervals. The dataset-balanced estimand
 assigns equal weight to LLVIP, M3FD, and DroneVehicle and resamples checkpoints
-and groups. M3FD has only two test groups and LLVIP has seven scenes, so the
-group bootstrap is reported as a finite-cluster analysis. The model-by-group
-bootstrap used 500 resamples with \texttt{numpy.random.default\_rng(2219)} in
-Python 3.10.22 and NumPy 2.2.6. Spearman association tests used SciPy 1.15.3.
+and groups. Checkpoints from the same training run are kept in one cluster.
+M3FD has only two test groups and LLVIP has seven scenes, so the group bootstrap
+is reported as a finite-cluster analysis. The training-run-by-group bootstrap
+used 500 resamples for each checkpoint contrast and 5000 aggregate resamples
+after group-level contrasts were computed, with
+\texttt{numpy.random.default\_rng(2219)} in Python 3.10.22 and NumPy 2.2.6.
+Spearman association tests used SciPy 1.15.3.
+The Supplementary Material provides the complete split counts, all
+per-checkpoint CS-ECF and Always CDF results, the validation-policy record, and
+the thermal controls. The public analysis script reconstructs each checkpoint
+and rejects it if its AP does not agree with the published aggregate table
+before computing the paired interval.
 
 \subsection{Implementation and cost}
 
@@ -255,11 +325,11 @@ summed as an end-to-end peak.
 Across the 12 confirmatory checkpoints, the same candidate library produced
 both positive and negative gains (Fig.~\ref{fig:evaluator}). CS-ECF improved
 nine checkpoints. Its dataset-balanced AP50 gain was 0.0133, with a
-model-by-group hierarchical 95\% interval of [0.0028, 0.0213]. The unshielded
+training-run-by-group hierarchical 95\% interval of [0.0026, 0.0261]. The unshielded
 selector improved seven of 12 checkpoints, had a larger dataset-balanced mean of
 0.0332, and produced a worst loss of 0.0584.
 
-\begin{figure*}[t]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{fig1_evaluator_dependence.pdf}
 \caption{\textbf{Evaluator-dependent utility of infrared--visible fusion
@@ -269,7 +339,7 @@ checkpoints. Cells are point contrasts. \textbf{b}, Dataset-level mean AP50
 changes. Equal candidate sets produce opposite signs across datasets. Source
 data are provided in \texttt{figure1\_source.csv}.}
 \label{fig:evaluator}
-\end{figure*}
+\end{figure}
 
 \subsection{Dataset-specific behavior}
 
@@ -299,6 +369,43 @@ CS-ECF & 9/12 & +0.0074 & +0.0133 & -0.0040 \\
 \end{tabular}
 \end{table}
 
+\subsection{Direct comparison with the strongest fixed baseline}
+
+Always CDF is the strongest fixed policy, so it is the relevant test of whether
+evaluator-conditioned arbitration adds value. Across the 12 checkpoints, CS-ECF
+exceeded Always CDF in six and fell below it in six. The dataset-balanced
+difference was \(0.0102\) AP50 in favour of CS-ECF. Its run-cluster by group
+interval was \([-0.00057,0.02980]\) and included zero: LLVIP favoured Always
+CDF, DroneVehicle was represented by a single training-run cluster, and only
+M3FD had a clearly positive point contrast. Table~\ref{tab:cdf-paired} therefore
+reports the dataset-specific contrasts rather than only the pooled endpoint.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Paired mAP50 difference between CS-ECF and Always CDF. Intervals
+resample scene or frame groups; the combined interval also resamples training
+runs within each dataset and then weights datasets equally.}
+\label{tab:cdf-paired}
+\begin{tabular}{@{}lrc@{}}
+\toprule
+Scope & CS-ECF \(-\) Always CDF & 95\% group-aware interval \\
+\midrule
+LLVIP & \(-0.0057\) & \([-0.0189,+0.0156]\) \\
+M3FD & \(+0.0147\) & \([+0.0100,+0.0159]\) \\
+DroneVehicle & \(+0.0217\) & \([-0.0007,+0.0738]\) \\
+Dataset-balanced & \(+0.0102\) & \([-0.00057,+0.02980]\) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The direct comparison changes the claim boundary. CS-ECF is not a statistically
+separated improvement over Always CDF; its average difference is concentrated
+in the mixed-class and vehicle-focused evaluations and is negative on LLVIP.
+The defensible contribution is risk-controlled evaluator-conditioned
+arbitration and its observed trade-off, not dominance over the strongest fixed
+input.
+
 \subsection{The shield is a risk-control mechanism}
 
 Without the shield, the policy selected fused candidates on most LLVIP and
@@ -308,7 +415,7 @@ AP50 loss from 0.0584 to 0.0040. On DroneVehicle, however, the shield also
 reduced the mean gain from 0.1040 to 0.0272. This trade-off is the central
 quantitative meaning of risk control in this study.
 
-\begin{figure*}[t]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{fig2_csecf_workflow.pdf}
 \caption{\textbf{Confidence-shielded evaluator-conditioned fusion.}
@@ -320,20 +427,20 @@ retained. No labels are used for arbitration. \textbf{b}, Composition of the
 frozen decisions across all checkpoint--image trials. Source data are provided
 in \texttt{figure2\_source.csv}.}
 \label{fig:workflow}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[t]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{fig3_risk_return.pdf}
 \caption{\textbf{Risk--return trade-off of fusion-input policies.}
 \textbf{a}, Dataset-balanced mean AP50 change versus worst-checkpoint AP50
-change. The CS-ECF horizontal error bar is the model-by-group hierarchical
+change. The CS-ECF horizontal error bar is the training-run-by-group hierarchical
 95\% interval. \textbf{b}, Paired checkpoint changes under the unshielded
 selector and CS-ECF. The shield sacrifices part of the DroneVehicle mean gain
 to reduce the worst LLVIP loss. Source data are provided in
 \texttt{figure3\_source.csv}.}
 \label{fig:risk}
-\end{figure*}
+\end{figure}
 
 \subsection{Fixed baselines and class concentration}
 
@@ -364,7 +471,7 @@ changed the CDF gain from 0.0060 to 0.0057 for the best checkpoint and from
 0.0050 to 0.0038 for the last checkpoint. The thermal mask added 0.0007 AP50 on
 average relative to global injection.
 
-\begin{figure*}[t]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{fig4_thermal_class_boundary.pdf}
 \caption{\textbf{Thermal constraints and class-specific effects.}
@@ -376,7 +483,7 @@ CDF-mask activity. The association reverses on DroneVehicle, which does not
 support a universal thermal switching rule. Source data are provided in
 \texttt{figure4\_source.csv}.}
 \label{fig:thermal}
-\end{figure*}
+\end{figure}
 
 \clearpage
 \section{Discussion}
@@ -394,6 +501,14 @@ SPGFusion were strong, but it also produced severe LLVIP losses. The 1.5 margin
 deliberately favors visible fallback under ambiguous evidence. This is
 consistent with a deployment rule in which a small probability of a large
 regression is more costly than a missed opportunity for a moderate gain.
+
+The comparison with Always CDF further bounds the use case. When CDF is known
+to be stable for a fixed evaluator family, the simpler fixed input remains
+preferable. CS-ECF is relevant when the deployed detector or data domain can
+move the best fusion family, as observed between pedestrian, mixed-class and
+vehicle-focused evaluation. Its small balanced advantage should therefore not
+be read as a demonstrated replacement for CDF everywhere: the interval
+included zero.
 
 Two boundaries constrain the interpretation. First, the strongest M3FD effect
 is class-specific: people detection improves substantially while the remaining
@@ -424,6 +539,8 @@ to visible unless a detector-supported fusion candidate clears a fixed
 visible-relative margin. Across three test datasets and 12 checkpoints, the
 policy improved nine checkpoints, produced a dataset-balanced AP50 gain of
 0.0133, and reduced the worst observed degradation from 0.0584 to 0.0040. The
+dataset-balanced gain over the stronger Always CDF baseline was 0.0102, with a
+run-cluster by group interval that included zero. The
 evidence supports risk-controlled, pedestrian-centric infrared--visible
 detection; it does not support uniform six-class improvement, and the additional
 cost of SPGFusion and four detector evaluations must be considered in
@@ -463,13 +580,12 @@ included in the public analysis repository described below.
 \section*{Code availability}
 
 The code for reproducing the experiments is available at
-\url{https://github.com/lessThanbetter/ssgf} and is archived at
-\url{https://doi.org/10.5281/zenodo.22984389} under an MIT licence. The repository
+\url{https://github.com/lessThanbetter/ssgf} under an MIT licence. The repository
 contains the fusion and arbitration code, detector-evaluation scripts, fixed
 split and test manifests, per-image score files, result tables, figure source
-data, and the numerical checks used to generate the reported intervals. The
-versioned archive should be updated from the submission tag before publication
-so that the DOI resolves to the same release used for the manuscript.
+data, and the numerical checks used to generate the reported intervals. A
+versioned release will be deposited after acceptance so that the archive and
+the manuscript describe the same code revision.
 
 \section*{Use of generative artificial intelligence}
 

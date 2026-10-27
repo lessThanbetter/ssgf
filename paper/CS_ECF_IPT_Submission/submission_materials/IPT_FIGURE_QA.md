@@ -2,23 +2,23 @@
 
 Date: 2026-10-28  
 Backend: Python / matplotlib  
-Final width: 183 mm  
+Final width: approximately 160 mm  
 Exports: SVG, PDF, 600 dpi TIFF, PNG preview
 
 ## Automated checks
 
 | Figure | Static preflight | PDF glyph audit |
 |---|---|---|
-| Fig. 1 | 20/20 pass | PASS, min 5.8 pt |
-| Fig. 2 | 20/20 pass | PASS, min 6.0 pt |
-| Fig. 3 | 20/20 pass | PASS, min 6.2 pt |
-| Fig. 4 | 20/20 pass | PASS, min 7.0 pt |
+| Fig. 1 | 20/20 pass | PASS, min about 6.1 pt |
+| Fig. 2 | 20/20 pass | PASS, min about 6.8 pt |
+| Fig. 3 | 20/20 pass | PASS, min about 7.6 pt |
+| Fig. 4 | 20/20 pass | PASS, min about 8.1 pt |
 
 Manual visual QA was performed at full rendered size after the automated checks.
 
-The final manuscript build contains 14 pages, no undefined citations, no
+The final manuscript build contains 13 pages, no undefined citations, no
 unresolved cross-references, and no overfull LaTeX boxes after the final
-recompilation. Seven intentional author-input placeholders remain.
+recompilation. No author-input placeholders remain.
 
 ## Panel audit
 
@@ -28,7 +28,7 @@ recompilation. Seven intentional author-input placeholders remain.
 | 1 | b | Fusion ranking reverses across datasets | Dataset-level checkpoint contrast | Legend separated above bars | yes |
 | 2 | a | The target detector arbitrates four input candidates with visible fallback | No statistical estimate | Arrows, equations, and blocks clear | yes |
 | 2 | b | Most frozen decisions retain visible input | Counts divided by checkpoint–image trials | Stacked labels and legend clear | yes |
-| 3 | a | CS-ECF occupies a different risk–return position from fixed/no-shield policies | Dataset-balanced contrast and CS-ECF group CI on x | Labels remain inside panel | yes |
+| 3 | a | CS-ECF occupies a different risk–return position from fixed/no-shield policies | Dataset-balanced contrast and CS-ECF run-cluster/group CI on x | Labels remain inside panel | yes |
 | 3 | b | The shield reduces worst losses while sacrificing some DroneVehicle gain | Paired checkpoint contrast; zero line shown | Long labels shortened; no panel crossing | yes |
 | 4 | a | M3FD gain is concentrated in people | Point AP50 contrasts | Dominate class effect remains intentional | yes |
 | 4 | b | Thermal mask modestly exceeds global injection | Fixed-input AP50 contrast | Legend clears bars | yes |
@@ -41,7 +41,7 @@ recompilation. Seven intentional author-input placeholders remain.
 - Fig. 2: decision fractions use all checkpoint–image decisions within each
   dataset.
 - Fig. 3a: x is the equal-weight mean of LLVIP, M3FD, and DroneVehicle; y is the
-  worst checkpoint gain. The CS-ECF error bar is the model-by-group hierarchical
+  worst checkpoint gain. The CS-ECF error bar is the training-run-by-group hierarchical
   interval.
 - Fig. 3b: lines connect the same checkpoint under no-shield and CS-ECF.
 - Fig. 4: class, mask, and thermal panels report descriptive contrasts. Thermal

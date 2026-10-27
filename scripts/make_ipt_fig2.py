@@ -20,7 +20,7 @@ plt.rcParams.update(
     {
         "font.family": "sans-serif",
         "font.sans-serif": ["Arial", "DejaVu Sans", "Liberation Sans"],
-        "font.size": 7,
+        "font.size": 7.5,
         "svg.fonttype": "none",
         "pdf.fonttype": 42,
     }
@@ -67,7 +67,7 @@ def main():
                 }
             )
 
-    fig = plt.figure(figsize=(7.2, 5.5))
+    fig = plt.figure(figsize=(6.25, 5.25))
     grid = fig.add_gridspec(
         2,
         1,
@@ -86,7 +86,7 @@ def main():
         0.20,
         "Visible +\ninfrared pair",
         "#E8EDF3",
-        fontsize=7,
+        fontsize=7.5,
     )
     candidate_x = 0.18
     candidate_width = 0.18
@@ -106,7 +106,7 @@ def main():
             candidate_height,
             text,
             color,
-            fontsize=6.2,
+            fontsize=6.7,
             textcolor=text_color,
         )
         arrow(
@@ -122,7 +122,7 @@ def main():
         0.42,
         "Target\ndetector\n\nq_c =\nmean of\ntop-5\nconfidences",
         "#DCE8F5",
-        fontsize=6.5,
+        fontsize=6.9,
     )
     for y in candidate_y:
         arrow(
@@ -138,7 +138,7 @@ def main():
         0.20,
         "Safety shield\n\nuse best iff\nq_best ≥ 1.5 q_vis",
         "#E4E4F0",
-        fontsize=6.5,
+        fontsize=6.9,
     )
     arrow(ax, (0.60, 0.50), (0.65, 0.49))
 
@@ -149,7 +149,7 @@ def main():
         0.18,
         "Selected\nimage →\nfinal\ndetection",
         COLORS["csecf"],
-        fontsize=6.2,
+        fontsize=6.7,
         textcolor="white",
     )
     arrow(ax, (0.83, 0.49), (0.87, 0.49))
@@ -159,7 +159,7 @@ def main():
         "No labels are used for arbitration.",
         ha="left",
         va="center",
-        fontsize=6.2,
+        fontsize=6.7,
         color=COLORS["dark"],
     )
     ax.text(
@@ -168,7 +168,7 @@ def main():
         "The target detector is evaluated on four candidate inputs.",
         ha="left",
         va="center",
-        fontsize=6.2,
+        fontsize=6.7,
         color=COLORS["dark"],
     )
     ax.set_title("Frozen CS-ECF inference pathway", loc="left", pad=4)
@@ -202,7 +202,7 @@ def main():
                     f"{100 * value:.1f}%",
                     ha="center",
                     va="center",
-                    fontsize=6,
+                    fontsize=6.4,
                     color="white" if candidate != "vis" else "black",
                 )
         left += values

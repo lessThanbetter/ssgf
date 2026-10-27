@@ -13,8 +13,8 @@
 
 1. 去掉安全阈值后，Top-5 选择器会产生最高 `-0.0584` 的退化；
 2. 1.5 倍 shield 将 12 个 checkpoint 的最差退化压到 `-0.0040`；
-3. 三数据集等权平均增益为 `+0.0133`，model×group 分层区间
-   `[+0.0028,+0.0213]`；
+3. 三数据集等权平均增益为 `+0.0133`，training-run×group 分层区间
+   `[+0.0026,+0.0261]`；
 4. DroneVehicle 独立 test 的两个 checkpoint 均正，组合 group
    CI 为 `[+0.0002,+0.0406]`。
 
@@ -92,7 +92,7 @@ pedestrian/people-centric 的条件性结论。
 | Top-5 no shield | 7/12 | +0.0132 | +0.0332 | -0.0584 |
 | CS-ECF | 9/12 | +0.0074 | +0.0133 | -0.0040 |
 
-CS-ECF 的三数据集等权 model×group 分层区间：`[+0.0028,+0.0213]`。  
+CS-ECF 的三数据集等权 training-run×group 分层区间：`[+0.0026,+0.0261]`。  
 model×image 分层区间为 `[+0.0028,+0.0256]`；主分析采用更保守的 group 版本。  
 LLVIP 的 model/image 区间仍跨零，必须显示。  
 M3FD 总体为正，但 M3FD 增益集中在 `people`。
@@ -177,7 +177,7 @@ M3FD 六类 gain 热图或分组点图；people 与其他五类分开标注。�
 1. 说明多模态融合通常被当作单一最佳输入，但下游检测器会改变其效用；
 2. 提出四候选、目标检测器 Top-5 置信度、1.5 倍可见图 shield；
 3. 报告 12 个测试 checkpoint、9 个为正、最差 `-0.0040`；
-4. 报告三数据集等权 `+0.0133` 及 group 分层区间 `[+0.0028,+0.0213]`；
+4. 报告三数据集等权 `+0.0133` 及 training-run×group 分层区间 `[+0.0026,+0.0261]`；
 5. 明确 LLVIP 区间跨零、收益主要在 pedestrian/people；
 6. 报告 DroneVehicle 独立 test 的 `+0.0251/+0.0293`；
 7. 结论限定为 evaluator-conditioned detection input arbitration。

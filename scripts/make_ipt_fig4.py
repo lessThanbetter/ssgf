@@ -19,7 +19,7 @@ plt.rcParams.update(
     {
         "font.family": "sans-serif",
         "font.sans-serif": ["Arial", "DejaVu Sans", "Liberation Sans"],
-        "font.size": 7,
+        "font.size": 7.5,
         "svg.fonttype": "none",
         "pdf.fonttype": 42,
     }
@@ -42,7 +42,7 @@ def main():
     thermal_data = load_json("ipt_thermal_stratification.json")
     source_rows = []
 
-    fig = plt.figure(figsize=(7.2, 6.0))
+    fig = plt.figure(figsize=(6.25, 5.65))
     grid = fig.add_gridspec(
         2,
         2,

@@ -1,0 +1,233 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{seqsplit}
+\usepackage{url}
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+\title{Supplementary Material for\\Confidence-Shielded
+Evaluator-Conditioned Fusion for Risk-Controlled Infrared--Visible Object
+Detection}
+\author{Jianyong Zhao, Zigao Wu, Mengfei Ma}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Data provenance and split control}
+
+LLVIP uses a fixed 1,350/150/300 train/validation/test partition. The manifest
+contains the complete stem lists and SHA-256 digests. All three pairwise stem
+intersections are empty. The 300 evaluated images are the official test images;
+they are not used for checkpoint selection.
+
+\begin{table}[h]
+\centering
+\small
+\caption{Partition sizes and annotation counts.}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Dataset & Training & Validation & Test & Test groups \\
+\midrule
+LLVIP & 1,350 & 150 & 300 & 7 scenes \\
+M3FD & 1,600 & 400 & 200 & 2 frame groups \\
+DroneVehicle & public train & public validation & 300 & 3 frame groups \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Using the same training-run-cluster and group bootstrap for the primary
+CS-ECF-versus-visible contrast gives a dataset-balanced AP50 gain of 0.0133 and
+a 95\% interval of \([0.0026,0.0261]\). This clustered interval is the primary
+uncertainty statement; treating the two DroneVehicle checkpoints as independent
+would understate their shared training-run dependence.
+
+\begin{table}[h]
+\centering
+\small
+\caption{LLVIP annotation counts in the fixed split and pairwise overlap.}
+\begin{tabular}{@{}lrl@{}}
+\toprule
+Split & Pedestrian boxes & Pairwise stem overlap \\
+\midrule
+Training & 4,479 & train--validation: 0 \\
+Validation & 419 & validation--test: 0 \\
+Test & 744 & train--test: 0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+M3FD frames are partitioned into consecutive 100-frame groups. The initial
+grouping seed is 2028 and the extension seed is 2029; the two held-out test
+groups do not enter training or validation. DroneVehicle uses three consecutive
+100-frame groups selected from the official test archive with seed 2037. The
+source archive has 4,430,343,899 bytes and SHA-256
+\texttt{\seqsplit{94BF47E493E7A57FD5D900439F614F339E7B6C7181E4D781BCFEBAEB963FFD8E}}.
+
+The YOLO11x-OBB best and last checkpoints share one 150-epoch training run
+(batch size 32, 640-pixel input, seed 0). They are treated as one training-run
+cluster in every aggregate bootstrap.
+
+\section{Detection evaluation}
+
+All predictions are generated at a confidence floor of 0.001 and a 640-pixel
+inference size. YOLO predictions use NMS at IoU 0.7. For each image, class and
+IoU threshold from 0.50 to 0.95 in increments of 0.05, predictions are assigned
+to ground truth by one-to-one maximum-cardinality matching over all valid
+prediction--annotation pairs. The resulting true positives and confidence
+scores are pooled across the evaluated images, and AP is computed on the
+101-point interpolated precision--recall curve with Ultralytics 8.4.189.
+AP50 averages class AP at IoU 0.50; AP50--95 additionally averages the ten IoU
+thresholds.
+
+\section{Complete CS-ECF and Always CDF results}
+
+The tables below reconstruct the frozen policy from released per-image
+detections. ``Selected'' gives the number of images assigned to visible, CDF,
+PIAFusion and SPGFusion. The group intervals are percentile bootstraps over
+scenes or consecutive frame groups.
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Per-checkpoint paired comparison on LLVIP. Delta is CS-ECF minus
+Always CDF; the last column is Visible/CDF/PIAFusion/SPGFusion selections.}
+\label{tab:llvip-cdf}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Evaluator & CDF & CS-ECF & Delta & 95\% group CI & V/C/P/S \\
+\midrule
+YOLO11n & .8920 & .8845 & \(-.0076\) & \([-.024,+.012]\) & 276/1/9/14 \\
+Agnostic & .8629 & .8611 & \(-.0018\) & \([-.022,+.011]\) & 286/2/6/6 \\
+YOLO26n s0 & .8200 & .8088 & \(-.0112\) & \([-.034,+.009]\) & 288/1/3/8 \\
+RT-DETR-l & .8100 & .8136 & \(+.0036\) & \([-.015,+.018]\) & 293/0/0/7 \\
+YOLO26n s1 & .8048 & .7911 & \(-.0138\) & \([-.026,+.002]\) & 265/1/4/30 \\
+YOLO26n s2 & .8183 & .8087 & \(-.0096\) & \([-.023,+.012]\) & 282/0/0/18 \\
+YOLOv8n s0 & .7847 & .7761 & \(-.0086\) & \([-.025,+.011]\) & 282/1/0/17 \\
+YOLOv8n s1 & .8087 & .8119 & \(+.0032\) & \([-.015,+.024]\) & 290/0/0/10 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Per-checkpoint paired comparison on M3FD and DroneVehicle.}
+\label{tab:external-cdf}
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+Dataset & Evaluator & CDF & CS-ECF & Delta & 95\% group CI \\
+\midrule
+M3FD & YOLO26n & .3705 & .3757 & \(+.0053\) & \([-.0002,+.0114]\) \\
+M3FD & YOLOv8n & .3731 & .3972 & \(+.0241\) & \([+.0087,+.0321]\) \\
+DroneVehicle & best & .6624 & .6814 & \(+.0190\) & \([-.0013,+.0301]\) \\
+DroneVehicle & last & .6524 & .6767 & \(+.0243\) & \([-.0067,+.0464]\) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\small
+\caption{Paired CS-ECF minus Always CDF summary.}
+\begin{tabular}{@{}lrc@{}}
+\toprule
+Scope & Difference & 95\% interval \\
+\midrule
+LLVIP & \(-0.0057\) & \([-0.0189,+0.0156]\) \\
+M3FD & \(+0.0147\) & \([+0.0100,+0.0159]\) \\
+DroneVehicle & \(+0.0217\) & \([-0.0007,+0.0738]\) \\
+Dataset-balanced & \(+0.0102\) & \([-0.00057,+0.02980]\) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The combined interval resamples scene or frame groups and training-run clusters
+within each dataset, then assigns equal weight to the three datasets. There are
+eight run clusters on LLVIP, two on M3FD and one on DroneVehicle. The
+DroneVehicle component therefore quantifies test-group uncertainty but cannot
+estimate variability between independent DroneVehicle training runs. The lower
+endpoint of the combined interval is below zero, so the direct CDF comparison
+does not establish a separated average improvement.
+
+\section{Validation choice and exploratory alternatives}
+
+The policy was fixed before the confirmatory comparisons. On validation, the
+four-candidate top-five selector with a 1.5 visible margin produced gains of
+0.001850 and \(-0.000070\) for the two LLVIP evaluators and 0.001518 and
+0.000083 for the two M3FD evaluators. Its two-dataset balanced validation
+average was 0.000845. The candidate set was retained to preserve the visible,
+region-selected, learned, and published fusion families; the margin was fixed
+at 1.5.
+
+Two alternative policies were evaluated after the frozen comparison. They are
+exploratory and are not used to support the main claim. A top-10 selector over
+visible/CDF/PIAFusion with margin 1.3 gave a 0.0039 balanced gain but a
+hierarchical interval of \([-0.0029,+0.0127]\). A mean-confidence selector over
+visible/SPGFusion with margin 1.5 gave a \(-0.0034\) balanced gain and
+\([-0.0085,+0.0013]\). Both alternatives fail to establish a stable advantage
+across the 10 LLVIP/M3FD checkpoints.
+
+\section{Thermal controls}
+
+\begin{table}[h]
+\centering
+\small
+\caption{Spearman association between switching and thermal or visible
+features. These secondary association tests are descriptive and are not
+multiplicity-adjusted.}
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+Dataset & Thermal top-hat \(\rho\) (\(p\)) & Visible luma \(\rho\) (\(p\)) &
+CDF-mask \(\rho\) (\(p\)) \\
+\midrule
+LLVIP & \(+0.151\) (0.009) & \(-0.104\) (0.071) & \(-0.029\) (0.614) \\
+M3FD & \(+0.320\) (\(<10^{-5}\)) & \(-0.066\) (0.356) & \(-0.332\) (\(<10^{-5}\)) \\
+DroneVehicle & \(-0.403\) (\(<10^{-5}\)) & \(-0.441\) (\(<10^{-5}\)) & \(+0.064\) (0.269) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\small
+\caption{Fixed-input CDF ablation on the DroneVehicle official-test subset.}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Checkpoint & Visible & Thermal mask & Global injection & Mask minus global \\
+\midrule
+best & 0.6563 & 0.6624 & 0.6620 & \(+0.0003\) \\
+last & 0.6474 & 0.6524 & 0.6512 & \(+0.0012\) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The association reverses between datasets. Thermal contrast is therefore not
+treated as a sufficient proxy for fusion utility, and no universal
+thermal-switching rule is claimed.
+
+\section{Reproduction}
+
+The public repository contains the selector, candidate-generation and detector
+scoring code, per-image score arrays, split manifests, source data for every
+figure and the scripts that reproduce the intervals. The direct baseline
+comparison is generated by:
+
+\begin{verbatim}
+python scripts/analyze_csecf_vs_cdf.py
+\end{verbatim}
+
+This command validates each reconstructed checkpoint AP against the published
+aggregate table before writing
+\path{results/selective_fusion/csecf_vs_cdf_paired.json}.
+The LLVIP split manifest is
+\path{data/splits/clean_split_manifest.json}; the M3FD and DroneVehicle
+manifests are generated by the named dataset-preparation scripts and retained
+with their seeds and selected groups.
+
+\end{document}

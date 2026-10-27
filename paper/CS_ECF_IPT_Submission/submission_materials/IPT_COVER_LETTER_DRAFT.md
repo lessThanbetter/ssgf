@@ -22,13 +22,20 @@ otherwise, the system preserves the visible input as a safety fallback.
 
 Across LLVIP, M3FD, and an independent official-test subset of DroneVehicle,
 CS-ECF improved 9 of 12 detector checkpoints. The dataset-balanced AP50 gain was
-0.0133, with a detector-by-group hierarchical 95% interval of [0.0028, 0.0213].
+0.0133, with a training-run-by-group hierarchical 95% interval of [0.0026, 0.0261].
 Removing the shield increased the worst observed AP50 loss from 0.0040 to
 0.0584. The two DroneVehicle checkpoints improved by 0.0251 and 0.0293; they
 belong to the same training run and are reported as correlated checks rather
 than independent architectures. A thermal-mask ablation on DroneVehicle further
 showed a small but consistent advantage over global detail injection
 (0.0007 AP50 on average).
+
+Against the stronger Always CDF baseline, the dataset-balanced difference was
+0.0102 AP50, with a training-run-by-group interval of [-0.00057, 0.02980].
+The interval included zero; the point estimate was concentrated in M3FD and
+DroneVehicle and was not present on LLVIP. We therefore describe a
+risk-control and conditional-generalization contribution, not dominance over
+the best fixed fusion input.
 
 We believe the work is relevant to the journal's readership because it addresses
 how thermal information should be admitted into a deployed detection system,
@@ -40,10 +47,15 @@ system for pedestrian-centric and mixed IR–visible detection, not as evidence
 of uniform improvement over all object classes.
 
 The manuscript is original, has not been published previously, and is not under
-consideration by another journal. All authors have approved the submission and
-declare no competing interests. This research did not receive any specific grant
-from funding agencies in the public, commercial, or not-for-profit sectors. Data
-and code availability are stated in the manuscript.
+consideration by another journal. An earlier, related manuscript by the same
+authors on evaluator-dependent fidelity-index rankings was previously submitted
+to this journal and was not accepted. It is not under consideration elsewhere.
+The present manuscript is a distinct method study; it does not reproduce the
+earlier fidelity-ranking claims, and all shared datasets and evaluator
+infrastructure are identified in the manuscript. All authors have approved the
+submission and declare no competing interests. This research did not receive any
+specific grant from funding agencies in the public, commercial, or
+not-for-profit sectors. Data and code availability are stated in the manuscript.
 
 Thank you for your consideration.
 
