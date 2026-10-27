@@ -31,10 +31,11 @@ showed a small but consistent advantage over global detail injection
 (0.0007 AP50 on average).
 
 Against the stronger Always CDF baseline, the dataset-balanced difference was
-0.0102 AP50, with a training-run-by-group interval of [0.00004, 0.03138]. The
-advantage was concentrated in M3FD and DroneVehicle and was not present on
-LLVIP. We therefore describe a small, conditional gain and a risk-control
-boundary, not dominance over the best fixed fusion input.
+0.0102 AP50, with a training-run-by-group interval of [-0.00057, 0.02980].
+The interval included zero; the point estimate was concentrated in M3FD and
+DroneVehicle and was not present on LLVIP. We therefore describe a
+risk-control and conditional-generalization contribution, not dominance over
+the best fixed fusion input.
 
 We believe the work is relevant to the journal's readership because it addresses
 how thermal information should be admitted into a deployed detection system,

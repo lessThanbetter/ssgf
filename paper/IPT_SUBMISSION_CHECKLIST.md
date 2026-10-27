@@ -73,7 +73,7 @@ The following canonical values must remain identical everywhere:
 | Thermal-mask advantage over global | +0.0007 |
 | Serial latency estimate | 706.3 ms |
 | CS-ECF minus Always CDF, balanced | +0.0102 |
-| Direct-comparison hierarchical CI | [+0.00004,+0.03138] |
+| Direct-comparison hierarchical CI | [-0.00057,+0.02980] |
 
 ## Author checks
 
