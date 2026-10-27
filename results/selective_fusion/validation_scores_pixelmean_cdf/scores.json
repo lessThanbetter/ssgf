@@ -1,0 +1,22 @@
+{
+  "yolo26n": {
+    "vis": {
+      "mAP50": 0.9519,
+      "mAP50_95": 0.6046
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.9493,
+      "mAP50_95": 0.5983
+    }
+  },
+  "rtdetr": {
+    "vis": {
+      "mAP50": 0.9474,
+      "mAP50_95": 0.6131
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.9508,
+      "mAP50_95": 0.5986
+    }
+  }
+}

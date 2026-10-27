@@ -1,0 +1,374 @@
+{
+  "0.02": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8636,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8711,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8617,
+      "gain": 0.0,
+      "fusion_selected": 1
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.8493,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.8086,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.8064,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.8648,
+      "gain": -0.0001,
+      "fusion_selected": 1
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8776,
+      "gain": -0.0002,
+      "fusion_selected": 2
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8644,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8402,
+      "gain": 0.0,
+      "fusion_selected": 0
+    }
+  },
+  "0.05": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8636,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8711,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8617,
+      "gain": 0.0,
+      "fusion_selected": 1
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.8493,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.8086,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.8064,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.8648,
+      "gain": -0.0001,
+      "fusion_selected": 1
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8783,
+      "gain": 0.0006,
+      "fusion_selected": 4
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8656,
+      "gain": 0.0012,
+      "fusion_selected": 1
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8402,
+      "gain": 0.0,
+      "fusion_selected": 0
+    }
+  },
+  "0.1": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8636,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8711,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8617,
+      "gain": 0.0,
+      "fusion_selected": 1
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.8493,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.8086,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.8064,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.8648,
+      "gain": -0.0001,
+      "fusion_selected": 1
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8783,
+      "gain": 0.0006,
+      "fusion_selected": 4
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.866,
+      "gain": 0.0015,
+      "fusion_selected": 2
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8402,
+      "gain": 0.0,
+      "fusion_selected": 0
+    }
+  },
+  "0.15": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8636,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8711,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8617,
+      "gain": 0.0,
+      "fusion_selected": 1
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.8493,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.8086,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.8064,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.8648,
+      "gain": -0.0001,
+      "fusion_selected": 2
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8783,
+      "gain": 0.0006,
+      "fusion_selected": 4
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8661,
+      "gain": 0.0017,
+      "fusion_selected": 4
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8402,
+      "gain": 0.0,
+      "fusion_selected": 0
+    }
+  },
+  "0.2": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8636,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8711,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8617,
+      "gain": 0.0,
+      "fusion_selected": 1
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.8493,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.8086,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.8064,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.8648,
+      "gain": -0.0001,
+      "fusion_selected": 2
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8783,
+      "gain": 0.0006,
+      "fusion_selected": 4
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8662,
+      "gain": 0.0018,
+      "fusion_selected": 5
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8402,
+      "gain": -0.0,
+      "fusion_selected": 1
+    }
+  },
+  "0.3": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8637,
+      "gain": 0.0001,
+      "fusion_selected": 1
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8711,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8617,
+      "gain": 0.0,
+      "fusion_selected": 1
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.8493,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.8086,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.8064,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.8648,
+      "gain": -0.0001,
+      "fusion_selected": 4
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8783,
+      "gain": 0.0006,
+      "fusion_selected": 4
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8662,
+      "gain": 0.0018,
+      "fusion_selected": 5
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8402,
+      "gain": -0.0,
+      "fusion_selected": 1
+    }
+  }
+}

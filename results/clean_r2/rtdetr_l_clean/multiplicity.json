@@ -1,0 +1,80 @@
+{
+  "rtdetr_l_clean": {
+    "family": "fourteen fused inputs against the colour-scored visible source",
+    "correction": "Benjamini-Hochberg",
+    "alpha": 0.05,
+    "n_tests": 14,
+    "tests": {
+      "mean": {
+        "delta50_observed": -0.1287,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.001998
+      },
+      "activity_only": {
+        "delta50_observed": -0.0704,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.001998
+      },
+      "tophat": {
+        "delta50_observed": -0.1229,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.001998
+      },
+      "probe": {
+        "delta50_observed": -0.1194,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.001998
+      },
+      "tophat_permuted": {
+        "delta50_observed": -0.1098,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.001998
+      },
+      "probe_permuted": {
+        "delta50_observed": -0.1078,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.001998
+      },
+      "tophat_wshuffle": {
+        "delta50_observed": -0.1245,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.001998
+      },
+      "probe_wshuffle": {
+        "delta50_observed": -0.121,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.001998
+      },
+      "ensemble": {
+        "delta50_observed": -0.1099,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.001998
+      },
+      "ifcnn": {
+        "delta50_observed": -0.0951,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.001998
+      },
+      "densefuse": {
+        "delta50_observed": -0.0885,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.001998
+      },
+      "csf": {
+        "delta50_observed": -0.1318,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.001998
+      },
+      "piafusion": {
+        "delta50_observed": -0.2071,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.001998
+      },
+      "spgfusion": {
+        "delta50_observed": -0.2457,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.001998
+      }
+    }
+  }
+}

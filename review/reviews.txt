@@ -1,0 +1,380 @@
+                                             1
+
+
+
+Reviewer 1
+
+Comments
+
+Reviewer 1 - Initial submission, 16/10/2026
+This is a measurement/benchmarking paper rather than a method paper. The authors
+argue that the ranking of visible–infrared (VIS–IR) fusion rules is not a property of the
+fused images but of the evaluator and of the construction of the fidelity index used to
+score them. They build a targetness-weighted fusion family (a morphological top-hat
+prior, a distilled learned probe of 0.07 M parameters, and an ensemble) plus activity-only,
+permuted and weight-shuffled controls, compare against IFCNN, DenseFuse, PIAFusion
+and SPGFusion, and then test fourteen fused variants against fourteen trained detectors
+on two benchmarks (LLVIP, 300 test images; an aligned FLIR-ADAS release, 1500 train
+/ 300 test). All detection contrasts are paired intervals resampled over the same images,
+with multiplicities corrected. The paper reports five claims: (i) no fused input beats the
+unfused visible source at mAP50 under a visible-trained detector, with deficits of 0.023–
+0.152; (ii) the sign reverses under a modality-agnostic detector; (iii) the deficit is a
+stratification (crowded, small-target, high-contrast) rather than a regime effect; (iv) task-
+aware adaptation of the fusion network buys no net gain; and (v) the protocol, released
+per-image scores, fused images and scripts, is itself the deliverable.
+Major Comments
+M1. The headline claim is contradicted by the table said to support it
+Section 4 states that “Table 3 holds the fused images fixed and varies only the detector …
+and no fused input reaches the unfused visible source under any of the three visible-
+trained architectures.” Table 3 is printed “in the single-channel convention of the reported
+protocol,” and in that convention the claim is false: under YOLO11n, top-hat fused
+(0.8306) and ensemble fused (0.8291) exceed the visible source (0.8289); under
+YOLO26n, activity-only (0.8310) and DenseFuse (0.8257) exceed the visible source
+(0.8209); and under RT-DETR-l the visible source is 0.8624 while mean (0.8646),
+activity-only (0.8836), probe (0.8651), ensemble (0.8708), DenseFuse (0.8715) and CSF
+(0.8632) all exceed it. The claim is only true under the colour-scored convention (visible
+source raised to 0.881), which the authors state is “the convention used above and in
+Supplementary Sec. 13” but which is not shown in Table 3. The reader therefore cannot
+verify the paper’s central result from the paper. This must be fixed by (a) printing Table 3
+with the colour-scored visible source as an explicit column (or a second sub-table), so
+that the headline contrast is visible in the manuscript, and (b) correcting the sentence that
+describes Table 3, which as written describes a table that is not in the manuscript. I would
+also ask the authors to state plainly, in the main text, that in the single-channel convention
+used for all rows, the visible source is penalised and several fused inputs do beat it, since
+this is the convention the paper defends as treating every row alike, and it is the
+convention in which the negative result is weakest.
+M2. The numbers in the text do not reconcile with the numbers in the tables
+Several specific instances: - Section 4 states the visible source is “raised from 0.830 to
+0.881 mAP50” by colour scoring, but Table 3 lists the visible source at 0.8289 under
+YOLO11n, 0.8209 under YOLO26n and 0.8624 under RT-DETR-l. It is never stated
+which architecture the 0.830 and 0.881 belong to, nor whether the same increment applies
+to all three. - The deficits are quoted as “0.023 to 0.152 mAP50” throughout the abstract,
+introduction and conclusion, but Table 3’s largest deficit is SPGFusion against the visible
+source: 0.8289 − 0.7296 = 0.0993 under YOLO11n and 0.8209 − 0.7290 = 0.0919 under
+YOLO26n. A deficit of 0.152 does not appear in Table 3 at all. The text later says
+“SPGFusion by 0.091 against 0.152 under YOLO11n” (Section 5), which implies the
+                                              2
+
+
+0.152 is the RT-DETR-l figure, but Table 3 gives 0.8624 − 0.8105 = 0.0519 there, not
+0.152. Please state, for every headline number, exactly which table cell and which
+convention produced it. - Section 5 states that under RT-DETR-l “the control row that is
+mid-pack elsewhere becomes the best fused input of any kind under it once the reported
+protocol’s single-channel convention is used for every row”, but Table 3 shows activity-
+only at 0.8836 as the best under RT-DETR-l, and it is not clear which row is meant by
+“the control row.” - The abstract says “all forty-two contrasts are resolved once the third
+architecture is repeated” while Section 4 says the RT-DETR-l column in Table 3 “is one
+training run; Fig. 2 and Supplementary Sec. 17 use the mean of three.” The reader cannot
+tell whether the headline 42/42 result comes from the single run shown or the three-run
+mean.
+M3. The fidelity comparison is structured such that the authors’ own rules rank near the
+bottom, which weakens the argument they are used to make
+Table 1 shows the authors’ rules at VIF 0.3298 (probe) and 0.3561 (top-hat) on TNO,
+against SPGFusion at 0.8135 and PIAFusion at 0.6051, that is, the authors’ rules rank
+fifth and sixth of seven, and the learned probe does not exceed the published baselines
+“on any benchmark” (Section 3). The paper’s central rhetorical move is that “the two
+methods the fidelity index ranks highest are the two that lose most” (SPGFusion and
+IFCNN). But since the authors’ own rules perform poorly on the very index being
+criticised, the argument has an appearance of being self-serving: the index is denounced
+because it favours methods other than the authors’. The paper would be considerably
+stronger if it (a) stated explicitly that the authors’ rules also fail to beat the visible source
+(top-hat −0.0504, probe −0.0552 against the colour-scored source, by the authors’ own
+numbers), so that the negative result is symmetric and not an artifact of the authors’ rules
+being favoured; and (b) reported the fidelity-versus-detection correlation separately for
+the authors’ family and for the published family, so the reader can see that the mismatch
+is not a property of one group. Note also that the manuscript never explains why the top-
+hat prior improves VIF over mean fusion by 33–36% yet the learned probe, trained by
+distillation against that same prior, is beaten by it on two of three benchmarks. That is an
+unexpected internal result that deserves comment.
+M4. The fidelity score reported for the authors’ own rules never appears in the detection
+comparison, so the index-to-detection link is not shown for their family
+Table 7 correlates fidelity with contrast “over the thirteen inputs for which both are
+recorded,” but the reported-index column and the reference-VIF column are not
+populated for all rows and the reference VIF is “rescored on the eight variants whose
+fused outputs were retained.” The paper does not state which inputs are missing from the
+correlation, nor whether the authors’ four rules (mean, top-hat, probe, ensemble) are
+among the thirteen. Since those four are the only rules whose fidelity the paper controls,
+the correlation that matters most for the paper’s thesis is the one over its own family, and
+it is not separable from the table as printed. Please give the full fidelity-versus-contrast
+data for all fourteen inputs in one table, with the missing entries explained.
+M5. The stratification claim is not fully supported by the evidence presented in the
+manuscript
+Claim (iii) states that the deficit is “a stratification, not a regime effect,” resolved for all
+fourteen rules in the crowded, small-target and high-contrast strata and for only two in the
+bottom tercile. Figure 3a is said to count, “for each regime defined from the annotation
+and the unfused visible source alone, how many of the fourteen inputs are resolved below
+the source.” Three problems: (a) the strata are defined from the unfused visible source’s
+own detection quality, which is the same quantity being compared, so the stratification is
+defined partly in terms of the outcome and is not independent of it; (b) the manuscript
+says the sign of the association between contrast and deficit “changes from sequence to
+sequence” without quantifying how often, and sequence-level results are given only for
+                                             3
+
+
+the SPGFusion contrast (Table 11, restricted to sequences with at least twenty test
+images); and (c) selecting the strata post hoc from the same 300 images used for the
+headline claim, with no correction for the stratum search, means the “resolved for all
+fourteen” statement carries an unquantified selection effect. Please report the strata
+counts with multiplicity correction over strata, state whether a pre-registered stratum
+definition would give the same partition, and give the per-sequence sign-count over all
+sequences rather than for one contrast only.
+M6. The paper’s own methodological argument is undermined by keeping its most
+important evidence in an unavailable supplement
+The manuscript repeatedly defers load-bearing evidence: the colour-corrected protocol
+(Sec. 12, which is the convention that makes the headline claim true), the clean-split
+protocol (Sec. 16), the per-seed tables (Table S7), the component ablation (Tables S1–
+S3), the per-evaluator adaptation results (Tables S24, S25), the per-image scores and
+fused images, and the “remaining metrics.” The supplementary file was not provided with
+the review copy, and several of these items are essential to evaluating the central claims
+(see M1, M2). For publication, at least the following must be in the main manuscript:
+Table 3 in the colour-corrected convention (or both conventions side by side); the per-
+seed values behind Table 6; and the exact definition of the two index constructions whose
+disagreement is one of the paper’s two headline results.
+M7. The paper does not explain what a practitioner should do, which is the stated purpose
+The conclusion is that “a rule should therefore be reported with its evaluator and index.”
+This is a statement about reporting, not about choice, and the paper explicitly declines to
+recommend a rule. Given the empirical result that under a visible-trained detector nothing
+beats not fusing at all, the actionable conclusion would seem to be that for visible-trained
+detectors one should deploy the visible source directly, and that fusion is only justified for
+detectors trained on thermal or fused modalities. The manuscript should state this
+explicitly and discuss the practical consequence, rather than leaving the reader to infer it.
+Relatedly, the paper should say what it recommends for the common deployment case
+where the detector’s training modality is unknown or is itself part of the design decision.
+M8. The modality-agnostic result needs a clearer account of what the detector was trained
+on and why it is the right control
+Section 4 and Table 3 report an “agnostic” detector under which ten of fourteen fused
+inputs exceed the visible source (and the IR source reaches 0.9415, far above every fused
+input). The manuscript states this detector was “retrained with the 300 test images held
+out” but does not state what training data it was trained on, presumably both modalities,
+nor how the fusion of the two sources into the training set was constructed, nor whether it
+was given the same fourteen fused variants at training time or a different fusion rule.
+Since the reversal of the sign depends entirely on this detector, its construction is a load-
+bearing detail. Please specify the training modality composition, the fusion rule used to
+build its training inputs (if any), and whether the “clean split” experiment of Fig. 4a uses
+four independently trained runs of the same detector or of a different one.
+M9. The “deficit is not uniform / one control is resolved above the source” result is
+reported but never interpreted
+The abstract, Section 4 and the conclusion all note that under RT-DETR-l “one control is
+resolved above the source instead.” Which control, by how much, and why? A single
+fused input that beats the visible source under a visible-trained detector, when the paper’s
+headline is that none does, is a counterexample that the paper must confront rather than
+mention in passing. If the counterexample is the activity-only control (0.8836 vs 0.8624
+in Table 3 under RT-DETR-l, a +0.021 gain), that is a substantial and directly relevant
+exception, and it happens to be the classical L1-norm activity weighting, i.e. the rule the
+paper’s targetness machinery is supposed to improve upon. Please analyse this case in the
+main text, and state whether the headline claim should be qualified to “no fused input
+                                            4
+
+
+beats the visible source except under RT-DETR-l where the activity-only control does.”
+M10. The activity-only control outperforms the paper’s targetness rules under two of
+three visible-trained detectors, which undercuts the framing
+Table 3: activity-only reaches 0.8277 / 0.8310 / 0.8836 under YOLO11n / YOLO26n /
+RT-DETR-l, versus top-hat at 0.8306 / 0.8170 / 0.8632 and probe at 0.8258 / 0.8128 /
+0.8651. Under YOLO26n and RT-DETR-l the plain activity rule, which the paper defines
+as the control separating targetness from activity, beats both targetness rules. Table 6 even
+reports “probe − activity-only” as −0.017 under YOLO11n and −0.011 under YOLO26n,
+i.e. the learned probe is worse than the parameter-free activity weighting. The paper
+reports these numbers faithfully but does not draw the implication: the targetness
+weighting that occupies Fig. 1 and Section 2 is, downstream, not the best member of its
+own family. This should be stated and discussed, and the claim that the top-hat prior
+“beats mean fusion” should be replaced by a statement about the full ranking within the
+family under each evaluator.
+M11. The () and (m) normalisation argument is asserted rather than demonstrated
+Section 2 argues that the product (m), not (), sets how soft the rule is, “which is what
+makes fidelity comparisons between rules with different weight spreads meaningful.”
+Table 9 is said to report a temperature sweep with detection at four temperatures under
+two evaluators. The claimed invariance of the comparison under the (m) normalisation
+should be shown directly, e.g. by reporting the resulting weight distributions (mean and
+spread of (w_v)) at each () and demonstrating that the normalised weights are comparable
+across rules with different activity spreads. As written, a reader cannot check whether the
+normalisation actually achieves what is claimed, and this matters because the paper’s
+targetness rules differ from mean fusion precisely in weight spread.
+M12. The single-channel convention, which the paper defends, is acknowledged to
+penalise the visible source, but the paper then uses the colour convention for its headline
+and the single-channel convention for its tables
+The authors state in the limitations that “every input is scored in a single channel, which
+we chose so that all rows are treated alike but which penalises the visible source, the only
+input that could have been scored in the colour convention the detectors were trained on.”
+This is a defensible choice for the table, but it makes the paper’s headline claim (which
+requires the colour-scored source) and the paper’s table (which shows the single-channel
+source) describe two different experiments. The honest resolution is to present both
+conventions everywhere, and to state the sign of the result under each. The paper is
+admirably explicit about this tension in the discussion, but the abstract, introduction and
+conclusion quote only the colour convention while citing a table that shows the other.
+M13. The second benchmark is reported as measured without colour rescoring, so the
+replication does not carry the same convention as the primary result
+The limitations state that the second benchmark (aligned FLIR-ADAS) “has no colour-
+corrected rescoring, because its detectors were trained with a different budget and their
+weights are no longer available, so it is reported as measured.” This means the replication
+of the headline claim on the second benchmark is in the single-channel convention,
+i.e. the convention in which the primary result is weakest. The replication therefore does
+not replicate the headline result as stated. Please clarify in the main text which
+convention Table 4 uses, and state whether the “no fused input beats the visible source”
+statement holds on the second benchmark under the same convention as the first.
+M14. The claim that “the penalty is set by the fused rule rather than by the task difficulty
+or the detector family” is not fully supported
+Section 8 asserts this, but the evidence shows the penalty varying materially with the
+detector: SPGFusion loses 0.0993 under YOLO11n and 0.0919 under YOLO26n (Table
+3) but only 0.0519 under RT-DETR-l, and the paper itself notes “the deficits under RT-
+DETR-l are the mildest of the three architectures.” Table 6 shows the probe-against-mean
+                                            5
+
+
+contrast with disjoint four-seed ranges across the two YOLO families. The correct
+statement is that the sign is set by the rule plus the evaluator’s training modality, while
+the magnitude varies with the architecture by a factor of about two. Please revise this
+sentence to match the data.
+M15. The statistical framework is described as paired resampling but the family-wise
+error control is not specified
+The manuscript states that “every interval in this paper resamples the same 300 images
+1000 times and applies one draw to both arms of a contrast” and that “the multiplicity of
+the 42 headline contrasts is corrected.” The correction method is not named, and it is not
+stated whether the correction is applied within each of the four evaluator blocks, within
+each figure, or across the whole paper. Nor is it stated what the corrected criterion is.
+Since the paper’s argument is explicitly a measurement-discipline argument, the
+correction procedure must be stated precisely (method, family definition, and resulting
+adjusted threshold), and the corrected intervals should be printed in the tables rather than
+only in a supplement.
+M16. The 0.023 lower bound of the deficit range is never checked against the seed spread
+in the same table
+Table 6 reports the four-seed ranges for the two YOLO families, e.g. probe − VIS at
+[−0.043, −0.003] under YOLO11n and [−0.028, −0.008] under YOLO26n, and top-hat −
+mean at [−0.002, +0.025]. The smallest headline deficit is stated as 0.023, but Table 6
+shows that the seed range for at least one related contrast spans zero (probe − mean
++0.005 [−0.002, +0.014]; top-hat − mean +0.006 [−0.002, +0.025]). Please state, for the
+specific rule that produces the 0.023 lower bound, its four-seed range, so the reader can
+verify that the smallest headline deficit exceeds the seed noise. The paper is careful about
+this for some contrasts and not for others.
+M17. The segmentation experiment is barely reported
+The manuscript states that the evaluation uses “two segmentation networks” and Table 14
+includes an “mIoU” column under “the modality-agnostic segmenter” (mean 0.1225, top-
+hat 0.1270, probe 0.1270, ensemble 0.1269). An mIoU of 0.12 is very low for a
+segmentation metric, and the manuscript does not state what is being segmented, on
+which dataset, with which network, or how this result relates to the paper’s argument.
+Either report the segmentation analysis properly (network, dataset, classes, metric
+definition) or remove it; as it stands it invites the reader to doubt the authors’
+measurement care, which is the opposite of the paper’s intent.
+M18. The manuscript never states the computational cost of the proposed rules in the
+main text
+Section 2 gives the probe at “0.07 M parameters and 9.4 ms per 512 × 384 pair,” and the
+SI is said to contain the “inference cost.” Since one of the paper’s implicit arguments is
+that the parameter-light targetness rules are a reasonable design point, the cost of all four
+of the authors’ rules and of the four reproduced baselines should be tabulated in the main
+text (parameters, latency, and memory), under the same measurement protocol. This
+matters for the practitioner the paper addresses.
+M19. The paper does not examine whether the negative result is an artifact of the
+registration or the annotation
+Both benchmarks are registered VIS–IR pairs with COCO-style person annotations. The
+paper’s negative result could in principle partly reflect residual misregistration between
+the modalities at the annotation level (the annotations are drawn on one modality and
+used for both), or annotation conventions that favour visible appearance. The manuscript
+mentions neither possibility. Given that the recommended conclusion is “do not fuse for a
+visible-trained detector,” this alternative explanation should be ruled out, at least by
+reporting the registration procedure and any alignment-error estimate, and by reporting
+the contrast for the subset of images with the best alignment.
+                                             6
+
+
+M20. Several internal inconsistencies, undefined terms and reporting defects
+•The abstract says “fourteen fused variants, fourteen detectors and two benchmarks,” but
+Table 3 lists twelve inputs (two sources plus ten fused rows including the four
+permutations) and the text elsewhere refers to “the same twelve inputs.” Please reconcile
+the counts.
+•The keyword list under the title (“image fusion, infrared, visible, saliency, targetness”)
+differs from the submission-system keywords (“infrared and visible image fusion, fidelity
+metrics, evaluation protocol, object detection, multimodal pedestrian detection”); unify.
+•Section 5 refers to “the eight variants whose fused outputs were retained” without stating
+the retention criterion or why outputs were discarded from a study whose stated
+deliverable is complete artifacts.
+•Fig. 2a is described as “42 contrasts” (3 visible-trained architectures × 14 inputs) but the
+abstract lists “fourteen fused variants”; 14 × 3 = 42 only if the two sources are excluded,
+so the count of “fourteen” and the count of “42” are inconsistent. State the arithmetic.
+•The manuscript refers to “our own rules” and “the reported index” without naming the
+index until Section 3; the index should be named and defined at first use.
+•Table 1, Table 2 and Table 14 report VIF for the same rules on the same datasets, but
+Table 1’s top-hat TNO value (0.3561) and Table 2’s identical value appear to be the same
+measurement reported twice with different comparison sets; make clear whether these are
+the same numbers.
+•The manuscript says “the two end-to-end networks dominate pixel fidelity” but does not
+state that IFCNN (0.4440 on TNO) is beaten by SPGFusion (0.8135) and PIAFusion
+(0.6051) but beats DenseFuse (0.3697) and both of the authors’ rules, the sentence should
+name the networks.
+•Figure captions and the algorithm listing are deferred to the supplement; at least Fig. 1’s
+caption in the manuscript should fully specify the pipeline without requiring the
+supplement.
+Minor Comments
+1.Define VIF, QAB/F, SSIM, mAP50, mAP50-95, mIoU and ANFIS-style fidelity indices
+at first use.
+2.State the LLVIP training/validation/test split explicitly in the main text; the reference to
+“1500 visible LLVIP training pairs” and “the same 300 test images” should be
+accompanied by the official split sizes.
+3.State the number of images in the FLIR-ADAS aligned release used here relative to the
+full release.
+4.Give the number of pedestrians per image distribution, since the stratification analysis
+depends on it.
+5.The phrase “resolved” (as in “all forty-two contrasts are resolved”) is used throughout
+as a technical term for “the interval excludes zero”; define it once.
+6.Section 4 states the RT-DETR-l column changes “architecture and optimisation budget
+together”; consider adding a budget-matched architecture comparison to separate the two
+factors, or state explicitly that they are confounded.
+7.The stratification is reported as “top contrast tercile, ≥3 pedestrians, small targets”; give
+the numeric thresholds for contrast and target size.
+8.Table 4 should state in its caption which convention the visible source is scored in.
+9.The discussion’s statement that the visible source’s validation split “is taken from the
+same 300 images that are scored” is a significant caveat; move it into Section 4 so that
+the reader meets it with the result.
+10.Reference to “the detector library’s own metric implementation” should name the
+library and version.
+11.The Zenodo DOI should be a formal data/code availability statement in the
+manuscript, not only in the cover letter.
+                                             7
+
+
+12.The AI-assisted language-editing declaration in the cover letter should also appear in
+the manuscript (the letter says “the declaration in the manuscript states this”, verify that it
+does).
+
+Reviewer 2
+
+Comments
+
+Reviewer 2 - Initial submission, 25/10/2026
+This manuscript investigates the relationship between evaluation metrics for infrared and
+visible image fusion and downstream detection performance. It compares multiple fusion
+methods, detectors, and datasets, and the topic is of potential research interest. However,
+the following issues should be addressed:
+ ．
+1 The results in Fig. 5(b) appear inconsistent with the figure caption. The caption states
+that none of the metrics maintains the same direction of correlation across different
+evaluators. However, the correlation coefficients for SSIM\(_{\mathrm{vis}}\) are
+positive for all four evaluators, as also reported in Table 7. Please check the caption and
+describe more accurately the relationship between the fidelity metrics and downstream
+performance.
+ ．
+2 For LLVIP, some detectors use the same 300 images evaluated in the study as their
+validation set. Although the manuscript reports experiments with a partially revised data
+split, this protocol has not been applied to all major evaluators and comparisons. Please
+use results from a test set that is fully independent of the training and validation sets as
+the primary results.
+ ．
+3 The authors note that the “reported VIF” and the reference implementation produce
+opposite rankings because of differences in noise-parameter calibration. However, Table
+1 presents the comparison simply as “VIF.” Please clearly distinguish between the two
+implementations and report results recalculated with appropriately calibrated noise
+parameters using the reference implementation for the complete set of methods.
+ ．
+4 The description of the detection evaluation procedure is insufficient. The manuscript
+states that one-to-one maximum-cardinality matching is used and that AP is computed
+using a detection library, but it does not clarify whether the matching is performed
+according to the confidence scores of the predicted boxes or how the matching results are
+used to calculate AP. Please provide these details.
+
+Reviewer 3
+
+Comments
+
+Reviewer 3 - Initial submission, 07/10/2026
+The overall structure of the paper is rather disorganized, making it difficult to clarify the
+logic. The quality of the charts is poor, and there is a lack of core innovation.
+

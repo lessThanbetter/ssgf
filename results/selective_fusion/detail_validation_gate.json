@@ -1,0 +1,498 @@
+{
+  "yolo11": {
+    "positive_rate": {
+      "detail_mean_q095_a020_s05": 0.3933,
+      "detail_tophat_q095_a020_s05": 0.3867,
+      "detail_probe_q095_a020_s05": 0.38,
+      "detail_ifcnn_q095_a020_s05": 0.3867,
+      "detail_piafusion_q095_a020_s05": 0.3867,
+      "detail_spgfusion_q095_a020_s05": 0.42
+    },
+    "coverage": {
+      "0.02": {
+        "validation": {
+          "visible_ap50": 0.8898,
+          "gate_ap50": 0.8906,
+          "gain": 0.0008,
+          "fusion_selected": 3
+        },
+        "test": {
+          "visible_ap50": 0.877,
+          "gate_ap50": 0.877,
+          "gain": 0.0,
+          "fusion_selected": 6
+        }
+      },
+      "0.05": {
+        "validation": {
+          "visible_ap50": 0.8898,
+          "gate_ap50": 0.8909,
+          "gain": 0.0011,
+          "fusion_selected": 8
+        },
+        "test": {
+          "visible_ap50": 0.877,
+          "gate_ap50": 0.8768,
+          "gain": -0.0003,
+          "fusion_selected": 15
+        }
+      },
+      "0.1": {
+        "validation": {
+          "visible_ap50": 0.8898,
+          "gate_ap50": 0.8912,
+          "gain": 0.0014,
+          "fusion_selected": 15
+        },
+        "test": {
+          "visible_ap50": 0.877,
+          "gate_ap50": 0.877,
+          "gain": -0.0,
+          "fusion_selected": 30
+        }
+      },
+      "0.15": {
+        "validation": {
+          "visible_ap50": 0.8898,
+          "gate_ap50": 0.8919,
+          "gain": 0.0021,
+          "fusion_selected": 22
+        },
+        "test": {
+          "visible_ap50": 0.877,
+          "gate_ap50": 0.8771,
+          "gain": 0.0001,
+          "fusion_selected": 45
+        }
+      },
+      "0.2": {
+        "validation": {
+          "visible_ap50": 0.8898,
+          "gate_ap50": 0.8916,
+          "gain": 0.0018,
+          "fusion_selected": 30
+        },
+        "test": {
+          "visible_ap50": 0.877,
+          "gate_ap50": 0.879,
+          "gain": 0.0019,
+          "fusion_selected": 60
+        }
+      },
+      "0.3": {
+        "validation": {
+          "visible_ap50": 0.8898,
+          "gate_ap50": 0.8943,
+          "gain": 0.0045,
+          "fusion_selected": 45
+        },
+        "test": {
+          "visible_ap50": 0.877,
+          "gate_ap50": 0.8785,
+          "gain": 0.0015,
+          "fusion_selected": 90
+        }
+      },
+      "0.5": {
+        "validation": {
+          "visible_ap50": 0.8898,
+          "gate_ap50": 0.8933,
+          "gain": 0.0034,
+          "fusion_selected": 75
+        },
+        "test": {
+          "visible_ap50": 0.877,
+          "gate_ap50": 0.8787,
+          "gain": 0.0017,
+          "fusion_selected": 150
+        }
+      },
+      "1.0": {
+        "validation": {
+          "visible_ap50": 0.8898,
+          "gate_ap50": 0.8959,
+          "gain": 0.006,
+          "fusion_selected": 150
+        },
+        "test": {
+          "visible_ap50": 0.877,
+          "gate_ap50": 0.8874,
+          "gain": 0.0104,
+          "fusion_selected": 300
+        }
+      }
+    }
+  },
+  "agnostic": {
+    "positive_rate": {
+      "detail_mean_q095_a020_s05": 0.3867,
+      "detail_tophat_q095_a020_s05": 0.4133,
+      "detail_probe_q095_a020_s05": 0.38,
+      "detail_ifcnn_q095_a020_s05": 0.4133,
+      "detail_piafusion_q095_a020_s05": 0.4533,
+      "detail_spgfusion_q095_a020_s05": 0.4933
+    },
+    "coverage": {
+      "0.02": {
+        "validation": {
+          "visible_ap50": 0.8895,
+          "gate_ap50": 0.8898,
+          "gain": 0.0004,
+          "fusion_selected": 3
+        },
+        "test": {
+          "visible_ap50": 0.8506,
+          "gate_ap50": 0.851,
+          "gain": 0.0004,
+          "fusion_selected": 6
+        }
+      },
+      "0.05": {
+        "validation": {
+          "visible_ap50": 0.8895,
+          "gate_ap50": 0.8907,
+          "gain": 0.0012,
+          "fusion_selected": 8
+        },
+        "test": {
+          "visible_ap50": 0.8506,
+          "gate_ap50": 0.8503,
+          "gain": -0.0004,
+          "fusion_selected": 15
+        }
+      },
+      "0.1": {
+        "validation": {
+          "visible_ap50": 0.8895,
+          "gate_ap50": 0.8907,
+          "gain": 0.0012,
+          "fusion_selected": 15
+        },
+        "test": {
+          "visible_ap50": 0.8506,
+          "gate_ap50": 0.8491,
+          "gain": -0.0015,
+          "fusion_selected": 30
+        }
+      },
+      "0.15": {
+        "validation": {
+          "visible_ap50": 0.8895,
+          "gate_ap50": 0.8905,
+          "gain": 0.001,
+          "fusion_selected": 22
+        },
+        "test": {
+          "visible_ap50": 0.8506,
+          "gate_ap50": 0.8499,
+          "gain": -0.0007,
+          "fusion_selected": 45
+        }
+      },
+      "0.2": {
+        "validation": {
+          "visible_ap50": 0.8895,
+          "gate_ap50": 0.8905,
+          "gain": 0.0011,
+          "fusion_selected": 30
+        },
+        "test": {
+          "visible_ap50": 0.8506,
+          "gate_ap50": 0.8493,
+          "gain": -0.0014,
+          "fusion_selected": 60
+        }
+      },
+      "0.3": {
+        "validation": {
+          "visible_ap50": 0.8895,
+          "gate_ap50": 0.8909,
+          "gain": 0.0014,
+          "fusion_selected": 45
+        },
+        "test": {
+          "visible_ap50": 0.8506,
+          "gate_ap50": 0.8526,
+          "gain": 0.002,
+          "fusion_selected": 90
+        }
+      },
+      "0.5": {
+        "validation": {
+          "visible_ap50": 0.8895,
+          "gate_ap50": 0.892,
+          "gain": 0.0026,
+          "fusion_selected": 75
+        },
+        "test": {
+          "visible_ap50": 0.8506,
+          "gate_ap50": 0.8534,
+          "gain": 0.0028,
+          "fusion_selected": 150
+        }
+      },
+      "1.0": {
+        "validation": {
+          "visible_ap50": 0.8895,
+          "gate_ap50": 0.8915,
+          "gain": 0.0021,
+          "fusion_selected": 150
+        },
+        "test": {
+          "visible_ap50": 0.8506,
+          "gate_ap50": 0.8669,
+          "gain": 0.0162,
+          "fusion_selected": 300
+        }
+      }
+    }
+  },
+  "yolo26n": {
+    "positive_rate": {
+      "detail_mean_q095_a020_s05": 0.34,
+      "detail_tophat_q095_a020_s05": 0.3467,
+      "detail_probe_q095_a020_s05": 0.36,
+      "detail_ifcnn_q095_a020_s05": 0.36,
+      "detail_piafusion_q095_a020_s05": 0.3067,
+      "detail_spgfusion_q095_a020_s05": 0.3067
+    },
+    "coverage": {
+      "0.02": {
+        "validation": {
+          "visible_ap50": 0.9464,
+          "gate_ap50": 0.9455,
+          "gain": -0.0009,
+          "fusion_selected": 3
+        },
+        "test": {
+          "visible_ap50": 0.8086,
+          "gate_ap50": 0.8086,
+          "gain": -0.0,
+          "fusion_selected": 6
+        }
+      },
+      "0.05": {
+        "validation": {
+          "visible_ap50": 0.9464,
+          "gate_ap50": 0.9456,
+          "gain": -0.0008,
+          "fusion_selected": 8
+        },
+        "test": {
+          "visible_ap50": 0.8086,
+          "gate_ap50": 0.8065,
+          "gain": -0.0021,
+          "fusion_selected": 15
+        }
+      },
+      "0.1": {
+        "validation": {
+          "visible_ap50": 0.9464,
+          "gate_ap50": 0.9453,
+          "gain": -0.0011,
+          "fusion_selected": 15
+        },
+        "test": {
+          "visible_ap50": 0.8086,
+          "gate_ap50": 0.8027,
+          "gain": -0.0059,
+          "fusion_selected": 30
+        }
+      },
+      "0.15": {
+        "validation": {
+          "visible_ap50": 0.9464,
+          "gate_ap50": 0.945,
+          "gain": -0.0014,
+          "fusion_selected": 22
+        },
+        "test": {
+          "visible_ap50": 0.8086,
+          "gate_ap50": 0.8064,
+          "gain": -0.0022,
+          "fusion_selected": 45
+        }
+      },
+      "0.2": {
+        "validation": {
+          "visible_ap50": 0.9464,
+          "gate_ap50": 0.9462,
+          "gain": -0.0001,
+          "fusion_selected": 30
+        },
+        "test": {
+          "visible_ap50": 0.8086,
+          "gate_ap50": 0.8067,
+          "gain": -0.0018,
+          "fusion_selected": 60
+        }
+      },
+      "0.3": {
+        "validation": {
+          "visible_ap50": 0.9464,
+          "gate_ap50": 0.9467,
+          "gain": 0.0003,
+          "fusion_selected": 45
+        },
+        "test": {
+          "visible_ap50": 0.8086,
+          "gate_ap50": 0.8054,
+          "gain": -0.0032,
+          "fusion_selected": 90
+        }
+      },
+      "0.5": {
+        "validation": {
+          "visible_ap50": 0.9464,
+          "gate_ap50": 0.9448,
+          "gain": -0.0016,
+          "fusion_selected": 75
+        },
+        "test": {
+          "visible_ap50": 0.8086,
+          "gate_ap50": 0.8099,
+          "gain": 0.0013,
+          "fusion_selected": 150
+        }
+      },
+      "1.0": {
+        "validation": {
+          "visible_ap50": 0.9464,
+          "gate_ap50": 0.9443,
+          "gain": -0.0021,
+          "fusion_selected": 150
+        },
+        "test": {
+          "visible_ap50": 0.8086,
+          "gate_ap50": 0.8156,
+          "gain": 0.0071,
+          "fusion_selected": 300
+        }
+      }
+    }
+  },
+  "rtdetr": {
+    "positive_rate": {
+      "detail_mean_q095_a020_s05": 0.44,
+      "detail_tophat_q095_a020_s05": 0.4533,
+      "detail_probe_q095_a020_s05": 0.4667,
+      "detail_ifcnn_q095_a020_s05": 0.5067,
+      "detail_piafusion_q095_a020_s05": 0.52,
+      "detail_spgfusion_q095_a020_s05": 0.5333
+    },
+    "coverage": {
+      "0.02": {
+        "validation": {
+          "visible_ap50": 0.943,
+          "gate_ap50": 0.9429,
+          "gain": -0.0001,
+          "fusion_selected": 3
+        },
+        "test": {
+          "visible_ap50": 0.8064,
+          "gate_ap50": 0.8041,
+          "gain": -0.0023,
+          "fusion_selected": 6
+        }
+      },
+      "0.05": {
+        "validation": {
+          "visible_ap50": 0.943,
+          "gate_ap50": 0.9427,
+          "gain": -0.0003,
+          "fusion_selected": 8
+        },
+        "test": {
+          "visible_ap50": 0.8064,
+          "gate_ap50": 0.8038,
+          "gain": -0.0026,
+          "fusion_selected": 15
+        }
+      },
+      "0.1": {
+        "validation": {
+          "visible_ap50": 0.943,
+          "gate_ap50": 0.9437,
+          "gain": 0.0007,
+          "fusion_selected": 15
+        },
+        "test": {
+          "visible_ap50": 0.8064,
+          "gate_ap50": 0.8039,
+          "gain": -0.0024,
+          "fusion_selected": 30
+        }
+      },
+      "0.15": {
+        "validation": {
+          "visible_ap50": 0.943,
+          "gate_ap50": 0.9439,
+          "gain": 0.0008,
+          "fusion_selected": 22
+        },
+        "test": {
+          "visible_ap50": 0.8064,
+          "gate_ap50": 0.8037,
+          "gain": -0.0027,
+          "fusion_selected": 45
+        }
+      },
+      "0.2": {
+        "validation": {
+          "visible_ap50": 0.943,
+          "gate_ap50": 0.9429,
+          "gain": -0.0001,
+          "fusion_selected": 30
+        },
+        "test": {
+          "visible_ap50": 0.8064,
+          "gate_ap50": 0.7989,
+          "gain": -0.0074,
+          "fusion_selected": 60
+        }
+      },
+      "0.3": {
+        "validation": {
+          "visible_ap50": 0.943,
+          "gate_ap50": 0.9423,
+          "gain": -0.0007,
+          "fusion_selected": 45
+        },
+        "test": {
+          "visible_ap50": 0.8064,
+          "gate_ap50": 0.7933,
+          "gain": -0.0131,
+          "fusion_selected": 90
+        }
+      },
+      "0.5": {
+        "validation": {
+          "visible_ap50": 0.943,
+          "gate_ap50": 0.9434,
+          "gain": 0.0004,
+          "fusion_selected": 75
+        },
+        "test": {
+          "visible_ap50": 0.8064,
+          "gate_ap50": 0.7909,
+          "gain": -0.0155,
+          "fusion_selected": 150
+        }
+      },
+      "1.0": {
+        "validation": {
+          "visible_ap50": 0.943,
+          "gate_ap50": 0.9445,
+          "gain": 0.0015,
+          "fusion_selected": 150
+        },
+        "test": {
+          "visible_ap50": 0.8064,
+          "gate_ap50": 0.8001,
+          "gain": -0.0062,
+          "fusion_selected": 300
+        }
+      }
+    }
+  }
+}

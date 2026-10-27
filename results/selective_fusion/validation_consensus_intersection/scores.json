@@ -1,0 +1,30 @@
+{
+  "yolo26n": {
+    "vis": {
+      "mAP50": 0.9519,
+      "mAP50_95": 0.6046
+    },
+    "consensus_intersection_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.9496,
+      "mAP50_95": 0.5982
+    },
+    "consensus_sign_median6_q095_a020_s05": {
+      "mAP50": 0.9487,
+      "mAP50_95": 0.597
+    }
+  },
+  "rtdetr": {
+    "vis": {
+      "mAP50": 0.9474,
+      "mAP50_95": 0.6131
+    },
+    "consensus_intersection_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.9525,
+      "mAP50_95": 0.6013
+    },
+    "consensus_sign_median6_q095_a020_s05": {
+      "mAP50": 0.9469,
+      "mAP50_95": 0.5991
+    }
+  }
+}

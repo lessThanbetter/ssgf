@@ -1,0 +1,38 @@
+{
+  "yolo26_m3fd6": {
+    "vis": {
+      "mAP50": 0.3717,
+      "mAP50_95": 0.2276
+    },
+    "detail_pixel_mean_q095_a020_s05": {
+      "mAP50": 0.3679,
+      "mAP50_95": 0.2249
+    },
+    "detail_ifcnn_q095_a020_s05": {
+      "mAP50": 0.3729,
+      "mAP50_95": 0.2261
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.3705,
+      "mAP50_95": 0.2254
+    }
+  },
+  "yolo8n_m3fd6": {
+    "vis": {
+      "mAP50": 0.379,
+      "mAP50_95": 0.2444
+    },
+    "detail_pixel_mean_q095_a020_s05": {
+      "mAP50": 0.3731,
+      "mAP50_95": 0.2403
+    },
+    "detail_ifcnn_q095_a020_s05": {
+      "mAP50": 0.3716,
+      "mAP50_95": 0.2358
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.3731,
+      "mAP50_95": 0.2408
+    }
+  }
+}

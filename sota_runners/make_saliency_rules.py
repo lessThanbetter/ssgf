@@ -15,7 +15,7 @@ from ssgf.utils.io import imread
 def heat(im):
     im = np.clip(im, 0, 1)
     x = cv2.normalize((im * 255).astype(np.uint8), None, 0, 255, cv2.NORM_MINMAX)
-    return cv2.applyColorMap(x, cv2.COLORMAP_JET)
+    return cv2.applyColorMap(x, cv2.COLORMAP_VIRIDIS)
 
 
 def to3(im):

@@ -1,0 +1,15 @@
+{
+  "yolo26n_clean": {
+    "family": "fourteen fused inputs against the colour-scored visible source",
+    "correction": "Benjamini-Hochberg",
+    "alpha": 0.05,
+    "n_tests": 1,
+    "tests": {
+      "mean": {
+        "delta50_observed": 0.0,
+        "p_boot50": 1.0,
+        "q_bh50": 1.0
+      }
+    }
+  }
+}

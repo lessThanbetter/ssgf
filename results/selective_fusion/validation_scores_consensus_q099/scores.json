@@ -1,0 +1,58 @@
+{
+  "yolo26": {
+    "vis": {
+      "mAP50": 0.9519,
+      "mAP50_95": 0.6046
+    },
+    "consensus_intersection_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.9496,
+      "mAP50_95": 0.5982
+    },
+    "consensus_intersection_mean_ifcnn_q099_a020_s05": {
+      "mAP50": 0.9497,
+      "mAP50_95": 0.5988
+    }
+  },
+  "yolo26_s1": {
+    "vis": {
+      "mAP50": 0.9401,
+      "mAP50_95": 0.582
+    },
+    "consensus_intersection_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.9373,
+      "mAP50_95": 0.587
+    },
+    "consensus_intersection_mean_ifcnn_q099_a020_s05": {
+      "mAP50": 0.9383,
+      "mAP50_95": 0.5888
+    }
+  },
+  "yolo26_s2": {
+    "vis": {
+      "mAP50": 0.9473,
+      "mAP50_95": 0.6042
+    },
+    "consensus_intersection_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.9468,
+      "mAP50_95": 0.6009
+    },
+    "consensus_intersection_mean_ifcnn_q099_a020_s05": {
+      "mAP50": 0.9479,
+      "mAP50_95": 0.6019
+    }
+  },
+  "yolo8n_holdout": {
+    "vis": {
+      "mAP50": 0.9384,
+      "mAP50_95": 0.5921
+    },
+    "consensus_intersection_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.9316,
+      "mAP50_95": 0.5872
+    },
+    "consensus_intersection_mean_ifcnn_q099_a020_s05": {
+      "mAP50": 0.9377,
+      "mAP50_95": 0.5906
+    }
+  }
+}

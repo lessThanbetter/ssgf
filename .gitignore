@@ -22,3 +22,13 @@ third_party/
 _sota_inspect/
 _sota_upload/
 figures/
+
+# Submission artifacts and publication figures are intentionally versioned.
+!paper/PAPER_CS_ECF_IPT_WorkingDraft_v1.pdf
+!paper/COVER_LETTER_CS_ECF_IPT_WorkingDraft_v1.pdf
+!paper/CS_ECF_IPT_Submission/main.pdf
+!paper/CS_ECF_IPT_Submission/cover_letter.pdf
+!paper/CS_ECF_IPT_Submission/figures/
+!paper/CS_ECF_IPT_Submission/figures/*.pdf
+!paper/figures_cs_ecf_ipt/*.pdf
+!paper/figures_cs_ecf_ipt/*.svg

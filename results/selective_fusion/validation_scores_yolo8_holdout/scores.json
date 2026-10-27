@@ -1,0 +1,24 @@
+{
+  "yolo8n_holdout": {
+    "vis": {
+      "mAP50": 0.9384,
+      "mAP50_95": 0.5921
+    },
+    "detail_ifcnn_q095_a020_s05": {
+      "mAP50": 0.9332,
+      "mAP50_95": 0.5906
+    },
+    "consensus_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.9301,
+      "mAP50_95": 0.5875
+    },
+    "consensus_intersection_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.9316,
+      "mAP50_95": 0.5872
+    },
+    "consensus_sign_median6_q095_a020_s05": {
+      "mAP50": 0.9294,
+      "mAP50_95": 0.5864
+    }
+  }
+}

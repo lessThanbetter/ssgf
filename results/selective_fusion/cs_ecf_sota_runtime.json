@@ -1,0 +1,19 @@
+{
+  "device": "NVIDIA GeForce RTX 2080 Ti",
+  "input_height": 384,
+  "input_width": 512,
+  "batch": 1,
+  "dtype": "float32",
+  "methods": {
+    "piafusion": {
+      "params_m": 1.18,
+      "latency_ms": 37.7,
+      "extra_peak_mib": 869.1
+    },
+    "spgfusion": {
+      "params_m": 75.86,
+      "latency_ms": 516.3,
+      "extra_peak_mib": 1453.5
+    }
+  }
+}

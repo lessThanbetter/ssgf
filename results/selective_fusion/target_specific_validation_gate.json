@@ -1,0 +1,858 @@
+{
+  "yolo11": {
+    "positive_rate": {
+      "mean": 0.2467,
+      "activity_only": 0.1267,
+      "tophat": 0.24,
+      "probe": 0.26,
+      "ensemble": 0.2467,
+      "ifcnn": 0.24,
+      "densefuse": 0.2667,
+      "csf": 0.2267
+    },
+    "coverage": {
+      "0.02": {
+        "validation": {
+          "visible_ap50": 0.8898,
+          "selector_ap50": 0.8842,
+          "gain": -0.0056,
+          "fusion_selected": 3
+        },
+        "test": {
+          "yolo11n": {
+            "visible_ap50": 0.8636,
+            "selector_ap50": 0.8639,
+            "gain": 0.0003,
+            "fusion_selected": 6
+          },
+          "yolo11n_s1": {
+            "visible_ap50": 0.8711,
+            "selector_ap50": 0.8721,
+            "gain": 0.001,
+            "fusion_selected": 6
+          },
+          "yolo11n_s2": {
+            "visible_ap50": 0.8616,
+            "selector_ap50": 0.8618,
+            "gain": 0.0002,
+            "fusion_selected": 6
+          },
+          "yolo11n_s3": {
+            "visible_ap50": 0.8493,
+            "selector_ap50": 0.8489,
+            "gain": -0.0004,
+            "fusion_selected": 6
+          }
+        }
+      },
+      "0.05": {
+        "validation": {
+          "visible_ap50": 0.8898,
+          "selector_ap50": 0.8835,
+          "gain": -0.0063,
+          "fusion_selected": 8
+        },
+        "test": {
+          "yolo11n": {
+            "visible_ap50": 0.8636,
+            "selector_ap50": 0.864,
+            "gain": 0.0004,
+            "fusion_selected": 15
+          },
+          "yolo11n_s1": {
+            "visible_ap50": 0.8711,
+            "selector_ap50": 0.8709,
+            "gain": -0.0003,
+            "fusion_selected": 15
+          },
+          "yolo11n_s2": {
+            "visible_ap50": 0.8616,
+            "selector_ap50": 0.863,
+            "gain": 0.0013,
+            "fusion_selected": 15
+          },
+          "yolo11n_s3": {
+            "visible_ap50": 0.8493,
+            "selector_ap50": 0.8493,
+            "gain": -0.0,
+            "fusion_selected": 15
+          }
+        }
+      },
+      "0.1": {
+        "validation": {
+          "visible_ap50": 0.8898,
+          "selector_ap50": 0.8813,
+          "gain": -0.0086,
+          "fusion_selected": 15
+        },
+        "test": {
+          "yolo11n": {
+            "visible_ap50": 0.8636,
+            "selector_ap50": 0.8633,
+            "gain": -0.0003,
+            "fusion_selected": 30
+          },
+          "yolo11n_s1": {
+            "visible_ap50": 0.8711,
+            "selector_ap50": 0.8669,
+            "gain": -0.0042,
+            "fusion_selected": 30
+          },
+          "yolo11n_s2": {
+            "visible_ap50": 0.8616,
+            "selector_ap50": 0.8634,
+            "gain": 0.0017,
+            "fusion_selected": 30
+          },
+          "yolo11n_s3": {
+            "visible_ap50": 0.8493,
+            "selector_ap50": 0.8471,
+            "gain": -0.0022,
+            "fusion_selected": 30
+          }
+        }
+      },
+      "0.15": {
+        "validation": {
+          "visible_ap50": 0.8898,
+          "selector_ap50": 0.8819,
+          "gain": -0.008,
+          "fusion_selected": 22
+        },
+        "test": {
+          "yolo11n": {
+            "visible_ap50": 0.8636,
+            "selector_ap50": 0.8676,
+            "gain": 0.004,
+            "fusion_selected": 45
+          },
+          "yolo11n_s1": {
+            "visible_ap50": 0.8711,
+            "selector_ap50": 0.8648,
+            "gain": -0.0063,
+            "fusion_selected": 45
+          },
+          "yolo11n_s2": {
+            "visible_ap50": 0.8616,
+            "selector_ap50": 0.8635,
+            "gain": 0.0018,
+            "fusion_selected": 45
+          },
+          "yolo11n_s3": {
+            "visible_ap50": 0.8493,
+            "selector_ap50": 0.8504,
+            "gain": 0.0012,
+            "fusion_selected": 45
+          }
+        }
+      },
+      "0.2": {
+        "validation": {
+          "visible_ap50": 0.8898,
+          "selector_ap50": 0.8804,
+          "gain": -0.0094,
+          "fusion_selected": 30
+        },
+        "test": {
+          "yolo11n": {
+            "visible_ap50": 0.8636,
+            "selector_ap50": 0.8689,
+            "gain": 0.0053,
+            "fusion_selected": 60
+          },
+          "yolo11n_s1": {
+            "visible_ap50": 0.8711,
+            "selector_ap50": 0.8616,
+            "gain": -0.0095,
+            "fusion_selected": 60
+          },
+          "yolo11n_s2": {
+            "visible_ap50": 0.8616,
+            "selector_ap50": 0.8607,
+            "gain": -0.0009,
+            "fusion_selected": 60
+          },
+          "yolo11n_s3": {
+            "visible_ap50": 0.8493,
+            "selector_ap50": 0.8491,
+            "gain": -0.0002,
+            "fusion_selected": 60
+          }
+        }
+      },
+      "0.3": {
+        "validation": {
+          "visible_ap50": 0.8898,
+          "selector_ap50": 0.8716,
+          "gain": -0.0182,
+          "fusion_selected": 45
+        },
+        "test": {
+          "yolo11n": {
+            "visible_ap50": 0.8636,
+            "selector_ap50": 0.8699,
+            "gain": 0.0063,
+            "fusion_selected": 90
+          },
+          "yolo11n_s1": {
+            "visible_ap50": 0.8711,
+            "selector_ap50": 0.8511,
+            "gain": -0.02,
+            "fusion_selected": 90
+          },
+          "yolo11n_s2": {
+            "visible_ap50": 0.8616,
+            "selector_ap50": 0.8613,
+            "gain": -0.0003,
+            "fusion_selected": 90
+          },
+          "yolo11n_s3": {
+            "visible_ap50": 0.8493,
+            "selector_ap50": 0.8416,
+            "gain": -0.0077,
+            "fusion_selected": 90
+          }
+        }
+      },
+      "0.5": {
+        "validation": {
+          "visible_ap50": 0.8898,
+          "selector_ap50": 0.8525,
+          "gain": -0.0373,
+          "fusion_selected": 75
+        },
+        "test": {
+          "yolo11n": {
+            "visible_ap50": 0.8636,
+            "selector_ap50": 0.869,
+            "gain": 0.0054,
+            "fusion_selected": 150
+          },
+          "yolo11n_s1": {
+            "visible_ap50": 0.8711,
+            "selector_ap50": 0.8352,
+            "gain": -0.0359,
+            "fusion_selected": 150
+          },
+          "yolo11n_s2": {
+            "visible_ap50": 0.8616,
+            "selector_ap50": 0.8479,
+            "gain": -0.0137,
+            "fusion_selected": 150
+          },
+          "yolo11n_s3": {
+            "visible_ap50": 0.8493,
+            "selector_ap50": 0.8224,
+            "gain": -0.0268,
+            "fusion_selected": 150
+          }
+        }
+      },
+      "1.0": {
+        "validation": {
+          "visible_ap50": 0.8898,
+          "selector_ap50": 0.7996,
+          "gain": -0.0903,
+          "fusion_selected": 150
+        },
+        "test": {
+          "yolo11n": {
+            "visible_ap50": 0.8636,
+            "selector_ap50": 0.8381,
+            "gain": -0.0255,
+            "fusion_selected": 300
+          },
+          "yolo11n_s1": {
+            "visible_ap50": 0.8711,
+            "selector_ap50": 0.8085,
+            "gain": -0.0627,
+            "fusion_selected": 300
+          },
+          "yolo11n_s2": {
+            "visible_ap50": 0.8616,
+            "selector_ap50": 0.8044,
+            "gain": -0.0573,
+            "fusion_selected": 300
+          },
+          "yolo11n_s3": {
+            "visible_ap50": 0.8493,
+            "selector_ap50": 0.7713,
+            "gain": -0.078,
+            "fusion_selected": 300
+          }
+        }
+      }
+    }
+  },
+  "agnostic": {
+    "positive_rate": {
+      "mean": 0.5333,
+      "activity_only": 0.36,
+      "tophat": 0.46,
+      "probe": 0.4667,
+      "ensemble": 0.4733,
+      "ifcnn": 0.5133,
+      "densefuse": 0.4467,
+      "csf": 0.52
+    },
+    "coverage": {
+      "0.02": {
+        "validation": {
+          "visible_ap50": 0.8895,
+          "selector_ap50": 0.8884,
+          "gain": -0.001,
+          "fusion_selected": 3
+        },
+        "test": {
+          "agnostic": {
+            "visible_ap50": 0.865,
+            "selector_ap50": 0.8647,
+            "gain": -0.0003,
+            "fusion_selected": 6
+          },
+          "agnostic_s1": {
+            "visible_ap50": 0.8778,
+            "selector_ap50": 0.8784,
+            "gain": 0.0006,
+            "fusion_selected": 6
+          },
+          "agnostic_s2": {
+            "visible_ap50": 0.8644,
+            "selector_ap50": 0.8661,
+            "gain": 0.0016,
+            "fusion_selected": 6
+          },
+          "agnostic_s3": {
+            "visible_ap50": 0.8402,
+            "selector_ap50": 0.8414,
+            "gain": 0.0012,
+            "fusion_selected": 6
+          }
+        }
+      },
+      "0.05": {
+        "validation": {
+          "visible_ap50": 0.8895,
+          "selector_ap50": 0.8885,
+          "gain": -0.001,
+          "fusion_selected": 8
+        },
+        "test": {
+          "agnostic": {
+            "visible_ap50": 0.865,
+            "selector_ap50": 0.8671,
+            "gain": 0.0021,
+            "fusion_selected": 15
+          },
+          "agnostic_s1": {
+            "visible_ap50": 0.8778,
+            "selector_ap50": 0.8809,
+            "gain": 0.0031,
+            "fusion_selected": 15
+          },
+          "agnostic_s2": {
+            "visible_ap50": 0.8644,
+            "selector_ap50": 0.8663,
+            "gain": 0.0018,
+            "fusion_selected": 15
+          },
+          "agnostic_s3": {
+            "visible_ap50": 0.8402,
+            "selector_ap50": 0.8391,
+            "gain": -0.0012,
+            "fusion_selected": 15
+          }
+        }
+      },
+      "0.1": {
+        "validation": {
+          "visible_ap50": 0.8895,
+          "selector_ap50": 0.8879,
+          "gain": -0.0016,
+          "fusion_selected": 15
+        },
+        "test": {
+          "agnostic": {
+            "visible_ap50": 0.865,
+            "selector_ap50": 0.8672,
+            "gain": 0.0022,
+            "fusion_selected": 30
+          },
+          "agnostic_s1": {
+            "visible_ap50": 0.8778,
+            "selector_ap50": 0.8825,
+            "gain": 0.0047,
+            "fusion_selected": 30
+          },
+          "agnostic_s2": {
+            "visible_ap50": 0.8644,
+            "selector_ap50": 0.8715,
+            "gain": 0.0071,
+            "fusion_selected": 30
+          },
+          "agnostic_s3": {
+            "visible_ap50": 0.8402,
+            "selector_ap50": 0.8384,
+            "gain": -0.0019,
+            "fusion_selected": 30
+          }
+        }
+      },
+      "0.15": {
+        "validation": {
+          "visible_ap50": 0.8895,
+          "selector_ap50": 0.8896,
+          "gain": 0.0002,
+          "fusion_selected": 22
+        },
+        "test": {
+          "agnostic": {
+            "visible_ap50": 0.865,
+            "selector_ap50": 0.8598,
+            "gain": -0.0052,
+            "fusion_selected": 45
+          },
+          "agnostic_s1": {
+            "visible_ap50": 0.8778,
+            "selector_ap50": 0.8874,
+            "gain": 0.0096,
+            "fusion_selected": 45
+          },
+          "agnostic_s2": {
+            "visible_ap50": 0.8644,
+            "selector_ap50": 0.8744,
+            "gain": 0.01,
+            "fusion_selected": 45
+          },
+          "agnostic_s3": {
+            "visible_ap50": 0.8402,
+            "selector_ap50": 0.8371,
+            "gain": -0.0031,
+            "fusion_selected": 45
+          }
+        }
+      },
+      "0.2": {
+        "validation": {
+          "visible_ap50": 0.8895,
+          "selector_ap50": 0.8908,
+          "gain": 0.0013,
+          "fusion_selected": 30
+        },
+        "test": {
+          "agnostic": {
+            "visible_ap50": 0.865,
+            "selector_ap50": 0.8603,
+            "gain": -0.0047,
+            "fusion_selected": 60
+          },
+          "agnostic_s1": {
+            "visible_ap50": 0.8778,
+            "selector_ap50": 0.891,
+            "gain": 0.0132,
+            "fusion_selected": 60
+          },
+          "agnostic_s2": {
+            "visible_ap50": 0.8644,
+            "selector_ap50": 0.8759,
+            "gain": 0.0115,
+            "fusion_selected": 60
+          },
+          "agnostic_s3": {
+            "visible_ap50": 0.8402,
+            "selector_ap50": 0.8434,
+            "gain": 0.0031,
+            "fusion_selected": 60
+          }
+        }
+      },
+      "0.3": {
+        "validation": {
+          "visible_ap50": 0.8895,
+          "selector_ap50": 0.8887,
+          "gain": -0.0007,
+          "fusion_selected": 45
+        },
+        "test": {
+          "agnostic": {
+            "visible_ap50": 0.865,
+            "selector_ap50": 0.8624,
+            "gain": -0.0026,
+            "fusion_selected": 90
+          },
+          "agnostic_s1": {
+            "visible_ap50": 0.8778,
+            "selector_ap50": 0.8886,
+            "gain": 0.0109,
+            "fusion_selected": 90
+          },
+          "agnostic_s2": {
+            "visible_ap50": 0.8644,
+            "selector_ap50": 0.8763,
+            "gain": 0.0118,
+            "fusion_selected": 90
+          },
+          "agnostic_s3": {
+            "visible_ap50": 0.8402,
+            "selector_ap50": 0.8472,
+            "gain": 0.007,
+            "fusion_selected": 90
+          }
+        }
+      },
+      "0.5": {
+        "validation": {
+          "visible_ap50": 0.8895,
+          "selector_ap50": 0.8876,
+          "gain": -0.0019,
+          "fusion_selected": 75
+        },
+        "test": {
+          "agnostic": {
+            "visible_ap50": 0.865,
+            "selector_ap50": 0.866,
+            "gain": 0.0011,
+            "fusion_selected": 150
+          },
+          "agnostic_s1": {
+            "visible_ap50": 0.8778,
+            "selector_ap50": 0.8951,
+            "gain": 0.0174,
+            "fusion_selected": 150
+          },
+          "agnostic_s2": {
+            "visible_ap50": 0.8644,
+            "selector_ap50": 0.8923,
+            "gain": 0.0279,
+            "fusion_selected": 150
+          },
+          "agnostic_s3": {
+            "visible_ap50": 0.8402,
+            "selector_ap50": 0.8523,
+            "gain": 0.012,
+            "fusion_selected": 150
+          }
+        }
+      },
+      "1.0": {
+        "validation": {
+          "visible_ap50": 0.8895,
+          "selector_ap50": 0.8755,
+          "gain": -0.014,
+          "fusion_selected": 150
+        },
+        "test": {
+          "agnostic": {
+            "visible_ap50": 0.865,
+            "selector_ap50": 0.8658,
+            "gain": 0.0008,
+            "fusion_selected": 300
+          },
+          "agnostic_s1": {
+            "visible_ap50": 0.8778,
+            "selector_ap50": 0.9021,
+            "gain": 0.0243,
+            "fusion_selected": 300
+          },
+          "agnostic_s2": {
+            "visible_ap50": 0.8644,
+            "selector_ap50": 0.8985,
+            "gain": 0.034,
+            "fusion_selected": 300
+          },
+          "agnostic_s3": {
+            "visible_ap50": 0.8402,
+            "selector_ap50": 0.8706,
+            "gain": 0.0304,
+            "fusion_selected": 300
+          }
+        }
+      }
+    }
+  },
+  "yolo26n": {
+    "positive_rate": {
+      "mean": 0.18,
+      "activity_only": 0.1133,
+      "tophat": 0.2,
+      "probe": 0.18,
+      "ensemble": 0.1933,
+      "ifcnn": 0.1667,
+      "densefuse": 0.2,
+      "csf": 0.1733
+    },
+    "coverage": {
+      "0.02": {
+        "validation": {
+          "visible_ap50": 0.9464,
+          "selector_ap50": 0.9449,
+          "gain": -0.0015,
+          "fusion_selected": 3
+        },
+        "test": {
+          "yolo26n": {
+            "visible_ap50": 0.8086,
+            "selector_ap50": 0.8051,
+            "gain": -0.0035,
+            "fusion_selected": 6
+          }
+        }
+      },
+      "0.05": {
+        "validation": {
+          "visible_ap50": 0.9464,
+          "selector_ap50": 0.9423,
+          "gain": -0.004,
+          "fusion_selected": 8
+        },
+        "test": {
+          "yolo26n": {
+            "visible_ap50": 0.8086,
+            "selector_ap50": 0.7972,
+            "gain": -0.0114,
+            "fusion_selected": 15
+          }
+        }
+      },
+      "0.1": {
+        "validation": {
+          "visible_ap50": 0.9464,
+          "selector_ap50": 0.9229,
+          "gain": -0.0235,
+          "fusion_selected": 15
+        },
+        "test": {
+          "yolo26n": {
+            "visible_ap50": 0.8086,
+            "selector_ap50": 0.7911,
+            "gain": -0.0175,
+            "fusion_selected": 30
+          }
+        }
+      },
+      "0.15": {
+        "validation": {
+          "visible_ap50": 0.9464,
+          "selector_ap50": 0.923,
+          "gain": -0.0234,
+          "fusion_selected": 22
+        },
+        "test": {
+          "yolo26n": {
+            "visible_ap50": 0.8086,
+            "selector_ap50": 0.7897,
+            "gain": -0.0189,
+            "fusion_selected": 45
+          }
+        }
+      },
+      "0.2": {
+        "validation": {
+          "visible_ap50": 0.9464,
+          "selector_ap50": 0.921,
+          "gain": -0.0254,
+          "fusion_selected": 30
+        },
+        "test": {
+          "yolo26n": {
+            "visible_ap50": 0.8086,
+            "selector_ap50": 0.7768,
+            "gain": -0.0317,
+            "fusion_selected": 60
+          }
+        }
+      },
+      "0.3": {
+        "validation": {
+          "visible_ap50": 0.9464,
+          "selector_ap50": 0.909,
+          "gain": -0.0374,
+          "fusion_selected": 45
+        },
+        "test": {
+          "yolo26n": {
+            "visible_ap50": 0.8086,
+            "selector_ap50": 0.7615,
+            "gain": -0.0471,
+            "fusion_selected": 90
+          }
+        }
+      },
+      "0.5": {
+        "validation": {
+          "visible_ap50": 0.9464,
+          "selector_ap50": 0.8818,
+          "gain": -0.0646,
+          "fusion_selected": 75
+        },
+        "test": {
+          "yolo26n": {
+            "visible_ap50": 0.8086,
+            "selector_ap50": 0.7356,
+            "gain": -0.073,
+            "fusion_selected": 150
+          }
+        }
+      },
+      "1.0": {
+        "validation": {
+          "visible_ap50": 0.9464,
+          "selector_ap50": 0.8036,
+          "gain": -0.1427,
+          "fusion_selected": 150
+        },
+        "test": {
+          "yolo26n": {
+            "visible_ap50": 0.8086,
+            "selector_ap50": 0.6763,
+            "gain": -0.1323,
+            "fusion_selected": 300
+          }
+        }
+      }
+    }
+  },
+  "rtdetr": {
+    "positive_rate": {
+      "mean": 0.2333,
+      "activity_only": 0.1533,
+      "tophat": 0.2133,
+      "probe": 0.2,
+      "ensemble": 0.1933,
+      "ifcnn": 0.2067,
+      "densefuse": 0.2733,
+      "csf": 0.2467
+    },
+    "coverage": {
+      "0.02": {
+        "validation": {
+          "visible_ap50": 0.943,
+          "selector_ap50": 0.9422,
+          "gain": -0.0008,
+          "fusion_selected": 3
+        },
+        "test": {
+          "rtdetr": {
+            "visible_ap50": 0.8064,
+            "selector_ap50": 0.8082,
+            "gain": 0.0018,
+            "fusion_selected": 6
+          }
+        }
+      },
+      "0.05": {
+        "validation": {
+          "visible_ap50": 0.943,
+          "selector_ap50": 0.9419,
+          "gain": -0.0011,
+          "fusion_selected": 8
+        },
+        "test": {
+          "rtdetr": {
+            "visible_ap50": 0.8064,
+            "selector_ap50": 0.8115,
+            "gain": 0.0051,
+            "fusion_selected": 15
+          }
+        }
+      },
+      "0.1": {
+        "validation": {
+          "visible_ap50": 0.943,
+          "selector_ap50": 0.9398,
+          "gain": -0.0032,
+          "fusion_selected": 15
+        },
+        "test": {
+          "rtdetr": {
+            "visible_ap50": 0.8064,
+            "selector_ap50": 0.8141,
+            "gain": 0.0078,
+            "fusion_selected": 30
+          }
+        }
+      },
+      "0.15": {
+        "validation": {
+          "visible_ap50": 0.943,
+          "selector_ap50": 0.9387,
+          "gain": -0.0043,
+          "fusion_selected": 22
+        },
+        "test": {
+          "rtdetr": {
+            "visible_ap50": 0.8064,
+            "selector_ap50": 0.8136,
+            "gain": 0.0072,
+            "fusion_selected": 45
+          }
+        }
+      },
+      "0.2": {
+        "validation": {
+          "visible_ap50": 0.943,
+          "selector_ap50": 0.9346,
+          "gain": -0.0084,
+          "fusion_selected": 30
+        },
+        "test": {
+          "rtdetr": {
+            "visible_ap50": 0.8064,
+            "selector_ap50": 0.808,
+            "gain": 0.0017,
+            "fusion_selected": 60
+          }
+        }
+      },
+      "0.3": {
+        "validation": {
+          "visible_ap50": 0.943,
+          "selector_ap50": 0.9318,
+          "gain": -0.0112,
+          "fusion_selected": 45
+        },
+        "test": {
+          "rtdetr": {
+            "visible_ap50": 0.8064,
+            "selector_ap50": 0.7998,
+            "gain": -0.0066,
+            "fusion_selected": 90
+          }
+        }
+      },
+      "0.5": {
+        "validation": {
+          "visible_ap50": 0.943,
+          "selector_ap50": 0.9167,
+          "gain": -0.0263,
+          "fusion_selected": 75
+        },
+        "test": {
+          "rtdetr": {
+            "visible_ap50": 0.8064,
+            "selector_ap50": 0.7861,
+            "gain": -0.0202,
+            "fusion_selected": 150
+          }
+        }
+      },
+      "1.0": {
+        "validation": {
+          "visible_ap50": 0.943,
+          "selector_ap50": 0.8608,
+          "gain": -0.0822,
+          "fusion_selected": 150
+        },
+        "test": {
+          "rtdetr": {
+            "visible_ap50": 0.8064,
+            "selector_ap50": 0.7437,
+            "gain": -0.0627,
+            "fusion_selected": 300
+          }
+        }
+      }
+    }
+  }
+}

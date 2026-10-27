@@ -1,0 +1,20 @@
+{
+  "yolo11x_obb": {
+    "vis": {
+      "mAP50": 0.6747,
+      "mAP50_95": 0.4307
+    },
+    "consensus_intersection_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.6808,
+      "mAP50_95": 0.4348
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.6945,
+      "mAP50_95": 0.4423
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q095_a020_s05_m20": {
+      "mAP50": 0.694,
+      "mAP50_95": 0.4422
+    }
+  }
+}

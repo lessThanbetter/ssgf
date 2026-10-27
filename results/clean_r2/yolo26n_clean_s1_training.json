@@ -1,0 +1,43 @@
+{
+  "name": "yolo26n_clean_s1",
+  "run_directory": "D:\\Code\\_ssgf_external\\r2_clean\\runs\\yolo26n_clean_s1",
+  "recipe": {
+    "model": "D:\\Code\\_ssgf_external\\r2_clean\\weights\\yolo26n.pt",
+    "data": "D:\\Code\\_ssgf_external\\r2_clean\\clean\\data.yaml",
+    "epochs": 40,
+    "imgsz": 640,
+    "batch": 16,
+    "seed": 1,
+    "device": "0",
+    "workers": 4,
+    "optimizer": "auto",
+    "pretrained": true,
+    "deterministic": true
+  },
+  "epochs_completed": 40,
+  "training_seconds": 764.302,
+  "software": {
+    "ultralytics": "8.4.189",
+    "torch": "2.14.0+cu126",
+    "cuda": "12.6",
+    "device": "NVIDIA GeForce RTX 2080 Ti"
+  },
+  "best_validation_epoch": 29,
+  "best_validation_fitness": 0.634223,
+  "best_validation_mAP50": 0.94754,
+  "best_validation_mAP50_95": 0.59941,
+  "peak_validation_mAP50": 0.95324,
+  "peak_validation_mAP50_epoch": 39,
+  "final_validation_mAP50": 0.95183,
+  "final_validation_mAP50_95": 0.59843,
+  "checkpoints": {
+    "best.pt": {
+      "bytes": 5446725,
+      "sha256": "06dd79a77f6cf7b304d581870ca393e4423c47188616622abe01caba4dd16282"
+    },
+    "last.pt": {
+      "bytes": 5446725,
+      "sha256": "aa42e923110624c47d8a381e6c9831045a17508774426638da57ed1f8c9fe21f"
+    }
+  }
+}

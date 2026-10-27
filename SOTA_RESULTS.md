@@ -3,7 +3,7 @@
 > **Note on numbers.** The tables below were produced by an **early training run**
 > of the backbone/probe. They are kept in this repository for transparency, but the
 > **official numbers of the submitted manuscript** are those of the stabilized
-> seed-2026 model (`data/msrs_ae.pt` + `data/msrs_probe.pt`, 30 epochs, `lr=1e-3`),
+> seed-2026 model (`data/msrs_ae.pt` + `data/msrs_probe.pt`, 30 epochs, `lr=2e-3`),
 > which are reproduced by `sota_runners/recompute_tabfusion.py`,
 > `sota_runners/recompute_quant_table.py`, `sota_runners/det_eval_fused.py` and
 > `sota_runners/seg_eval_fused.py`. If any number here differs from the manuscript
@@ -78,3 +78,21 @@ performance, which is the core claim of the paper.
 - SPGFusion: `open-clip-torch==2.24.0`, `mmseg` shim (only `resize` used), DINO
   `dino_vitbase16_pretrain.pth` (327 MB) at `~/.cache/torch/hub/checkpoints/`.
 - PIAFusion: pure PyTorch; weights bundled in repo (`pretrained/*.pth`).
+
+## Full reference-VIF rescore
+
+The reference construction has now been run on the complete TNO, MSRS-test and
+RoadScene sets, together with all fourteen LLVIP fused inputs and all 300 LLVIP test
+images. The frozen JSON/CSV tables are in `results/reference_vif/`; the scripts can
+regenerate the fused inputs and rescore them in parallel.
+
+| Dataset | reported leader | reported VIF | reference leader | reference VIF | SPG reported | SPG reference |
+|---|---|---:|---|---:|---:|---:|
+| TNO | SPGFusion | 0.7855 | PIAFusion | 0.3256 | first | last |
+| MSRS | SPGFusion | 0.8314 | PIAFusion | 0.4468 | first | last |
+| RoadScene | SPGFusion | 0.8293 | IFCNN | 0.3082 | first | last |
+
+The reverse endpoint is therefore stable over 656 pairs across the three fidelity
+benchmarks, not an artifact of the earlier 30-image LLVIP subsample. On the full 300-image
+LLVIP set the same reversal is 0.8115 to 0.1699 for SPGFusion and 0.7056 to 0.3719 for
+PIAFusion.

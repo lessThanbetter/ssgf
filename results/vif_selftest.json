@@ -1,0 +1,13 @@
+{
+  "limit": 1,
+  "max_side": 0,
+  "rows": [
+    {
+      "variant": "mean",
+      "n": 1,
+      "reported": 0.5663957521319389,
+      "width_only": 0.5590026564896107,
+      "reference": 0.52154541015625
+    }
+  ]
+}

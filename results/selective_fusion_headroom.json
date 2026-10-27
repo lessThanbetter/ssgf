@@ -1,0 +1,602 @@
+{
+  "yolo11n": {
+    "baseline_ap50": 0.8636,
+    "per_image_oracle_ap50": 0.9273,
+    "oracle_gain": 0.0637,
+    "fusion_selected_images": 57,
+    "selected_counts": {
+      "vis": 243,
+      "mean": 19,
+      "activity_only": 14,
+      "tophat": 3,
+      "probe": 1,
+      "tophat_permuted": 0,
+      "probe_permuted": 0,
+      "tophat_wshuffle": 0,
+      "probe_wshuffle": 0,
+      "ensemble": 2,
+      "ifcnn": 4,
+      "densefuse": 1,
+      "csf": 1,
+      "piafusion": 5,
+      "spgfusion": 7
+    },
+    "sequence_oracle": {
+      "190": {
+        "n": 78,
+        "ap50": 0.8741,
+        "baseline_ap50": 0.8636
+      },
+      "200": {
+        "n": 31,
+        "ap50": 0.8915,
+        "baseline_ap50": 0.8636
+      },
+      "210": {
+        "n": 32,
+        "ap50": 0.8675,
+        "baseline_ap50": 0.8636
+      },
+      "220": {
+        "n": 38,
+        "ap50": 0.8685,
+        "baseline_ap50": 0.8636
+      },
+      "230": {
+        "n": 46,
+        "ap50": 0.8671,
+        "baseline_ap50": 0.8636
+      },
+      "240": {
+        "n": 31,
+        "ap50": 0.8711,
+        "baseline_ap50": 0.8636
+      },
+      "260": {
+        "n": 44,
+        "ap50": 0.8708,
+        "baseline_ap50": 0.8636
+      }
+    }
+  },
+  "yolo11n_s1": {
+    "baseline_ap50": 0.8711,
+    "per_image_oracle_ap50": 0.9203,
+    "oracle_gain": 0.0492,
+    "fusion_selected_images": 42,
+    "selected_counts": {
+      "vis": 258,
+      "mean": 18,
+      "activity_only": 6,
+      "tophat": 1,
+      "probe": 3,
+      "tophat_permuted": 0,
+      "probe_permuted": 0,
+      "tophat_wshuffle": 1,
+      "probe_wshuffle": 0,
+      "ensemble": 1,
+      "ifcnn": 4,
+      "densefuse": 1,
+      "csf": 0,
+      "piafusion": 3,
+      "spgfusion": 4
+    },
+    "sequence_oracle": {
+      "190": {
+        "n": 78,
+        "ap50": 0.8745,
+        "baseline_ap50": 0.8711
+      },
+      "200": {
+        "n": 31,
+        "ap50": 0.8917,
+        "baseline_ap50": 0.8711
+      },
+      "210": {
+        "n": 32,
+        "ap50": 0.875,
+        "baseline_ap50": 0.8711
+      },
+      "220": {
+        "n": 38,
+        "ap50": 0.8739,
+        "baseline_ap50": 0.8711
+      },
+      "230": {
+        "n": 46,
+        "ap50": 0.8744,
+        "baseline_ap50": 0.8711
+      },
+      "240": {
+        "n": 31,
+        "ap50": 0.8813,
+        "baseline_ap50": 0.8711
+      },
+      "260": {
+        "n": 44,
+        "ap50": 0.8736,
+        "baseline_ap50": 0.8711
+      }
+    }
+  },
+  "yolo11n_s2": {
+    "baseline_ap50": 0.8616,
+    "per_image_oracle_ap50": 0.9275,
+    "oracle_gain": 0.0659,
+    "fusion_selected_images": 57,
+    "selected_counts": {
+      "vis": 243,
+      "mean": 20,
+      "activity_only": 11,
+      "tophat": 5,
+      "probe": 0,
+      "tophat_permuted": 0,
+      "probe_permuted": 0,
+      "tophat_wshuffle": 1,
+      "probe_wshuffle": 0,
+      "ensemble": 0,
+      "ifcnn": 4,
+      "densefuse": 7,
+      "csf": 0,
+      "piafusion": 5,
+      "spgfusion": 4
+    },
+    "sequence_oracle": {
+      "190": {
+        "n": 78,
+        "ap50": 0.8717,
+        "baseline_ap50": 0.8616
+      },
+      "200": {
+        "n": 31,
+        "ap50": 0.8862,
+        "baseline_ap50": 0.8616
+      },
+      "210": {
+        "n": 32,
+        "ap50": 0.8706,
+        "baseline_ap50": 0.8616
+      },
+      "220": {
+        "n": 38,
+        "ap50": 0.8677,
+        "baseline_ap50": 0.8616
+      },
+      "230": {
+        "n": 46,
+        "ap50": 0.8634,
+        "baseline_ap50": 0.8616
+      },
+      "240": {
+        "n": 31,
+        "ap50": 0.8698,
+        "baseline_ap50": 0.8616
+      },
+      "260": {
+        "n": 44,
+        "ap50": 0.8654,
+        "baseline_ap50": 0.8616
+      }
+    }
+  },
+  "yolo11n_s3": {
+    "baseline_ap50": 0.8493,
+    "per_image_oracle_ap50": 0.915,
+    "oracle_gain": 0.0658,
+    "fusion_selected_images": 56,
+    "selected_counts": {
+      "vis": 244,
+      "mean": 15,
+      "activity_only": 14,
+      "tophat": 2,
+      "probe": 0,
+      "tophat_permuted": 4,
+      "probe_permuted": 2,
+      "tophat_wshuffle": 2,
+      "probe_wshuffle": 1,
+      "ensemble": 2,
+      "ifcnn": 3,
+      "densefuse": 1,
+      "csf": 1,
+      "piafusion": 8,
+      "spgfusion": 1
+    },
+    "sequence_oracle": {
+      "190": {
+        "n": 78,
+        "ap50": 0.8574,
+        "baseline_ap50": 0.8493
+      },
+      "200": {
+        "n": 31,
+        "ap50": 0.8784,
+        "baseline_ap50": 0.8493
+      },
+      "210": {
+        "n": 32,
+        "ap50": 0.8544,
+        "baseline_ap50": 0.8493
+      },
+      "220": {
+        "n": 38,
+        "ap50": 0.8556,
+        "baseline_ap50": 0.8493
+      },
+      "230": {
+        "n": 46,
+        "ap50": 0.8504,
+        "baseline_ap50": 0.8493
+      },
+      "240": {
+        "n": 31,
+        "ap50": 0.859,
+        "baseline_ap50": 0.8493
+      },
+      "260": {
+        "n": 44,
+        "ap50": 0.8552,
+        "baseline_ap50": 0.8493
+      }
+    }
+  },
+  "yolo26n": {
+    "baseline_ap50": 0.8086,
+    "per_image_oracle_ap50": 0.8746,
+    "oracle_gain": 0.066,
+    "fusion_selected_images": 69,
+    "selected_counts": {
+      "vis": 231,
+      "mean": 12,
+      "activity_only": 15,
+      "tophat": 7,
+      "probe": 3,
+      "tophat_permuted": 2,
+      "probe_permuted": 1,
+      "tophat_wshuffle": 1,
+      "probe_wshuffle": 2,
+      "ensemble": 4,
+      "ifcnn": 11,
+      "densefuse": 2,
+      "csf": 0,
+      "piafusion": 4,
+      "spgfusion": 5
+    },
+    "sequence_oracle": {
+      "190": {
+        "n": 78,
+        "ap50": 0.8289,
+        "baseline_ap50": 0.8086
+      },
+      "200": {
+        "n": 31,
+        "ap50": 0.8341,
+        "baseline_ap50": 0.8086
+      },
+      "210": {
+        "n": 32,
+        "ap50": 0.8106,
+        "baseline_ap50": 0.8086
+      },
+      "220": {
+        "n": 38,
+        "ap50": 0.8127,
+        "baseline_ap50": 0.8086
+      },
+      "230": {
+        "n": 46,
+        "ap50": 0.8127,
+        "baseline_ap50": 0.8086
+      },
+      "240": {
+        "n": 31,
+        "ap50": 0.8125,
+        "baseline_ap50": 0.8086
+      },
+      "260": {
+        "n": 44,
+        "ap50": 0.8111,
+        "baseline_ap50": 0.8086
+      }
+    }
+  },
+  "rtdetr": {
+    "baseline_ap50": 0.8064,
+    "per_image_oracle_ap50": 0.8714,
+    "oracle_gain": 0.065,
+    "fusion_selected_images": 84,
+    "selected_counts": {
+      "vis": 216,
+      "mean": 16,
+      "activity_only": 16,
+      "tophat": 5,
+      "probe": 1,
+      "tophat_permuted": 8,
+      "probe_permuted": 2,
+      "tophat_wshuffle": 2,
+      "probe_wshuffle": 0,
+      "ensemble": 2,
+      "ifcnn": 7,
+      "densefuse": 9,
+      "csf": 2,
+      "piafusion": 5,
+      "spgfusion": 9
+    },
+    "sequence_oracle": {
+      "190": {
+        "n": 78,
+        "ap50": 0.8143,
+        "baseline_ap50": 0.8064
+      },
+      "200": {
+        "n": 31,
+        "ap50": 0.8316,
+        "baseline_ap50": 0.8064
+      },
+      "210": {
+        "n": 32,
+        "ap50": 0.8149,
+        "baseline_ap50": 0.8064
+      },
+      "220": {
+        "n": 38,
+        "ap50": 0.8146,
+        "baseline_ap50": 0.8064
+      },
+      "230": {
+        "n": 46,
+        "ap50": 0.8114,
+        "baseline_ap50": 0.8064
+      },
+      "240": {
+        "n": 31,
+        "ap50": 0.8129,
+        "baseline_ap50": 0.8064
+      },
+      "260": {
+        "n": 44,
+        "ap50": 0.8104,
+        "baseline_ap50": 0.8064
+      }
+    }
+  },
+  "agnostic": {
+    "baseline_ap50": 0.865,
+    "per_image_oracle_ap50": 0.9289,
+    "oracle_gain": 0.064,
+    "fusion_selected_images": 67,
+    "selected_counts": {
+      "vis": 233,
+      "mean": 34,
+      "activity_only": 5,
+      "tophat": 7,
+      "probe": 5,
+      "tophat_permuted": 2,
+      "probe_permuted": 0,
+      "tophat_wshuffle": 0,
+      "probe_wshuffle": 0,
+      "ensemble": 1,
+      "ifcnn": 3,
+      "densefuse": 3,
+      "csf": 0,
+      "piafusion": 5,
+      "spgfusion": 2
+    },
+    "sequence_oracle": {
+      "190": {
+        "n": 78,
+        "ap50": 0.8804,
+        "baseline_ap50": 0.865
+      },
+      "200": {
+        "n": 31,
+        "ap50": 0.891,
+        "baseline_ap50": 0.865
+      },
+      "210": {
+        "n": 32,
+        "ap50": 0.8708,
+        "baseline_ap50": 0.865
+      },
+      "220": {
+        "n": 38,
+        "ap50": 0.8663,
+        "baseline_ap50": 0.865
+      },
+      "230": {
+        "n": 46,
+        "ap50": 0.8689,
+        "baseline_ap50": 0.865
+      },
+      "240": {
+        "n": 31,
+        "ap50": 0.8755,
+        "baseline_ap50": 0.865
+      },
+      "260": {
+        "n": 44,
+        "ap50": 0.8663,
+        "baseline_ap50": 0.865
+      }
+    }
+  },
+  "agnostic_s1": {
+    "baseline_ap50": 0.8778,
+    "per_image_oracle_ap50": 0.948,
+    "oracle_gain": 0.0702,
+    "fusion_selected_images": 69,
+    "selected_counts": {
+      "vis": 231,
+      "mean": 35,
+      "activity_only": 6,
+      "tophat": 8,
+      "probe": 1,
+      "tophat_permuted": 1,
+      "probe_permuted": 0,
+      "tophat_wshuffle": 0,
+      "probe_wshuffle": 0,
+      "ensemble": 0,
+      "ifcnn": 3,
+      "densefuse": 2,
+      "csf": 0,
+      "piafusion": 8,
+      "spgfusion": 5
+    },
+    "sequence_oracle": {
+      "190": {
+        "n": 78,
+        "ap50": 0.8901,
+        "baseline_ap50": 0.8778
+      },
+      "200": {
+        "n": 31,
+        "ap50": 0.9002,
+        "baseline_ap50": 0.8778
+      },
+      "210": {
+        "n": 32,
+        "ap50": 0.8861,
+        "baseline_ap50": 0.8778
+      },
+      "220": {
+        "n": 38,
+        "ap50": 0.8795,
+        "baseline_ap50": 0.8778
+      },
+      "230": {
+        "n": 46,
+        "ap50": 0.8811,
+        "baseline_ap50": 0.8778
+      },
+      "240": {
+        "n": 31,
+        "ap50": 0.8908,
+        "baseline_ap50": 0.8778
+      },
+      "260": {
+        "n": 44,
+        "ap50": 0.884,
+        "baseline_ap50": 0.8778
+      }
+    }
+  },
+  "agnostic_s2": {
+    "baseline_ap50": 0.8644,
+    "per_image_oracle_ap50": 0.9398,
+    "oracle_gain": 0.0754,
+    "fusion_selected_images": 70,
+    "selected_counts": {
+      "vis": 230,
+      "mean": 39,
+      "activity_only": 3,
+      "tophat": 7,
+      "probe": 3,
+      "tophat_permuted": 1,
+      "probe_permuted": 0,
+      "tophat_wshuffle": 1,
+      "probe_wshuffle": 0,
+      "ensemble": 1,
+      "ifcnn": 2,
+      "densefuse": 0,
+      "csf": 1,
+      "piafusion": 9,
+      "spgfusion": 3
+    },
+    "sequence_oracle": {
+      "190": {
+        "n": 78,
+        "ap50": 0.8808,
+        "baseline_ap50": 0.8644
+      },
+      "200": {
+        "n": 31,
+        "ap50": 0.8886,
+        "baseline_ap50": 0.8644
+      },
+      "210": {
+        "n": 32,
+        "ap50": 0.8715,
+        "baseline_ap50": 0.8644
+      },
+      "220": {
+        "n": 38,
+        "ap50": 0.8663,
+        "baseline_ap50": 0.8644
+      },
+      "230": {
+        "n": 46,
+        "ap50": 0.8704,
+        "baseline_ap50": 0.8644
+      },
+      "240": {
+        "n": 31,
+        "ap50": 0.8765,
+        "baseline_ap50": 0.8644
+      },
+      "260": {
+        "n": 44,
+        "ap50": 0.8687,
+        "baseline_ap50": 0.8644
+      }
+    }
+  },
+  "agnostic_s3": {
+    "baseline_ap50": 0.8402,
+    "per_image_oracle_ap50": 0.9281,
+    "oracle_gain": 0.0879,
+    "fusion_selected_images": 67,
+    "selected_counts": {
+      "vis": 233,
+      "mean": 26,
+      "activity_only": 8,
+      "tophat": 7,
+      "probe": 3,
+      "tophat_permuted": 0,
+      "probe_permuted": 1,
+      "tophat_wshuffle": 1,
+      "probe_wshuffle": 1,
+      "ensemble": 0,
+      "ifcnn": 6,
+      "densefuse": 1,
+      "csf": 1,
+      "piafusion": 9,
+      "spgfusion": 3
+    },
+    "sequence_oracle": {
+      "190": {
+        "n": 78,
+        "ap50": 0.8638,
+        "baseline_ap50": 0.8402
+      },
+      "200": {
+        "n": 31,
+        "ap50": 0.8587,
+        "baseline_ap50": 0.8402
+      },
+      "210": {
+        "n": 32,
+        "ap50": 0.8523,
+        "baseline_ap50": 0.8402
+      },
+      "220": {
+        "n": 38,
+        "ap50": 0.8417,
+        "baseline_ap50": 0.8402
+      },
+      "230": {
+        "n": 46,
+        "ap50": 0.8442,
+        "baseline_ap50": 0.8402
+      },
+      "240": {
+        "n": 31,
+        "ap50": 0.8542,
+        "baseline_ap50": 0.8402
+      },
+      "260": {
+        "n": 44,
+        "ap50": 0.8486,
+        "baseline_ap50": 0.8402
+      }
+    }
+  }
+}

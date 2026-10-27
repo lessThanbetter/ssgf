@@ -1,0 +1,57 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage[hidelinks]{hyperref}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.7em}
+
+\begin{document}
+
+October 27, 2026
+
+Editor-in-Chief\\
+The Visual Computer
+
+Dear Editor-in-Chief,
+
+Please consider our manuscript, ``Fidelity Metrics Do Not Reliably Rank
+Visible--Infrared Fusion Rules for Pedestrian Detection,'' for publication as an
+original research article in \emph{The Visual Computer}.
+
+Image-fidelity scores are routinely used to rank visible-infrared fusion rules
+before a downstream visual detector is trained. Our study asks whether that ranking
+remains valid when the fused images are fixed and the detector and metric
+implementation are varied. We evaluate fourteen fused inputs with 26 detection
+checkpoints on LLVIP and an aligned FLIR-ADAS benchmark, and add a secondary
+segmentation comparison on MSRS.
+
+With all 300 LLVIP test images held out, all 42 comparisons under three
+visible-trained pedestrian detectors are negative at mAP50, with deficits from
+0.046 to 0.246. A detector trained on both modalities reverses the sign for four
+inputs by 0.022 to 0.029 in every run. Two constructions of the same VIF family rank
+SPGFusion first and last. Paired image intervals, four independent training runs,
+two source conventions and alignment-stratified analyses show that the discrepancy
+is not explained by ordinary sampling noise. The evidence leads to a practical rule:
+fidelity should not be the sole criterion for selecting a fusion rule.
+
+We believe the work fits \emph{The Visual Computer} because it examines the
+reliability of visual-quality metrics at the intersection of image processing,
+multimodal perception and computer vision. It provides a reproducible evaluation
+protocol and releases per-image scores, fused images, split manifests and analysis
+scripts. The conclusions are bounded to the measured pedestrian-detection
+populations, and the paper explicitly reports alignment and benchmark limitations.
+
+The manuscript is original, is not under consideration elsewhere, and has been
+approved by all authors. The authors declare no competing interests. Data and code
+availability are stated in the manuscript.
+
+Sincerely,
+
+Zigao Wu\\
+North China Electric Power University\\
+Baoding, Hebei 071003, China\\
+\href{mailto:zgwu@ncepu.edu.cn}{zgwu@ncepu.edu.cn}
+
+\end{document}

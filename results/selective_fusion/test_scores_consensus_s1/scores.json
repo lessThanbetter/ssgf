@@ -1,0 +1,20 @@
+{
+  "yolo26_s1": {
+    "vis": {
+      "mAP50": 0.7937,
+      "mAP50_95": 0.4353
+    },
+    "consensus_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.8083,
+      "mAP50_95": 0.4563
+    },
+    "consensus_intersection_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.8035,
+      "mAP50_95": 0.4524
+    },
+    "consensus_sign_median6_q095_a020_s05": {
+      "mAP50": 0.8112,
+      "mAP50_95": 0.4571
+    }
+  }
+}

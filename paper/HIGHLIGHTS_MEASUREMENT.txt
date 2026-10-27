@@ -1,0 +1,5 @@
+Fidelity scores are used to choose fusion rules without downstream validation.
+Test-independent splits retrain detectors with all 300 test images held out.
+All 42 clean visible-detector comparisons favor the unfused visible image.
+Deficits span 0.046 to 0.246 mAP50; both one-run evaluators survive BH correction.
+Evaluator modality reverses gains, so rankings require measurement context.

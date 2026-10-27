@@ -1,0 +1,278 @@
+{
+  "yolo26n": {
+    "vis": {
+      "mAP50": 0.9519,
+      "mAP50_95": 0.6046
+    },
+    "mean": {
+      "mAP50": 0.8191,
+      "mAP50_95": 0.4719
+    },
+    "activity_only": {
+      "mAP50": 0.8248,
+      "mAP50_95": 0.4621
+    },
+    "tophat": {
+      "mAP50": 0.8093,
+      "mAP50_95": 0.4742
+    },
+    "probe": {
+      "mAP50": 0.8163,
+      "mAP50_95": 0.4778
+    },
+    "ensemble": {
+      "mAP50": 0.8127,
+      "mAP50_95": 0.476
+    },
+    "ifcnn": {
+      "mAP50": 0.818,
+      "mAP50_95": 0.486
+    },
+    "densefuse": {
+      "mAP50": 0.8394,
+      "mAP50_95": 0.4978
+    },
+    "csf": {
+      "mAP50": 0.8209,
+      "mAP50_95": 0.4717
+    },
+    "blend_activity_only_a005": {
+      "mAP50": 0.9516,
+      "mAP50_95": 0.6009
+    },
+    "blend_activity_only_a010": {
+      "mAP50": 0.9514,
+      "mAP50_95": 0.6007
+    },
+    "blend_activity_only_a020": {
+      "mAP50": 0.9487,
+      "mAP50_95": 0.5996
+    },
+    "blend_activity_only_a030": {
+      "mAP50": 0.9478,
+      "mAP50_95": 0.5937
+    },
+    "blend_activity_only_a050": {
+      "mAP50": 0.936,
+      "mAP50_95": 0.5855
+    },
+    "blend_densefuse_a005": {
+      "mAP50": 0.9483,
+      "mAP50_95": 0.5969
+    },
+    "blend_densefuse_a010": {
+      "mAP50": 0.9454,
+      "mAP50_95": 0.5944
+    },
+    "blend_densefuse_a020": {
+      "mAP50": 0.9384,
+      "mAP50_95": 0.5849
+    },
+    "blend_densefuse_a030": {
+      "mAP50": 0.9362,
+      "mAP50_95": 0.5782
+    },
+    "blend_densefuse_a050": {
+      "mAP50": 0.9275,
+      "mAP50_95": 0.5745
+    },
+    "blend_mean_a005": {
+      "mAP50": 0.948,
+      "mAP50_95": 0.5976
+    },
+    "blend_mean_a010": {
+      "mAP50": 0.9431,
+      "mAP50_95": 0.5955
+    },
+    "blend_mean_a020": {
+      "mAP50": 0.9381,
+      "mAP50_95": 0.5808
+    },
+    "blend_mean_a030": {
+      "mAP50": 0.9315,
+      "mAP50_95": 0.5775
+    },
+    "blend_mean_a050": {
+      "mAP50": 0.9263,
+      "mAP50_95": 0.5715
+    },
+    "blend_probe_a005": {
+      "mAP50": 0.947,
+      "mAP50_95": 0.5954
+    },
+    "blend_probe_a010": {
+      "mAP50": 0.9452,
+      "mAP50_95": 0.5936
+    },
+    "blend_probe_a020": {
+      "mAP50": 0.9355,
+      "mAP50_95": 0.5823
+    },
+    "blend_probe_a030": {
+      "mAP50": 0.9321,
+      "mAP50_95": 0.5756
+    },
+    "blend_probe_a050": {
+      "mAP50": 0.9219,
+      "mAP50_95": 0.5713
+    },
+    "blend_tophat_a005": {
+      "mAP50": 0.9486,
+      "mAP50_95": 0.595
+    },
+    "blend_tophat_a010": {
+      "mAP50": 0.9438,
+      "mAP50_95": 0.5952
+    },
+    "blend_tophat_a020": {
+      "mAP50": 0.9377,
+      "mAP50_95": 0.582
+    },
+    "blend_tophat_a030": {
+      "mAP50": 0.9309,
+      "mAP50_95": 0.5756
+    },
+    "blend_tophat_a050": {
+      "mAP50": 0.9275,
+      "mAP50_95": 0.5672
+    }
+  },
+  "rtdetr": {
+    "vis": {
+      "mAP50": 0.9474,
+      "mAP50_95": 0.6131
+    },
+    "mean": {
+      "mAP50": 0.8507,
+      "mAP50_95": 0.4952
+    },
+    "activity_only": {
+      "mAP50": 0.8325,
+      "mAP50_95": 0.4603
+    },
+    "tophat": {
+      "mAP50": 0.8373,
+      "mAP50_95": 0.4859
+    },
+    "probe": {
+      "mAP50": 0.8267,
+      "mAP50_95": 0.484
+    },
+    "ensemble": {
+      "mAP50": 0.8305,
+      "mAP50_95": 0.4839
+    },
+    "ifcnn": {
+      "mAP50": 0.8603,
+      "mAP50_95": 0.5072
+    },
+    "densefuse": {
+      "mAP50": 0.8715,
+      "mAP50_95": 0.5103
+    },
+    "csf": {
+      "mAP50": 0.8501,
+      "mAP50_95": 0.4938
+    },
+    "blend_activity_only_a005": {
+      "mAP50": 0.9461,
+      "mAP50_95": 0.6113
+    },
+    "blend_activity_only_a010": {
+      "mAP50": 0.9436,
+      "mAP50_95": 0.6085
+    },
+    "blend_activity_only_a020": {
+      "mAP50": 0.935,
+      "mAP50_95": 0.6051
+    },
+    "blend_activity_only_a030": {
+      "mAP50": 0.938,
+      "mAP50_95": 0.6046
+    },
+    "blend_activity_only_a050": {
+      "mAP50": 0.9413,
+      "mAP50_95": 0.6095
+    },
+    "blend_densefuse_a005": {
+      "mAP50": 0.9473,
+      "mAP50_95": 0.6074
+    },
+    "blend_densefuse_a010": {
+      "mAP50": 0.9361,
+      "mAP50_95": 0.5938
+    },
+    "blend_densefuse_a020": {
+      "mAP50": 0.9394,
+      "mAP50_95": 0.5936
+    },
+    "blend_densefuse_a030": {
+      "mAP50": 0.9418,
+      "mAP50_95": 0.5915
+    },
+    "blend_densefuse_a050": {
+      "mAP50": 0.9365,
+      "mAP50_95": 0.5986
+    },
+    "blend_mean_a005": {
+      "mAP50": 0.9469,
+      "mAP50_95": 0.6067
+    },
+    "blend_mean_a010": {
+      "mAP50": 0.9337,
+      "mAP50_95": 0.592
+    },
+    "blend_mean_a020": {
+      "mAP50": 0.936,
+      "mAP50_95": 0.5936
+    },
+    "blend_mean_a030": {
+      "mAP50": 0.9429,
+      "mAP50_95": 0.5935
+    },
+    "blend_mean_a050": {
+      "mAP50": 0.938,
+      "mAP50_95": 0.5953
+    },
+    "blend_probe_a005": {
+      "mAP50": 0.9386,
+      "mAP50_95": 0.6041
+    },
+    "blend_probe_a010": {
+      "mAP50": 0.9393,
+      "mAP50_95": 0.5946
+    },
+    "blend_probe_a020": {
+      "mAP50": 0.9385,
+      "mAP50_95": 0.5931
+    },
+    "blend_probe_a030": {
+      "mAP50": 0.9398,
+      "mAP50_95": 0.5979
+    },
+    "blend_probe_a050": {
+      "mAP50": 0.9351,
+      "mAP50_95": 0.5912
+    },
+    "blend_tophat_a005": {
+      "mAP50": 0.9408,
+      "mAP50_95": 0.6028
+    },
+    "blend_tophat_a010": {
+      "mAP50": 0.9345,
+      "mAP50_95": 0.5914
+    },
+    "blend_tophat_a020": {
+      "mAP50": 0.9368,
+      "mAP50_95": 0.5895
+    },
+    "blend_tophat_a030": {
+      "mAP50": 0.9412,
+      "mAP50_95": 0.5938
+    },
+    "blend_tophat_a050": {
+      "mAP50": 0.938,
+      "mAP50_95": 0.5896
+    }
+  }
+}

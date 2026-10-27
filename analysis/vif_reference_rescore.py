@@ -53,23 +53,23 @@ def _resize(x, shape):
 def _load_same_size(vis_p, ir_p, fused_p, max_side, target=None):
     """Return the three images on one common grid.
 
-    The registered sources are taken as the reference geometry. The fused image is
-    resized to that geometry, and then all three are optionally resized by a common
-    factor so that the longest side is ``max_side``. If ``target`` is given, that
-    shape is used for all three instead, which is how the published baselines are
-    compared here: their fused outputs survive only at 400 by 512.
+    The visible source defines the registered pair's geometry.  This matters for
+    RoadScene, whose high-resolution visible crop and 640 by 512 infrared frame have
+    different dimensions but the same field of view.  Cropping both to the smaller
+    rectangle would silently discard part of the scene.  The infrared source and
+    fused output are therefore resampled to the (optionally size-capped) visible
+    grid.  If ``target`` is given, that shape is used for all three instead.
     """
     vis, ir, fu = _read(vis_p), _read(ir_p), _read(fused_p)
-    h = min(vis.shape[0], ir.shape[0])
-    w = min(vis.shape[1], ir.shape[1])
-    vis, ir = vis[:h, :w], ir[:h, :w]
-    fu = _resize(fu, (h, w))
+    h, w = vis.shape
     if target is not None:
         vis, ir, fu = _resize(vis, target), _resize(ir, target), _resize(fu, target)
     elif max_side and max(h, w) > max_side:
         s = max_side / max(h, w)
         new = (max(1, int(round(h * s))), max(1, int(round(w * s))))
         vis, ir, fu = _resize(vis, new), _resize(ir, new), _resize(fu, new)
+    else:
+        vis, ir, fu = vis, _resize(ir, (h, w)), _resize(fu, (h, w))
     return vis, ir, fu
 
 
@@ -109,6 +109,16 @@ def reference(vis, ir, fu):
                   + vif(ir, fu, "canonical", True, s))
 
 
+def reported_vis(vis, ir, fu):
+    del ir
+    return vif(vis, fu, "reported", False, 2.0)
+
+
+def reference_vis(vis, ir, fu):
+    del ir
+    return vif(vis, fu, "canonical", True, 2.0 / (255.0 ** 2))
+
+
 def width_only(vis, ir, fu):
     return 0.5 * (vif(vis, fu, "canonical", False, 2.0)
                   + vif(ir, fu, "canonical", False, 2.0))
@@ -131,6 +141,11 @@ def main():
     ap.add_argument("--max_side", type=int, default=0)
     ap.add_argument("--target_hw", default="", help="HxW common grid for all three images")
     ap.add_argument("--out", required=True)
+    ap.add_argument("--fields", nargs="+",
+                    choices=("reported", "reported_vis", "width_only",
+                             "reference", "reference_vis"),
+                    default=("reported", "width_only", "reference"),
+                    help="metrics to compute (default: all three)")
     ap.add_argument("--selftest", action="store_true")
     args = ap.parse_args()
 
@@ -154,44 +169,66 @@ def main():
     for s in stems:
         if find(args.vis, s) and find(args.ir, s) and all(find(d, s) for _, d in variants):
             keep.append(s)
-        if len(keep) >= args.limit:
+        if args.limit > 0 and len(keep) >= args.limit:
             break
     print("[rescore] usable stems:", len(keep), "max_side:", args.max_side, flush=True)
 
-    acc = {n: {"reported": [], "width_only": [], "reference": []} for n, _ in variants}
+    fields = tuple(dict.fromkeys(args.fields))
+    acc = {n: {field: [] for field in fields} for n, _ in variants}
+    metrics = {
+        "reported": reported,
+        "reported_vis": reported_vis,
+        "width_only": width_only,
+        "reference": reference,
+        "reference_vis": reference_vis,
+    }
     for i, stem in enumerate(keep):
         for name, d in variants:
             vis, ir, fu = _load_same_size(find(args.vis, stem), find(args.ir, stem),
                                           find(d, stem), args.max_side, target)
-            acc[name]["reported"].append(reported(vis, ir, fu))
-            acc[name]["width_only"].append(width_only(vis, ir, fu))
-            acc[name]["reference"].append(reference(vis, ir, fu))
+            for field in fields:
+                acc[name][field].append(metrics[field](vis, ir, fu))
         print("[rescore] %d/%d %s" % (i + 1, len(keep), stem), flush=True)
 
     rows = []
+    columns = ("variant", "n") + fields
     for name, _ in variants:
-        m = {k: float(np.mean(v)) for k, v in acc[name].items()}
-        rows.append({"variant": name, "n": len(acc[name]["reported"]),
-                     "reported": m["reported"], "width_only": m["width_only"],
-                     "reference": m["reference"]})
+        row = {"variant": name, "n": len(acc[name][fields[0]])}
+        for field in fields:
+            row[field] = float(np.mean(acc[name][field]))
+        rows.append(row)
 
+    out_parent = os.path.dirname(args.out)
+    if out_parent:
+        os.makedirs(out_parent, exist_ok=True)
     with open(args.out + ".csv", "w", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=["variant", "n", "reported", "width_only", "reference"])
+        w = csv.DictWriter(fh, fieldnames=columns)
         w.writeheader()
         for r in rows:
             w.writerow(r)
     with open(args.out + ".json", "w") as fh:
-        json.dump({"limit": args.limit, "max_side": args.max_side, "rows": rows}, fh, indent=2)
+        json.dump({"limit": args.limit, "max_side": args.max_side,
+                   "fields": fields, "rows": rows}, fh, indent=2)
 
     print()
-    print("%-12s %5s %10s %11s %11s" % ("variant", "n", "reported", "width-only", "reference"))
+    headers = [field.replace("_", "-") for field in fields]
+    header_widths = [max(10, len(header)) for header in headers]
+    print("%-12s %5s %s" % (
+        "variant", "n",
+        " ".join(f"{header:>{width}}" for header, width
+                 in zip(headers, header_widths)),
+    ))
     for r in rows:
-        print("%-12s %5d %10.4f %11.4f %11.4f"
-              % (r["variant"], r["n"], r["reported"], r["width_only"], r["reference"]))
-    for key in ("reported", "width_only", "reference"):
-        order = [r["variant"] for r in sorted(rows, key=lambda x: -x[key])]
-        span = max(r[key] for r in rows) - min(r[key] for r in rows)
-        print("ranking %-11s: %s   (span %.4f)" % (key, " > ".join(order), span))
+        print("%-12s %5d %s" % (
+            r["variant"], r["n"],
+            " ".join(f"{r[field]:>{width}.4f}" for field, width
+                     in zip(fields, header_widths)),
+        ))
+    for field in fields:
+        order = [r["variant"] for r in sorted(rows, key=lambda x: -x[field])]
+        span = max(r[field] for r in rows) - min(r[field] for r in rows)
+        print("ranking %-11s: %s   (span %.4f)" %
+              (field, " > ".join(order), span))
     print("RESCORE_DONE", flush=True)
 
 

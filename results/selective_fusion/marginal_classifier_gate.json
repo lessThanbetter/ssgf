@@ -1,0 +1,212 @@
+{
+  "0.3": {
+    "yolo26n": {
+      "gain": -0.0711,
+      "fusion_selected": 287
+    },
+    "rtdetr": {
+      "gain": -0.0633,
+      "fusion_selected": 287
+    },
+    "yolo11n": {
+      "gain": -0.0239,
+      "fusion_selected": 287
+    },
+    "yolo11n_s1": {
+      "gain": -0.0578,
+      "fusion_selected": 287
+    },
+    "yolo11n_s2": {
+      "gain": -0.0554,
+      "fusion_selected": 287
+    },
+    "yolo11n_s3": {
+      "gain": -0.0766,
+      "fusion_selected": 287
+    },
+    "agnostic": {
+      "gain": 0.0005,
+      "fusion_selected": 287
+    },
+    "agnostic_s1": {
+      "gain": 0.0125,
+      "fusion_selected": 287
+    },
+    "agnostic_s2": {
+      "gain": 0.0175,
+      "fusion_selected": 287
+    },
+    "agnostic_s3": {
+      "gain": 0.0147,
+      "fusion_selected": 287
+    }
+  },
+  "0.4": {
+    "yolo26n": {
+      "gain": -0.043,
+      "fusion_selected": 246
+    },
+    "rtdetr": {
+      "gain": -0.039,
+      "fusion_selected": 246
+    },
+    "yolo11n": {
+      "gain": -0.0143,
+      "fusion_selected": 246
+    },
+    "yolo11n_s1": {
+      "gain": -0.0409,
+      "fusion_selected": 246
+    },
+    "yolo11n_s2": {
+      "gain": -0.0302,
+      "fusion_selected": 246
+    },
+    "yolo11n_s3": {
+      "gain": -0.055,
+      "fusion_selected": 246
+    },
+    "agnostic": {
+      "gain": 0.0077,
+      "fusion_selected": 246
+    },
+    "agnostic_s1": {
+      "gain": 0.0104,
+      "fusion_selected": 246
+    },
+    "agnostic_s2": {
+      "gain": 0.0141,
+      "fusion_selected": 246
+    },
+    "agnostic_s3": {
+      "gain": 0.02,
+      "fusion_selected": 246
+    }
+  },
+  "0.5": {
+    "yolo26n": {
+      "gain": -0.0106,
+      "fusion_selected": 157
+    },
+    "rtdetr": {
+      "gain": -0.0104,
+      "fusion_selected": 157
+    },
+    "yolo11n": {
+      "gain": -0.0008,
+      "fusion_selected": 157
+    },
+    "yolo11n_s1": {
+      "gain": -0.0148,
+      "fusion_selected": 157
+    },
+    "yolo11n_s2": {
+      "gain": -0.0122,
+      "fusion_selected": 157
+    },
+    "yolo11n_s3": {
+      "gain": -0.0258,
+      "fusion_selected": 157
+    },
+    "agnostic": {
+      "gain": 0.0123,
+      "fusion_selected": 157
+    },
+    "agnostic_s1": {
+      "gain": 0.0125,
+      "fusion_selected": 157
+    },
+    "agnostic_s2": {
+      "gain": 0.0202,
+      "fusion_selected": 157
+    },
+    "agnostic_s3": {
+      "gain": 0.0197,
+      "fusion_selected": 157
+    }
+  },
+  "0.6": {
+    "yolo26n": {
+      "gain": -0.0026,
+      "fusion_selected": 86
+    },
+    "rtdetr": {
+      "gain": 0.0078,
+      "fusion_selected": 86
+    },
+    "yolo11n": {
+      "gain": -0.0034,
+      "fusion_selected": 86
+    },
+    "yolo11n_s1": {
+      "gain": -0.0039,
+      "fusion_selected": 86
+    },
+    "yolo11n_s2": {
+      "gain": -0.0065,
+      "fusion_selected": 86
+    },
+    "yolo11n_s3": {
+      "gain": -0.0113,
+      "fusion_selected": 86
+    },
+    "agnostic": {
+      "gain": 0.0067,
+      "fusion_selected": 86
+    },
+    "agnostic_s1": {
+      "gain": 0.0077,
+      "fusion_selected": 86
+    },
+    "agnostic_s2": {
+      "gain": 0.008,
+      "fusion_selected": 86
+    },
+    "agnostic_s3": {
+      "gain": 0.0103,
+      "fusion_selected": 86
+    }
+  },
+  "0.7": {
+    "yolo26n": {
+      "gain": 0.0026,
+      "fusion_selected": 40
+    },
+    "rtdetr": {
+      "gain": 0.009,
+      "fusion_selected": 40
+    },
+    "yolo11n": {
+      "gain": -0.0022,
+      "fusion_selected": 40
+    },
+    "yolo11n_s1": {
+      "gain": -0.0027,
+      "fusion_selected": 40
+    },
+    "yolo11n_s2": {
+      "gain": -0.002,
+      "fusion_selected": 40
+    },
+    "yolo11n_s3": {
+      "gain": -0.004,
+      "fusion_selected": 40
+    },
+    "agnostic": {
+      "gain": 0.0042,
+      "fusion_selected": 40
+    },
+    "agnostic_s1": {
+      "gain": 0.0044,
+      "fusion_selected": 40
+    },
+    "agnostic_s2": {
+      "gain": 0.0056,
+      "fusion_selected": 40
+    },
+    "agnostic_s3": {
+      "gain": 0.0045,
+      "fusion_selected": 40
+    }
+  }
+}

@@ -1,0 +1,374 @@
+{
+  "0.25": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8508,
+      "gain": -0.0128,
+      "fusion_selected": 230
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8195,
+      "gain": -0.0516,
+      "fusion_selected": 215
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8141,
+      "gain": -0.0475,
+      "fusion_selected": 229
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.7868,
+      "gain": -0.0625,
+      "fusion_selected": 226
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.6971,
+      "gain": -0.1115,
+      "fusion_selected": 283
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.7064,
+      "gain": -0.1,
+      "fusion_selected": 296
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.8276,
+      "gain": -0.0373,
+      "fusion_selected": 239
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8634,
+      "gain": -0.0144,
+      "fusion_selected": 233
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8716,
+      "gain": 0.0071,
+      "fusion_selected": 233
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8317,
+      "gain": -0.0085,
+      "fusion_selected": 227
+    }
+  },
+  "0.35": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.855,
+      "gain": -0.0087,
+      "fusion_selected": 60
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8428,
+      "gain": -0.0283,
+      "fusion_selected": 85
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.833,
+      "gain": -0.0286,
+      "fusion_selected": 58
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.8145,
+      "gain": -0.0347,
+      "fusion_selected": 67
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.7604,
+      "gain": -0.0482,
+      "fusion_selected": 129
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.7191,
+      "gain": -0.0873,
+      "fusion_selected": 260
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.8229,
+      "gain": -0.0421,
+      "fusion_selected": 73
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8735,
+      "gain": -0.0042,
+      "fusion_selected": 77
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8635,
+      "gain": -0.0009,
+      "fusion_selected": 63
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8266,
+      "gain": -0.0136,
+      "fusion_selected": 65
+    }
+  },
+  "0.45": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8596,
+      "gain": -0.004,
+      "fusion_selected": 5
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8648,
+      "gain": -0.0064,
+      "fusion_selected": 18
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8617,
+      "gain": 0.0,
+      "fusion_selected": 5
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.8483,
+      "gain": -0.001,
+      "fusion_selected": 4
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.8021,
+      "gain": -0.0064,
+      "fusion_selected": 11
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.7705,
+      "gain": -0.0358,
+      "fusion_selected": 104
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.8531,
+      "gain": -0.0119,
+      "fusion_selected": 14
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8772,
+      "gain": -0.0006,
+      "fusion_selected": 6
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8623,
+      "gain": -0.0022,
+      "fusion_selected": 5
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8258,
+      "gain": -0.0144,
+      "fusion_selected": 17
+    }
+  },
+  "0.55": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8636,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8711,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8614,
+      "gain": -0.0002,
+      "fusion_selected": 1
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.8493,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.8072,
+      "gain": -0.0014,
+      "fusion_selected": 2
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.7977,
+      "gain": -0.0086,
+      "fusion_selected": 9
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.865,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8771,
+      "gain": -0.0007,
+      "fusion_selected": 2
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8636,
+      "gain": -0.0009,
+      "fusion_selected": 2
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8402,
+      "gain": 0.0,
+      "fusion_selected": 0
+    }
+  },
+  "0.65": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8636,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8711,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8616,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.8493,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.8086,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.8041,
+      "gain": -0.0023,
+      "fusion_selected": 3
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.865,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8778,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8644,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8402,
+      "gain": 0.0,
+      "fusion_selected": 0
+    }
+  },
+  "0.75": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8636,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8711,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8616,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.8493,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.8086,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.8064,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.865,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8778,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8644,
+      "gain": 0.0,
+      "fusion_selected": 0
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8402,
+      "gain": 0.0,
+      "fusion_selected": 0
+    }
+  }
+}

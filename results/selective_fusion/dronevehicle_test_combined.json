@@ -1,0 +1,98 @@
+{
+  "dataset": "DroneVehicle official test",
+  "independent_status": "confirmatory test; three groups fixed before evaluation",
+  "n_images": 300,
+  "groups": [
+    7,
+    32,
+    71
+  ],
+  "checkpoint_results": {
+    "best": {
+      "visible_ap50": 0.6563,
+      "shielded_ap50": 0.6814,
+      "shielded_gain": 0.0251,
+      "no_shield_gain": 0.1064,
+      "shielded_selected_counts": {
+        "vis": 241,
+        "cdf": 0,
+        "pia": 30,
+        "spg": 29
+      },
+      "per_group": {
+        "7": {
+          "n": 100,
+          "visible_ap50": 0.486,
+          "shielded_ap50": 0.5059,
+          "gain": 0.0199
+        },
+        "32": {
+          "n": 100,
+          "visible_ap50": 0.801,
+          "shielded_ap50": 0.8012,
+          "gain": 0.0002
+        },
+        "71": {
+          "n": 100,
+          "visible_ap50": 0.7225,
+          "shielded_ap50": 0.7466,
+          "gain": 0.0241
+        }
+      }
+    },
+    "last": {
+      "visible_ap50": 0.6474,
+      "shielded_ap50": 0.6767,
+      "shielded_gain": 0.0293,
+      "no_shield_gain": 0.1016,
+      "shielded_selected_counts": {
+        "vis": 233,
+        "cdf": 0,
+        "pia": 40,
+        "spg": 27
+      },
+      "per_group": {
+        "7": {
+          "n": 100,
+          "visible_ap50": 0.478,
+          "shielded_ap50": 0.497,
+          "gain": 0.0189
+        },
+        "32": {
+          "n": 100,
+          "visible_ap50": 0.798,
+          "shielded_ap50": 0.7982,
+          "gain": 0.0002
+        },
+        "71": {
+          "n": 100,
+          "visible_ap50": 0.7138,
+          "shielded_ap50": 0.7526,
+          "gain": 0.0388
+        }
+      }
+    }
+  },
+  "combined": {
+    "mean_shielded_gain": 0.0272,
+    "min_checkpoint_gain": 0.0251,
+    "max_checkpoint_gain": 0.0293,
+    "mean_no_shield_gain": 0.104,
+    "image_ci95": [
+      -0.0028,
+      0.0682
+    ],
+    "group_ci95": [
+      0.0002,
+      0.0406
+    ],
+    "no_shield_image_ci95": [
+      0.0605,
+      0.1602
+    ],
+    "no_shield_group_ci95": [
+      0.0779,
+      0.1176
+    ]
+  }
+}

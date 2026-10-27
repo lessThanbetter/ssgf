@@ -1,0 +1,24 @@
+{
+  "threshold": 0.95,
+  "alpha": 0.2,
+  "sigma": 5.0,
+  "tag": "q095_a020_s05",
+  "methods": [
+    "mean",
+    "tophat",
+    "probe",
+    "ifcnn",
+    "piafusion",
+    "spgfusion"
+  ],
+  "policies": {
+    "consensus_pixel_mean_ifcnn": [
+      "pixel_mean",
+      "ifcnn"
+    ],
+    "consensus_intersection_pixel_mean_ifcnn": [
+      "pixel_mean",
+      "ifcnn"
+    ]
+  }
+}

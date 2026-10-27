@@ -1,0 +1,56 @@
+{
+  "rows": [
+    {
+      "evaluator": "yolo11n_visible_clean",
+      "n": 14,
+      "training_runs": 4,
+      "reported": {
+        "rho": -0.13406593406593406,
+        "p": 0.6477195279851131
+      },
+      "reference": {
+        "rho": 0.1824175824175824,
+        "p": 0.5325088185186945
+      }
+    },
+    {
+      "evaluator": "yolo26n_visible_clean",
+      "n": 14,
+      "training_runs": 1,
+      "reported": {
+        "rho": -0.1076923076923077,
+        "p": 0.7140308087262492
+      },
+      "reference": {
+        "rho": -0.2087912087912088,
+        "p": 0.4737788373098136
+      }
+    },
+    {
+      "evaluator": "rtdetr_l_visible_clean",
+      "n": 14,
+      "training_runs": 1,
+      "reported": {
+        "rho": -0.002197802197802198,
+        "p": 0.9940505286658998
+      },
+      "reference": {
+        "rho": -0.2,
+        "p": 0.49300373503999984
+      }
+    },
+    {
+      "evaluator": "yolo11n_modality_agnostic_clean",
+      "n": 14,
+      "training_runs": 4,
+      "reported": {
+        "rho": 0.07252747252747253,
+        "p": 0.8053763135410923
+      },
+      "reference": {
+        "rho": 0.5912087912087912,
+        "p": 0.025970813668962523
+      }
+    }
+  ]
+}

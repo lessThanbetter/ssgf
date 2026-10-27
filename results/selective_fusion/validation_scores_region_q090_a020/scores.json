@@ -1,0 +1,122 @@
+{
+  "yolo11": {
+    "vis": {
+      "mAP50": 0.8946,
+      "mAP50_95": 0.4906
+    },
+    "region_mean_q090_a020": {
+      "mAP50": 0.8847,
+      "mAP50_95": 0.4687
+    },
+    "region_tophat_q090_a020": {
+      "mAP50": 0.8826,
+      "mAP50_95": 0.4678
+    },
+    "region_probe_q090_a020": {
+      "mAP50": 0.8813,
+      "mAP50_95": 0.4678
+    },
+    "region_ifcnn_q090_a020": {
+      "mAP50": 0.8909,
+      "mAP50_95": 0.4793
+    },
+    "region_piafusion_q090_a020": {
+      "mAP50": 0.858,
+      "mAP50_95": 0.449
+    },
+    "region_spgfusion_q090_a020": {
+      "mAP50": 0.8585,
+      "mAP50_95": 0.4475
+    }
+  },
+  "agnostic": {
+    "vis": {
+      "mAP50": 0.8939,
+      "mAP50_95": 0.5084
+    },
+    "region_mean_q090_a020": {
+      "mAP50": 0.8766,
+      "mAP50_95": 0.4863
+    },
+    "region_tophat_q090_a020": {
+      "mAP50": 0.8773,
+      "mAP50_95": 0.4867
+    },
+    "region_probe_q090_a020": {
+      "mAP50": 0.8757,
+      "mAP50_95": 0.4844
+    },
+    "region_ifcnn_q090_a020": {
+      "mAP50": 0.8672,
+      "mAP50_95": 0.4838
+    },
+    "region_piafusion_q090_a020": {
+      "mAP50": 0.8691,
+      "mAP50_95": 0.4747
+    },
+    "region_spgfusion_q090_a020": {
+      "mAP50": 0.8785,
+      "mAP50_95": 0.4777
+    }
+  },
+  "yolo26n": {
+    "vis": {
+      "mAP50": 0.9519,
+      "mAP50_95": 0.6046
+    },
+    "region_mean_q090_a020": {
+      "mAP50": 0.9344,
+      "mAP50_95": 0.5786
+    },
+    "region_tophat_q090_a020": {
+      "mAP50": 0.9359,
+      "mAP50_95": 0.5807
+    },
+    "region_probe_q090_a020": {
+      "mAP50": 0.9335,
+      "mAP50_95": 0.5799
+    },
+    "region_ifcnn_q090_a020": {
+      "mAP50": 0.9385,
+      "mAP50_95": 0.5788
+    },
+    "region_piafusion_q090_a020": {
+      "mAP50": 0.9198,
+      "mAP50_95": 0.5672
+    },
+    "region_spgfusion_q090_a020": {
+      "mAP50": 0.9294,
+      "mAP50_95": 0.5724
+    }
+  },
+  "rtdetr": {
+    "vis": {
+      "mAP50": 0.9474,
+      "mAP50_95": 0.6131
+    },
+    "region_mean_q090_a020": {
+      "mAP50": 0.9351,
+      "mAP50_95": 0.5954
+    },
+    "region_tophat_q090_a020": {
+      "mAP50": 0.9357,
+      "mAP50_95": 0.5948
+    },
+    "region_probe_q090_a020": {
+      "mAP50": 0.9375,
+      "mAP50_95": 0.5965
+    },
+    "region_ifcnn_q090_a020": {
+      "mAP50": 0.9418,
+      "mAP50_95": 0.5967
+    },
+    "region_piafusion_q090_a020": {
+      "mAP50": 0.9345,
+      "mAP50_95": 0.5935
+    },
+    "region_spgfusion_q090_a020": {
+      "mAP50": 0.9398,
+      "mAP50_95": 0.5955
+    }
+  }
+}

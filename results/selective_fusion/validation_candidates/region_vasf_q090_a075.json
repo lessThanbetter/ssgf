@@ -1,0 +1,14 @@
+{
+  "threshold": 0.9,
+  "visible_quantile": 0.75,
+  "alpha": 0.75,
+  "methods": [
+    "mean",
+    "tophat",
+    "probe",
+    "ifcnn",
+    "piafusion",
+    "spgfusion"
+  ],
+  "stems": 150
+}

@@ -1,0 +1,48 @@
+\documentclass[11pt]{letter}
+\usepackage[a4paper,margin=2.4cm]{geometry}
+\usepackage{mathptmx}
+\hyphenation{}
+\pagestyle{empty}
+
+\signature{Jianyong Zhao}
+\address{North China Electric Power University\\
+Baoding, Hebei 071003\\
+China}
+
+\begin{document}
+
+\begin{letter}{Editor-in-Chief\\Measurement}
+
+\opening{Dear Editor-in-Chief,}
+
+We submit the manuscript ``Evaluator-Dependent Validity of Fidelity Metrics for
+Visible-Infrared Image Fusion in Pedestrian Detection'' for consideration as a
+Research Paper in \emph{Measurement}.
+
+The manuscript treats image-fidelity scores as measurement instruments rather than
+assuming that a higher score implies a better downstream input. It holds the fused
+images fixed while changing the detector, source convention and test partition. In the
+primary independent-test experiment, all 42 comparisons across three visible-trained
+evaluators place every fused input below the unfused visible source, with mean mAP50
+deficits from 0.046 to 0.246. The 14 inputs under each single-run YOLO26n and RT-DETR-l
+evaluator remain below the source after Benjamini-Hochberg correction. A modality-agnostic
+evaluator reverses the sign for several inputs, showing that the ranking measures the
+evaluation context as well as the fused image.
+
+We believe this fits \emph{Measurement} because it reports a measurement-validity study
+and a reproducible evaluation protocol: a fixed 1,350/150/300 split, test-independent
+checkpoint selection, paired image resampling, multiplicity correction, explicit
+evaluator definitions and a reproducible release of per-image scores. The study also
+reports where the original validation protocol is optimistic, which is directly
+relevant to readers who use proxy scores to select sensing or image-processing
+pipelines.
+
+The manuscript is original, has not been published previously, and is not under
+consideration by another journal. All authors have approved the submission and declare
+no competing interests. The analysis package, split manifest and trained clean
+checkpoints are prepared for release with the article.
+
+\closing{Sincerely,}
+
+\end{letter}
+\end{document}

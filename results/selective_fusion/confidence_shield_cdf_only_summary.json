@@ -1,0 +1,298 @@
+{
+  "policy": {
+    "name": "CS-ECF-CDF",
+    "candidates": [
+      "vis",
+      "cdf"
+    ],
+    "score": "top1_mean_detection_confidence",
+    "visible_margin": 1.0
+  },
+  "validation_selection": {
+    "candidates": "cdf_only",
+    "score_policy": "top1",
+    "visible_margin": 1.0,
+    "model_gains": {
+      "llvip/yolo26n": 0.001118,
+      "llvip/rtdetr": 0.000579,
+      "m3fd/yolo26_m3fd6": 1e-05,
+      "m3fd/yolo8n_m3fd6": 0.00297
+    },
+    "profile_means": {
+      "llvip": 0.000849,
+      "m3fd": 0.00149
+    },
+    "dataset_balanced_mean": 0.001169,
+    "model_mean": 0.001169,
+    "min_gain": 1e-05,
+    "max_gain": 0.00297,
+    "positive_models": 4
+  },
+  "test_models": 10,
+  "positive_models": 7,
+  "mean_gain": 0.0026,
+  "min_gain": -0.0048,
+  "max_gain": 0.0083,
+  "no_shield": {
+    "positive_models": 7,
+    "mean_gain": 0.0026,
+    "min_gain": -0.0048,
+    "max_gain": 0.0083
+  },
+  "dataset_balanced": {
+    "mean_gain": 0.0002,
+    "fixed_models_image_ci95": [
+      -0.0021,
+      0.0023
+    ],
+    "hierarchical_model_image_ci95": [
+      -0.0034,
+      0.0033
+    ]
+  },
+  "profiles": {
+    "llvip": {
+      "yolo11": {
+        "visible_ap50": 0.8811,
+        "selected_ap50": 0.8887,
+        "gain": 0.0076,
+        "image_ci95": [
+          0.0022,
+          0.0155
+        ],
+        "no_shield_gain": 0.0076,
+        "no_shield_image_ci95": [
+          0.0022,
+          0.0155
+        ],
+        "counts": {
+          "vis": 184,
+          "cdf": 116
+        }
+      },
+      "agnostic": {
+        "visible_ap50": 0.855,
+        "selected_ap50": 0.862,
+        "gain": 0.0069,
+        "image_ci95": [
+          -0.0033,
+          0.018
+        ],
+        "no_shield_gain": 0.0069,
+        "no_shield_image_ci95": [
+          -0.0033,
+          0.018
+        ],
+        "counts": {
+          "vis": 144,
+          "cdf": 156
+        }
+      },
+      "yolo26_s0": {
+        "visible_ap50": 0.8122,
+        "selected_ap50": 0.8205,
+        "gain": 0.0083,
+        "image_ci95": [
+          0.0018,
+          0.0169
+        ],
+        "no_shield_gain": 0.0083,
+        "no_shield_image_ci95": [
+          0.0018,
+          0.0169
+        ],
+        "counts": {
+          "vis": 181,
+          "cdf": 119
+        }
+      },
+      "rtdetr": {
+        "visible_ap50": 0.8095,
+        "selected_ap50": 0.8074,
+        "gain": -0.0021,
+        "image_ci95": [
+          -0.0103,
+          0.0038
+        ],
+        "no_shield_gain": -0.0021,
+        "no_shield_image_ci95": [
+          -0.0103,
+          0.0038
+        ],
+        "counts": {
+          "vis": 161,
+          "cdf": 139
+        }
+      },
+      "yolo26_s1": {
+        "visible_ap50": 0.7937,
+        "selected_ap50": 0.7958,
+        "gain": 0.0021,
+        "image_ci95": [
+          -0.0053,
+          0.0089
+        ],
+        "no_shield_gain": 0.0021,
+        "no_shield_image_ci95": [
+          -0.0053,
+          0.0089
+        ],
+        "counts": {
+          "vis": 170,
+          "cdf": 130
+        }
+      },
+      "yolo26_s2": {
+        "visible_ap50": 0.8061,
+        "selected_ap50": 0.8098,
+        "gain": 0.0037,
+        "image_ci95": [
+          -0.0026,
+          0.0094
+        ],
+        "no_shield_gain": 0.0037,
+        "no_shield_image_ci95": [
+          -0.0026,
+          0.0094
+        ],
+        "counts": {
+          "vis": 169,
+          "cdf": 131
+        }
+      },
+      "yolo8_s0": {
+        "visible_ap50": 0.7801,
+        "selected_ap50": 0.7844,
+        "gain": 0.0043,
+        "image_ci95": [
+          -0.0038,
+          0.0122
+        ],
+        "no_shield_gain": 0.0043,
+        "no_shield_image_ci95": [
+          -0.0038,
+          0.0122
+        ],
+        "counts": {
+          "vis": 163,
+          "cdf": 137
+        }
+      },
+      "yolo8_s1": {
+        "visible_ap50": 0.8055,
+        "selected_ap50": 0.8085,
+        "gain": 0.003,
+        "image_ci95": [
+          -0.0036,
+          0.012
+        ],
+        "no_shield_gain": 0.003,
+        "no_shield_image_ci95": [
+          -0.0036,
+          0.012
+        ],
+        "counts": {
+          "vis": 142,
+          "cdf": 158
+        }
+      },
+      "summary": {
+        "models": 8,
+        "positive_models": 7,
+        "mean_gain": 0.0042,
+        "min_gain": -0.0021,
+        "max_gain": 0.0083,
+        "model_bootstrap_ci95": [
+          0.0023,
+          0.0063
+        ],
+        "fixed_models_image_ci95": [
+          0.0008,
+          0.0079
+        ],
+        "hierarchical_model_image_ci95": [
+          -0.0002,
+          0.0088
+        ],
+        "no_shield": {
+          "positive_models": 7,
+          "mean_gain": 0.0042,
+          "min_gain": -0.0021,
+          "max_gain": 0.0083,
+          "fixed_models_image_ci95": [
+            0.0008,
+            0.0079
+          ]
+        }
+      }
+    },
+    "m3fd": {
+      "yolo26_m3fd6": {
+        "visible_ap50": 0.3717,
+        "selected_ap50": 0.3687,
+        "gain": -0.003,
+        "image_ci95": [
+          -0.0074,
+          0.0004
+        ],
+        "no_shield_gain": -0.003,
+        "no_shield_image_ci95": [
+          -0.0074,
+          0.0004
+        ],
+        "counts": {
+          "vis": 125,
+          "cdf": 75
+        }
+      },
+      "yolo8n_m3fd6": {
+        "visible_ap50": 0.379,
+        "selected_ap50": 0.3743,
+        "gain": -0.0048,
+        "image_ci95": [
+          -0.0104,
+          0.0001
+        ],
+        "no_shield_gain": -0.0048,
+        "no_shield_image_ci95": [
+          -0.0104,
+          0.0001
+        ],
+        "counts": {
+          "vis": 129,
+          "cdf": 71
+        }
+      },
+      "summary": {
+        "models": 2,
+        "positive_models": 0,
+        "mean_gain": -0.0039,
+        "min_gain": -0.0048,
+        "max_gain": -0.003,
+        "model_bootstrap_ci95": [
+          -0.0048,
+          -0.003
+        ],
+        "fixed_models_image_ci95": [
+          -0.0074,
+          -0.0014
+        ],
+        "hierarchical_model_image_ci95": [
+          -0.0084,
+          -0.0005
+        ],
+        "no_shield": {
+          "positive_models": 0,
+          "mean_gain": -0.0039,
+          "min_gain": -0.0048,
+          "max_gain": -0.003,
+          "fixed_models_image_ci95": [
+            -0.0074,
+            -0.0014
+          ]
+        }
+      }
+    }
+  },
+  "decision": "exploratory until confirmed on an independent dataset or untouched official test split"
+}

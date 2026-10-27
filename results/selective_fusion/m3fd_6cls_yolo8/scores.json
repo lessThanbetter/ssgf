@@ -1,0 +1,24 @@
+{
+  "yolo8n_m3fd6": {
+    "vis": {
+      "mAP50": 0.4841,
+      "mAP50_95": 0.3099
+    },
+    "pixel_mean": {
+      "mAP50": 0.2922,
+      "mAP50_95": 0.1922
+    },
+    "consensus_intersection_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.4855,
+      "mAP50_95": 0.3057
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q095_a020_s05": {
+      "mAP50": 0.4853,
+      "mAP50_95": 0.3072
+    },
+    "consensus_intersection_mean_ifcnn_q099_a020_s05": {
+      "mAP50": 0.4856,
+      "mAP50_95": 0.3091
+    }
+  }
+}

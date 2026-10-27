@@ -1,0 +1,23 @@
+{
+  "best": {
+    "visible_ap50": 0.6563,
+    "thermal_mask_ap50": 0.6624,
+    "global_injection_ap50": 0.662,
+    "thermal_mask_gain": 0.006,
+    "global_gain": 0.0057,
+    "mask_minus_global": 0.0003
+  },
+  "last": {
+    "visible_ap50": 0.6474,
+    "thermal_mask_ap50": 0.6524,
+    "global_injection_ap50": 0.6512,
+    "thermal_mask_gain": 0.005,
+    "global_gain": 0.0038,
+    "mask_minus_global": 0.0012
+  },
+  "mean": {
+    "thermal_mask_gain": 0.0055,
+    "global_gain": 0.0047,
+    "mask_minus_global": 0.0007
+  }
+}

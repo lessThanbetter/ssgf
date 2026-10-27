@@ -1,15 +1,59 @@
-# Fidelity Metrics Do Not Predict Target-Centric Detection
+# SSGF / CS-ECF Research Code
 
-Official code for "Fidelity Metrics Do Not Predict Target-Centric Detection: The
-Evaluator Determines the Ranking of Visible-Infrared Fusion Rules". The method the
-paper introduces is a target-aware semantic saliency fusion rule, instantiated with
-a morphological top-hat targetness prior and a distilled probe.
+This repository hosts the code and frozen numerical results for two related
+visible--infrared studies.
 
-We argue that the semantic that should drive visible--infrared fusion is
-**targetness** (whether a pixel belongs to a small bright or dark thermal target),
-not generic saliency or classification-based importance. We instantiate it with a
-morphological top-hat prior and a small distilled probe, and use it to modulate
-feature activity before a temperature softmax fuses the two sources.
+## 1. Evaluator-conditioned fusion input arbitration (CS-ECF)
+
+The current release accompanies the working manuscript
+**“Confidence-Shielded Evaluator-Conditioned Fusion for Risk-Controlled
+Infrared--Visible Object Detection.”**
+
+CS-ECF evaluates visible, CDF, PIAFusion, and SPGFusion candidates with the
+target detector. A fused candidate is selected only when its top-five mean
+confidence reaches 1.5 times the visible-image score; otherwise the visible
+input is retained. The policy uses no test labels.
+
+Key frozen results:
+
+- 12 confirmatory detector checkpoints; 9 positive;
+- dataset-balanced AP50 gain `+0.0133`;
+- detector-by-group hierarchical 95% CI `[+0.0028, +0.0213]`;
+- no-shield worst loss `-0.0584`, CS-ECF worst loss `-0.0040`;
+- DroneVehicle independent-test gains `+0.0251 / +0.0293`;
+- thermal-mask advantage over global injection `+0.0007 AP50`;
+- standardized serial cost estimate `706.3 ms`.
+
+Artifacts:
+
+- `ssgf/fusion/confidence_shield.py` — frozen selector;
+- `scripts/generate_consensus_detail.py` — CDF candidate generation;
+- `scripts/make_ipt_fig*.py` — publication figures;
+- `analysis/cs_ecf/` — analysis and interval-reproduction scripts;
+- `results/selective_fusion/` — aggregate JSON, source-data CSV and per-image
+  compressed score files;
+- `paper/CS_ECF_IPT_Submission/` — Elsevier LaTeX source, compiled working PDF,
+  cover letter, figures and source data;
+- `paper/CS_ECF_IPT_DRAFT.md`, `paper/CS_ECF_RESULTS.md`,
+  `paper/CS_ECF_2ZONE_MATERIALS.md` — manuscript and evidence notes.
+
+The repository does not contain LLVIP, M3FD, or DroneVehicle images. LLVIP is
+distributed at <https://github.com/bupt-ai-cz/LLVIP>; M3FD with the TarDAL
+benchmark at <https://github.com/JinyuanLiu-CV/TarDAL>; DroneVehicle at
+<https://github.com/VisDrone/DroneVehicle>. The 300-pair DroneVehicle test
+manifest and source-archive SHA-256 are included at
+`results/selective_fusion/dronevehicle_test_manifest.json`.
+
+## 2. Evaluator-dependent fidelity-metric validity
+
+The preceding part of the repository is the official code for
+“Evaluator-Dependent Validity of Fidelity Metrics for Visible-Infrared Image
+Fusion in Pedestrian Detection.”
+
+The paper is a measurement-validity study of image-fidelity scores used to select
+visible-infrared fusion rules. It contains a target-aware fusion family based on a
+morphological top-hat prior and a distilled probe, but that family is one of the
+fourteen evaluated inputs rather than the paper's claim of a superior fused image.
 
 ## Datasets
 
@@ -33,6 +77,10 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
 pip install -r requirements.txt
 ```
 
+For the complete reference-VIF and SPGFusion reproduction, install
+`requirements-experiments.txt` after matching `torchvision` to the server's PyTorch
+build.
+
 ## Repository layout
 
 - `ssgf/`  package (config, data, fusion rules, models, metrics, checkpoints utils)
@@ -43,8 +91,11 @@ pip install -r requirements.txt
 - `seg_downstream.py`  downstream semantic segmentation (UNet mIoU)
 - `det_eval.py`  downstream detection (LLVIP YOLO) mAP evaluation
 - `analysis/`  the scripts that produced the detection tables, the paired intervals
-  and the VIF schedule comparison; see `analysis/README.md` for the mapping
+  the VIF schedule and full-set comparisons, and the alignment sensitivity; see
+  `analysis/README.md` for the mapping
 - `sota_runners/`  helpers to run PIAFusion / SPGFusion and reproduce every table/figure
+- `results/reference_vif/`  frozen full-set reported/reference VIF tables
+- `results/alignment/`  LLVIP registration estimates and best/worst-quartile results
 - `data/`  trained checkpoints (small)
 
 ## Reproduce the paper numbers
@@ -86,11 +137,36 @@ each script to the paper table it fills. Note that `sota_runners/det_ci.py` is a
 legacy routine that was not used for the paper's intervals. See `SOTA_RESULTS.md`
 for the aggregated numbers.
 
+The independent-test detection protocol is reproduced by
+`scripts/prepare_clean_evaluator_dataset.py`, `scripts/train_clean_r2.py`,
+`scripts/score_clean_evaluators.py` and `analysis/regime_bh.py`. It uses a fixed
+1,350/150/300 LLVIP split, trains YOLO11n, YOLO26n and RT-DETR-l visible-only
+evaluators plus the modality-agnostic YOLO11n control, and scores all fourteen fused
+inputs and both sources. `data/splits/clean_split_manifest.json` records every stem.
+The frozen outputs and training manifests are under `results/clean_r2/`.
+
+Figure 11 is rebuilt by `scripts/make_fig11_decision_v2.py`. The script reads the
+released clean-split and VIF aggregates, asserts the 42/42 and endpoint counts, and
+exports editable PDF, SVG and 300 dpi PNG versions.
+
 The three-way comparison of the reported fidelity index against the reference pixel
 VIF is produced by `analysis/vif_reference_rescore.py`, which takes one fused-image
 directory per method. The reference construction is implemented as
 `ssgf.utils.metrics.vifp_reference`, and `report()` now carries both `VIF` and
 `VIF_ref`.
+
+For a full parallel run, use `analysis/run_reference_vif_parallel.py` with
+`deploy/reference_jobs.example.json`; completed methods are skipped on restart. The
+frozen results in `results/reference_vif/` cover all 14 LLVIP inputs on 300 images
+and all eight benchmark methods on TNO (74), MSRS-test (361) and RoadScene (221).
+SPGFusion is first under the reported index and last under the reference
+construction on all three benchmarks.
+
+The alignment check recovers the exact 300 LLVIP source stems from the public ZIP,
+downloads only those JPEGs, and estimates a translational ECC residual on normalized
+Sobel edges. See `results/alignment/README.md`. The best-aligned clean-split quartile
+reverses several pooled signs, so the paper reports the negative result as a
+population-level and stratum-dependent finding rather than a universal property.
 
 ## Note on baselines and checkpoints
 

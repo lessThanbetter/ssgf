@@ -11,14 +11,40 @@ Usage:
 import argparse
 import glob
 import os
+import sys
+import types
 
 import cv2
 import numpy as np
 import torch
+import torch.nn.functional as F
 from PIL import Image
 import torchvision.transforms.functional as TF
 
-from device import device
+# SPGFusion's feature extractor imports one MMseg resize helper.  Avoid installing
+# the heavy MMseg stack just for that call.
+try:
+    import mmseg.ops  # noqa: F401
+except ImportError:
+    mmseg = types.ModuleType("mmseg")
+    ops = types.ModuleType("mmseg.ops")
+
+    def resize(input, size=None, scale_factor=None, mode="bilinear",
+               align_corners=None, **kwargs):
+        del kwargs
+        return F.interpolate(
+            input,
+            size=size,
+            scale_factor=scale_factor,
+            mode=mode,
+            align_corners=align_corners,
+        )
+
+    ops.resize = resize
+    mmseg.ops = ops
+    sys.modules["mmseg"] = mmseg
+    sys.modules["mmseg.ops"] = ops
+
 from model.SPGFusion import SPGFusion
 from model.Dino_Clip import DINOiser
 
@@ -64,14 +90,22 @@ def main():
     p.add_argument('--config', default='clip_dinoiser.yaml')
     p.add_argument('--batch', type=int, default=1)
     p.add_argument('--limit', type=int, default=0, help='run only first N pairs (0 = all)')
+    p.add_argument('--max-side', type=int, default=512)
+    p.add_argument('--device', default='cuda' if torch.cuda.is_available() else 'cpu')
+    p.add_argument(
+        '--clip-ckpt',
+        default='model/ViT-B-16-laion2B/open_clip_pytorch_model.bin',
+    )
+    p.add_argument('--fusion-ckpt', default='CHECKPOINT/best_model_1.pth')
     args = p.parse_args()
 
     os.makedirs(args.out, exist_ok=True)
+    device = torch.device(args.device)
 
     print('[spg] building DINO+CLIP semantic extractor ...')
     clip_cfg = {
         'clip_model': 'ViT-B/16',
-        'clip_model_pth': 'model/ViT-B-16-laion2B/open_clip_pytorch_model.bin',
+        'clip_model_pth': args.clip_ckpt,
         'patch_size': 16,
         'img_size': 224,
     }
@@ -82,7 +116,7 @@ def main():
 
     print('[spg] loading fusion network ...')
     fus = SPGFusion().to(device)
-    ck = torch.load('CHECKPOINT/best_model_1.pth', map_location='cpu', weights_only=False)
+    ck = torch.load(args.fusion_ckpt, map_location='cpu', weights_only=False)
     sd = ck['model'] if isinstance(ck, dict) and 'model' in ck else ck
     fus.load_state_dict(sd, strict=True)
     fus.eval()
@@ -98,7 +132,7 @@ def main():
         for i, (vis_path, ir_path, stem) in enumerate(pairs):
             if done >= n:
                 break
-            vis, ir, _ = load_pair(vis_path, ir_path)
+            vis, ir, _ = load_pair(vis_path, ir_path, args.max_side)
             vis = vis.to(device)
             ir = ir.to(device)
             vi_sem = model_ex(vis)

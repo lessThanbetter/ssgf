@@ -1,0 +1,61 @@
+{
+  "jobs": [
+    {
+      "name": "TNO",
+      "vis": "/root/autodl-tmp/datasets/tno/vis",
+      "ir": "/root/autodl-tmp/datasets/tno/ir",
+      "fused": [
+        "mean=/root/autodl-tmp/ssgf/outputs/tno/mean",
+        "tophat=/root/autodl-tmp/ssgf/outputs/tno/tophat",
+        "probe=/root/autodl-tmp/ssgf/outputs/tno/probe",
+        "ensemble=/root/autodl-tmp/ssgf/outputs/tno/ensemble",
+        "ifcnn=/root/autodl-tmp/ssgf/outputs/tno/ifcnn",
+        "densefuse=/root/autodl-tmp/ssgf/outputs/tno/densefuse",
+        "piafusion=/root/autodl-tmp/ssgf/outputs/tno/piafusion",
+        "spgfusion=/root/autodl-tmp/ssgf/outputs/tno/spgfusion"
+      ],
+      "limit": 0,
+      "max_side": 512,
+      "target_hw": "",
+      "fields": ["reported", "reference"]
+    },
+    {
+      "name": "MSRS",
+      "vis": "/root/autodl-tmp/datasets/MSRS-main/test/vi",
+      "ir": "/root/autodl-tmp/datasets/MSRS-main/test/ir",
+      "fused": [
+        "mean=/root/autodl-tmp/ssgf/outputs/msrs/mean",
+        "tophat=/root/autodl-tmp/ssgf/outputs/msrs/tophat",
+        "probe=/root/autodl-tmp/ssgf/outputs/msrs/probe",
+        "ensemble=/root/autodl-tmp/ssgf/outputs/msrs/ensemble",
+        "ifcnn=/root/autodl-tmp/ssgf/outputs/msrs/ifcnn",
+        "densefuse=/root/autodl-tmp/ssgf/outputs/msrs/densefuse",
+        "piafusion=/root/autodl-tmp/ssgf/outputs/msrs/piafusion",
+        "spgfusion=/root/autodl-tmp/ssgf/outputs/msrs/spgfusion"
+      ],
+      "limit": 0,
+      "max_side": 512,
+      "target_hw": "",
+      "fields": ["reported", "reference"]
+    },
+    {
+      "name": "RoadScene",
+      "vis": "/root/autodl-tmp/datasets/RoadScene-master/crop_HR_visible",
+      "ir": "/root/autodl-tmp/datasets/RoadScene-master/infrared",
+      "fused": [
+        "mean=/root/autodl-tmp/ssgf/outputs/roadscene/mean",
+        "tophat=/root/autodl-tmp/ssgf/outputs/roadscene/tophat",
+        "probe=/root/autodl-tmp/ssgf/outputs/roadscene/probe",
+        "ensemble=/root/autodl-tmp/ssgf/outputs/roadscene/ensemble",
+        "ifcnn=/root/autodl-tmp/ssgf/outputs/roadscene/ifcnn",
+        "densefuse=/root/autodl-tmp/ssgf/outputs/roadscene/densefuse",
+        "piafusion=/root/autodl-tmp/ssgf/outputs/roadscene/piafusion",
+        "spgfusion=/root/autodl-tmp/ssgf/outputs/roadscene/spgfusion"
+      ],
+      "limit": 0,
+      "max_side": 512,
+      "target_hw": "",
+      "fields": ["reported", "reference"]
+    }
+  ]
+}

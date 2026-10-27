@@ -1,0 +1,576 @@
+{
+  "0.25": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8092,
+      "selector_gain": -0.0544,
+      "oracle_ap50": 0.9273,
+      "oracle_gain": 0.0637,
+      "fusion_selected": 253
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.796,
+      "selector_gain": -0.0751,
+      "oracle_ap50": 0.9203,
+      "oracle_gain": 0.0492,
+      "fusion_selected": 253
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.7927,
+      "selector_gain": -0.0689,
+      "oracle_ap50": 0.9275,
+      "oracle_gain": 0.0659,
+      "fusion_selected": 253
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.7606,
+      "selector_gain": -0.0887,
+      "oracle_ap50": 0.915,
+      "oracle_gain": 0.0658,
+      "fusion_selected": 253
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.6946,
+      "selector_gain": -0.114,
+      "oracle_ap50": 0.8746,
+      "oracle_gain": 0.066,
+      "fusion_selected": 253
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.7105,
+      "selector_gain": -0.0959,
+      "oracle_ap50": 0.8714,
+      "oracle_gain": 0.065,
+      "fusion_selected": 253
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.8372,
+      "selector_gain": -0.0278,
+      "oracle_ap50": 0.9289,
+      "oracle_gain": 0.064,
+      "fusion_selected": 253
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8708,
+      "selector_gain": -0.007,
+      "oracle_ap50": 0.948,
+      "oracle_gain": 0.0702,
+      "fusion_selected": 253
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8666,
+      "selector_gain": 0.0021,
+      "oracle_ap50": 0.9398,
+      "oracle_gain": 0.0754,
+      "fusion_selected": 253
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8365,
+      "selector_gain": -0.0037,
+      "oracle_ap50": 0.9281,
+      "oracle_gain": 0.0879,
+      "fusion_selected": 253
+    }
+  },
+  "0.35": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8144,
+      "selector_gain": -0.0492,
+      "oracle_ap50": 0.9273,
+      "oracle_gain": 0.0637,
+      "fusion_selected": 161
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8149,
+      "selector_gain": -0.0562,
+      "oracle_ap50": 0.9203,
+      "oracle_gain": 0.0492,
+      "fusion_selected": 161
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8091,
+      "selector_gain": -0.0526,
+      "oracle_ap50": 0.9275,
+      "oracle_gain": 0.0659,
+      "fusion_selected": 161
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.7858,
+      "selector_gain": -0.0634,
+      "oracle_ap50": 0.915,
+      "oracle_gain": 0.0658,
+      "fusion_selected": 161
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.7239,
+      "selector_gain": -0.0847,
+      "oracle_ap50": 0.8746,
+      "oracle_gain": 0.066,
+      "fusion_selected": 161
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.7427,
+      "selector_gain": -0.0637,
+      "oracle_ap50": 0.8714,
+      "oracle_gain": 0.065,
+      "fusion_selected": 161
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.8234,
+      "selector_gain": -0.0415,
+      "oracle_ap50": 0.9289,
+      "oracle_gain": 0.064,
+      "fusion_selected": 161
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.862,
+      "selector_gain": -0.0157,
+      "oracle_ap50": 0.948,
+      "oracle_gain": 0.0702,
+      "fusion_selected": 161
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.844,
+      "selector_gain": -0.0205,
+      "oracle_ap50": 0.9398,
+      "oracle_gain": 0.0754,
+      "fusion_selected": 161
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8191,
+      "selector_gain": -0.0211,
+      "oracle_ap50": 0.9281,
+      "oracle_gain": 0.0879,
+      "fusion_selected": 161
+    }
+  },
+  "0.45": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.842,
+      "selector_gain": -0.0216,
+      "oracle_ap50": 0.9273,
+      "oracle_gain": 0.0637,
+      "fusion_selected": 74
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8449,
+      "selector_gain": -0.0263,
+      "oracle_ap50": 0.9203,
+      "oracle_gain": 0.0492,
+      "fusion_selected": 74
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8408,
+      "selector_gain": -0.0209,
+      "oracle_ap50": 0.9275,
+      "oracle_gain": 0.0659,
+      "fusion_selected": 74
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.8186,
+      "selector_gain": -0.0306,
+      "oracle_ap50": 0.915,
+      "oracle_gain": 0.0658,
+      "fusion_selected": 74
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.7753,
+      "selector_gain": -0.0333,
+      "oracle_ap50": 0.8746,
+      "oracle_gain": 0.066,
+      "fusion_selected": 74
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.7841,
+      "selector_gain": -0.0223,
+      "oracle_ap50": 0.8714,
+      "oracle_gain": 0.065,
+      "fusion_selected": 74
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.8446,
+      "selector_gain": -0.0204,
+      "oracle_ap50": 0.9289,
+      "oracle_gain": 0.064,
+      "fusion_selected": 74
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8668,
+      "selector_gain": -0.011,
+      "oracle_ap50": 0.948,
+      "oracle_gain": 0.0702,
+      "fusion_selected": 74
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8492,
+      "selector_gain": -0.0152,
+      "oracle_ap50": 0.9398,
+      "oracle_gain": 0.0754,
+      "fusion_selected": 74
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8256,
+      "selector_gain": -0.0147,
+      "oracle_ap50": 0.9281,
+      "oracle_gain": 0.0879,
+      "fusion_selected": 74
+    }
+  },
+  "0.55": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8577,
+      "selector_gain": -0.0059,
+      "oracle_ap50": 0.9273,
+      "oracle_gain": 0.0637,
+      "fusion_selected": 13
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8641,
+      "selector_gain": -0.007,
+      "oracle_ap50": 0.9203,
+      "oracle_gain": 0.0492,
+      "fusion_selected": 13
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8506,
+      "selector_gain": -0.0111,
+      "oracle_ap50": 0.9275,
+      "oracle_gain": 0.0659,
+      "fusion_selected": 13
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.8404,
+      "selector_gain": -0.0089,
+      "oracle_ap50": 0.915,
+      "oracle_gain": 0.0658,
+      "fusion_selected": 13
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.8021,
+      "selector_gain": -0.0065,
+      "oracle_ap50": 0.8746,
+      "oracle_gain": 0.066,
+      "fusion_selected": 13
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.8006,
+      "selector_gain": -0.0058,
+      "oracle_ap50": 0.8714,
+      "oracle_gain": 0.065,
+      "fusion_selected": 13
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.8593,
+      "selector_gain": -0.0057,
+      "oracle_ap50": 0.9289,
+      "oracle_gain": 0.064,
+      "fusion_selected": 13
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.877,
+      "selector_gain": -0.0008,
+      "oracle_ap50": 0.948,
+      "oracle_gain": 0.0702,
+      "fusion_selected": 13
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8609,
+      "selector_gain": -0.0036,
+      "oracle_ap50": 0.9398,
+      "oracle_gain": 0.0754,
+      "fusion_selected": 13
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8372,
+      "selector_gain": -0.0031,
+      "oracle_ap50": 0.9281,
+      "oracle_gain": 0.0879,
+      "fusion_selected": 13
+    }
+  },
+  "0.65": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8637,
+      "selector_gain": 0.0001,
+      "oracle_ap50": 0.9273,
+      "oracle_gain": 0.0637,
+      "fusion_selected": 1
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8719,
+      "selector_gain": 0.0008,
+      "oracle_ap50": 0.9203,
+      "oracle_gain": 0.0492,
+      "fusion_selected": 1
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8617,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.9275,
+      "oracle_gain": 0.0659,
+      "fusion_selected": 1
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.8494,
+      "selector_gain": 0.0002,
+      "oracle_ap50": 0.915,
+      "oracle_gain": 0.0658,
+      "fusion_selected": 1
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.8069,
+      "selector_gain": -0.0016,
+      "oracle_ap50": 0.8746,
+      "oracle_gain": 0.066,
+      "fusion_selected": 1
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.8056,
+      "selector_gain": -0.0008,
+      "oracle_ap50": 0.8714,
+      "oracle_gain": 0.065,
+      "fusion_selected": 1
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.8645,
+      "selector_gain": -0.0005,
+      "oracle_ap50": 0.9289,
+      "oracle_gain": 0.064,
+      "fusion_selected": 1
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8775,
+      "selector_gain": -0.0003,
+      "oracle_ap50": 0.948,
+      "oracle_gain": 0.0702,
+      "fusion_selected": 1
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8646,
+      "selector_gain": 0.0002,
+      "oracle_ap50": 0.9398,
+      "oracle_gain": 0.0754,
+      "fusion_selected": 1
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8406,
+      "selector_gain": 0.0004,
+      "oracle_ap50": 0.9281,
+      "oracle_gain": 0.0879,
+      "fusion_selected": 1
+    }
+  },
+  "0.75": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8636,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.9273,
+      "oracle_gain": 0.0637,
+      "fusion_selected": 0
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8711,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.9203,
+      "oracle_gain": 0.0492,
+      "fusion_selected": 0
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8616,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.9275,
+      "oracle_gain": 0.0659,
+      "fusion_selected": 0
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.8493,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.915,
+      "oracle_gain": 0.0658,
+      "fusion_selected": 0
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.8086,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.8746,
+      "oracle_gain": 0.066,
+      "fusion_selected": 0
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.8064,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.8714,
+      "oracle_gain": 0.065,
+      "fusion_selected": 0
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.865,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.9289,
+      "oracle_gain": 0.064,
+      "fusion_selected": 0
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8778,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.948,
+      "oracle_gain": 0.0702,
+      "fusion_selected": 0
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8644,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.9398,
+      "oracle_gain": 0.0754,
+      "fusion_selected": 0
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8402,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.9281,
+      "oracle_gain": 0.0879,
+      "fusion_selected": 0
+    }
+  },
+  "0.85": {
+    "yolo11n": {
+      "visible_ap50": 0.8636,
+      "selector_ap50": 0.8636,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.9273,
+      "oracle_gain": 0.0637,
+      "fusion_selected": 0
+    },
+    "yolo11n_s1": {
+      "visible_ap50": 0.8711,
+      "selector_ap50": 0.8711,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.9203,
+      "oracle_gain": 0.0492,
+      "fusion_selected": 0
+    },
+    "yolo11n_s2": {
+      "visible_ap50": 0.8616,
+      "selector_ap50": 0.8616,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.9275,
+      "oracle_gain": 0.0659,
+      "fusion_selected": 0
+    },
+    "yolo11n_s3": {
+      "visible_ap50": 0.8493,
+      "selector_ap50": 0.8493,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.915,
+      "oracle_gain": 0.0658,
+      "fusion_selected": 0
+    },
+    "yolo26n": {
+      "visible_ap50": 0.8086,
+      "selector_ap50": 0.8086,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.8746,
+      "oracle_gain": 0.066,
+      "fusion_selected": 0
+    },
+    "rtdetr": {
+      "visible_ap50": 0.8064,
+      "selector_ap50": 0.8064,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.8714,
+      "oracle_gain": 0.065,
+      "fusion_selected": 0
+    },
+    "agnostic": {
+      "visible_ap50": 0.865,
+      "selector_ap50": 0.865,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.9289,
+      "oracle_gain": 0.064,
+      "fusion_selected": 0
+    },
+    "agnostic_s1": {
+      "visible_ap50": 0.8778,
+      "selector_ap50": 0.8778,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.948,
+      "oracle_gain": 0.0702,
+      "fusion_selected": 0
+    },
+    "agnostic_s2": {
+      "visible_ap50": 0.8644,
+      "selector_ap50": 0.8644,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.9398,
+      "oracle_gain": 0.0754,
+      "fusion_selected": 0
+    },
+    "agnostic_s3": {
+      "visible_ap50": 0.8402,
+      "selector_ap50": 0.8402,
+      "selector_gain": 0.0,
+      "oracle_ap50": 0.9281,
+      "oracle_gain": 0.0879,
+      "fusion_selected": 0
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "consensus_intersection_pixel_mean_ifcnn_q095_a020_s05": {
+    "per_model_gain": {
+      "yolo26_m3fd6": -0.0012,
+      "yolo8n_m3fd6": -0.0059
+    },
+    "mean_gain": -0.0036,
+    "positive_models": 0,
+    "image_ci95": [
+      -0.0089,
+      0.0035
+    ],
+    "group_ci95": [
+      -0.01,
+      -0.0002
+    ],
+    "model_ci95": [
+      -0.0059,
+      -0.0012
+    ],
+    "hierarchical_ci95": [
+      -0.0114,
+      0.006
+    ]
+  },
+  "consensus_intersection_mean_ifcnn_q099_a020_s05": {
+    "per_model_gain": {
+      "yolo26_m3fd6": 0.0035,
+      "yolo8n_m3fd6": -0.0016
+    },
+    "mean_gain": 0.001,
+    "positive_models": 1,
+    "image_ci95": [
+      -0.0041,
+      0.0079
+    ],
+    "group_ci95": [
+      -0.003,
+      0.0018
+    ],
+    "model_ci95": [
+      -0.0016,
+      0.0035
+    ],
+    "hierarchical_ci95": [
+      -0.0122,
+      0.0067
+    ]
+  }
+}

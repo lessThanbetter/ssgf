@@ -1,0 +1,87 @@
+{
+  "candidate": "consensus_intersection_mean_ifcnn_q095_a020_s05",
+  "seeds": {
+    "yolo26n": 0.0048,
+    "yolo26_s1": 0.0098,
+    "yolo26_s2": 0.0121
+  },
+  "mean_gain": 0.0089,
+  "image_bootstrap_ci95": [
+    -0.001,
+    0.0185
+  ],
+  "sequence_bootstrap_ci95": [
+    -0.0037,
+    0.0196
+  ],
+  "hierarchical_ci95": [
+    -0.0046,
+    0.022
+  ],
+  "positive_sequences": 5,
+  "sequences": {
+    "190": {
+      "n": 78,
+      "mean_gain": 0.0082,
+      "per_seed": {
+        "yolo26n": -0.0131,
+        "yolo26_s1": 0.0213,
+        "yolo26_s2": 0.0163
+      }
+    },
+    "200": {
+      "n": 31,
+      "mean_gain": 0.039,
+      "per_seed": {
+        "yolo26n": 0.0417,
+        "yolo26_s1": 0.027,
+        "yolo26_s2": 0.0483
+      }
+    },
+    "210": {
+      "n": 32,
+      "mean_gain": -0.0068,
+      "per_seed": {
+        "yolo26n": -0.0153,
+        "yolo26_s1": -0.0042,
+        "yolo26_s2": -0.0008
+      }
+    },
+    "220": {
+      "n": 38,
+      "mean_gain": 0.0155,
+      "per_seed": {
+        "yolo26n": 0.0365,
+        "yolo26_s1": -0.0059,
+        "yolo26_s2": 0.0158
+      }
+    },
+    "230": {
+      "n": 46,
+      "mean_gain": 0.0056,
+      "per_seed": {
+        "yolo26n": 0.0133,
+        "yolo26_s1": -0.001,
+        "yolo26_s2": 0.0044
+      }
+    },
+    "240": {
+      "n": 31,
+      "mean_gain": -0.0449,
+      "per_seed": {
+        "yolo26n": -0.0483,
+        "yolo26_s1": -0.0584,
+        "yolo26_s2": -0.0282
+      }
+    },
+    "260": {
+      "n": 44,
+      "mean_gain": 0.0124,
+      "per_seed": {
+        "yolo26n": 0.0004,
+        "yolo26_s1": 0.0325,
+        "yolo26_s2": 0.0043
+      }
+    }
+  }
+}

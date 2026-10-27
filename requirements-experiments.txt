@@ -1,0 +1,9 @@
+-r requirements-server.txt
+
+# Optional full-reference / SOTA reproduction.
+torchvision
+ultralytics==8.4.189
+open-clip-torch==2.24.0
+einops
+requests
+remotezip

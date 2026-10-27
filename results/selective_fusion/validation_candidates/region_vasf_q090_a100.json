@@ -1,0 +1,16 @@
+{
+  "threshold": 0.9,
+  "visible_quantile": 0.75,
+  "alpha": 1.0,
+  "mode": "detail",
+  "detail_sigma": 5.0,
+  "methods": [
+    "mean",
+    "tophat",
+    "probe",
+    "ifcnn",
+    "piafusion",
+    "spgfusion"
+  ],
+  "stems": 150
+}

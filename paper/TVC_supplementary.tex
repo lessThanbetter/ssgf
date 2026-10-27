@@ -1,0 +1,1652 @@
+%% Supplementary material for The Visual Computer submission
+%% "Fidelity Metrics Do Not Reliably Rank Visible-Infrared Fusion Rules for
+%% Pedestrian Detection".
+%%
+%% Material moved here to keep the main text readable. Displays are numbered
+%% S1, S2, ... and the shared bibliography is the one of the main text, so the
+%% two lists agree. Build from _submission_IPT with pdflatex so that the figures
+%% resolve through \graphicspath below.
+\documentclass[10pt,a4paper]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{mathptmx}
+\usepackage{amsmath,amssymb,graphicx,booktabs,siunitx}
+\usepackage{caption}
+\usepackage{etoolbox}
+\usepackage[numbers]{natbib}
+\usepackage[hidelinks]{hyperref}
+
+\graphicspath{{../}{./}}
+
+\captionsetup{skip=6pt}
+\AtBeginEnvironment{center}{\setlength{\topsep}{3pt}%
+  \setlength{\partopsep}{0pt}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\captionsetup[figure]{name=Fig.}
+\captionsetup[table]{name=Table}
+
+\begin{document}
+
+\title{Supplementary Material for ``Fidelity Metrics Do Not Reliably Rank
+Visible--Infrared Fusion Rules for Pedestrian Detection''}
+\author{Jianyong Zhao, Zigao Wu, and Mengfei Ma}
+\date{}
+\maketitle
+
+This supplement collects the material that supports the main text without being
+needed to follow its argument: the remaining fidelity metrics for one benchmark,
+the temperature sweep and its reading at matched weight deviation, the diagnostics
+behind the classification-saliency comparison, the multi-scene qualitative
+comparison, the definitions of the adaptation variants, a comparison of the
+fidelity index under the reported index and the reference construction, the per-seed
+detection contrasts, and
+the segmentation results for the control family, the fidelity intervals for the
+scrambling controls, the three-way rescoring of the fidelity index, and a protocol
+audit of the detection comparison. Tables and figures are numbered
+S1, S2 and so on, and the reference list is the one of the main text, so the two
+lists agree.
+
+\section{Additional fidelity metrics on RoadScene}
+
+Table~\ref{tab:qtable} reports CC, SCD, VIF and SSIM on RoadScene for the same
+eight methods. The two end-to-end state-of-the-art networks dominate VIF
+(SPGFusion 0.83), while the classical rule and the targetness rules are
+competitive on CC, SCD and SSIM.
+
+\begin{center}\small
+
+\captionof{table}{Quantitative comparison on RoadScene (means over 221 pairs).
+Best in bold; the two end-to-end state-of-the-art networks dominate VIF, while the classical
+baselines are competitive on CC/SCD/SSIM. SSIM is the mean of the two
+single-reference SSIM values, against the visible and against the infrared source,
+using the same convention as the main text.}\label{tab:qtable}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l SSSS@{}}
+\toprule
+Method & {CC} & {SCD} & {VIF} & {SSIM}\\
+\midrule
+mean & \textbf{0.6662} & \textbf{1.3324} & 0.3127 & 0.7042\\
+top-hat & 0.6487 & 1.2975 & 0.4241 & 0.6968\\
+probe & 0.6566 & 1.3131 & 0.4227 & 0.6972\\
+ensemble & 0.6544 & 1.3087 & 0.4234 & 0.6981\\
+IFCNN~\cite{zhang2020} & 0.6452 & 1.2904 & 0.4988 & 0.6919\\
+DenseFuse~\cite{li2019} & 0.6621 & 1.3242 & 0.3828 & \textbf{0.7146}\\
+PIAFusion~\cite{tang2022} & 0.5931 & 1.1861 & 0.6316 & 0.6582\\
+SPGFusion~\cite{zhang2026} & 0.6458 & 1.2915 & \textbf{0.8298} & 0.6455\\
+\bottomrule
+\end{tabular*}
+
+\end{center}
+
+\section{Sharpness control: temperature sweep}
+
+The activity term of the rule also changes how sharply the softmax separates the
+two sources, which is why the raw comparison in the main text mixes content with
+sharpness. Table~\ref{tab:sharp} reports VIF and the mean absolute weight
+deviation $\overline{|w-0.5|}$ as the temperature $\tau$ varies, and the two
+paragraphs below read the rules at matched deviation instead of at matched
+$\tau$.
+
+At matched weight deviation the targetness maps are consistently better than the
+activity-only rule rather than worse. On TNO, at a deviation of $0.037$, the probe
+reaches VIF $0.3476$ and the top-hat prior $0.3381$ against $0.3087$ for the
+activity-only rule, and at a deviation of $0.117$ the top-hat prior reaches
+$0.4252$ against $0.3880$. On MSRS the activity-only rule is almost flat in
+sharpness, moving only from $0.2911$ to $0.3102$ across a deviation range of
+$0.018$ to $0.316$, while the top-hat prior reaches $0.4923$ at a deviation of
+$0.092$; interpolated to the same deviation of $0.0525$ the prior is $+0.132$
+above the activity-only rule. The targetness content therefore does carry
+information, but that only becomes visible once the sharpness of the two
+weightings is matched. Two configurations are close enough in deviation to be
+compared pairwise rather than by interpolation. On TNO the top-hat prior at
+$\tau=0.1$ (deviation $0.1255$) exceeds the activity-only rule at $\tau=0.3$
+(deviation $0.1172$) by $+0.0454$ VIF with a paired interval of
+$[+0.0423,+0.0486]$ over the 74 images, and on MSRS the prior at $\tau=0.1$
+(deviation $0.0917$) exceeds the activity-only rule at $\tau=0.3$ (deviation
+$0.1589$) by $+0.1914$ with $[+0.1832,+0.1998]$ over the 361 images. The MSRS
+pair is not sharpness-matched, its two deviations differing by a factor of $1.7$,
+so that value should be read as an upper bound; the TNO pair differs by
+$7$ percent and is effectively matched.
+
+\begin{table}[!t]\centering\small
+
+\caption{Sharpness control. VIF and the mean absolute weight deviation
+$\overline{|w-0.5|}$ as the softmax temperature $\tau$ varies. Reading the rules at
+matched deviation instead of matched $\tau$ separates the content of the saliency
+map from the sharpness of the weighting.}\label{tab:sharp}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l l SSSS@{}}
+\toprule
+Rule & {$\tau$} & \multicolumn{2}{c}{TNO} & \multicolumn{2}{c}{MSRS}\\
+\cmidrule(lr){3-4}\cmidrule(lr){5-6}
+ & & {$\overline{|w-0.5|}$} & {VIF} & {$\overline{|w-0.5|}$} & {VIF}\\
+\midrule
+activity-only & 3 & 0.0124 & 0.2820 & 0.0177 & 0.2911\\
+ & 1 & 0.0370 & 0.3087 & 0.0525 & 0.2923\\
+ & 0.3 & 0.1172 & 0.3880 & 0.1589 & 0.3009\\
+ & 0.1 & 0.2678 & 0.4835 & 0.3159 & 0.3102\\
+\addlinespace
+top-hat prior & 3 & 0.0049 & 0.2790 & 0.0035 & 0.3022\\
+ & 1 & 0.0146 & 0.2993 & 0.0104 & 0.3244\\
+ & 0.3 & 0.0474 & 0.3561 & 0.0340 & 0.3915\\
+ & 0.1 & 0.1255 & 0.4334 & 0.0917 & 0.4923\\
+\addlinespace
+learned probe & 3 & 0.0026 & 0.2750 & 0.0020 & 0.3033\\
+ & 1 & 0.0079 & 0.2883 & 0.0059 & 0.3282\\
+ & 0.3 & 0.0258 & 0.3298 & 0.0189 & 0.4017\\
+ & 0.1 & 0.0727 & 0.4044 & 0.0488 & 0.4980\\
+\bottomrule
+\end{tabular*}
+
+\end{table}
+
+The sharpness confound applies to the detection comparison as well, so we repeat
+the temperature sweep for the three rules on the 300 LLVIP images and score every
+setting with both task networks. The plain activity rule is fragile to sharpness.
+Its mAP50 under the visible-trained detector falls from $0.8308$ at $\tau=3$ to
+$0.8161$ at $\tau=1$ and to $0.7860$ at $\tau=0.1$ as the mean absolute weight
+deviation grows from $0.022$ to $0.371$, whereas the top-hat prior and the probe
+stay within $0.823$ to $0.831$ across the whole range. At the operating
+temperature of the control experiment, $\tau=0.3$ and a weight deviation of
+$0.196$ for the activity rule, the three rules are indistinguishable ($+0.0023$
+and $-0.0027$, intervals crossing zero). At $\tau=0.1$ the two targetness rules
+are significantly better than the activity rule, by $+0.0365$
+$[+0.0064,+0.0698]$ for the prior and $+0.0440$ $[+0.0145,+0.0751]$ for the
+probe. Under the modality-agnostic detector the targetness rules are at least as
+good as the activity rule at every temperature and better at the two sharpest
+settings, by up to $+0.0818$ $[+0.0569,+0.1082]$.
+
+\section{Diagnostics of the classification-saliency rule}
+
+\begin{sloppypar}
+The classifier that the classification-saliency rule of Xu et
+al.~\cite{xu2021} uses is a modality classifier, and the two diagnostics below
+show why its saliency behaves like mean fusion on our benchmarks. We repeat the
+channel-replacement diagnosis of Fig.~\ref{fig:csfch}, together with the
+interpolation diagnosis of Fig.~\ref{fig:csfgrad}, on in-domain MSRS pairs.
+Figs.~\ref{fig:csfch_a} and~\ref{fig:csfch_b} show the curves on six
+representative pairs: a dip marks a channel whose replacement by the visible
+feature makes the classifier lose confidence that the input is infrared, while a
+channel that stays at the original probability carries redundant information.
+Two properties are worth recording. First, the dips are concentrated in a few
+channels and their position varies with the scene, so the per-channel importance
+is scene-dependent rather than universal: over the whole MSRS test set the median
+variation of the infrared probability is only about $0.02$ and roughly a third of
+the scenes vary by more than $0.1$. Second, on scenes whose visible source is
+nearly dark the classifier is saturated near $P(\mathrm{IR})\!\approx\!1$ and the
+curve is flat, which is exactly the regime in which a modality-cue saliency
+carries little information.
+\end{sloppypar}
+
+\begin{center}
+
+\includegraphics[width=0.72\linewidth]{figures/csf_channel.png}
+\captionof{figure}{Channel-replacement diagnosis of the classification-saliency
+(CSF) classifier on an MSRS test pair. For each channel the infrared feature is
+replaced by the visible feature and the infrared-class probability is re-evaluated;
+dips (here channels 8, 10 and 23) mark channels that carry modality-specific
+infrared information, whereas the flat remainder is modality-agnostic, which is why
+the resulting classifier-saliency rule behaves like mean fusion.}\label{fig:csfch}
+
+\end{center}
+
+\begin{center}
+
+\includegraphics[width=0.98\linewidth]{figures/diag_csf_channel_a.png}
+\captionof{figure}{Channel-replacement importance, laid out as in Fig.~4
+of~\cite{xu2021}, on MSRS
+pairs 00357D, 00621D and 00790N. A dip marks a channel whose replacement by the
+visible feature makes the classifier lose confidence that the input is infrared,
+so the corresponding feature map carries modality-specific information.}\label{fig:csfch_a}
+
+\end{center}
+
+\begin{center}
+
+\includegraphics[width=0.98\linewidth]{figures/diag_csf_channel_b.png}
+\captionof{figure}{The same diagnosis on three further MSRS pairs (00738N, 00504D,
+00462D). The dip pattern is scene-dependent but stays concentrated in a small number
+of channels, and the flat segments are modality-agnostic.}\label{fig:csfch_b}
+
+\end{center}
+
+\begin{center}
+
+\includegraphics[width=0.66\linewidth]{figures/diag_csf_gradient.png}
+\captionof{figure}{Interpolation diagnosis, laid out as in Fig.~6
+of~\cite{xu2021}. The input
+feature map is moved from the infrared features $\varphi_i$ to the visible features
+$\varphi_v$ in $L=30$ steps and the visible-class probability is recorded on three
+MSRS pairs. The probability rises and then saturates near $\varphi_v$, so its
+gradient vanishes in the saturated region and the importance map must be accumulated
+as an integral gradient rather than a single-point gradient.}\label{fig:csfgrad}
+
+\end{center}
+
+\section{Qualitative comparison across scenes}
+
+\begin{center}
+
+\includegraphics[width=\linewidth]{figures/fig_qual_csf.png}
+\captionof{figure}{Qualitative comparison in the style of the classification-saliency
+reference: rows are scenes (TNO, RoadScene, MSRS) and columns are methods (VIS, IR,
+mean, top-hat, probe, SPGFusion, PIAFusion). Fused panels carry per-panel
+CC/SCD/VIF/SSIM values; a red box marks the same target region in every panel, and
+the last column shows the zoomed target region of the probe fusion.}\label{fig:qualms}
+
+\end{center}
+
+\section{Component ablation and inference cost}
+
+Table~\ref{tab:ablation} reports the ablation over the individual components of the
+rule, and Table~\ref{tab:effic} the inference cost of every method, both measured
+under the protocol of the main text.
+
+\begin{center}\small
+
+\captionof{table}{Component ablation. VIF over the three test sets, and downstream
+mAP50 and segmentation mIoU. The detection column is the clean-split visible-only
+YOLO11n detector of the main text, scored with the same estimator, so the four entries
+are the mean, top-hat, probe and ensemble rows of its visible-only block. The
+segmentation column is the modality-agnostic segmenter described in the main text. The
+control family of Section~3.2 of the main text is evaluated separately in
+Table~\ref{tab:segctl}.}\label{tab:ablation}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l SSS SS@{}}
+\toprule
+Variant & {VIF-TNO} & {VIF-MSRS} & {VIF-RS} & {mAP50} & {mIoU}\\
+\midrule
+mean & 0.2684 & 0.2915 & 0.3127 & 0.8273 & 0.1225\\
+top-hat prior & 0.3561 & 0.3915 & 0.4241 & \textbf{0.8306} & 0.1270\\
+learned probe & 0.3298 & 0.4017 & 0.4227 & 0.8258 & \textbf{0.1270}\\
+ensemble & 0.3432 & 0.3956 & 0.4234 & 0.8291 & 0.1269\\
+\bottomrule
+\end{tabular*}
+
+\end{center}
+
+\begin{table}[!t]\centering\small
+
+\caption{Inference efficiency at $512\times384$, FP32, batch size one, on an
+NVIDIA RTX 2080 Ti (lower is better). Latency is averaged over repeated forward passes
+after warm-up, and extra peak memory is allocated GPU memory above the pre-call baseline.
+SPGFusion parameters count the fusion network only; its memory also includes the DINO
+and CLIP feature extractors required at inference. These are the measurements of
+the main-text cost table.}
+\label{tab:effic}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l SSS@{}}
+\toprule
+Method & {Params (M)} & {Time (ms)} & {Extra peak memory (MiB)}\\
+\midrule
+Ours (mean) & 0.06 & 12.4 & 120.3\\
+Ours (top-hat) & 0.06 & 21.2 & 132.1\\
+Ours (probe) & 0.07 & 19.1 & 149.3\\
+Ours (ensemble) & 0.07 & 41.0 & 188.3\\
+IFCNN~\cite{zhang2020} & 0.08 & 7.0 & 242.2\\
+DenseFuse~\cite{li2019} & 0.04 & 6.3 & 182.2\\
+PIAFusion~\cite{tang2022} & 1.18 & 39.2 & 869.1\\
+SPGFusion~\cite{zhang2026} & 75.86 & 538.5 & 1454.8\\
+\bottomrule
+\end{tabular*}
+
+\end{table}
+
+\section{Qualitative fusion examples}
+
+\begin{center}
+
+\includegraphics[width=0.85\linewidth]{figures/fig_qualitative.png}
+\captionof{figure}{Qualitative fusion on a military TNO scene (VIS, IR, Mean, Top-hat,
+Probe).}
+\label{fig:qual}
+
+\end{center}
+
+\begin{center}
+
+\includegraphics[width=0.85\linewidth]{figures/roadscene.png}
+\captionof{figure}{RoadScene qualitative comparison: (a) VIS, (b) IR, (c) top-hat,
+(d) probe. The probe trades a little infrared-target fidelity for better
+visible-detail retention in this domain-shifted scene.}
+\label{fig:road}
+
+\end{center}
+
+\begin{center}
+
+\includegraphics[width=0.92\linewidth]{figures/fig_qual_sota.png}
+\captionof{figure}{Qualitative comparison on a TNO scene. SPGFusion and PIAFusion
+produce a higher-contrast, higher-fidelity output (higher VIF, Table~III of the main
+text), but this pixel-level fidelity does not translate into better downstream
+detection under the visible-trained detector reported in the main text.}
+\label{fig:qualsota}
+
+\end{center}
+
+\begin{center}
+
+\includegraphics[width=0.85\linewidth]{figures/fig_motivation.png}
+\captionof{figure}{Generic saliency (U2-Net) is diffuse and weak, whereas the top-hat
+targetness map is structured and target-oriented on a military TNO scene.}
+\label{fig:motivation}
+
+\end{center}
+
+\section{Adaptation variants}
+
+Table~\ref{tab:adaptvar} defines the variants of Section~5 of the main text. Every
+variant starts from the same reconstruction-trained 24-channel encoder, decoder and
+distilled probe, is fine-tuned for $30$ epochs on the 1500 LLVIP training pairs with
+the aspect ratio of the native images preserved, and keeps a reconstruction term of
+weight $0.1$ in the objective. The pool is the three LLVIP detectors that the main
+text names as the tuning pool, namely the visible-trained YOLO11n, the
+visible-trained YOLO26n and the modality-agnostic detector. The RT-DETR detector on
+LLVIP and all three FLIR detectors are never part of a pool.
+
+\begin{table}[!t]\centering\small
+
+\caption{The adaptation variants. The pool is the LLVIP visible-trained
+YOLO11n, the LLVIP visible-trained YOLO26n and the LLVIP modality-agnostic detector.
+Round robin back-propagates the loss of one pool member per step and cycles
+through the pool, which estimates the gradient of the mean loss; worst case
+evaluates the whole pool at each step and back-propagates only the largest loss.
+The probe-only variants freeze the encoder and decoder, so the image synthesis is
+preserved.}\label{tab:adaptvar}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l l l l@{}}
+\toprule
+Variant & Tuned & Tuning targets & Objective\\
+\midrule
+untuned rule & none & none & reconstruction only\\
+probe, one & probe & YOLO11n & detector loss, one evaluator\\
+probe, pool & probe & full pool & detector loss, round robin over the pool\\
+probe, pool, seeds 1 and 2 & probe & full pool & as probe, pool, training seeds 1 and 2\\
+round robin & all modules & full pool & detector loss, round robin over the pool\\
+worst case & all modules & full pool & detector loss, min-max over the pool\\
+detector-tuned & all modules & YOLO11n & detector loss, one evaluator\\
+end-to-end & all modules & none & SSIM and MSE agreement with both sources\\
+\bottomrule
+\end{tabular}}
+
+\end{table}
+
+\section{The fidelity index and its schedule}
+
+The main text defines the reported fidelity index and states the three respects in
+which it departs from the reference pixel VIF, namely a Gaussian width of
+$2^{s-1}$ at scale $s$ rather than $\text{window}/5$, no decimation between scales,
+and a noise variance of $2.0$ held in the units of the input rather than scaled to
+them. To measure how much of the reported ordering depends on those choices, we
+rescored every fused variant whose outputs we could recover, on the same 30 LLVIP
+test images, three ways: with the released implementation, with the reference width
+schedule alone, and with the reference construction, which also decimates between
+scales and expresses the noise variance in the units of the input.
+Table~\ref{tab:vifsched} reports the result. Our own rules and the two retrained
+baselines are available at the native detector resolution, while the two published
+end-to-end networks survive only at $400\times512$, so every variant in this table is
+scored on the sources and the fused image resized to a common $400\times512$ grid.
+That is why the values differ from the $512\,$px fidelity benchmark of the main text.
+
+\begin{table}[!t]\centering\footnotesize
+
+\caption{The reported index, each of its three departures from the reference
+construction alone, and the reference construction itself, applied to eight fused
+variants on the same 30 LLVIP test images, all resized to a common $400\times512$ grid.
+\emph{width only} changes the Gaussian width schedule, \emph{decimation only} adds
+decimation between scales, and \emph{noise only} expresses the noise variance in the
+units of the input, each against the reported configuration. The first, second and last
+columns agree with the same three configurations scored by the released
+two-dimensional implementation to within $0.001$.
+\emph{decimation only} keeps the ranking; \emph{noise only} reverses it at both ends and
+collapses the spread.}\label{tab:vifsched}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l SSSSS@{}} 
+\toprule
+Method & {reported} & {width only} & {decimation only} & {noise only} & {reference}\\
+\midrule
+SPGFusion~\cite{zhang2026} & \textbf{0.8043} & \textbf{0.8043} & \textbf{0.8066} & 0.3665 & 0.2410\\
+PIAFusion~\cite{tang2022} & 0.6606 & 0.6619 & 0.6555 & \textbf{0.4617} & \textbf{0.3222}\\
+IFCNN~\cite{zhang2020} & 0.4850 & 0.4863 & 0.4833 & 0.3941 & 0.3020\\
+learned probe & 0.4247 & 0.4103 & 0.4300 & 0.3994 & 0.2969\\
+ensemble & 0.4139 & 0.4010 & 0.4180 & 0.4012 & 0.2994\\
+top-hat prior & 0.4040 & 0.3924 & 0.4070 & 0.4004 & 0.2992\\
+DenseFuse~\cite{li2019} & 0.3700 & 0.3665 & 0.3681 & 0.4026 & 0.3121\\
+mean & 0.3410 & 0.3415 & 0.3368 & 0.3998 & 0.3005\\
+\bottomrule
+\end{tabular*}
+
+\end{table}
+
+Three things follow. The width schedule alone is inconsequential: it leaves the
+ordering unchanged and moves the values by at most $0.021$. So does the decimation
+between scales, which also leaves the ordering unchanged and moves the values by at
+most $0.007$: the reported index and the two constructions that change only its width
+schedule or only its decimation all rank SPGFusion first and PIAFusion second. The
+third departure is the one that carries the reversal. Changing only the noise
+variance, with the widths and the absence of decimation of the reported index, moves
+SPGFusion from first to last ($0.8043$ to $0.3665$), moves PIAFusion from second to
+first ($0.6606$ to $0.4617$), and collapses the spread across the eight variants from
+$0.463$ to $0.095$, which is what the reference construction does as well ($0.081$).
+The calibration is therefore responsible for the reversal, and the reference column's
+remaining difference from the calibration-only column is a further shift in the
+absolute values, not a further change in the ordering. This decomposes the departure
+that a three-column rescore leaves open, and it also shows that the reordering is not
+a statement about which family of rules wins, because neither construction places our
+own rules at the top.
+
+The consequence is stated in the main text. The counterexample holds for the index
+the article reports, which is the index under which SPGFusion is the highest-scoring
+fused input, and it does not hold for the reference pixel VIF, under which SPGFusion
+is the lowest-scoring fused input and therefore agrees with the detection result
+rather than contradicting it. The reason is the calibration of the noise variance. The
+reported index holds it at the value defined for 8-bit input while the images range
+over $[0,1]$, so the noise term is far larger relative to the local variance than in
+the reference construction, which leaves the index nearly independent of the assumed
+noise level; and the calibration-only column shows that this is the departure that
+reverses the ranking, not the width schedule and not the decimation. The absence of
+decimation is a construction choice and the calibration is one we did not revisit
+before the runs, so the practical reading is narrower than the counterexample alone
+suggests: a ranking produced by this index does not transfer to a construction that
+calibrates the noise to the input range, and the construction has to be declared with
+the numbers. The rescoring script is in the release, under
+\texttt{analysis/vif\_reference\_rescore.py}, and the decomposition here is reproduced
+by the same script with a single departure changed at a time.
+
+\section{Full reference VIF on every benchmark}
+
+The main-text complete fidelity table now reports both constructions for all fourteen LLVIP
+inputs over all 300 test images. Table~\ref{tab:refbench} repeats the comparison for the
+eight methods in the three fidelity benchmarks. All three images of each source-family
+record are placed on the visible-source grid, capped at 512 px, so that the only
+changed variable between columns is the index construction.
+
+The endpoint reversal is identical on all three datasets: SPGFusion is first under the
+reported index and last under the reference construction. PIAFusion is the reference
+leader on TNO and MSRS; IFCNN leads on RoadScene. This rules out the possibility that
+the LLVIP reversal was caused by the particular retained subset or by the
+$400\times512$ scoring grid used in the earlier schedule analysis.
+
+\begin{center}\small
+
+\begin{minipage}{\linewidth}
+\captionof{table}{Reported and reference VIF on the complete fidelity benchmarks.
+The values are means over all pairs; both columns use identical fused outputs and pixels.}
+\label{tab:refbench}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l l SS@{}}
+\toprule
+Dataset & Method & {reported} & {reference}\\
+\midrule
+TNO (74) & mean & 0.2683 & 0.2226\\
+ & top-hat & 0.3560 & 0.2307\\
+ & probe & 0.3297 & 0.2309\\
+ & ensemble & 0.3431 & 0.2327\\
+ & IFCNN & 0.4440 & 0.2896\\
+ & DenseFuse & 0.3697 & 0.2729\\
+ & PIAFusion & 0.5485 & \textbf{0.3256}\\
+ & SPGFusion & \textbf{0.7855} & 0.1607\\
+\addlinespace
+MSRS (361) & mean & 0.2914 & 0.2558\\
+ & top-hat & 0.3914 & 0.2573\\
+ & probe & 0.4015 & 0.2562\\
+ & ensemble & 0.3955 & 0.2583\\
+ & IFCNN & 0.3757 & 0.2517\\
+ & DenseFuse & 0.3004 & 0.2722\\
+ & PIAFusion & 0.7507 & \textbf{0.4468}\\
+ & SPGFusion & \textbf{0.8314} & 0.2308\\
+\addlinespace
+RoadScene (221) & mean & 0.3126 & 0.2661\\
+ & top-hat & 0.4240 & 0.2617\\
+ & probe & 0.4229 & 0.2602\\
+ & ensemble & 0.4234 & 0.2637\\
+ & IFCNN & 0.4988 & \textbf{0.3082}\\
+ & DenseFuse & 0.3828 & 0.3052\\
+ & PIAFusion & 0.6315 & 0.2855\\
+ & SPGFusion & \textbf{0.8293} & 0.2166\\
+\bottomrule
+\end{tabular*}
+
+\end{minipage}
+\end{center}
+
+\section{Registration sensitivity on LLVIP}
+
+The public LLVIP release contains 3,463 test pairs. We retrieved the source JPEGs for
+the same 300 stems used in the detection analysis and estimated a translational
+residual with OpenCV ECC on normalized Sobel-edge maps, resized to a 320 px longest
+side. The median residual is 2.53 px and the 90th percentile is 4.59 px. We define the
+best and worst quartiles by this residual among estimates with ECC at least 0.10; all
+300 pairs produced an estimate. The selection never uses labels, fusion scores or
+detector results.
+
+Table~\ref{tab:align} gives mAP50 contrasts against the colour-scored visible source.
+For the clean-split rows, brackets are observed minima and maxima over four independent
+detector runs; the pooled rows use image-level 95 percent paired bootstrap intervals.
+
+\begin{center}\scriptsize
+
+\captionof{table}{Detection sensitivity to source alignment on LLVIP (75 images in each
+quartile). Entries are mAP50 differences from the colour-scored visible source.}
+\label{tab:align}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l cccc@{}}
+\toprule
+Evaluator and subset & mean & probe & PIAFusion & SPGFusion\\
+\midrule
+pooled visible, best & $+.056[-.012,+.111]$ & $+.051[-.018,+.109]$
+  & $+.030[-.047,+.098]$ & $-.004[-.086,+.072]$\\
+pooled visible, worst & $-.114[-.152,-.075]$ & $-.109[-.143,-.071]$
+  & $-.168[-.224,-.109]$ & $-.203[-.263,-.136]$\\
+clean visible, best & $+.024[+.011,+.030]$ & $+.032[+.023,+.045]$
+  & $+.029[+.002,+.039]$ & $-.021[-.040,+.005]$\\
+clean visible, worst & $-.048[-.088,-.027]$ & $-.043[-.052,-.017]$
+  & $-.142[-.156,-.108]$ & $-.165[-.190,-.138]$\\
+clean agnostic, best & $+.077[+.063,+.102]$ & $+.083[+.066,+.104]$
+  & $+.081[+.052,+.117]$ & $+.039[+.007,+.072]$\\
+clean agnostic, worst & $+.002[-.044,+.030]$ & $+.013[-.032,+.045]$
+  & $+.043[-.012,+.072]$ & $-.004[-.055,+.022]$\\
+\bottomrule
+\end{tabular}
+}
+
+\end{center}
+
+Alignment is therefore a strong conditioning variable rather than a nuisance that can be
+assumed away. In the best-aligned clean-split quartile, mean fusion, the top-hat prior
+and the probe are above the visible source in every run; in the worst-aligned quartile,
+the deficits are largest and resolved. The groups also differ in content: median visible
+RMS contrast is 0.085 in the best quartile and 0.110 in the worst, and the corresponding
+median annotated box areas are 31,558 and 21,646 pixels. The ECC residual is a
+descriptive source-pair estimate, not ground-truth registration metadata, so it cannot
+isolate registration from these correlated scene properties. What it does establish is
+that the pooled negative result should not be presented as universal across alignment
+strata.
+
+\section{Per-seed detection contrasts}
+
+Table~\ref{tab:seeds} prints the individual seed values behind
+the main-text seed table. The first four columns are the four independently trained
+YOLO11n detectors of the LLVIP benchmark and the next four the four independently
+trained YOLO26n detectors, in both cases with seed 0 as the run used for the main
+tables and seeds 1 to 3 as the replications.
+
+\begin{table}[!t]\centering\small
+
+\caption{The per-seed contrasts behind the main-text seed table, in mAP50
+on the 300 LLVIP test images. Columns 1 to 4 are YOLO11n seeds 0 to 3, columns 5 to
+8 are YOLO26n seeds 0 to 3, and the last column is the mean over the four seeds. The
+last column is the mean over the four YOLO11n seeds. The ranges quoted in the main text
+are the minimum and the maximum of the four per-seed values in that row. The same runs
+at the stricter mAP50-95 criterion are summarised in the paragraph below the
+table.}\label{tab:seeds}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l cccc cccc S@{}} 
+\toprule
+Contrast & \multicolumn{4}{c}{YOLO11n} & \multicolumn{4}{c}{YOLO26n} & {mean}\\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+ & {s0} & {s1} & {s2} & {s3} & {s0} & {s1} & {s2} & {s3} & {}\\
+\midrule
+SPGFusion $-$ VIS & -0.0908 & -0.0661 & -0.1360 & -0.1520 & -0.0842 & -0.0616 & -0.0353 & -0.0283 & -0.1112\\
+mean $-$ VIS & -0.0016 & -0.0142 & -0.0568 & -0.0359 & -0.0245 & -0.0351 & -0.0550 & -0.0381 & -0.0271\\
+probe $-$ VIS & -0.0031 & -0.0128 & -0.0431 & -0.0308 & -0.0081 & -0.0209 & -0.0280 & -0.0119 & -0.0224\\
+activity-only $-$ VIS & -0.0011 & +0.0004 & -0.0059 & -0.0156 & +0.0100 & +0.0003 & -0.0071 & -0.0292 & -0.0056\\
+top-hat $-$ VIS & +0.0017 & -0.0164 & -0.0321 & -0.0370 & -0.0040 & -0.0195 & -0.0214 & -0.0188 & -0.0209\\
+probe $-$ mean & -0.0016 & +0.0013 & +0.0137 & +0.0052 & +0.0164 & +0.0142 & +0.0271 & +0.0262 & +0.0047\\
+top-hat $-$ mean & +0.0033 & -0.0022 & +0.0247 & -0.0011 & +0.0206 & +0.0156 & +0.0337 & +0.0193 & +0.0062\\
+probe $-$ activity-only & -0.0020 & -0.0132 & -0.0372 & -0.0151 & -0.0182 & -0.0213 & -0.0209 & +0.0173 & -0.0169\\
+\bottomrule
+\end{tabular}}
+
+\end{table}
+
+Four rows of this table carry the reading of the main text. Mean fusion and the
+probe are below the unfused visible source at all eight seed and architecture
+combinations, while the activity rule exceeds it at one YOLO11n seed and two
+YOLO26n seeds and the top-hat prior exceeds it at one YOLO11n seed. Probe minus mean fusion
+has a disjoint pair of four-seed ranges across the two architectures, $[-0.0016,
++0.0137]$ against $[+0.0142,+0.0271]$, which is a margin of $0.0005$ before
+rounding, and top-hat minus mean fusion overlaps on $[+0.0156,+0.0247]$. The
+SPGFusion contrast against the unfused source is negative at every one of the eight
+seed and architecture combinations, and the mean fusion and probe contrasts against
+the source are negative at every one as well.
+
+The same runs at the stricter mAP50-95 criterion are not as stable, which is why the
+main text states that criterion for the reported seed. Over the four YOLO11n seeds the
+contrast against the unfused visible source runs from $-0.046$ to $-0.080$ for
+SPGFusion, $-0.010$ to $+0.030$ for mean fusion, $-0.003$ to $+0.032$ for the probe,
+$+0.008$ to $+0.018$ for the activity control, $-0.002$ to $+0.035$ for the top-hat
+prior and $-0.062$ to $+0.007$ for PIAFusion, so the sign of the gain flips at one
+seed for mean fusion, the prior and the probe and at two seeds for PIAFusion. Over the
+three replicated YOLO26n seeds the activity control, the top-hat prior, the probe and
+DenseFuse are ahead of the source at every seed, while the infrared source is behind it
+at every seed. No paired interval is computed at this criterion, because the recorded
+per-image statistics behind the mAP50 intervals were not retained at both thresholds.
+
+\section{Segmentation results for the control family}
+
+Table~\ref{tab:segctl} reports the control family of Section~3.2 of the main text
+under the segmentation evaluator, together with the paired intervals that
+Section~4.3 of the main text quotes.
+
+\begin{table}[!t]\centering\small
+
+\caption{Segmentation mIoU on the 361 MSRS-test images for the control
+family of Section~3.2 of the main text, with the modality-agnostic segmenter. The
+paired intervals resample the 361 images.}\label{tab:segctl}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l l l@{}} 
+\toprule
+Variant & {mIoU} & {against mean}\\
+\midrule
+mean & 0.1225 & \\
+activity-only, $S\equiv1$ & 0.1226 & $+0.0002$ $[-0.0353,+0.0358]$\\
+top-hat prior & \textbf{0.1270} & $+0.0045$ $[-0.0089,+0.0365]$\\
+learned probe & \textbf{0.1270} & $+0.0045$ $[-0.0089,+0.0424]$\\
+top-hat, permuted & 0.1228 & \\
+probe, permuted & 0.1230 & \\
+top-hat, weight-shuffled & 0.1223 & \\
+probe, weight-shuffled & 0.1225 & \\
+\bottomrule
+\end{tabular*}
+
+\end{table}
+
+The two contrasted pairs of the main text are at the top of this table: probe minus
+mean is $+0.0045$ with $[-0.0089,+0.0424]$ and top-hat minus activity-only is
+$+0.0043$ with $[-0.0182,+0.0480]$, and every interval in the family crosses zero.
+
+\section{Fidelity intervals for the scrambling controls}
+
+Table~\ref{tab:scr} prints the paired intervals behind the statement in
+Section~3.2 of the main text that destroying the spatial alignment moves the
+reported index back towards mean fusion on every benchmark. Each cell is the mean of
+the paired bootstrap distribution of the stated difference and its interval, over
+the 74 TNO, 361 MSRS-test and 221 RoadScene images.
+
+\begin{center}\small
+
+\captionof{table}{VIF differences for the scrambling controls, with paired intervals.
+Every interval excludes zero, and every value is a difference against the rule
+itself, so a positive value means that destroying the alignment costs fidelity.
+Benjamini--Hochberg adjusted $q$ values for these comparisons are all below $0.001$
+in the recorded analysis.}\label{tab:scr}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l ccc@{}} 
+\toprule
+Contrast & {TNO} & {MSRS-test} & {RoadScene}\\
+\midrule
+top-hat $-$ top-hat, permuted & $+0.054$ $[+0.050,+0.058]$ & $+0.098$ $[+0.095,+0.102]$ & $+0.083$ $[+0.080,+0.087]$\\
+top-hat $-$ top-hat, weight-shuffled & $+0.083$ $[+0.078,+0.089]$ & $+0.100$ $[+0.097,+0.104]$ & $+0.110$ $[+0.106,+0.114]$\\
+probe $-$ probe, permuted & $+0.030$ $[+0.026,+0.034]$ & $+0.107$ $[+0.103,+0.110]$ & $+0.083$ $[+0.080,+0.086]$\\
+probe $-$ probe, weight-shuffled & $+0.060$ $[+0.057,+0.064]$ & $+0.108$ $[+0.105,+0.112]$ & $+0.109$ $[+0.105,+0.112]$\\
+\bottomrule
+\end{tabular}}
+
+\end{center}
+
+\section{Protocol audit of the detection comparison}
+
+Every detection number in the main text is produced by converting each input to a
+single channel and stacking it to three, because the fused images are grayscale and
+the comparison would otherwise mix conventions. The detectors, however, are trained
+on the colour visible JPEGs of the LLVIP subset, so the unfused visible source, which
+is the baseline of every comparison in that section, is the one input that could have
+been scored in the convention it was trained on. We therefore re-scored the same 300
+test images, with the same labels and the same checkpoint, through the library
+validator at $640$\,px and a confidence threshold of $0.001$, once in colour and once
+in grayscale. Table~\ref{tab:audit} reports the result.
+
+\begin{center}\small
+
+\captionof{table}{The same 300 LLVIP test images, the same checkpoints, and the same
+evaluation settings, once with the unfused visible source in the colour convention
+the detectors were trained on and once with every input in the grayscale convention
+the main tables use. mAP50. Every row is at the native test resolution; the two
+published end-to-end networks were re-fused at that resolution rather than upscaled
+from $400\times512$.}\label{tab:audit}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l cc@{}} 
+\toprule
+Input & {visible-trained} & {modality-agnostic}\\
+\midrule
+visible source, colour & \textbf{0.8837} & 0.8734\\
+visible source, grayscale & 0.8166 & 0.7750\\
+infrared source & 0.6968 & \textbf{0.9478}\\
+mean fusion & 0.8335 & 0.8879\\
+top-hat prior & 0.8332 & 0.8954\\
+learned probe & 0.8374 & 0.8950\\
+ensemble & 0.8354 & 0.8967\\
+IFCNN & 0.7918 & 0.8949\\
+DenseFuse & 0.8252 & 0.8823\\
+PIAFusion & 0.7627 & 0.9036\\
+SPGFusion & 0.7159 & 0.8562\\
+\bottomrule
+\end{tabular*}
+
+\end{center}
+
+Three consequences follow for the main text. The channel convention alone is worth
+$0.067$ mAP50 under the visible-trained detector and $0.098$ under the
+modality-agnostic one, and every fused image is grayscale by construction, so the
+grayscale visible source is the only row that could have been scored as the detector
+was trained. Second, with the colour baseline the statement that no fused input
+reaches the unfused visible source becomes stronger: every fused input is below the
+colour visible source, PIAFusion and SPGFusion by $0.121$ and $0.168$, and the
+largest deficit is now theirs rather than the probe's. Third, the modality reversal
+keeps its sign but loses most of its size. Under the modality-agnostic detector every
+fused input except SPGFusion is above the colour visible source, by $0.009$ to
+$0.030$ rather than by $0.11$ to $0.13$, while SPGFusion stays below it by $0.017$.
+The infrared source is still the best input, by $0.044$ over the best fused input,
+and its margin over the visible source falls from $0.173$ under the grayscale
+convention to $0.074$ under the colour one.
+
+Two further protocol facts belong here. The positive training configuration of the
+LLVIP detectors takes its validation split from the
+same 300 test images that are scored in the tables, so best-checkpoint selection
+optimised for the visible input on exactly those scenes and the absolute mAP50 values
+are optimistic. The clean protocol in the final section removes this dependence by
+carving 150 validation images out of the 1,500 training pairs; the tables in this
+section remain as a pooled sensitivity analysis. The probe input under the
+modality-agnostic detector is recorded
+as $0.8939$ in one result file and $0.8957$ in another, for the same fused-image
+directory and the same checkpoint path. That path no longer exists on the machine
+that produced the runs, so we cannot attribute the $0.0018$ difference with certainty
+to scoring noise rather than to a rebuilt checkpoint, and we treat contrasts of that
+size as unresolved rather than as results.
+
+The table also shows what the choice of metric implementation is worth. It is
+produced with the detector library's own validator, and the main text's detection
+tables are produced with our own matcher and pooled metric. Our route assigns
+predictions to ground truth at each IoU threshold by a maximum-cardinality one-to-one
+assignment over the valid pairs (the Hungarian assignment on the complement of the
+valid-pair mask), pools the per-image true-positive flags over the 300 images and then
+computes the average precision with the library's own function, whereas the validator
+matches greedily in confidence order and reads each image through its own loader. Held
+to one inference path the two agree to about $0.0001$ on published inputs, so the
+differences below belong to the two full pipelines rather than to the matching rule
+alone. On the same inputs and
+checkpoints the two routes differ by up to $0.015$ mAP50 per row on the sources and
+the fused rules of the main tables, and by up to $0.035$ on the two published
+end-to-end networks, whose lower detection counts make the two AP rules diverge
+further, at $0.0307$ on PIAFusion and $0.0222$ on SPGFusion, which are the rows that
+carry the largest deficit the article quotes. On the visible source itself the two
+routes differ by $0.0189$ under the modality-agnostic detector and by $0.0123$ under
+the visible-trained one. The smallest of these numbers is therefore not a bound on
+the others, and we set the descriptive floor of each comparison family from the
+disagreement of its own rows: $0.015$ for the fused rules of the main tables where
+both routes carry them, $0.019$ for a contrast against the visible source, and
+$0.035$ for a contrast involving either published end-to-end network. Every one of
+these bounds is larger than the probe-against-mean contrast the main text reports
+($-0.0015$ under our route, $+0.0039$ under the library route, a change of sign) and
+larger than several other contrasts that the main text treats as resolved. Contrasts
+below the bound of their own family are read as unresolved in this article, and the
+claims that depend on them are marked as descriptive in the main text.
+
+\paragraph{Initial clean-split validator audit.}
+To remove the test-set selection of Table~S10 we retrained both
+detectors from the same base weights and the same recipe (YOLO11n, $640$\,px, batch
+$16$, seed $0$, $40$ epochs), holding out $150$ of the $1500$ training pairs for
+validation and leaving the $300$ test images untouched. The first detector sees the
+visible modality only, the second sees both modalities of the same $1350$ training
+pairs. Table~\ref{tab:auditsplit} reports this initial eight-input library-validator
+audit under the same colour convention. The final supplementary section extends the
+independent-test protocol to all three visible-trained architectures and every fused
+input under the matched estimator of the main tables.
+
+\begin{center}\small
+
+\captionof{table}{Initial clean-split validator audit, with two detectors retrained on $1350$
+training and $150$ validation pairs and the $300$ test images held out, the same
+recipe for both, differing only in modality exposure. mAP50, library validator.
+Every row is at the native test resolution; the two published end-to-end networks
+were re-fused at that resolution rather than upscaled from $400\times512$. The colour
+visible source is the best input under the visible-only detector and the infrared
+source is the best under the modality-agnostic one; six of the eight fused inputs
+fall below the colour visible source under the modality-agnostic detector, and all
+eight do under the visible-only one.}\label{tab:auditsplit}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l cc@{}} 
+\toprule
+Input & {visible-only, clean split} & {modality-agnostic, clean split}\\
+\midrule
+visible source, colour & \textbf{0.8620} & 0.8442\\
+visible source, grayscale & 0.8294 & 0.7040\\
+infrared source & 0.7218 & \textbf{0.9072}\\
+mean fusion & 0.8366 & 0.8220\\
+top-hat prior & 0.8403 & 0.8352\\
+learned probe & 0.8406 & 0.8411\\
+ensemble & 0.8418 & 0.8415\\
+IFCNN & 0.8312 & 0.8538\\
+DenseFuse & 0.8460 & 0.8238\\
+PIAFusion & 0.7905 & 0.8734\\
+SPGFusion & 0.7333 & 0.8002\\
+\bottomrule
+\end{tabular*}
+
+\end{center}
+
+Three readings. Under the visible-only detector every fused input is below the
+unfused visible source, by $0.016$ to $0.129$, and the published end-to-end networks
+are again the weakest. Under the modality-agnostic detector the fused inputs move up
+relative to the visible source, but only IFCNN and PIAFusion now exceed it, by
+$0.010$ to $0.029$, while mean fusion, the top-hat prior, the probe, the ensemble,
+DenseFuse and SPGFusion remain below it by $0.003$ to $0.044$. So the reversal the
+main text reports is a comparison between two detector families rather than a
+property of the fused inputs: it survives in sign for half of the published methods and
+disappears for our own rules, and its size is nearer $0.03$ than the $0.09$ to $0.14$
+the grayscale comparison reports. The infrared source remains the best input for the
+modality-agnostic detector by $0.034$ over the best fused input.
+
+Two scope statements belong with this table. The corrections of this section are for
+the first benchmark only. The second benchmark's visible source is also a grayscale
+conversion of a colour input, its detectors were trained with a different budget, and
+their weights are no longer available on the machine that produced the runs, so the
+two-benchmark phrasing of the first headline is corrected on one benchmark and
+reported as measured on the other. And the comparison is pooled over the whole test
+set: fusion is proposed for the setting in which the visible modality fails, and this
+section does not condition on night, low contrast or occlusion, so the negative is an
+average over the benchmark and not a statement about those regimes.
+
+The colour-corrected protocol carries paired intervals for every input of the study, and
+Section~13 reports them on the route of the main tables, the matcher and pooled metric
+compared above, together with the counts: under the three visible-trained architectures
+all fourteen fused inputs are below the colour-scored visible source and forty-one of
+the forty-two contrasts carry an interval that excludes zero (all forty-two once
+Section~17 repeats the RT-DETR-l family over three runs), and under the
+modality-agnostic detector of the main tables ten of the fourteen exceed the source by
+$0.023$ to $0.040$. At the reported seed of the clean-split detector none clears its
+interval; over four clean-split runs four clear it by $0.022$ to $0.029$. The rows on
+which the two routes differ most are the published
+end-to-end networks: on the library validator they read $0.7627$ and $0.7159$ against
+its own colour visible source of $0.8837$, which is where the $0.121$ and $0.168$ of
+Table~\ref{tab:audit} come from, and the $0.035$ between the two routes on those two
+rows is the largest in this audit. On the clean split the probe row is the one that
+changes sign between the routes, $0.8411$ against a colour source of $0.8442$ on the
+library route and a resolved $+0.004$ $[-0.023,+0.029]$ on ours, and we state that
+difference rather than resolve it. The interval support the lead claim needs is
+therefore reported for the colour-corrected protocol on one route, with the route
+difference stated rather than absorbed.
+
+\section{Paired contrasts under every detector of the study}
+
+Section~12 reports the corrected protocol on the estimators it was first rescored with.
+This section reports the same contrasts on the estimator of the main tables, for every
+input and every detector, so that each table value and the interval beside it come from
+one route: per image the predictions are matched to the ground truth by the one-to-one
+assignment of \texttt{analysis/j1\_eval2.py}, the true-positive flags are pooled over
+the resampled images, and the average precision is the detector library's own function.
+Every interval resamples the 300 images 1000 times and applies the same draw to both
+arms. Table~\ref{tab:allvis} gives the three visible-trained architectures of the study
+and Table~\ref{tab:allagn} the two modality-agnostic ones. A star marks an interval that
+excludes zero, and a contrast against the visible source is negative when the fused
+input scores below it.
+
+Three readings follow. First, the negative result holds under every visible-trained
+architecture. All fourteen fused inputs are below the colour-scored visible source, and
+forty-one of the forty-two contrasts carry an interval that excludes zero, the
+exception being the activity-only control under RT-DETR-l at $-0.013$
+$[-0.030,+0.004]$; Section~17 repeats that architecture over three training runs, where
+the control sits below the source in every run and is resolved by their mean. The
+resolved deficits run from $0.014$ to $0.152$ mAP50, and the
+largest are SPGFusion and IFCNN, which the reported index also ranks first and third of
+the fused inputs. The independent-test comparison strengthens this sign: all 42
+input-evaluator contrasts are negative. The four-run YOLO11n means span $0.046$ to
+$0.136$; the YOLO26n and RT-DETR-l single-run ranges are $0.079$ to $0.223$ and
+$0.070$ to $0.246$, with all 14 contrasts surviving their separate BH corrections.
+Second, the
+modality reversal is resolved under the modality-agnostic detector of the main tables,
+where ten of the fourteen fused inputs exceed the colour-scored source by $0.023$ to
+$0.040$. The clean split leaves four gains, by $0.022$ to $0.029$ in every run, while
+the activity-only control loses in every run. Third, the two published end-to-end networks
+are among the weakest fused inputs under both YOLO families and the strongest under the
+modality-agnostic detector, so the re-ranking the main text reports is a property of
+the evaluator within one estimator as well as across the two estimators compared in
+Section~12.
+
+\begin{table}[!t]\centering\small
+
+\caption{Pooled sensitivity audit of every input against the colour-scored visible
+source under the three visible-trained architectures, on the estimator of the main
+tables. The validation split of these runs overlaps the scored images. Cell: paired
+difference at mAP50 and its 95 percent interval over 300 images; a star marks an
+interval that excludes zero. YOLO11n and YOLO26n are trained on the 1500 visible
+training pairs, RT-DETR-l on the same images with a different budget, and all three
+build in the negative result. Every column is one training run; Section~17 repeats the
+RT-DETR-l column over two further runs. The independent-test replacement is in the
+final section.}\label{tab:allvis}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l ccc@{}}
+\toprule
+Input & {YOLO11n} & {YOLO26n} & {RT-DETR-l}\\
+\midrule
+mean fusion              & $-0.054$ $[-0.077,-0.028]$* & $-0.076$ $[-0.104,-0.046]$* & $-0.043$ $[-0.066,-0.018]$*\\
+activity-only            & $-0.053$ $[-0.068,-0.037]$* & $-0.041$ $[-0.063,-0.019]$* & $-0.013$ $[-0.030,+0.004]$\\
+top-hat prior            & $-0.050$ $[-0.074,-0.026]$* & $-0.056$ $[-0.083,-0.029]$* & $-0.032$ $[-0.057,-0.008]$*\\
+learned probe            & $-0.055$ $[-0.079,-0.030]$* & $-0.059$ $[-0.086,-0.031]$* & $-0.038$ $[-0.063,-0.015]$*\\
+top-hat, permuted        & $-0.048$ $[-0.071,-0.024]$* & $-0.065$ $[-0.092,-0.036]$* & $-0.033$ $[-0.055,-0.009]$*\\
+probe, permuted          & $-0.049$ $[-0.072,-0.024]$* & $-0.070$ $[-0.098,-0.041]$* & $-0.029$ $[-0.051,-0.006]$*\\
+top-hat, weight-shuffled & $-0.058$ $[-0.083,-0.032]$* & $-0.071$ $[-0.099,-0.041]$* & $-0.036$ $[-0.059,-0.012]$*\\
+probe, weight-shuffled   & $-0.055$ $[-0.079,-0.030]$* & $-0.078$ $[-0.106,-0.048]$* & $-0.039$ $[-0.062,-0.014]$*\\
+ensemble                 & $-0.051$ $[-0.075,-0.025]$* & $-0.061$ $[-0.089,-0.033]$* & $-0.031$ $[-0.055,-0.005]$*\\
+IFCNN                    & $-0.099$ $[-0.124,-0.075]$* & $-0.089$ $[-0.119,-0.060]$* & $-0.044$ $[-0.068,-0.022]$*\\
+DenseFuse                & $-0.059$ $[-0.083,-0.034]$* & $-0.042$ $[-0.072,-0.011]$* & $-0.031$ $[-0.051,-0.009]$*\\
+classification saliency  & $-0.057$ $[-0.081,-0.031]$* & $-0.080$ $[-0.108,-0.050]$* & $-0.045$ $[-0.068,-0.020]$*\\
+PIAFusion                & $-0.088$ $[-0.119,-0.058]$* & $-0.057$ $[-0.088,-0.028]$* & $-0.054$ $[-0.081,-0.027]$*\\
+SPGFusion                & $-0.152$ $[-0.187,-0.117]$* & $-0.143$ $[-0.177,-0.109]$* & $-0.096$ $[-0.124,-0.066]$*\\
+visible source, grayscale & $-0.051$ $[-0.065,-0.037]$* & $-0.052$ $[-0.068,-0.036]$* & $-0.036$ $[-0.048,-0.024]$*\\
+infrared source          & $-0.174$ $[-0.204,-0.144]$* & $-0.207$ $[-0.242,-0.172]$* & $-0.102$ $[-0.134,-0.073]$*\\
+\bottomrule
+\end{tabular}}
+
+\end{table}
+
+\begin{table}[!t]\centering\small
+
+\caption{The same contrasts under the two modality-agnostic detectors, the pooled one
+of the main tables and the one retrained with the test images held out of validation.
+Cell and star as in Table~\ref{tab:allvis}. The reversal the main text reports is
+resolved in the first column and not in the second.}\label{tab:allagn}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l cc@{}}
+\toprule
+Input & {modality-agnostic} & {modality-agnostic, clean split}\\
+\midrule
+mean fusion              & $+0.036$ $[+0.014,+0.059]$* & $-0.002$ $[-0.029,+0.027]$\\
+activity-only            & $+0.001$ $[-0.020,+0.021]$  & $-0.040$ $[-0.064,-0.015]$*\\
+top-hat prior            & $+0.037$ $[+0.014,+0.060]$* & $+0.005$ $[-0.021,+0.032]$\\
+learned probe            & $+0.040$ $[+0.015,+0.063]$* & $+0.004$ $[-0.023,+0.029]$\\
+top-hat, permuted        & $+0.023$ $[-0.001,+0.046]$  & $-0.013$ $[-0.040,+0.016]$\\
+probe, permuted          & $+0.023$ $[-0.001,+0.046]$  & $-0.011$ $[-0.039,+0.017]$\\
+top-hat, weight-shuffled & $+0.025$ $[+0.002,+0.049]$* & $-0.011$ $[-0.039,+0.015]$\\
+probe, weight-shuffled   & $+0.026$ $[+0.003,+0.050]$* & $-0.011$ $[-0.037,+0.016]$\\
+ensemble                 & $+0.035$ $[+0.011,+0.060]$* & $+0.006$ $[-0.020,+0.031]$\\
+IFCNN                    & $+0.034$ $[+0.009,+0.056]$* & $-0.003$ $[-0.028,+0.021]$\\
+DenseFuse                & $+0.030$ $[+0.006,+0.052]$* & $-0.008$ $[-0.037,+0.019]$\\
+classification saliency  & $+0.036$ $[+0.014,+0.059]$* & $-0.003$ $[-0.031,+0.025]$\\
+PIAFusion                & $+0.030$ $[+0.001,+0.055]$* & $-0.001$ $[-0.026,+0.023]$\\
+SPGFusion                & $-0.013$ $[-0.040,+0.011]$  & $-0.045$ $[-0.074,-0.018]$*\\
+visible source, grayscale & $-0.100$ $[-0.120,-0.078]$* & $-0.122$ $[-0.146,-0.101]$*\\
+infrared source          & $+0.087$ $[+0.060,+0.113]$* & $+0.059$ $[+0.033,+0.084]$*\\
+\bottomrule
+\end{tabular}}
+
+\end{table}
+
+\section{The pooled negative result conditional on the regime}
+
+Fusion is proposed for the setting in which the visible modality fails, and a pooled
+average over a benchmark mixes that setting with the easy one. This section conditions
+the pooled sensitivity contrasts on three properties of each scene, each computed from the annotation
+and the unfused visible source alone before any contrast is made: the RMS contrast of
+that source, the number of annotated pedestrians, and the median annotated box area.
+Table~\ref{tab:regime} gives, for every regime and every detector, how many of the
+fourteen fused inputs are resolved below the colour-scored visible source, resolved
+above it, and unresolved, and Table~\ref{tab:regimelow} gives the per-rule contrasts in
+the bottom contrast tercile, the regime the introduction is about. Every interval here
+resamples the images of its own regime 1000 times and applies the same draw to both
+arms. For each visible-trained architecture, we then apply Benjamini--Hochberg to the
+84 two-sided bootstrap $p$ values formed by 14 inputs over six overlapping strata. The
+families are separate by architecture, the strata are not treated as independent, and
+the multiplicity-adjusted counts are read as an exploratory but more conservative
+description than the raw interval counts.
+
+Four readings. First, the pooled average hides a stratification of the benchmark. The
+number of deficits that are resolved runs from two of fourteen in the bottom contrast
+tercile to fourteen of fourteen in the top one, and the largest deficit in the study,
+SPGFusion by $0.291$ mAP50 in the lowest contrast bin, sits at the low end of the
+contrast range rather than the high end. Second, that stratification is not a monotone
+function of visible contrast, and it is not a regime that the contrast variable
+identifies. The fifty images between RMS $0.050$ and $0.067$ have all fourteen deficits
+resolved while the bin above them, $0.067$ to $0.083$, has none; and inside the
+individual LLVIP sequences the sign of the contrast-deficit association differs from
+sequence to sequence, positive in four of the seven sequences with at least thirty test
+images and negative in the other three, as Table~\ref{tab:within} shows. Visible
+contrast is a property of the scene, so on this benchmark it separates sequences as
+much as it separates regimes, and the conditional counts of Table~\ref{tab:regime} are
+best read as a stratification of the test set rather than as a dose-response in
+illumination. Third, what the split does establish is where the modality reversal is
+largest: twelve of the fourteen fused inputs exceed the colour-scored source in the
+bottom contrast tercile, by $0.093$ to $0.107$, the lowest two bins carry the largest
+reversal of the study, up to $+0.144$, and the top tercile carries none
+(Table~\ref{tab:bins}). Fourth, no
+stratum contains a fused input that beats the unfused visible source under a
+visible-trained detector except the activity-only control under RT-DETR-l at $+0.046$
+$[+0.009,+0.092]$, so the pooled conclusion is not an artefact of averaging over
+strata: what the average conceals is the size of the effect, not its sign.
+
+\begin{center}\small
+
+\captionof{table}{The fourteen fused inputs against the colour-scored visible source,
+by regime, under the estimator of the main tables. Cell: the number resolved below the
+source, resolved above it, and unresolved, out of fourteen, after Benjamini--Hochberg
+correction at $q<0.05$ over the 84 tests formed by 14 inputs and six overlapping strata
+for each architecture. The regimes are defined from the annotation and the unfused
+visible source alone, before any contrast is computed, and each interval resamples the
+images of that regime 1000 times. The validation split of these runs overlaps the
+scored images. Raw interval counts and per-test $q$ values are in
+\texttt{regime\_bh\_*.json}; the independent-test counterpart is in the final
+section.}\label{tab:regime}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l c ccc@{}}
+\toprule
+Regime & {n} & {YOLO11n} & {YOLO26n} & {RT-DETR-l}\\
+\midrule
+low visible contrast, bottom tercile & 100 & 2 / 0 / 12 & 2 / 0 / 12 & 0 / 1 / 13\\
+high visible contrast, top tercile   & 100 & 14 / 0 / 0 & 14 / 0 / 0 & 14 / 0 / 0\\
+one pedestrian                       & 98  & 0 / 0 / 14 & 0 / 0 / 14 & 1 / 0 / 13\\
+three or more pedestrians            & 112 & 14 / 0 / 0 & 14 / 0 / 0 & 5 / 0 / 9\\
+small targets                        & 150 & 14 / 0 / 0 & 14 / 0 / 0 & 14 / 0 / 0\\
+large targets                        & 150 & 3 / 0 / 11 & 1 / 0 / 13 & 0 / 0 / 14\\
+\bottomrule
+\end{tabular}}
+
+\end{center}
+
+\begin{table}[!t]\centering\footnotesize
+
+\caption{The same contrasts in the bottom tercile of visible contrast, the
+regime the introduction is about, rule by rule. Cell: paired difference at mAP50 and its
+95 percent interval over the 100 images of the regime; a star marks $q<0.05$ after the
+84-test Benjamini--Hochberg correction for that architecture. Two rules are resolved
+below the source under each YOLO family, and the activity-only control is resolved above
+it under RT-DETR-l. The two published end-to-end networks stay below the source in all
+three point estimates, but their intervals do not all survive correction under
+RT-DETR-l.}\label{tab:regimelow}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l ccc@{}}
+\toprule
+Input & {YOLO11n} & {YOLO26n} & {RT-DETR-l}\\
+\midrule
+SPGFusion                & $-0.160$ $[-0.258,-0.056]$* & $-0.191$ $[-0.288,-0.081]$* & $-0.077$ $[-0.163,+0.015]$\\
+IFCNN                    & $-0.113$ $[-0.184,-0.041]$* & $-0.084$ $[-0.152,-0.007]$* & $-0.008$ $[-0.068,+0.057]$\\
+PIAFusion                & $-0.083$ $[-0.173,+0.014]$ & $-0.075$ $[-0.160,+0.029]$ & $-0.038$ $[-0.122,+0.050]$\\
+learned probe            & $-0.009$ $[-0.075,+0.066]$ & $-0.058$ $[-0.132,+0.021]$ & $+0.014$ $[-0.056,+0.091]$\\
+ensemble                 & $-0.013$ $[-0.077,+0.064]$ & $-0.053$ $[-0.124,+0.028]$ & $+0.019$ $[-0.051,+0.095]$\\
+top-hat prior            & $-0.017$ $[-0.081,+0.059]$ & $-0.038$ $[-0.106,+0.039]$ & $+0.011$ $[-0.060,+0.089]$\\
+mean fusion              & $-0.023$ $[-0.087,+0.051]$ & $-0.061$ $[-0.132,+0.019]$ & $+0.012$ $[-0.057,+0.088]$\\
+classification saliency  & $-0.025$ $[-0.090,+0.048]$ & $-0.061$ $[-0.133,+0.021]$ & $+0.012$ $[-0.058,+0.088]$\\
+DenseFuse                & $-0.029$ $[-0.095,+0.047]$ & $-0.013$ $[-0.080,+0.059]$ & $+0.018$ $[-0.046,+0.095]$\\
+activity-only            & $-0.025$ $[-0.062,+0.014]$ & $+0.004$ $[-0.045,+0.057]$ & $+0.046$ $[+0.009,+0.092]$*\\
+top-hat, permuted        & $-0.024$ $[-0.088,+0.049]$ & $-0.048$ $[-0.118,+0.029]$ & $+0.023$ $[-0.044,+0.097]$\\
+probe, permuted          & $-0.023$ $[-0.086,+0.050]$ & $-0.053$ $[-0.124,+0.024]$ & $+0.025$ $[-0.043,+0.100]$\\
+top-hat, weight-shuffled & $-0.034$ $[-0.104,+0.043]$ & $-0.052$ $[-0.123,+0.028]$ & $+0.016$ $[-0.052,+0.092]$\\
+probe, weight-shuffled   & $-0.028$ $[-0.093,+0.046]$ & $-0.068$ $[-0.140,+0.014]$ & $+0.015$ $[-0.054,+0.091]$\\
+\bottomrule
+\end{tabular}}
+
+\end{table}
+
+\begin{table}[!t]\centering\small
+
+\caption{The same comparison on a continuous axis: the 300 test images split
+into six bins of fifty by the visible source's RMS contrast. Cell: how many of the
+fourteen fused inputs are resolved below the colour-scored visible source, resolved
+above it, and unresolved, and the paired difference of SPGFusion. The bins are also
+sequences, as the last column of Table~\ref{tab:within} shows, so this is a
+stratification of the test set rather than a dose-response in illumination.}\label{tab:bins}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}c c c c c c@{}}
+\toprule
+Bin & {RMS contrast} & {YOLO11n below/above/unres.} & {SPGFusion} & {modality-agnostic below/above/unres.} & {SPGFusion}\\
+\midrule
+1 & 0.050--0.067 & 14/0/0 & $-0.291$ & 0/12/2 & $+0.010$\\
+2 & 0.067--0.083 & 0/0/14 & $-0.021$ & 0/13/1 & $+0.059$\\
+3 & 0.083--0.118 & 13/0/1 & $-0.128$ & 0/5/9 & $+0.034$\\
+4 & 0.124--0.195 & 14/0/0 & $-0.126$ & 4/0/10 & $-0.074$\\
+5 & 0.196--0.216 & 12/0/2 & $-0.159$ & 0/0/14 & $-0.036$\\
+6 & 0.217--0.299 & 12/0/2 & $-0.156$ & 6/0/8 & $-0.060$\\
+\bottomrule
+\end{tabular}}
+
+\end{table}
+
+\begin{table}[!t]\centering\small
+
+\caption{The contrast-deficit association inside the seven LLVIP sequences
+that contribute at least thirty test images. Each sequence is split at its own median
+visible contrast, and the two halves are scored separately against the colour-scored
+visible source. Columns 4 and 5 give the paired difference of SPGFusion in the
+lower-contrast and higher-contrast halves; the last column is the difference between
+the two for SPGFusion under the modality-agnostic detector. The sign of the association
+is not the same in every sequence, which is why Section~14 reads the conditioning as a
+stratification rather than a regime effect.}\label{tab:within}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}c c c c c c c@{}}
+\toprule
+Sequence & {n} & {contrast median} & {SPG, low half} & {SPG, high half} & {mean, low half} & {SPG low $-$ high, agnostic}\\
+\midrule
+190 & 78 & 0.206 & $-0.089$ & $-0.214$ & $-0.019$ & $-0.012$\\
+200 & 31 & 0.083 & $+0.268$ & $-0.069$ & $+0.281$ & $+0.200$\\
+210 & 32 & 0.092 & $-0.224$ & $-0.135$ & $-0.015$ & $-0.061$\\
+220 & 38 & 0.175 & $-0.144$ & $-0.241$ & $-0.170$ & $+0.076$\\
+230 & 46 & 0.066 & $-0.196$ & $-0.040$ & $-0.085$ & $-0.083$\\
+240 & 31 & 0.071 & $-0.350$ & $-0.371$ & $-0.217$ & $-0.118$\\
+260 & 44 & 0.203 & $-0.317$ & $+0.003$ & $-0.074$ & $+0.082$\\
+\bottomrule
+\end{tabular}}
+
+\end{table}
+
+\section{The same stratification in a second task}
+
+The detection comparison is one task with one evaluator family. This section repeats
+the contrast split on semantic segmentation, the second task of the article, to see
+whether the stratification is a property of the detector or of the comparison. The
+361 MSRS-test images are split into terciles of the unfused visible source's RMS
+contrast, and every input is scored with the segmenter of Section~4.3 of the main text;
+the paired difference against the unfused visible source is computed within each
+tercile with image-resampled intervals. Two conventions matter here and are stated in
+both places. The mIoU used in this section averages over the classes present in each
+label, the usual convention; the main text's segmentation table was produced with the
+stricter convention of its own script, which counts a class absent from both the
+prediction and the label as an IoU of zero, so its absolute values are lower by
+construction. That difference is not cosmetic: under the all-classes convention of the
+main table the infrared source is the best input, and under the present-classes
+convention used here the unfused visible source is the best input everywhere, which is
+one more instance of the article's own point that a ranking is a property of the metric
+as much as of the input.
+
+Table~\ref{tab:segstrat} gives the result. The stratification of the detection deficit
+reproduces in sign and in order: the fused inputs are indistinguishable from the
+unfused visible source in the bottom contrast tercile, where the largest deficit is
+$0.006$ mIoU and no interval excludes zero, they lose $0.013$ to $0.026$ in the middle
+tercile and $0.032$ to $0.054$ in the top tercile, where every interval excludes zero.
+Under this task and this metric the targetness rules are the least penalised of the
+fused inputs in every stratum, as they are under detection, and the infrared source is
+never the best input once the convention is stated. The cross-task reading is
+therefore that the size of the fusion penalty tracks how much the visible source has to
+offer, in a second task and a second benchmark, while the sign of the source ranking
+itself remains a property of the metric.
+
+\begin{table}[!t]\centering\small
+
+\caption{Segmentation mIoU on the 361 MSRS-test images, split into terciles of
+the visible source's RMS contrast (thresholds $0.135$ and $0.201$). Cell: mean mIoU and
+the paired difference against the unfused visible source with its 95 percent interval;
+a star marks an interval that excludes zero. mIoU is averaged over the classes present
+in each label, which is the convention of this section and not the stricter convention
+of the main text's segmentation table.}\label{tab:segstrat}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l ccc@{}}
+\toprule
+Input & {low contrast, bottom tercile} & {middle tercile} & {high contrast, top tercile}\\
+\midrule
+visible source & \textbf{0.2944} & \textbf{0.3147} & \textbf{0.3460}\\
+infrared source & $0.2695$ ($-0.025$ $[-0.039,-0.011]$*) & $0.2731$ ($-0.042$ $[-0.064,-0.018]$*) & $0.2582$ ($-0.088$ $[-0.114,-0.062]$*)\\
+mean fusion & $0.2900$ ($-0.004$ $[-0.018,+0.009]$) & $0.2898$ ($-0.025$ $[-0.047,-0.004]$*) & $0.2924$ ($-0.054$ $[-0.074,-0.034]$*)\\
+activity-only & $0.2924$ ($-0.002$ $[-0.015,+0.010]$) & $0.2930$ ($-0.022$ $[-0.042,-0.001]$*) & $0.2952$ ($-0.051$ $[-0.067,-0.035]$*)\\
+top-hat prior & $0.2888$ ($-0.006$ $[-0.018,+0.007]$) & $0.2975$ ($-0.017$ $[-0.037,+0.003]$) & $0.3124$ ($-0.033$ $[-0.050,-0.017]$*)\\
+learned probe & $0.2890$ ($-0.006$ $[-0.017,+0.007]$) & $0.3016$ ($-0.013$ $[-0.032,+0.006]$) & $0.3137$ ($-0.032$ $[-0.048,-0.017]$*)\\
+top-hat, permuted & $0.2902$ ($-0.004$ $[-0.018,+0.009]$) & $0.2955$ ($-0.019$ $[-0.041,+0.002]$) & $0.2978$ ($-0.048$ $[-0.068,-0.030]$*)\\
+probe, permuted & $0.2891$ ($-0.005$ $[-0.019,+0.008]$) & $0.2958$ ($-0.019$ $[-0.040,+0.002]$) & $0.3001$ ($-0.046$ $[-0.065,-0.028]$*)\\
+top-hat, weight-shuffled & $0.2899$ ($-0.004$ $[-0.018,+0.009]$) & $0.2889$ ($-0.026$ $[-0.048,-0.004]$*) & $0.2927$ ($-0.053$ $[-0.074,-0.034]$*)\\
+probe, weight-shuffled & $0.2892$ ($-0.005$ $[-0.018,+0.008]$) & $0.2909$ ($-0.024$ $[-0.045,-0.002]$*) & $0.2952$ ($-0.051$ $[-0.071,-0.032]$*)\\
+\bottomrule
+\end{tabular}}
+
+\end{table}
+
+\section{The clean-split modality reversal across seeds}
+
+Section~13 reports the modality-agnostic detector retrained on a clean split at its
+reported seed, where no fused input clears its interval. Three further seeds of the same
+detector were trained with the same recipe on the same 1350 training pairs and the same
+150 held-out validation pairs, and Table~\ref{tab:seedsplit} gives each seed's paired
+contrast against the colour-scored visible source together with a two-level bootstrap of
+the mean over the four seeds, in which seeds are drawn with replacement and the images
+of each drawn seed are resampled 1000 times.
+
+With the seed dimension included, four of the fourteen fused inputs exceed the source by
+an interval that excludes zero: the top-hat prior by $0.025$, the ensemble by $0.024$,
+the probe by $0.022$ and PIAFusion by $0.029$. The activity-only control is resolved
+below the source by $0.022$, and the remaining nine inputs are indistinguishable from
+it. The corrected modality reversal therefore survives the clean split for four rules,
+at a size of $0.022$ to $0.029$ mAP50, which is the resolution bound the main tables
+report, and the reported seed alone understates it: that seed is the only one of the
+four in which no fused input clears its interval, and the three added seeds are the
+reason the reversal is resolved at all. The second finding of the article therefore rests
+on the pooled modality-agnostic detector and on the seed-averaged clean split, not on a
+single retraining run, and its size after both corrections is about $0.025$ mAP50
+rather than the $0.09$ to $0.14$ the grayscale comparison reports.
+
+\begin{table}[!t]\centering\small
+
+\caption{The clean-split modality-agnostic detector over four seeds. Columns 1
+to 4 are the paired difference against the colour-scored visible source for seed 0, the
+seed reported in Section~13, and the three seeds added here, in mAP50. The last column
+is the mean over the four seeds with its 95 percent interval from a two-level bootstrap
+that resamples seeds and then images within each drawn seed; a star marks an interval
+that excludes zero.}\label{tab:seedsplit}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l SSSS l@{}} 
+\toprule
+Input & {seed 0} & {seed 1} & {seed 2} & {seed 3} & {mean over seeds}\\
+\midrule
+mean fusion              & +0.000 & +0.023 & +0.031 & +0.037 & $+0.023$ $[-0.001,+0.042]$\\
+activity-only            & -0.038 & -0.013 & -0.020 & -0.014 & $-0.022$ $[-0.042,-0.002]$*\\
+top-hat prior            & +0.006 & +0.030 & +0.032 & +0.036 & $+0.025$ $[+0.004,+0.044]$*\\
+learned probe            & +0.005 & +0.027 & +0.025 & +0.033 & $+0.022$ $[+0.003,+0.041]$*\\
+top-hat, permuted        & -0.011 & +0.016 & +0.025 & +0.023 & $+0.013$ $[-0.010,+0.033]$\\
+probe, permuted          & -0.009 & +0.018 & +0.026 & +0.026 & $+0.015$ $[-0.008,+0.035]$\\
+top-hat, weight-shuffled & -0.009 & +0.021 & +0.024 & +0.024 & $+0.014$ $[-0.008,+0.034]$\\
+probe, weight-shuffled   & -0.008 & +0.016 & +0.025 & +0.026 & $+0.014$ $[-0.009,+0.034]$\\
+ensemble                 & +0.007 & +0.026 & +0.030 & +0.035 & $+0.024$ $[+0.004,+0.042]$*\\
+IFCNN                    & -0.002 & +0.017 & +0.022 & +0.024 & $+0.015$ $[-0.004,+0.034]$\\
+DenseFuse                & -0.007 & +0.015 & +0.023 & +0.021 & $+0.013$ $[-0.009,+0.032]$\\
+classification saliency  & -0.001 & +0.024 & +0.030 & +0.037 & $+0.022$ $[-0.002,+0.042]$\\
+PIAFusion                & +0.000 & +0.028 & +0.044 & +0.042 & $+0.029$ $[+0.003,+0.051]$*\\
+SPGFusion                & -0.045 & -0.004 & +0.003 & +0.008 & $-0.010$ $[-0.041,+0.015]$\\
+\bottomrule
+\end{tabular}}
+
+\end{table}
+
+\section{Repetition of the pooled RT-DETR-l family over three runs}
+
+Section~13 reports one training run of each visible-trained architecture, and under
+RT-DETR-l one of the forty-two contrasts, the activity-only control, keeps an interval
+that includes zero. That architecture has the smallest deficits of the three, so the
+reading of the negative result under it turns on whether those deficits are larger than
+its own run-to-run spread. Two further runs of the same recipe were therefore trained on
+the same 1500 visible training pairs and scored the same way, per image and against that
+run's own colour-scored visible source. Table~\ref{tab:rtdetrseeds} gives the three runs
+and the two-level bootstrap of their mean, in which runs are drawn with replacement and
+the images of each drawn run are resampled 1000 times.
+
+Two readings. First, the deficits of this architecture are stable across runs and stay
+the mildest of the three: SPGFusion loses $0.096$, $0.074$ and $0.104$ mAP50 in the three
+runs, against $0.152$ under YOLO11n on the same images, and its mean over runs is
+$-0.091$ $[-0.115,-0.067]$. No run puts a fused input above its own visible source, and
+the two published end-to-end networks are the two weakest fused inputs in every run as
+well. The architecture therefore joins the other two in sign while remaining the
+smallest effect, which is what Section~13 reads it as. Second, the control row that
+carries the exception is below the source in all three runs, by $0.013$, $0.018$ and
+$0.011$ mAP50, and the mean over runs excludes zero at $-0.014$ $[-0.027,-0.001]$. Each
+run on its own stays unresolved, so what the three runs change is the resolution of that
+one contrast rather than its direction: with the run dimension included, all forty-two
+contrasts of Section~13 are resolved below the colour-scored visible source. The
+qualifier that belongs with this row is that the colour-scored visible source itself
+moves by $0.020$ mAP50 between the three runs ($0.907$, $0.915$ and $0.895$), which is
+larger than the control's deficit in each run, so the paired design is what makes the
+comparison, and a resolved interval on a deficit of $0.014$ is a statement at the edge of
+the resolution this benchmark offers.
+
+\begin{center}\small
+
+\captionof{table}{The pooled RT-DETR-l family over three training runs, on the same 300
+LLVIP test images and against each run's own colour-scored visible source. Validation
+overlaps the scored images; the independent-test result is in the final section.
+Columns 1 to 3 are
+the paired difference at mAP50 for the reported run and the two runs added here, and the
+last column is their mean with its 95 percent interval from a two-level bootstrap that
+resamples runs and then images within each drawn run; a star marks an interval that
+excludes zero. The reported run's own intervals, which agree with
+Table~\ref{tab:allvis}, are not repeated here.}\label{tab:rtdetrseeds}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l SSS l@{}}
+\toprule
+Input & {run 0} & {run 1} & {run 2} & {mean over runs}\\
+\midrule
+mean fusion              & -0.044 & -0.028 & -0.040 & $-0.037$ $[-0.056,-0.019]$*\\
+activity-only            & -0.013 & -0.018 & -0.011 & $-0.014$ $[-0.027,-0.001]$*\\
+top-hat prior            & -0.032 & -0.022 & -0.041 & $-0.032$ $[-0.050,-0.013]$*\\
+learned probe            & -0.038 & -0.020 & -0.035 & $-0.031$ $[-0.050,-0.012]$*\\
+top-hat, permuted        & -0.033 & -0.032 & -0.027 & $-0.031$ $[-0.047,-0.014]$*\\
+probe, permuted          & -0.029 & -0.028 & -0.027 & $-0.028$ $[-0.044,-0.011]$*\\
+top-hat, weight-shuffled & -0.037 & -0.032 & -0.026 & $-0.032$ $[-0.049,-0.014]$*\\
+probe, weight-shuffled   & -0.040 & -0.031 & -0.026 & $-0.032$ $[-0.051,-0.014]$*\\
+ensemble                 & -0.031 & -0.015 & -0.038 & $-0.028$ $[-0.048,-0.008]$*\\
+IFCNN                    & -0.044 & -0.043 & -0.047 & $-0.045$ $[-0.061,-0.029]$*\\
+DenseFuse                & -0.031 & -0.013 & -0.020 & $-0.022$ $[-0.039,-0.005]$*\\
+classification saliency  & -0.045 & -0.026 & -0.042 & $-0.038$ $[-0.058,-0.018]$*\\
+PIAFusion                & -0.054 & -0.062 & -0.068 & $-0.061$ $[-0.082,-0.044]$*\\
+SPGFusion                & -0.096 & -0.074 & -0.104 & $-0.091$ $[-0.115,-0.067]$*\\
+\bottomrule
+\end{tabular}}
+
+\end{center}
+
+\section{Method details and algorithm listing}
+\label{sec:lmethod}
+
+The compact main text keeps only what is needed to read the results, and this section
+carries the configuration behind Section III of the main text. The encoder is a stride-1
+convolution stack with reflection padding, Leaky-ReLU (slope $0.2$) and $5\times5$
+kernels; its channel widths are $1,16,24,24,24$ and its output is the 24-channel
+feature volume used by the fusion rule. The decoder mirrors it with widths
+$24,16,16,16,1$ and outputs a single channel in $[-1,1]$ through a final $\tanh$. Both
+are trained once on $128\times128$ patches of the MSRS training set with
+$\mathcal{L}_{\mathrm{rec}}=\lambda\,\mathrm{MSE}+(1-\mathrm{SSIM})$, $\lambda=25$, and
+are frozen afterwards. The learned probe is two $3\times3$ convolutions
+($24\rightarrow16$ followed by Leaky-ReLU, then $16\rightarrow1$ without activation)
+trained by distillation against the top-hat prior with the encoder frozen. The
+morphological prior uses a $9\times9$ rectangular structuring element and a Gaussian of
+$\sigma=3$, with the per-image min--max normalisation applied last. All fusion results
+use $\tau=0.3$. Algorithm~1 is the complete per-pair procedure.
+
+\begin{center}
+\fbox{\parbox{0.94\linewidth}{\small
+\textbf{Algorithm 1} \ \textit{Target-aware semantic saliency fusion (per pair)}\\[1pt]
+\textbf{Input:} visible $I_v$, infrared $I_r$; encoder $E$; decoder $D$; targetness
+(morphological top-hat prior or learned probe $\Phi$); $\tau=0.3$.\\
+\textbf{Output:} fused image $I_f$.\\
+1: $F_v\gets E(I_v)$,\; $F_r\gets E(I_r)$.\\
+2: for $s\in\{v,r\}$: $S_s\gets$ top-hat prior or $\Phi(F_s)$;\; $A_s\gets\sum_c|F_s|$.\\
+3: $d_s\gets S_s\odot A_s$;\; $m\gets\max(\max_x d_v,\max_x d_r)$;\;
+$w_s\gets \exp\big(d_s/(m\tau)\big)/\sum_{s'}\exp\big(d_{s'}/(m\tau)\big)$.\\
+4: $\hat{F}\gets\sum_s w_s\odot F_s$;\; $I_f\gets D(\hat{F})$.
+}}
+\end{center}
+
+\section{Detection under the reported protocol at native resolution}
+\label{sec:lnative}
+
+Table~\ref{tab:lnative} reports the reported protocol, that is, with every input scored
+in the single-channel convention that treats all rows alike, under the primary
+visible-trained detector and under the modality-agnostic detector of the main tables.
+Under the visible-trained detector the method the reported index ranks first is the
+worst input: SPGFusion is $0.101$ below the unfused visible source with a 95 percent
+interval of $[-0.135,-0.066]$ over the 300 images, IFCNN is $0.048$
+$[-0.074,-0.019]$ below it and PIAFusion $0.037$ $[-0.068,-0.009]$ below it, while
+every other fused input, the eight control variants included, lies within $0.008$
+mAP50 of the source and no interval separates it. Under the modality-agnostic detector
+the same table reverses: the infrared source becomes the best input of all at $0.9415$
+against $0.7561$ for the visible source, and ten of the fourteen fused inputs exceed
+the visible source. The colour-corrected protocol described in the main text is the one
+uses for its negative result, because it removes the penalty that the single-channel
+convention imposes on the visible source.
+
+\begin{table}[!t]\centering\small
+
+\caption{Detection on the 300-image LLVIP test set at native resolution,
+reported protocol. The left block scores every input with the visible-trained YOLO11n
+and the right block with the modality-agnostic detector; the two further
+visible-trained architectures are in Table~\ref{tab:allvis} of Sec.~13. All fused
+images come from one checkpoint set and all values from one metric implementation.
+mAP50 and mAP50-95.}\label{tab:lnative}
+\setlength{\tabcolsep}{4pt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l SSSS@{}}
+\toprule
+& \multicolumn{2}{c}{visible-trained} & \multicolumn{2}{c}{modality-agnostic}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Input & {mAP50} & {mAP50-95} & {mAP50} & {mAP50-95}\\
+\midrule
+VIS source & 0.8289 & 0.4500 & 0.7561 & 0.4014\\
+IR source & 0.7080 & 0.3911 & \textbf{0.9415} & \textbf{0.6168}\\
+mean fused & 0.8273 & 0.4799 & 0.8912 & 0.5365\\
+activity-only fused & 0.8277 & 0.4676 & 0.8555 & 0.5064\\
+top-hat fused & 0.8306 & 0.4844 & 0.8912 & 0.5398\\
+probe fused & 0.8258 & 0.4820 & 0.8939 & 0.5481\\
+ensemble fused & 0.8291 & 0.4820 & 0.8953 & 0.5461\\
+top-hat, permuted & 0.8331 & 0.4758 & 0.8776 & 0.5306\\
+probe, permuted & 0.8320 & 0.4772 & 0.8775 & 0.5355\\
+top-hat, weight-shuffled & 0.8237 & 0.4755 & 0.8795 & 0.5304\\
+probe, weight-shuffled & 0.8259 & 0.4787 & 0.8798 & 0.5307\\
+IFCNN fused & 0.7816 & 0.4469 & 0.8880 & 0.5470\\
+DenseFuse fused & 0.8283 & 0.4829 & 0.8868 & 0.5329\\
+CSF fused & 0.8244 & 0.4795 & 0.8909 & 0.5331\\
+PIAFusion fused & 0.7929 & 0.4561 & 0.8845 & 0.5563\\
+SPGFusion fused & 0.7296 & 0.4006 & 0.8412 & 0.5207\\
+\bottomrule
+\end{tabular}}
+
+\end{table}
+
+\section{The second detection benchmark}
+\label{sec:lflir}
+
+The second benchmark is FLIR-ADAS aligned, in the registered release with COCO
+annotations, from which we select the 1500 training and 300 test pairs that contain at
+least one person box, at native $640\times512$, so that the benchmark has the same
+shape as the first: 1500 training images, 300 test images, one class. The first
+benchmark is drawn the same way from the LLVIP test split, so both are subsets of the
+published splits selected to contain a target, and their absolute mAP50 values are not
+comparable with numbers reported on the full splits. Two detectors are trained on the
+second benchmark with the same recipe, one on the visible modality only and one on both,
+and a third visible-trained detector differs from the first only in architecture. Ten
+fused inputs are scored by all three, and the two published networks are re-fused on
+that benchmark at native resolution.
+
+\begin{table}[!t]\centering\small
+
+\caption{Replication on FLIR-ADAS aligned, 1500 training and 300 test pairs,
+single class person, native $640\times512$. Three detectors are trained on this
+benchmark with the same recipe, two of them on the visible modality alone and differing
+in architecture. mAP50; the paired intervals are in the text of the main text and in
+Table~\ref{tab:lcross}. Best in bold.}\label{tab:lflir}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l ccc@{}}
+\toprule
+Input & {YOLO11n} & {YOLO26n} & {agnostic}\\
+\midrule
+VIS source & \textbf{0.4686} & \textbf{0.3769} & 0.3950\\
+IR source & 0.3382 & 0.2955 & \textbf{0.7630}\\
+mean fused & 0.3834 & 0.3424 & 0.6511\\
+activity-only fused & 0.4018 & 0.3541 & 0.6162\\
+top-hat fused & 0.4156 & 0.3571 & 0.6305\\
+probe fused & 0.4188 & 0.3686 & 0.6255\\
+ensemble fused & 0.4156 & 0.3666 & 0.6296\\
+IFCNN fused & 0.4062 & 0.3449 & 0.6217\\
+DenseFuse fused & 0.4131 & 0.3636 & 0.6486\\
+CSF fused & 0.3813 & 0.3215 & 0.6463\\
+PIAFusion fused & 0.3773 & 0.3544 & 0.5528\\
+SPGFusion fused & 0.3758 & 0.3459 & 0.5359\\
+\bottomrule
+\end{tabular}}
+
+\end{table}
+
+Two readings. Under both visible-trained architectures the unfused visible source is
+the best of the twelve inputs and every fused input lies below it. Under YOLO11n the
+tabulated mean differences (fusion minus VIS) run from $-0.0498$ for the probe to
+$-0.0928$ for SPGFusion; paired bootstrap estimates for these two endpoints are
+$-0.0515$ $[-0.0840,-0.0161]$ and $-0.0928$ $[-0.1251,-0.0627]$, so both exclude zero.
+Under YOLO26n the point-estimate differences run from $-0.0084$ for the probe to
+$-0.0554$ for the classification-saliency rule; intervals were not computed for this
+evaluator. The two visible-trained architectures do not agree on the internal
+ordering: PIAFusion is tenth of twelve under YOLO11n and sixth under YOLO26n, and the
+spread between the best and the worst fused input is $0.043$ against $0.047$. With the
+modality-agnostic detector the ranking moves again, the infrared source becomes the
+best input by a wide margin, every fused input gains on the visible source by $+0.14$
+to $+0.26$, and the targetness rules that beat mean fusion under the visible-trained
+detector become worse than it.
+
+\begin{table}[!t]\centering\small
+
+\caption{The same five contrasts under all four combinations of detection
+benchmark and evaluator. A star marks a paired interval that excludes zero; each cell
+is the mean of the bootstrap distribution of that contrast on the same estimator as its
+interval, which can differ from the difference of the two pooled table values by up to
+$0.003$. Since the two metric routes disagree by up to $0.015$ on the fused rules of
+the main tables, the starred cells whose size is near that bound are read as descriptive
+rather than as resolved. Every contrast changes sign at least once.}\label{tab:lcross}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}l cccc@{}}
+\toprule
+Contrast & {LLVIP, vis} & {LLVIP, agn} & {FLIR, vis} & {FLIR, agn}\\
+\midrule
+SPGFusion $-$ VIS & $-0.0927$* & $+0.0924$* & $-0.0928$* & $+0.1404$*\\
+mean $-$ VIS & $-0.0023$ & $+0.1330$* & $-0.0862$* & $+0.2556$*\\
+probe $-$ mean & $-0.0017$ & $+0.0031$ & $+0.0347$* & $-0.0265$*\\
+probe $-$ activity-only & $-0.0027$ & $+0.0388$* & $+0.0172$* & $+0.0089$\\
+top-hat $-$ mean & $+0.0033$ & $+0.0003$ & $+0.0316$* & $-0.0211$*\\
+\bottomrule
+\end{tabular*}
+
+\end{table}
+
+\section{Adaptation: per-evaluator results and image drift}
+\label{sec:ladapt}
+
+Table~\ref{tab:ladapt} gives mAP50 under every evaluator for the untuned rule and the
+four adapted variants, and Table~\ref{tab:ldrift} gives how far the fused image moves.
+The untuned row is scored inside the adaptation harness, which is why its LLVIP
+modality-agnostic entry reads $0.8957$ here where the main tables read $0.8939$ from
+the main pass; every contrast of this section is computed within the harness pass.
+
+\begin{table}[!t]\centering\small
+
+\caption{mAP50 under every evaluator for the untuned rule and four adapted
+variants. The last three columns are a different benchmark, and the RT-DETR column is a
+held-out LLVIP evaluator. The variants are tuned against a pool drawn from the LLVIP
+YOLO11n, YOLO26n and modality-agnostic detectors, so the RT-DETR column and the three
+FLIR columns are held out and marked with a dagger.}\label{tab:ladapt}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l cccc ccc@{}}
+\toprule
+& \multicolumn{4}{c}{LLVIP} & \multicolumn{3}{c}{FLIR}\\
+\cmidrule(lr){2-5}\cmidrule(lr){6-8}
+Variant & {11n} & {26n} & {RT-DETR$^\dagger$} & {agn} & {11n$^\dagger$} & {26n$^\dagger$} & {agn$^\dagger$}\\
+\midrule
+untuned rule & 0.8258 & 0.8128 & 0.8651 & 0.8957 & 0.4189 & 0.3686 & 0.6255\\
+probe, one & 0.8103 & 0.8535 & 0.8641 & 0.8423 & 0.4184 & 0.3597 & 0.6049\\
+probe, pool & 0.8348 & 0.8528 & 0.8775 & 0.8840 & 0.4164 & 0.3459 & 0.6065\\
+round robin & 0.8261 & 0.8118 & 0.8831 & 0.8891 & 0.1530 & 0.2153 & 0.3122\\
+worst case & 0.8184 & 0.7901 & 0.8553 & 0.8283 & 0.1754 & 0.2086 & 0.2085\\
+\bottomrule
+\end{tabular}}
+
+\end{table}
+
+\begin{sloppypar}
+Adapting only the probe moves the rule between evaluators without raising the average:
+the pooled variant gains $+0.0389$ on the visible-trained YOLO26n with a paired interval
+of $[+0.0208,+0.0598]$ and loses $0.0114$ $[-0.0243,-0.0007]$ on the LLVIP
+modality-agnostic detector, $0.0224$ $[-0.0352,-0.0093]$ on the held-out FLIR YOLO26n
+detector and $0.0188$ $[-0.0347,-0.0029]$ on the held-out FLIR modality-agnostic
+detector, leaving the remaining three evaluators unchanged within their intervals. The
+same sign pattern holds for two further seeds, $+0.0363$ and $+0.0427$ on YOLO26n and
+$-0.0161$ and $-0.0236$ on the modality-agnostic detector. Adapting the whole network is
+a different regime: round robin and worst case leave the LLVIP evaluators roughly
+intact but collapse on the second benchmark, from $0.4189$ to $0.1530$ on the
+visible-trained detector and from $0.6255$ to $0.3122$ on the modality-agnostic one.
+\end{sloppypar}
+
+\begin{table}[!t]\centering\small
+
+\caption{How far the fused image moves when the rule adapts. Drift is the
+SSIM against the untuned output; the last column is the standard deviation of the output
+on the second benchmark, next to $0.1568$ for the untuned rule.}\label{tab:ldrift}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l cccc c@{}}
+\toprule
+& \multicolumn{2}{c}{LLVIP} & \multicolumn{3}{c}{FLIR}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-6}
+Variant & {drift SSIM} & {abs. diff.} & {drift SSIM} & {abs. diff.} & {output s.d.}\\
+\midrule
+probe, pool & 0.9402 & 0.0317 & 0.9238 & 0.0331 & 0.1716\\
+probe, pool, seed 1 & 0.9279 & 0.0369 & 0.9319 & 0.0408 & 0.1857\\
+probe, pool, seed 2 & 0.9410 & 0.0326 & 0.9397 & 0.0371 & 0.1833\\
+round robin & 0.8169 & 0.0631 & 0.7660 & 0.1535 & 0.1172\\
+worst case & 0.7884 & 0.0795 & 0.6376 & 0.2601 & 0.0967\\
+\bottomrule
+\end{tabular}}
+
+\end{table}
+
+\section{Independent-test replication across major LLVIP evaluators}
+\label{sec:cleanr2}
+
+The initial clean-split validator audit used the two YOLO11n evaluators and
+eight fused outputs. To make the independent test set the primary basis of every major
+LLVIP evaluator comparison, we fixed one split before retraining the missing
+evaluators. The split contains $1{,}350$ training, $150$ validation and $300$ test
+images with $4{,}479$, $419$ and $744$ pedestrian boxes. The stem sets are pairwise
+disjoint, and \texttt{clean\_split\_manifest.json} records all 1,800 selected stems.
+The 300 test images are exactly those used by the fixed fused-image archive.
+
+All three visible-only evaluators start from their official pretrained checkpoints.
+Their runs use 40 epochs at $640$\,px and seed 0. YOLO11n and YOLO26n use batch size 16;
+RT-DETR-l uses batch size 4 to fit the 11 GB GPU. YOLO11n is repeated for seeds 1 to 3.
+The modality-agnostic control is a four-seed YOLO11n trained on both registered
+modalities of the same 1,350 pairs. The library selects each \texttt{best.pt} using
+validation fitness on the disjoint 150 images. No test image enters optimisation,
+checkpoint selection, threshold selection or calibration. All predictions use
+Ultralytics 8.4.189 at confidence $0.001$ and input size $640$.
+
+Every one of the 14 fused inputs and both source images is scored under every
+evaluator. The primary contrast is paired over the same 300 test images against each
+checkpoint's colour-scored visible source. For each single-run clean evaluator we apply
+Benjamini--Hochberg separately to its 14 fused-input tests. The frozen per-image
+statistics, intervals, $q$ values, training manifests and checkpoint hashes are in
+\texttt{results/clean\_r2/}.
+
+\begin{table}[!t]\centering\small
+
+\caption{Independent-test contrasts for all 14 fused inputs. The visible-only and
+modality-agnostic YOLO11n columns give the mean over four runs and the full observed
+run range. The YOLO26n and RT-DETR-l columns give the observed paired difference and
+the image-bootstrap 95 percent interval; a star marks $q<0.05$ in a separate 14-test
+Benjamini--Hochberg family for each one-run evaluator. The header gives the visible
+source mAP50.}\label{tab:cleanr2}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l cccc@{}}
+\toprule
+Input & {\shortstack[c]{YOLO11n VIS\\4 runs (0.8657)}} &
+{\shortstack[c]{YOLO26n VIS\\1 run (0.8122)}} &
+{\shortstack[c]{RT-DETR-l VIS\\1 run (0.8095)}} &
+{\shortstack[c]{YOLO11n agn.\\4 runs (0.8660)}}\\
+\midrule
+mean fusion & $-0.060$ $[-0.086,-0.029]$ & \shortstack[l]{$-0.147$ $[-0.188,-0.107]$\\$q<0.002$*} & \shortstack[l]{$-0.129$ $[-0.166,-0.090]$\\$q<0.002$*} & $+0.023$ $[-0.000,+0.038]$\\
+activity-only & $-0.046$ $[-0.062,-0.026]$ & \shortstack[l]{$-0.087$ $[-0.119,-0.055]$\\$q<0.002$*} & \shortstack[l]{$-0.070$ $[-0.100,-0.044]$\\$q<0.002$*} & $-0.021$ $[-0.038,-0.013]$\\
+top-hat prior & $-0.048$ $[-0.074,-0.024]$ & \shortstack[l]{$-0.148$ $[-0.190,-0.104]$\\$q<0.002$*} & \shortstack[l]{$-0.123$ $[-0.162,-0.086]$\\$q<0.002$*} & $+0.026$ $[+0.006,+0.036]$\\
+learned probe & $-0.054$ $[-0.082,-0.028]$ & \shortstack[l]{$-0.142$ $[-0.185,-0.101]$\\$q<0.002$*} & \shortstack[l]{$-0.119$ $[-0.159,-0.083]$\\$q<0.002$*} & $+0.023$ $[+0.005,+0.034]$\\
+top-hat, permuted & $-0.058$ $[-0.088,-0.039]$ & \shortstack[l]{$-0.130$ $[-0.170,-0.092]$\\$q<0.002$*} & \shortstack[l]{$-0.110$ $[-0.147,-0.073]$\\$q<0.002$*} & $+0.014$ $[-0.011,+0.026]$\\
+probe, permuted & $-0.060$ $[-0.095,-0.034]$ & \shortstack[l]{$-0.126$ $[-0.163,-0.090]$\\$q<0.002$*} & \shortstack[l]{$-0.108$ $[-0.145,-0.072]$\\$q<0.002$*} & $+0.015$ $[-0.010,+0.026]$\\
+top-hat, w-shuffled & $-0.062$ $[-0.088,-0.037]$ & \shortstack[l]{$-0.143$ $[-0.183,-0.103]$\\$q<0.002$*} & \shortstack[l]{$-0.124$ $[-0.163,-0.087]$\\$q<0.002$*} & $+0.015$ $[-0.010,+0.025]$\\
+probe, w-shuffled & $-0.065$ $[-0.096,-0.038]$ & \shortstack[l]{$-0.144$ $[-0.186,-0.104]$\\$q<0.002$*} & \shortstack[l]{$-0.121$ $[-0.159,-0.084]$\\$q<0.002$*} & $+0.015$ $[-0.008,+0.026]$\\
+ensemble & $-0.050$ $[-0.080,-0.023]$ & \shortstack[l]{$-0.145$ $[-0.189,-0.102]$\\$q<0.002$*} & \shortstack[l]{$-0.110$ $[-0.149,-0.074]$\\$q<0.002$*} & $+0.025$ $[+0.008,+0.035]$\\
+IFCNN & $-0.076$ $[-0.091,-0.050]$ & \shortstack[l]{$-0.092$ $[-0.132,-0.052]$\\$q<0.002$*} & \shortstack[l]{$-0.095$ $[-0.131,-0.059]$\\$q<0.002$*} & $+0.016$ $[-0.001,+0.024]$\\
+DenseFuse & $-0.052$ $[-0.078,-0.029]$ & \shortstack[l]{$-0.079$ $[-0.118,-0.041]$\\$q<0.002$*} & \shortstack[l]{$-0.088$ $[-0.126,-0.053]$\\$q<0.002$*} & $+0.013$ $[-0.007,+0.023]$\\
+classif. saliency & $-0.061$ $[-0.089,-0.030]$ & \shortstack[l]{$-0.149$ $[-0.189,-0.109]$\\$q<0.002$*} & \shortstack[l]{$-0.132$ $[-0.170,-0.094]$\\$q<0.002$*} & $+0.023$ $[-0.002,+0.037]$\\
+PIAFusion & $-0.104$ $[-0.123,-0.075]$ & \shortstack[l]{$-0.198$ $[-0.244,-0.151]$\\$q<0.002$*} & \shortstack[l]{$-0.207$ $[-0.252,-0.163]$\\$q<0.002$*} & $+0.029$ $[+0.001,+0.045]$\\
+SPGFusion & $-0.136$ $[-0.146,-0.126]$ & \shortstack[l]{$-0.223$ $[-0.269,-0.177]$\\$q<0.002$*} & \shortstack[l]{$-0.246$ $[-0.290,-0.204]$\\$q<0.002$*} & $-0.009$ $[-0.044,+0.009]$\\
+\bottomrule
+\end{tabular}}
+
+\end{table}
+
+\begin{sloppypar}
+Table~\ref{tab:cleanr2} completes the evaluator coverage requested for the first
+benchmark. Under YOLO26n and RT-DETR-l every one of the 14 deficits is significant in
+its own BH family, from $0.079$ to $0.246$ mAP50 across the two evaluators. The
+YOLO11n four-run means span $0.046$ to $0.136$ and remain negative in every observed
+run. The ranking is also partly architecture-dependent: the Spearman association of
+the 14 contrasts is $0.45$ between YOLO11n and YOLO26n, $0.60$ between YOLO11n and
+RT-DETR-l, and $0.94$ between YOLO26n and RT-DETR-l. These are 14-rule descriptive
+associations, not a population estimate. Under the modality-agnostic evaluator, two
+inputs are below the visible source and twelve have positive point estimates, of which
+four are positive in every run and all four are resolved by the two-level interval
+(Table~\ref{tab:seedsplit}).
+\end{sloppypar}
+
+\begin{center}\small
+
+\captionof{table}{The same six overlapping scene regimes under the independent-test
+evaluators. Each cell gives the number resolved below by BH at $q<0.05$, resolved above,
+and unresolved, out of fourteen. The family is 14 inputs by six strata for each
+evaluator. The YOLO11n column uses its reported clean seed; YOLO26n and RT-DETR-l each
+have one clean run.}\label{tab:cleanregime}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l cccccc@{}}
+\toprule
+Evaluator & {\shortstack[c]{low contrast\\$n=100$}} &
+{\shortstack[c]{high contrast\\$n=100$}} &
+{\shortstack[c]{one person\\$n=98$}} &
+{\shortstack[c]{three or more\\$n=112$}} &
+{\shortstack[c]{small targets\\$n=150$}} &
+{\shortstack[c]{large targets\\$n=150$}}\\
+\midrule
+YOLO11n & 1 / 0 / 13 & 1 / 0 / 13 & 0 / 0 / 14 & 3 / 0 / 11 & 2 / 0 / 12 & 0 / 0 / 14\\
+YOLO26n & 13 / 0 / 1 & 14 / 0 / 0 & 11 / 0 / 3 & 14 / 0 / 0 & 14 / 0 / 0 & 14 / 0 / 0\\
+RT-DETR-l & 2 / 0 / 12 & 14 / 0 / 0 & 2 / 0 / 12 & 14 / 0 / 0 & 14 / 0 / 0 & 5 / 0 / 9\\
+\bottomrule
+\end{tabular}}
+
+\end{center}
+
+\begin{sloppypar}
+The clean stratification is not a single architecture-invariant partition. YOLO26n
+resolves most strata, whereas the clean YOLO11n seed resolves only one to three inputs
+in the contrast and size strata, and RT-DETR-l sits between them. The common pattern is
+narrower: the negative aggregate result holds under every visible-trained clean
+evaluator, but which subgroup supplies statistical resolution changes with the
+detector. This is why the main text retains the regime counts as exploratory evidence
+rather than as a universal mechanism.
+\end{sloppypar}
+
+\input{TVC_BIBLIOGRAPHY}
+
+\end{document}

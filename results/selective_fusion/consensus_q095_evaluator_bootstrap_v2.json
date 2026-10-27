@@ -1,0 +1,76 @@
+{
+  "candidate": "consensus_intersection_mean_ifcnn_q095_a020_s05",
+  "per_model_gain": {
+    "yolo11": 0.0106,
+    "agnostic": 0.0058,
+    "yolo26_s0": 0.0048,
+    "rtdetr": 0.0042,
+    "yolo26_s1": 0.0098,
+    "yolo26_s2": 0.0121,
+    "yolo8_s0": 0.0063,
+    "yolo8_s1": 0.0025
+  },
+  "mean_model_gain": 0.007,
+  "positive_models": 8,
+  "image_bootstrap_ci95": [
+    0.0,
+    0.0134
+  ],
+  "sequence_bootstrap_ci95": [
+    -0.0029,
+    0.0177
+  ],
+  "model_bootstrap_ci95": [
+    0.0049,
+    0.0091
+  ],
+  "hierarchical_ci95": [
+    -0.0042,
+    0.0188
+  ],
+  "positive_sequences": 4,
+  "sequences": {
+    "190": {
+      "n": 78,
+      "mean_gain": 0.0047,
+      "min_model_gain": -0.0134,
+      "max_model_gain": 0.0214
+    },
+    "200": {
+      "n": 31,
+      "mean_gain": 0.0372,
+      "min_model_gain": -0.0083,
+      "max_model_gain": 0.0621
+    },
+    "210": {
+      "n": 32,
+      "mean_gain": -0.0046,
+      "min_model_gain": -0.0153,
+      "max_model_gain": 0.0217
+    },
+    "220": {
+      "n": 38,
+      "mean_gain": 0.0123,
+      "min_model_gain": -0.0094,
+      "max_model_gain": 0.0365
+    },
+    "230": {
+      "n": 46,
+      "mean_gain": -0.0041,
+      "min_model_gain": -0.0271,
+      "max_model_gain": 0.0133
+    },
+    "240": {
+      "n": 31,
+      "mean_gain": -0.0247,
+      "min_model_gain": -0.0584,
+      "max_model_gain": 0.0468
+    },
+    "260": {
+      "n": 44,
+      "mean_gain": 0.01,
+      "min_model_gain": -0.0141,
+      "max_model_gain": 0.0325
+    }
+  }
+}

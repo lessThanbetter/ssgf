@@ -1,0 +1,31 @@
+{
+  "device": "cuda",
+  "resolution_hw": [
+    384,
+    512
+  ],
+  "runs": 50,
+  "parameters": {
+    "ifcnn_frozen": 75073,
+    "cdf_trainable": 0,
+    "pixel_mean_trainable": 0
+  },
+  "latency_ms": {
+    "pixel_mean": {
+      "mean": 0.409,
+      "std": 0.041
+    },
+    "ifcnn": {
+      "mean": 7.631,
+      "std": 0.204
+    },
+    "cdf_postprocess": {
+      "mean": 13.795,
+      "std": 0.804
+    },
+    "end_to_end": {
+      "mean": 22.282,
+      "std": 0.913
+    }
+  }
+}

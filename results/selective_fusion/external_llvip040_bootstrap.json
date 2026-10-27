@@ -1,0 +1,26 @@
+{
+  "candidate": "consensus_intersection_mean_ifcnn_q095_a020_s05",
+  "n_images": 473,
+  "per_model_gain": {
+    "yolo26": 0.0137,
+    "yolo26_s1": 0.0091,
+    "yolo26_s2": 0.005,
+    "yolo8n_s0": 0.0089,
+    "yolo8n_s1": 0.0041,
+    "rtdetr": 0.0155
+  },
+  "positive_models": 6,
+  "mean_model_gain": 0.0094,
+  "image_bootstrap_ci95": [
+    0.0056,
+    0.0138
+  ],
+  "model_bootstrap_ci95": [
+    0.0061,
+    0.0127
+  ],
+  "hierarchical_ci95": [
+    0.0044,
+    0.0156
+  ]
+}

@@ -21,6 +21,15 @@ the small ones in `data/` plus the detector and segmenter weights trained by
 | Interval for the change in the average across the evaluator set | `net_ci.py` |
 | Ranking robustness of VIF to the Gaussian schedule | `vif_schedule_robustness.py` |
 | Rescoring every variant under the reference pixel VIF | `vif_reference_rescore.py` |
+| Parallel, resumable full-set reference VIF jobs | `run_reference_vif_parallel.py` |
+| Rebuilding reported/reference VIF tables | `summarize_reference_vif.py` |
+| LLVIP source extraction and alignment residual | `extract_llvip_sources.py`, `estimate_alignment.py` |
+| Best/worst-aligned subset detection check | `alignment_sensitivity.py`, `summarize_alignment_seeds.py` |
+| Fixed clean LLVIP split and training manifests | `../scripts/prepare_clean_evaluator_dataset.py`, `../scripts/train_clean_r2.py`, `../scripts/collect_clean_training.py` |
+| Independent-test scoring of all 16 inputs | `../scripts/score_clean_evaluators.py`, `../scripts/merge_clean_score_runs.py` |
+| Clean-split BH counts within scene regimes | `regime_bh.py` |
+| Clean-split fidelity-to-detection rank associations | `../scripts/compute_clean_correlations.py` |
+| Figure 11 schematic from verified aggregate counts | `../scripts/make_fig11_decision_v2.py` |
 | Activity-only control rule used by the FLIR and detection scripts | `k1_controls.py` |
 
 `det_eval_any.py` is the older single-directory scorer; the values printed in the
@@ -34,11 +43,23 @@ to about 0.0001. That difference is stated here rather than silently.
 `vif_reference_rescore.py` is the script behind Supplementary Table S6 extended to
 the published baselines: give it one `--fused name=directory` per method and it
 reports the reported index, a width-only variant, and the reference construction
-(`ssgf.utils.metrics.vifp_reference`). Rescoring SPGFusion, PIAFusion, IFCNN and
-DenseFuse under the reference construction is the first item of future work stated
-in the paper, and this script is what does it. It resizes all three images of a pair
-to one common grid, and `--target_hw` fixes that grid when the fused outputs survive
-only at a size different from the sources.
+(`ssgf.utils.metrics.vifp_reference`). The full runs include SPGFusion, PIAFusion,
+IFCNN and DenseFuse on every benchmark. The scorer resizes all three images of a pair
+to one common grid defined by the visible source, and `--target_hw` fixes that grid
+when needed. `--fields` permits a reference-only run, and `--limit 0` means the
+complete dataset. Source images with a different aspect ratio are resized rather
+than cropped; the RoadScene check depends on this convention.
+
+For a full multi-method run, `run_reference_vif_parallel.py` launches one subprocess
+per fused variant, logs progress independently, resumes completed variants, and
+merges their rows into one JSON/CSV file. This is the path used for the 14-variant
+LLVIP table and the three-benchmark reported/reference matrix.
+
+`extract_llvip_sources.py` reads the remote LLVIP ZIP directory and downloads only
+the source JPEGs named by the 300 analysis stems, verifying each member's CRC.
+`estimate_alignment.py` estimates a translational residual with ECC on normalized
+Sobel-edge maps. `alignment_sensitivity.py` uses only those source-pair estimates to
+construct best and worst quartiles; it never selects on labels or detector scores.
 
 `k1_controls.py` is here because `j7_flir.py` imports its `ActivityOnlyRule`. The
 other scripts read fused-image directories and checkpoints that are archived with

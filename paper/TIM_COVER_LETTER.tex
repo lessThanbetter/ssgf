@@ -1,0 +1,60 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage[hidelinks]{hyperref}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.65em}
+
+\begin{document}
+
+October 27, 2026
+
+Editor-in-Chief\\
+IEEE Transactions on Instrumentation and Measurement
+
+Dear Editor-in-Chief,
+
+Please consider our manuscript, ``Task-Aware Validity and Uncertainty of
+Image-Fidelity Metrics for Visible-Infrared Image Fusion,'' for publication as a
+Regular Paper.
+
+Image-fidelity scores are often used as indirect measurements when selecting a
+visible-infrared fusion rule. The central problem is not whether one fusion image
+looks better in isolation, but whether a fidelity score preserves the ordering of
+downstream task performance under a defined measurement context. Our study develops
+a task-aware validity and uncertainty audit for this indirect measurement. It holds
+the fused inputs fixed while varying the reference detector, source convention,
+fidelity-index construction, training seed, test sample and spatial-alignment stratum.
+
+Using fourteen fused inputs, 26 detection checkpoints, two pedestrian-detection
+benchmarks and one segmentation benchmark, we show that the resulting ranking is not
+a stable property of the fused images alone. Under three independently tested
+visible-trained detectors, all 42 evaluator-input contrasts are negative, with mAP50
+deficits from 0.046 to 0.246. A modality-agnostic detector reverses the sign for four
+inputs, and two constructions of the same VIF family place the same method first and
+last. The study separates these effects from sampling and training uncertainty rather
+than combining unlike components into a single score.
+
+We believe the work fits IEEE Transactions on Instrumentation and Measurement because
+it addresses measurement validity, repeatability, sensitivity and reporting for an
+image-derived proxy rather than presenting another image-fusion architecture. It
+provides an explicit measurand, reference measurement and uncertainty audit, and it
+releases the per-image scores, fused images, split manifests and analysis scripts so
+that every interval and ranking diagnostic can be recomputed. The conclusions are
+bounded to the measured pedestrian-detection populations and explicitly acknowledge
+that source alignment remains a material factor.
+
+The manuscript is original, is not under consideration elsewhere, and has been
+approved by all authors. The authors declare no competing interests. Data and code
+availability are stated in the manuscript.
+
+Sincerely,
+
+Zigao Wu\\
+North China Electric Power University\\
+Baoding, Hebei 071003, China\\
+\href{mailto:zgwu@ncepu.edu.cn}{zgwu@ncepu.edu.cn}
+
+\end{document}

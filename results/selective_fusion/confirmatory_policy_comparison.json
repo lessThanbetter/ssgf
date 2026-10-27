@@ -1,0 +1,168 @@
+{
+  "datasets": [
+    "llvip",
+    "m3fd",
+    "dronevehicle_test"
+  ],
+  "checkpoints": 12,
+  "per_checkpoint": {
+    "llvip/yolo11": {
+      "visible_ap50": 0.8811,
+      "always_cdf": 0.0109,
+      "always_pia": -0.0884,
+      "always_spg": -0.1395,
+      "no_shield": 0.0099,
+      "cs_ecf": 0.0034
+    },
+    "llvip/agnostic": {
+      "visible_ap50": 0.855,
+      "always_cdf": 0.0079,
+      "always_pia": 0.0153,
+      "always_spg": -0.0293,
+      "no_shield": 0.0343,
+      "cs_ecf": 0.0061
+    },
+    "llvip/yolo26_s0": {
+      "visible_ap50": 0.8122,
+      "always_cdf": 0.0078,
+      "always_pia": -0.1979,
+      "always_spg": -0.2229,
+      "no_shield": -0.0431,
+      "cs_ecf": -0.0034
+    },
+    "llvip/rtdetr": {
+      "visible_ap50": 0.8095,
+      "always_cdf": 0.0004,
+      "always_pia": -0.2071,
+      "always_spg": -0.2457,
+      "no_shield": 0.0045,
+      "cs_ecf": 0.004
+    },
+    "llvip/yolo26_s1": {
+      "visible_ap50": 0.7937,
+      "always_cdf": 0.0111,
+      "always_pia": -0.1423,
+      "always_spg": -0.1788,
+      "no_shield": -0.0584,
+      "cs_ecf": -0.0027
+    },
+    "llvip/yolo26_s2": {
+      "visible_ap50": 0.8061,
+      "always_cdf": 0.0121,
+      "always_pia": -0.1217,
+      "always_spg": -0.1641,
+      "no_shield": -0.0055,
+      "cs_ecf": 0.0026
+    },
+    "llvip/yolo8_s0": {
+      "visible_ap50": 0.7801,
+      "always_cdf": 0.0046,
+      "always_pia": -0.291,
+      "always_spg": -0.2501,
+      "no_shield": -0.0064,
+      "cs_ecf": -0.004
+    },
+    "llvip/yolo8_s1": {
+      "visible_ap50": 0.8055,
+      "always_cdf": 0.0032,
+      "always_pia": -0.1378,
+      "always_spg": -0.106,
+      "no_shield": 0.0095,
+      "cs_ecf": 0.0064
+    },
+    "m3fd/yolo26_m3fd6": {
+      "visible_ap50": 0.3717,
+      "always_cdf": -0.0012,
+      "always_pia": -0.1638,
+      "always_spg": -0.1293,
+      "no_shield": -0.0057,
+      "cs_ecf": 0.0041
+    },
+    "m3fd/yolo8n_m3fd6": {
+      "visible_ap50": 0.379,
+      "always_cdf": -0.0059,
+      "always_pia": -0.1588,
+      "always_spg": -0.12,
+      "no_shield": 0.0109,
+      "cs_ecf": 0.0182
+    },
+    "dronevehicle_test/best": {
+      "visible_ap50": 0.6563,
+      "always_cdf": 0.006,
+      "always_pia": 0.0934,
+      "always_spg": 0.1012,
+      "no_shield": 0.1064,
+      "cs_ecf": 0.0251
+    },
+    "dronevehicle_test/last": {
+      "visible_ap50": 0.6474,
+      "always_cdf": 0.005,
+      "always_pia": 0.0959,
+      "always_spg": 0.121,
+      "no_shield": 0.1016,
+      "cs_ecf": 0.0293
+    }
+  },
+  "summaries": {
+    "always_cdf": {
+      "positive_checkpoints": 10,
+      "mean_gain": 0.0052,
+      "min_gain": -0.0059,
+      "max_gain": 0.0121,
+      "profile_means": {
+        "llvip": 0.0072,
+        "m3fd": -0.0035,
+        "dronevehicle_test": 0.0055
+      },
+      "dataset_balanced_mean": 0.0031
+    },
+    "always_pia": {
+      "positive_checkpoints": 3,
+      "mean_gain": -0.1087,
+      "min_gain": -0.291,
+      "max_gain": 0.0959,
+      "profile_means": {
+        "llvip": -0.1464,
+        "m3fd": -0.1613,
+        "dronevehicle_test": 0.0946
+      },
+      "dataset_balanced_mean": -0.071
+    },
+    "always_spg": {
+      "positive_checkpoints": 2,
+      "mean_gain": -0.1136,
+      "min_gain": -0.2501,
+      "max_gain": 0.121,
+      "profile_means": {
+        "llvip": -0.167,
+        "m3fd": -0.1246,
+        "dronevehicle_test": 0.1111
+      },
+      "dataset_balanced_mean": -0.0602
+    },
+    "no_shield": {
+      "positive_checkpoints": 7,
+      "mean_gain": 0.0132,
+      "min_gain": -0.0584,
+      "max_gain": 0.1064,
+      "profile_means": {
+        "llvip": -0.0069,
+        "m3fd": 0.0026,
+        "dronevehicle_test": 0.104
+      },
+      "dataset_balanced_mean": 0.0332
+    },
+    "cs_ecf": {
+      "positive_checkpoints": 9,
+      "mean_gain": 0.0074,
+      "min_gain": -0.004,
+      "max_gain": 0.0293,
+      "profile_means": {
+        "llvip": 0.0015,
+        "m3fd": 0.0112,
+        "dronevehicle_test": 0.0272
+      },
+      "dataset_balanced_mean": 0.0133
+    }
+  }
+}

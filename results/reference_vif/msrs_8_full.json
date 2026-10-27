@@ -1,0 +1,58 @@
+{
+  "limit": 0,
+  "max_side": 512,
+  "fields": [
+    "reported",
+    "reference"
+  ],
+  "rows": [
+    {
+      "variant": "mean",
+      "n": 361,
+      "reported": 0.29140247505705114,
+      "reference": 0.25579343484379247
+    },
+    {
+      "variant": "tophat",
+      "n": 361,
+      "reported": 0.3913821975527708,
+      "reference": 0.2572691930545664
+    },
+    {
+      "variant": "probe",
+      "n": 361,
+      "reported": 0.40154008794359225,
+      "reference": 0.2561762137880286
+    },
+    {
+      "variant": "ensemble",
+      "n": 361,
+      "reported": 0.3955211431365925,
+      "reference": 0.2582643714390303
+    },
+    {
+      "variant": "ifcnn",
+      "n": 361,
+      "reported": 0.3756944588346825,
+      "reference": 0.25168985786778114
+    },
+    {
+      "variant": "densefuse",
+      "n": 361,
+      "reported": 0.30035749120106325,
+      "reference": 0.2722351136733455
+    },
+    {
+      "variant": "piafusion",
+      "n": 361,
+      "reported": 0.7507382129161642,
+      "reference": 0.4467892909494752
+    },
+    {
+      "variant": "spgfusion",
+      "n": 361,
+      "reported": 0.8313715116964483,
+      "reference": 0.2308097500250858
+    }
+  ]
+}

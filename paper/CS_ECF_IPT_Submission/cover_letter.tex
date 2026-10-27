@@ -1,0 +1,57 @@
+\documentclass[10pt]{letter}
+\usepackage[margin=0.8in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\setlength{\parskip}{0.45em}
+
+\begin{document}
+\sloppy
+\begin{letter}{Editors\\Infrared Physics \& Technology}
+\opening{Dear Editors,}
+
+Please consider our manuscript, ``Confidence-Shielded
+Evaluator-Conditioned Fusion for Risk-Controlled Infrared--Visible Object
+Detection,'' for publication in \emph{Infrared Physics \& Technology}.
+
+Infrared--visible fusion can make thermal evidence available to object
+detectors, but the same fused image does not benefit every detector. We show
+that fusion utility changes across detector checkpoints and formulate selection
+as a label-free input-arbitration problem. The proposed Confidence-Shielded
+Evaluator-Conditioned Fusion (CS-ECF) evaluates visible, CDF, PIAFusion, and
+SPGFusion candidates with the target detector. A fused input is used only when
+its top-five confidence exceeds that of the visible image by a factor of 1.5;
+otherwise, the system preserves the visible input as a safety fallback.
+
+Across LLVIP, M3FD, and an independent official-test subset of DroneVehicle,
+CS-ECF improved 9 of 12 detector checkpoints. The dataset-balanced AP50 gain was
+0.0133, with a detector-by-group hierarchical 95\% interval of [0.0028, 0.0213].
+Removing the shield increased the worst observed AP50 loss from 0.0040 to
+0.0584. The two DroneVehicle checkpoints improved by 0.0251 and 0.0293; they
+belong to the same training run and are reported as correlated checks rather
+than independent architectures. A thermal-mask ablation further showed a small
+but consistent advantage over global detail injection.
+
+We believe the work is relevant to the journal's readership because it addresses
+how thermal information should be admitted into a deployed detection system,
+uses real infrared--visible datasets, and reports both benefit and cost. The
+analysis also identifies an important boundary: M3FD gains are concentrated in
+the people class, and the LLVIP intervals cross zero. We therefore present
+CS-ECF as a risk-controlled evaluator-conditioned system, not as evidence of
+uniform improvement over all object classes.
+
+The manuscript is original, has not been published previously, and is not under
+consideration by another journal. All authors have approved the submission and
+declare no competing interests. This research did not receive any specific grant
+from funding agencies in the public, commercial, or not-for-profit sectors. Data
+and code availability are stated in the manuscript.
+
+Thank you for your consideration.
+
+\closing{Sincerely,}
+Zigao Wu\\
+North China Electric Power University\\
+Baoding, Hebei 071003, China\\
+\href{mailto:zgwu@ncepu.edu.cn}{zgwu@ncepu.edu.cn}
+\end{letter}
+\end{document}

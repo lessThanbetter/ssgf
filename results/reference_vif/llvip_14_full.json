@@ -1,0 +1,94 @@
+{
+  "limit": 0,
+  "max_side": 512,
+  "fields": [
+    "reported",
+    "reference"
+  ],
+  "rows": [
+    {
+      "variant": "mean",
+      "n": 300,
+      "reported": 0.28435969807207584,
+      "reference": 0.26939709996183714
+    },
+    {
+      "variant": "activity_only",
+      "n": 300,
+      "reported": 0.32757010551169513,
+      "reference": 0.2506992398574948
+    },
+    {
+      "variant": "tophat",
+      "n": 300,
+      "reported": 0.34316664022703963,
+      "reference": 0.2749367840588093
+    },
+    {
+      "variant": "probe",
+      "n": 300,
+      "reported": 0.3583599745730559,
+      "reference": 0.2724220575764775
+    },
+    {
+      "variant": "tophat_permuted",
+      "n": 300,
+      "reported": 0.2861124408990145,
+      "reference": 0.26694190708299476
+    },
+    {
+      "variant": "probe_permuted",
+      "n": 300,
+      "reported": 0.28714356320599715,
+      "reference": 0.2666545182093978
+    },
+    {
+      "variant": "tophat_wshuffle",
+      "n": 300,
+      "reported": 0.28553210956354935,
+      "reference": 0.2700049327810605
+    },
+    {
+      "variant": "probe_wshuffle",
+      "n": 300,
+      "reported": 0.2852825566877921,
+      "reference": 0.2700744463627537
+    },
+    {
+      "variant": "ensemble",
+      "n": 300,
+      "reported": 0.35011340282857417,
+      "reference": 0.2708418188119928
+    },
+    {
+      "variant": "ifcnn",
+      "n": 300,
+      "reported": 0.3790045063197613,
+      "reference": 0.2592819006492694
+    },
+    {
+      "variant": "densefuse",
+      "n": 300,
+      "reported": 0.2993552293628454,
+      "reference": 0.2765350575869282
+    },
+    {
+      "variant": "csf",
+      "n": 300,
+      "reported": 0.2805148437867562,
+      "reference": 0.27199702652792135
+    },
+    {
+      "variant": "piafusion",
+      "n": 300,
+      "reported": 0.7056280631323656,
+      "reference": 0.3718882037947575
+    },
+    {
+      "variant": "spgfusion",
+      "n": 300,
+      "reported": 0.8114886777599652,
+      "reference": 0.1698588660483559
+    }
+  ]
+}
