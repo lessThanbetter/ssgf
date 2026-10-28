@@ -18,6 +18,7 @@ current LLVIP/M3FD/DroneVehicle study.
 | Funding | No specific grant from public, commercial, or not-for-profit sectors | `PAPER_IPT_v3.tex` lines 1561--1563 |
 | Code repository | `https://github.com/lessThanbetter/ssgf` | `PAPER_IPT_v3.tex` lines 1593--1596 |
 | Preceding archive DOI | `https://doi.org/10.5281/zenodo.22984389`; not cited for CS-ECF because it resolves to the preceding study | `PAPER_IPT_v3.tex` lines 1593--1596 |
+| CS-ECF archive DOI | `https://doi.org/10.5281/zenodo.23718751`, version `v2.0.0`; published from GitHub tag `v2.0.0` on 2026-10-28 | Zenodo record 23718751 |
 | AI-use disclosure | OpenAI Codex for language editing, analysis-code development, figure preparation, and result organization, followed by author verification and responsibility | Current revision process; Elsevier generative-AI policy verified 2026-10-28 |
 | Originality | Original, not previously published, not under consideration, all authors approved | `COVER_LETTER_MEASUREMENT.tex` lines 40--42; `TIM_COVER_LETTER.tex` lines 49--51 |
 
@@ -35,6 +36,9 @@ current LLVIP/M3FD/DroneVehicle study.
 - Freeze the GitHub revision used by the submission package and confirm that
   its tag contains the CS-ECF manifests, scores, source data, and code. The
   preceding study's Zenodo DOI must not be reused.
+- Use the CS-ECF version DOI `10.5281/zenodo.23718751` in the manuscript. The
+  shared concept DOI `10.5281/zenodo.22984388` identifies the software series,
+  not the preceding paper's archival version.
 - Confirm that the three authors approve reuse of the inherited author,
   funding, competing-interest, contribution, and AI declarations.
 - No separate related-manuscript list or explicit preprint identifier was found

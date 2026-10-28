@@ -36,6 +36,7 @@ Reasons:
 | Numerical/reference audit | complete | `FINAL_TECHNICAL_QA.md` |
 | PDF visual and font audit | complete | `FINAL_TECHNICAL_QA.md` |
 | GitHub submission tag | complete | remote tag resolves to `2d53dd1` |
+| Zenodo archival release | complete | `10.5281/zenodo.23718751`, version `v2.0.0` |
 | Author administrative facts | complete | author confirmed unchanged on 2026-10-28 |
 | Live IPT portal prompts | pending | CAPTCHA/login blocks unattended check |
 
@@ -53,7 +54,7 @@ Reasons:
 | Supplementary information | required if referenced | compiled | `supplementary.tex` and `supplementary.pdf` |
 | External evaluator checks | required supporting evidence | two zero-shot COCO models and one LLVIP-trained YOLOv9t | `INDEPENDENT_EVALUATOR_CHECK.md`; `results/independent_evaluators/` |
 | Data availability | required | inherited and adapted for the current datasets | compiled in `main.tex` |
-| Code availability | required | inherited GitHub/Zenodo/MIT statement | compiled in `main.tex` |
+| Code availability | required | GitHub plus CS-ECF Zenodo/MIT statement | compiled in `main.tex` |
 | CRediT contributions | required | inherited from existing drafts | compiled in `main.tex` |
 | Competing interests | required | inherited no-conflict statement | compiled in `main.tex` |
 | Funding | required | inherited no-specific-grant statement | compiled in `main.tex` |
@@ -81,6 +82,8 @@ Reasons:
 - 26 of 26 DOI records resolved through Crossref; the software entry has no DOI;
 - 35 archived pre-QA files matched the v9 SHA-256 manifest before the
   administrative packages were assembled.
+- Zenodo version `v2.0.0` published as `10.5281/zenodo.23718751` under the
+  shared software concept DOI `10.5281/zenodo.22984388`.
 
 ## Cross-file consistency checks
 
@@ -121,14 +124,14 @@ and declaration content without changes:
 
 - Add reviewer suggestions only if the IPT portal requests them.
 
-The GitHub tag is already verified. Do not reuse the preceding study's Zenodo
-DOI.
+The GitHub tag and CS-ECF Zenodo version DOI are already verified. Do not reuse
+the preceding study's version DOI `10.5281/zenodo.22984389`.
 
 ## Next actions
 
 1. Open the live IPT submission portal with an interactive browser and confirm
    article type, portal labels,
    abstract/display limits, and optional items.
-2. Upload the files from `submission_package_v11/`.
+2. Upload the files from `submission_package_v12/`.
 3. If the portal requires any scientific or administrative change,
    recompile the PDFs and regenerate the manifest before upload.

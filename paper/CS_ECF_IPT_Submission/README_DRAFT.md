@@ -3,7 +3,8 @@
 Date: 2026-10-28  
 Target: *Infrared Physics & Technology*  
 Status: author-confirmed working draft with original administrative metadata;
-ready for the live submission-portal check after completed technical QA
+ready for the live submission-portal check after completed technical QA and
+Zenodo archival release
 
 ## Main files
 
@@ -21,11 +22,12 @@ ready for the live submission-portal check after completed technical QA
 - `source_data/` — figure-level CSV source data.
 - `submission_materials/` — cover-letter, Highlights, keyword, caption,
   checklist, and figure-QA drafts.
-- `submission_package_v11/` — final assembled upload package with PDFs, LaTeX,
+- `submission_package_v12/` — final assembled upload package with PDFs, LaTeX,
   figures, source data, external-evaluator evidence, reproduction scripts, and
   SHA-256 manifest.
 - `submission_materials/FINAL_TECHNICAL_QA.md` — completed build, consistency,
   reference, PDF, and archive checks.
+- Zenodo version DOI: `10.5281/zenodo.23718751`.
 
 ## Current verified result anchors
 
@@ -54,8 +56,8 @@ ready for the live submission-portal check after completed technical QA
 2. Verify the current IPT Guide for Authors in the submission portal, including
    article type, abstract
    limit, Highlights requirements, figure count, and artwork rules.
-3. Upload from `submission_package_v11/`; the GitHub submission tag has already
-   been verified, and the preceding study's Zenodo DOI must not be reused.
+3. Upload from `submission_package_v12/`. The CS-ECF Zenodo version DOI is
+   `10.5281/zenodo.23718751`; the preceding study's DOI must not be reused.
 4. Re-run the LaTeX build, figure QA, PDF page audit, and numerical consistency
    checks again only if the portal requires a content change.
 
