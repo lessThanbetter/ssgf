@@ -74,6 +74,23 @@ The shield still improves the unshielded selector by `+0.0153` AP50, with a
 scene-group CI `[+0.0072,+0.0267]`, and reduces the worst scene loss from
 `0.1208` to `0.0724`. It does not eliminate the loss.
 
+## Calibration and switching diagnostics
+
+| Model | Visible/fused | ECE visible | ECE CS-ECF | Switched improved | Switched degraded | Positive/negative scenes |
+|---|---:|---:|---:|---:|---:|---:|
+| YOLOv9t, zero-shot | 77.7%/22.3% | 0.0094 | 0.0091 | 46.3% | 20.9% | 5/2 |
+| YOLOv10s, zero-shot | 81.7%/18.3% | 0.0103 | 0.0116 | 38.2% | 9.1% | 4/3 |
+| YOLOv9t, LLVIP-trained | 76.7%/23.3% | 0.0475 | 0.0459 | 25.7% | 41.4% | 2/5 |
+
+ECE is a descriptive detection-level calibration proxy with ten fixed
+confidence bins. The fine-tuned model has a similar fused-selection fraction
+but much worse calibration and a larger fraction of harmful switches.
+
+The three external-evaluator contrasts form a separate exploratory family.
+Benjamini-Hochberg q values from 100,000 group-bootstrap resamples are `0.043`
+for zero-shot YOLOv9t, `0.043` for zero-shot YOLOv10s, and `0.119` for the
+fine-tuned YOLOv9t. Holm-adjusted values are `0.057`, `0.050`, and `0.119`.
+
 ## Reproduction
 
 The raw model outputs are in `per_image/`; fixed-candidate scores are in
@@ -84,4 +101,7 @@ selection comparison with:
 
 ```powershell
 python scripts/analyze_independent_evaluators.py
+python analysis/cs_ecf/external_evaluator_diagnostics.py `
+  --data-root D:\Code\_server_handoff_v2\ssgf `
+  --out results/selective_fusion/external_evaluator_diagnostics.json
 ```

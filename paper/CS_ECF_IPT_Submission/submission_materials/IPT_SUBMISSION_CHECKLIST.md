@@ -6,16 +6,17 @@ Target: Infrared Physics & Technology (Elsevier)
 
 ## Submission readiness
 
-**Author-confirmed; live portal check pending.** The
+**Author-confirmed; major-revision self-repair complete; live portal check pending.** The
 manuscript, supplement, cover letter, Highlights, figures, source data,
-declarations, and reproducibility evidence are assembled and have passed the
-final local technical QA. The author has confirmed that the inherited
+declarations, statistical diagnostics, and reproducibility evidence are
+assembled and have passed the final local technical QA. The author has
+confirmed that the inherited
 administrative facts and declaration text remain unchanged from the original.
 The final upload requires a check of the live IPT portal prompts.
 
-The archival code revision is frozen at GitHub tag `v2.0.0` (commit
-`18ea5ba`) and published as Zenodo version DOI
-`10.5281/zenodo.23718751`.
+The archival code revision is prepared as GitHub tag `v2.1.0` and Zenodo
+version DOI `10.5281/zenodo.23719721` under concept DOI
+`10.5281/zenodo.22984388`.
 
 Reasons:
 
@@ -36,7 +37,8 @@ Reasons:
 | Numerical/reference audit | complete | `FINAL_TECHNICAL_QA.md` |
 | PDF visual and font audit | complete | `FINAL_TECHNICAL_QA.md` |
 | Related Work and citations | complete | 46 references; `RELATED_WORK_EVIDENCE.md` |
-| GitHub/Zenodo archive | complete | tag `v2.0.0`; DOI `10.5281/zenodo.23718751` |
+| Multiplicity and sensitivity audit | complete | `MAJOR_REVISION_STATISTICS.md` |
+| GitHub/Zenodo archive | publication step | tag `v2.1.0`; DOI `10.5281/zenodo.23719721` |
 | Author administrative facts | complete | author confirmed unchanged on 2026-10-28 |
 | Live IPT portal prompts | pending | CAPTCHA/login blocks unattended check |
 
@@ -67,6 +69,11 @@ Reasons:
 - LLVIP 8-checkpoint confirmatory test;
 - M3FD 2-checkpoint grouped six-class test;
 - DroneVehicle 2-checkpoint independent official-test subset;
+- exact sign test `p=0.0730` for 9/12 positive checkpoint contrasts;
+- Holm and Benjamini-Hochberg correction over the 12-member confirmatory family,
+  with no individual checkpoint surviving Holm at 0.05;
+- validation and post-freeze K/margin sensitivity tables;
+- uniform-random, VIF, SSIM, entropy, and label-using oracle controls;
 - DroneVehicle source archive size/hash and fixed-group manifest retained;
 - dataset-balanced AP50 gain `+0.0133`;
 - training-run-by-group hierarchical CI `[+0.0026,+0.0261]`;
@@ -77,14 +84,19 @@ Reasons:
 - paired CS-ECF versus Always CDF comparison with direct intervals;
 - independent zero-shot YOLOv9t/YOLOv10s confirmation;
 - LLVIP-fine-tuned YOLOv9t negative boundary with frozen final checkpoint;
+- external selected fractions, per-scene outcomes, detection-level ECE/Brier,
+  and switched-image degradation diagnostics;
+- M3FD class counts and image-bootstrap intervals;
+- LLVIP ECC registration-residual quartile sensitivity;
 - verified 2024–2026 IPT fusion/detection exemplars in `IPT_TARGETING.md`.
-- three PDFs rebuilt and visually inspected after the final source update;
+- three PDFs rebuilt and visually inspected after the final source update:
+  18-page manuscript, 6-page supplement, and 1-page cover letter;
 - 45 of 45 DOI records resolved through Crossref; the software entry has no DOI;
 - 19 references and a four-part Related Work synthesis added from the revised
   original manuscript and verified current fusion--detection literature;
 - 35 archived pre-QA files matched the v9 SHA-256 manifest before the
   administrative packages were assembled.
-- Zenodo version `v2.0.0` published as `10.5281/zenodo.23718751` under the
+- Zenodo version `v2.1.0` is reserved as `10.5281/zenodo.23719721` under the
   shared software concept DOI `10.5281/zenodo.22984388`.
 
 ## Cross-file consistency checks
@@ -95,6 +107,8 @@ The following canonical values must remain identical everywhere:
 |---|---:|
 | Confirmatory checkpoints | 12 |
 | Positive checkpoints | 9 |
+| Exact sign-test p value | 0.0730 |
+| Checkpoints surviving Holm at 0.05 | 0 |
 | Dataset-balanced AP50 gain | +0.0133 |
 | Training-run-by-group hierarchical CI | [+0.0026,+0.0261] |
 | No-shield worst AP50 loss | -0.0584 |
@@ -111,6 +125,10 @@ The following canonical values must remain identical everywhere:
 | LLVIP-trained YOLOv9t minus visible | -0.0108 AP50 |
 | LLVIP-trained YOLOv9t scene-group CI | [-0.0342,+0.0050] |
 | LLVIP-trained YOLOv9t shield gain over no-shield | +0.0153 AP50 |
+| Uniform-random balanced gain | -0.0341 AP50 |
+| Per-image oracle balanced upper bound | +0.0833 AP50 |
+| Selected validation policy | K=5, margin=1.5 |
+| LLVIP ECC median residual | 2.53 pixels |
 
 ## Author confirmation record
 
@@ -126,14 +144,14 @@ and declaration content without changes:
 
 - Add reviewer suggestions only if the IPT portal requests them.
 
-The GitHub tag and CS-ECF Zenodo version DOI are already verified. Do not reuse
-the preceding study's version DOI `10.5281/zenodo.22984389`.
+The CS-ECF Zenodo `v2.1.0` version DOI is `10.5281/zenodo.23719721`. Do not
+reuse the preceding study's version DOI `10.5281/zenodo.22984389`.
 
 ## Next actions
 
 1. Open the live IPT submission portal with an interactive browser and confirm
    article type, portal labels,
    abstract/display limits, and optional items.
-2. Upload the files from `submission_package_v13/`.
+2. Upload the files from `submission_package_v14/`.
 3. If the portal requires any scientific or administrative change,
    recompile the PDFs and regenerate the manifest before upload.

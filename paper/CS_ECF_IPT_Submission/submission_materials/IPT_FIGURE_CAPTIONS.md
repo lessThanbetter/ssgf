@@ -35,7 +35,7 @@ data are provided in `figure3_source.csv`.
 ## Fig. 4 | Thermal constraints and class-specific effects
 
 **a**, M3FD AP50 changes for six classes under YOLO26n and YOLOv8n. The gain is
-concentrated in the people class; the other five classes change by at most 0.0003
+concentrated in the people class; the other five classes change by at most 0.0030
 AP50. **b**, Fixed-input DroneVehicle CDF gain with the thermal-validity mask or
 global detail injection. The mask improves the mean gain by 0.0007 AP50. **c**,
 Spearman association between the image-level fused-selection fraction and thermal

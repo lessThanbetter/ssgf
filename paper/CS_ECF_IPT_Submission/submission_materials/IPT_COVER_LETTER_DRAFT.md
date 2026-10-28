@@ -20,11 +20,11 @@ fused input is used only when its top-five confidence reaches 1.5 times that of
 visible; otherwise, visible is retained as a safety fallback.
 
 Across LLVIP, M3FD, and an independent official-test subset of DroneVehicle,
-CS-ECF improved 9 of 12 detector checkpoints. The dataset-balanced AP50 gain was
-0.0133, with a training-run-by-group hierarchical 95% interval of [0.0026, 0.0261].
-Removing the shield increased the worst observed AP50 loss from 0.0040 to
-0.0584. A thermal-mask ablation also showed a small advantage over global detail
-injection.
+9 of 12 detector checkpoints improved. No individual checkpoint contrast
+survived Holm correction, and the sign test was not significant (`p=0.073`).
+The prespecified dataset-balanced AP50 gain was 0.0133, with a
+training-run-by-group hierarchical 95% interval of [0.0026, 0.0261]. Removing
+the shield increased the worst observed AP50 loss from 0.0040 to 0.0584.
 
 Against the stronger Always CDF baseline, the dataset-balanced difference was
 0.0102 AP50, with a training-run-by-group interval of [-0.00057, 0.02980].
@@ -37,8 +37,10 @@ COCO-pretrained models improved AP50 over visible by 0.0213 and 0.0250, with
 scene-group intervals above zero, but neither separated from Always CDF. An
 LLVIP-fine-tuned YOLOv9t then provided a negative boundary: CS-ECF lost 0.0108
 AP50 relative to visible, although the shield improved the unshielded selector
-by 0.0153. We report this counterexample explicitly because it shows that
-confidence arbitration is conditional rather than universally portable.
+by 0.0153. Its calibration error was about five times larger than those of the
+zero-shot evaluators, and 41.4% of its switched images degraded. We report this
+counterexample explicitly because it shows that confidence arbitration is
+conditional rather than universally portable.
 
 We believe the work is relevant to the journal's readership because it addresses
 how thermal information should be admitted into a deployed detection system,

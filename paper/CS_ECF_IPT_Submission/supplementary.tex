@@ -162,6 +162,40 @@ estimate variability between independent DroneVehicle training runs. The lower
 endpoint of the combined interval is below zero, so the direct CDF comparison
 does not establish a separated average improvement.
 
+\subsection{Class-specific M3FD results}
+
+The 200-image M3FD test split contains 2,022 annotations. AP50 is the mean of
+the six class AP values, so class frequency does not determine a class's
+weight in the headline metric.
+
+\begin{table}[h]
+\centering
+\small
+\caption{M3FD class-specific CS-ECF minus visible AP50. Intervals are 95\%
+percentile image-bootstrap intervals from 400 paired resamples. The test split
+has only two frame groups, so these class intervals are descriptive and are
+not presented as stable grouped inference.}
+\label{tab:m3fd-classes-detail}
+\begin{tabular}{@{}lrrrc@{}}
+\toprule
+Class & Annotations & YOLO26n & 95\% interval & YOLOv8n \\
+\midrule
+People & 166 & \(+0.0214\) & \([-0.0070,+0.0498]\) & \(+0.1090\) \\
+Car & 1,597 & \(0.0000\) & \([0.0000,0.0000]\) & \(-0.0001\) \\
+Bus & 16 & \(0.0000\) & \([0.0000,0.0000]\) & \(0.0000\) \\
+Motorcycle & 189 & \(0.0000\) & \([0.0000,0.0000]\) & \(0.0000\) \\
+Lamp & 20 & \(+0.0030\) & \([0.0000,+0.0102]\) & \(+0.0001\) \\
+Truck & 34 & \(0.0000\) & \([0.0000,0.0000]\) & \(+0.0003\) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For YOLOv8n, the people-class image interval is
+\([+0.0440,+0.1913]\). The people class accounts for 87.7\% of the positive
+class-mean contribution for YOLO26n and 99.6\% for YOLOv8n. Because the
+class-balanced metric gives people one-sixth of the total weight despite its
+small annotation count, this concentration directly affects the six-class AP50.
+
 \section{External evaluator stress tests}
 
 Two COCO-pretrained detectors, YOLOv9t and YOLOv10s, were used without LLVIP
@@ -228,15 +262,152 @@ improved the unshielded selector by 0.0153 AP50 (group interval
 but did not remove the loss. Tail behavior therefore remains evaluator
 dependent rather than universally controlled.
 
-\section{Validation choice and exploratory alternatives}
+\begin{table}[ht]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{External-evaluator calibration and switching diagnostics over 300
+LLVIP pairs. ECE is detection-level expected calibration error with ten fixed
+confidence bins. I/U/D denotes improved/unchanged/degraded per-image AP50 among
+images assigned to a fused candidate.}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Model & Visible/fused & ECE V/CS & Switched I/U/D & Scenes & Score ratio \\
+\midrule
+YOLOv9t, zero-shot & 77.7\%/22.3\% & .009/.009 &
+46.3/32.8/20.9\% & 5/2 & 2.28 \\
+YOLOv10s, zero-shot & 81.7\%/18.3\% & .010/.012 &
+38.2/52.7/9.1\% & 4/3 & 2.04 \\
+YOLOv9t, LLVIP-trained & 76.7\%/23.3\% & .048/.046 &
+25.7/32.9/41.4\% & 2/5 & 2.16 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-The policy was fixed before the confirmatory comparisons. On validation, the
-four-candidate top-five selector with a 1.5 visible margin produced gains of
-0.001850 and \(-0.000070\) for the two LLVIP evaluators and 0.001518 and
-0.000083 for the two M3FD evaluators. Its two-dataset balanced validation
-average was 0.000845. The candidate set was retained to preserve the visible,
-region-selected, learned, and published fusion families; the margin was fixed
-at 1.5.
+The score ratio is the median top-five-score ratio to visible among switched
+images. All three models satisfy the 1.5 selection margin at similar switch
+rates, but the fine-tuned checkpoint has a larger calibration error and a much
+higher fraction of harmful switches. Across the three external contrasts, the
+Benjamini--Hochberg q values are 0.043, 0.043, and 0.119 for YOLOv9t
+zero-shot, YOLOv10s zero-shot, and YOLOv9t LLVIP-trained, respectively.
+
+\section{Validation choice, multiplicity, and exploratory alternatives}
+
+The policy was fixed before the confirmatory comparisons. The candidate set
+was retained to preserve the visible, region-selected, learned, and published
+fusion families. The top-five score was fixed before margin selection. On the
+150 LLVIP and 400 M3FD validation images, the four evaluators use held-out
+groups and no confirmatory-test labels.
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Validation sensitivity for the four-candidate selector. Values are
+dataset-balanced AP50 gain, worst evaluator gain, and mean switched-decision
+fraction over the four validation evaluators.
+The preselection search used margins through 1.5; larger margins and alternate
+score depths are post-freeze sensitivity analyses.}
+\label{tab:validation-grid}
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+\(K\) & Margin & Balanced gain & Worst & Switch (\%) \\
+\midrule
+1 & 1.2 & -0.0014 & -0.0048 & 0.54 \\
+1 & 1.5 & -0.0000 & -0.0004 & 0.13 \\
+1 & 2.0 & -0.0000 & -0.0004 & 0.13 \\
+1 & 2.5 & 0.0000 & 0.0000 & 0.00 \\
+5 & 1.2 & -0.0002 & -0.0056 & 11.40 \\
+5 & 1.5 & \textbf{+0.0008} & \textbf{-0.0001} & 4.71 \\
+5 & 2.0 & +0.0001 & -0.0004 & 0.92 \\
+5 & 2.5 & +0.0001 & 0.0000 & 0.23 \\
+10 & 1.2 & -0.0029 & -0.0073 & 17.10 \\
+10 & 1.5 & +0.0004 & -0.0010 & 6.10 \\
+10 & 2.0 & +0.0016 & 0.0000 & 1.38 \\
+10 & 2.5 & +0.0000 & -0.0004 & 0.35 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+For the frozen \(K=5\) rule, margin 1.5 was the first setting meeting the
+\(0.0005\) per-evaluator loss bound and had the largest balanced gain in the
+preselected margin grid. Its validation gains were 0.001850 and \(-0.000070\)
+for the two LLVIP evaluators and 0.001518 and 0.000083 for the two M3FD
+evaluators. The expanded grid contains settings with higher validation means,
+but they were observed after the primary policy was frozen and are not used to
+redefine it.
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Post-freeze test sensitivity over score depth \(K\) and visible margin
+for the full four-candidate library. Values are dataset-balanced AP50 gain,
+worst checkpoint mean gain, positive checkpoints, and mean switched-decision
+fraction. These results are descriptive and were not used to select the policy.}
+\label{tab:test-grid}
+\begin{tabular}{@{}rrrrrr@{}}
+\toprule
+\(K\) & Margin & Balanced gain & Worst & Positive & Switch (\%) \\
+\midrule
+1 & 1.2 & +0.0101 & -0.0012 & 10/12 & 7.89 \\
+1 & 1.5 & +0.0088 & -0.0004 & 11/12 & 5.32 \\
+1 & 2.0 & +0.0095 & -0.0007 & 11/12 & 3.79 \\
+5 & 1.2 & +0.0182 & -0.0276 & 7/12 & 18.25 \\
+5 & 1.5 & \textbf{+0.0133} & \textbf{-0.0040} & 9/12 & 8.63 \\
+5 & 2.0 & +0.0099 & -0.0010 & 10/12 & 5.19 \\
+10 & 1.2 & +0.0268 & -0.0377 & 7/12 & 26.19 \\
+10 & 1.5 & +0.0218 & -0.0119 & 7/12 & 12.94 \\
+10 & 2.0 & +0.0169 & -0.0019 & 9/12 & 7.11 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The test grid is not a model-selection procedure. Some unselected settings
+have larger means, but several also increase switching or tail exposure. In
+particular, \(K=10\), margin 1.5 has a larger test mean but only 7/12 positive
+checkpoints and a worst loss of 0.0119; \(K=10\), margin 2.0 has a similar
+tail to CS-ECF and a larger mean in this post-hoc check. These observations
+motivate prospective validation of alternative score depths and do not
+retroactively change the frozen primary policy.
+
+\subsection{Multiplicity analysis}
+
+The primary inference family contains the 12 prespecified
+CS-ECF-versus-visible checkpoint contrasts. Two-sided p-values come from 2,000
+pairwise scene/frame-group bootstrap resamples per checkpoint. No checkpoint
+had a Holm-adjusted p-value below 0.05. The best raw result was
+LLVIP/YOLO11n, with a gain of +0.0034, raw \(p=0.0050\), and Holm-adjusted
+\(p=0.0600\). The exact sign test for 9/12 positive checkpoints gave
+\(p=0.0730\). These results do not support a claim that a specific checkpoint
+improved significantly; they support only the prespecified balanced estimand
+and the observed risk reduction.
+
+\begin{table}[ht]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{Checkpoint-level visible-relative contrasts and multiplicity.
+Intervals resample scene or consecutive frame groups. Raw p-values are
+two-sided bootstrap probabilities; Holm and BH values are adjusted for the
+12-member confirmatory family.}
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Checkpoint & Gain & 95\% group interval & Raw \(p\) & Holm & BH \\
+\midrule
+LLVIP/YOLO11n & +0.0034 & [+0.0011,+0.0056] & 0.0050 & 0.0600 & 0.0600 \\
+LLVIP/Agnostic & +0.0061 & [+0.0002,+0.0193] & 0.0310 & 0.3408 & 0.1859 \\
+LLVIP/YOLO26n s0 & -0.0034 & [-0.0092,+0.0017] & 0.4038 & 1.0000 & 0.6433 \\
+LLVIP/RT-DETR-l & +0.0040 & [+0.0000,+0.0073] & 0.1889 & 1.0000 & 0.3778 \\
+LLVIP/YOLO26n s1 & -0.0027 & [-0.0139,+0.0091] & 0.6847 & 1.0000 & 0.6847 \\
+LLVIP/YOLO26n s2 & +0.0026 & [-0.0027,+0.0142] & 0.5877 & 1.0000 & 0.6433 \\
+LLVIP/YOLOv8n s0 & -0.0040 & [-0.0164,+0.0032] & 0.5897 & 1.0000 & 0.6433 \\
+LLVIP/YOLOv8n s1 & +0.0064 & [+0.0000,+0.0202] & 0.0510 & 0.5097 & 0.1979 \\
+M3FD/YOLO26n & +0.0041 & [+0.0000,+0.0058] & 0.5177 & 1.0000 & 0.6433 \\
+M3FD/YOLOv8n & +0.0182 & [+0.0000,+0.0256] & 0.4908 & 1.0000 & 0.6433 \\
+DroneVehicle/best & +0.0251 & [-0.0003,+0.0387] & 0.0660 & 0.5937 & 0.1979 \\
+DroneVehicle/last & +0.0293 & [-0.0014,+0.0479] & 0.1589 & 1.0000 & 0.3778 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 Two alternative policies were evaluated after the frozen comparison. They are
 exploratory and are not used to support the main claim. A top-10 selector over
@@ -245,6 +416,35 @@ hierarchical interval of \([-0.0029,+0.0127]\). A mean-confidence selector over
 visible/SPGFusion with margin 1.5 gave a \(-0.0034\) balanced gain and
 \([-0.0085,+0.0013]\). Both alternatives fail to establish a stable advantage
 across the 10 LLVIP/M3FD checkpoints.
+
+\section{Registration sensitivity}
+
+ECC translation residuals were computed on normalized Sobel edges for all 300
+LLVIP test pairs. The median residual was 2.53 pixels. The best-aligned and
+worst-aligned quartiles each contain 75 pairs; the best-quartile residual
+cutoff is 1.61 pixels.
+
+\begin{table}[h]
+\centering
+\small
+\caption{CS-ECF-minus-visible AP50 over LLVIP registration quartiles, summarised
+over eight checkpoints. Each checkpoint interval uses 2,000 image-bootstrap
+resamples within the selected quartile.}
+\label{tab:alignment}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Quartile & Mean gain & Worst & Best & Positive \\
+\midrule
+Best aligned & +0.0007 & -0.0125 & +0.0128 & 5/8 \\
+Worst aligned & +0.0020 & -0.0237 & +0.0150 & 6/8 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The gain is not confined to the best-aligned subset. Most checkpoint-specific
+intervals still cross zero, however, and the result should not be read as a
+significant registration effect. Equivalent residual estimates were not
+available for M3FD or DroneVehicle.
 
 \section{Thermal controls}
 
@@ -287,7 +487,24 @@ python scripts/analyze_csecf_vs_cdf.py
 
 This command validates each checkpoint AP before writing
 \path{results/selective_fusion/csecf_vs_cdf_paired.json}. Split and candidate
-manifests retain their seeds and selected groups. The independent evaluator
+manifests retain their seeds and selected groups. The multiplicity and
+sensitivity analysis is reproduced by:
+
+\begin{verbatim}
+python analysis/cs_ecf/major_revision_statistics.py \
+  --data-root "$SSGF_DATA_ROOT" --out results/revision_statistics.json
+\end{verbatim}
+
+Image-statistics controls, external-evaluator diagnostics, and registration
+quartiles use
+\path{analysis/cs_ecf/image_quality_baselines.py},
+\path{analysis/cs_ecf/external_evaluator_diagnostics.py}, and
+\path{analysis/cs_ecf/alignment_csecf_sensitivity.py}, respectively. The image
+quality script requires \texttt{--external-root} for the image directories.
+M3FD class counts and contribution shares are generated by
+\path{analysis/cs_ecf/summarize_m3fd_classes.py}.
+
+The independent evaluator
 checkpoints were trained or loaded by
 \path{scripts/train_independent_manual.py}, scored with
 \path{scripts/score_clean_evaluators.py}, and summarized with

@@ -2,9 +2,8 @@
 
 Date: 2026-10-28  
 Target: *Infrared Physics & Technology*  
-Status: author-confirmed working draft with original administrative metadata;
-ready for the live submission-portal check after completed technical QA and
-Zenodo archival release
+Status: major-revision self-repair complete; v14 package and Zenodo `v2.1.0`
+archival release prepared for the live submission-portal check
 
 ## Main files
 
@@ -22,18 +21,22 @@ Zenodo archival release
 - `source_data/` — figure-level CSV source data.
 - `submission_materials/` — cover-letter, Highlights, keyword, caption,
   checklist, and figure-QA drafts.
-- `submission_package_v13/` — final assembled upload package with PDFs, LaTeX,
+- `submission_package_v14/` — final assembled upload package with PDFs, LaTeX,
   figures, source data, external-evaluator evidence, reproduction scripts, and
-  SHA-256 manifest.
+  SHA-256 manifest; includes the multiplicity, sensitivity, baseline, class,
+  calibration, and registration analyses added after review.
 - `submission_materials/FINAL_TECHNICAL_QA.md` — completed build, consistency,
   reference, PDF, and archive checks.
 - `submission_materials/RELATED_WORK_EVIDENCE.md` — section-to-reference
   mapping and audit for the added literature.
-- Zenodo version DOI: `10.5281/zenodo.23718751`.
+- Zenodo version DOI for `v2.1.0`: `10.5281/zenodo.23719721`; concept DOI:
+  `10.5281/zenodo.22984388`.
 
 ## Current verified result anchors
 
 - 12 confirmatory detector checkpoints, 9 positive.
+- Exact two-sided sign test for 9/12 positive checkpoints: `p=0.073`; no
+  individual checkpoint survives Holm correction across the 12-member family.
 - Dataset-balanced AP50 gain: +0.0133.
 - Training-run-by-group hierarchical 95% CI: [+0.0026, +0.0261].
 - Direct comparison with Always CDF: +0.0102 AP50;
@@ -46,6 +49,19 @@ Zenodo archival release
 - The fine-tuned YOLOv9t shield improved the unshielded policy by +0.0153, but
   did not prevent a loss relative to visible.
 - No-shield worst loss: -0.0584; CS-ECF worst loss: -0.0040.
+- Uniform-random balanced gain: -0.0341; per-image oracle upper bound: +0.0833.
+- Image-quality selectors do not recover the confidence-based gain:
+  maximum-VIF +0.0008, maximum-SSIM -0.0946, maximum-entropy -0.0599.
+- Validation selection used 150 LLVIP and 400 M3FD images; K=5/margin=1.5
+  produced balanced validation gain +0.0008, worst-evaluator gain -0.0001, and
+  a 4.7% switch fraction.
+- Fine-tuned YOLOv9t ECE was 0.048 versus 0.009-0.010 for zero-shot evaluators;
+  41.4% of its switched images degraded.
+- M3FD people-class counts and intervals are reported; the people class
+  accounts for 87.7% and 99.6% of the positive class-mean contribution in the
+  two checkpoints.
+- LLVIP ECC median translation residual was 2.53 pixels; the gain was not
+  confined to the best-aligned quartile.
 - DroneVehicle best/last gains: +0.0251 / +0.0293.
 - Thermal mask advantage over global injection: +0.0007 AP50.
 - Serial latency estimate: 706.3 ms.
@@ -58,8 +74,9 @@ Zenodo archival release
 2. Verify the current IPT Guide for Authors in the submission portal, including
    article type, abstract
    limit, Highlights requirements, figure count, and artwork rules.
-3. Upload from `submission_package_v13/`. The CS-ECF Zenodo version DOI is
-   `10.5281/zenodo.23718751`; the preceding study's DOI must not be reused.
+3. Upload from `submission_package_v14/`. The CS-ECF Zenodo `v2.1.0` version
+   DOI is `10.5281/zenodo.23719721`; the preceding study's DOI
+   `10.5281/zenodo.22984389` must not be reused.
 4. Re-run the LaTeX build, figure QA, PDF page audit, and numerical consistency
    checks again only if the portal requires a content change.
 

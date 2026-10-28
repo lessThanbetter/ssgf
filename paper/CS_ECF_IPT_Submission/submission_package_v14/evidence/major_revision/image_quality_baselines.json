@@ -1,0 +1,456 @@
+{
+  "selectors": {
+    "max_entropy": {
+      "dataset_balanced_gain": -0.05992188633635572,
+      "per_dataset_gain": {
+        "llvip": -0.15831723647387447,
+        "m3fd": -0.13150706761017694,
+        "dronevehicle_test": 0.11005864507498425
+      },
+      "worst_checkpoint_gain": -0.2431685483272904,
+      "positive_checkpoints": 2
+    },
+    "max_ssim_fused": {
+      "dataset_balanced_gain": -0.09460463311847088,
+      "per_dataset_gain": {
+        "llvip": -0.14181195085111273,
+        "m3fd": -0.1547783948146148,
+        "dronevehicle_test": 0.012776446310314882
+      },
+      "worst_checkpoint_gain": -0.2854685289902045,
+      "positive_checkpoints": 3
+    },
+    "max_vif_fused": {
+      "dataset_balanced_gain": 0.0007539218155589352,
+      "per_dataset_gain": {
+        "llvip": 0.0072560897360343934,
+        "m3fd": -0.0035700906601466853,
+        "dronevehicle_test": -0.0014242336292109026
+      },
+      "worst_checkpoint_gain": -0.005942897745127906,
+      "positive_checkpoints": 8
+    }
+  },
+  "per_checkpoint": {
+    "llvip/yolo11": {
+      "max_entropy": {
+        "ap50": 0.7496502984092515,
+        "gain": -0.13144877731209403,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 0,
+          "pia": 5,
+          "spg": 295
+        }
+      },
+      "max_ssim_fused": {
+        "ap50": 0.796771083635019,
+        "gain": -0.08432799208632646,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 13,
+          "pia": 287,
+          "spg": 0
+        }
+      },
+      "max_vif_fused": {
+        "ap50": 0.8920086562626303,
+        "gain": 0.010909580541284769,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 300,
+          "pia": 0,
+          "spg": 0
+        }
+      }
+    },
+    "llvip/agnostic": {
+      "max_entropy": {
+        "ap50": 0.8341060086699587,
+        "gain": -0.020915904503761684,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 0,
+          "pia": 5,
+          "spg": 295
+        }
+      },
+      "max_ssim_fused": {
+        "ap50": 0.8713596533810497,
+        "gain": 0.016337740207329365,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 13,
+          "pia": 287,
+          "spg": 0
+        }
+      },
+      "max_vif_fused": {
+        "ap50": 0.8629328240289033,
+        "gain": 0.007910910855182918,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 300,
+          "pia": 0,
+          "spg": 0
+        }
+      }
+    },
+    "llvip/yolo26_s0": {
+      "max_entropy": {
+        "ap50": 0.5988782899913444,
+        "gain": -0.21327244506167808,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 0,
+          "pia": 5,
+          "spg": 295
+        }
+      },
+      "max_ssim_fused": {
+        "ap50": 0.6166569463265666,
+        "gain": -0.19549378872645584,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 13,
+          "pia": 287,
+          "spg": 0
+        }
+      },
+      "max_vif_fused": {
+        "ap50": 0.8199594689397438,
+        "gain": 0.00780873388672132,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 300,
+          "pia": 0,
+          "spg": 0
+        }
+      }
+    },
+    "llvip/rtdetr": {
+      "max_entropy": {
+        "ap50": 0.5704441207958707,
+        "gain": -0.23909988172192975,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 0,
+          "pia": 5,
+          "spg": 295
+        }
+      },
+      "max_ssim_fused": {
+        "ap50": 0.6092471347028099,
+        "gain": -0.20029686781499056,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 13,
+          "pia": 287,
+          "spg": 0
+        }
+      },
+      "max_vif_fused": {
+        "ap50": 0.8099676388339206,
+        "gain": 0.0004236363161201906,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 300,
+          "pia": 0,
+          "spg": 0
+        }
+      }
+    },
+    "llvip/yolo26_s1": {
+      "max_entropy": {
+        "ap50": 0.6275510796439149,
+        "gain": -0.16619281629619542,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 0,
+          "pia": 5,
+          "spg": 295
+        }
+      },
+      "max_ssim_fused": {
+        "ap50": 0.6580190004543063,
+        "gain": -0.13572489548580402,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 13,
+          "pia": 287,
+          "spg": 0
+        }
+      },
+      "max_vif_fused": {
+        "ap50": 0.8048242688101147,
+        "gain": 0.011080372870004407,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 300,
+          "pia": 0,
+          "spg": 0
+        }
+      }
+    },
+    "llvip/yolo26_s2": {
+      "max_entropy": {
+        "ap50": 0.6511458307008318,
+        "gain": -0.15500067497334424,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 0,
+          "pia": 5,
+          "spg": 295
+        }
+      },
+      "max_ssim_fused": {
+        "ap50": 0.6858196857335901,
+        "gain": -0.12032681994058592,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 13,
+          "pia": 287,
+          "spg": 0
+        }
+      },
+      "max_vif_fused": {
+        "ap50": 0.8182770484455025,
+        "gain": 0.012130542771326525,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 300,
+          "pia": 0,
+          "spg": 0
+        }
+      }
+    },
+    "llvip/yolo8_s0": {
+      "max_entropy": {
+        "ap50": 0.5369461829933477,
+        "gain": -0.2431685483272904,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 0,
+          "pia": 5,
+          "spg": 295
+        }
+      },
+      "max_ssim_fused": {
+        "ap50": 0.49464620233043366,
+        "gain": -0.2854685289902045,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 13,
+          "pia": 287,
+          "spg": 0
+        }
+      },
+      "max_vif_fused": {
+        "ap50": 0.7846950150306512,
+        "gain": 0.004580283710013067,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 300,
+          "pia": 0,
+          "spg": 0
+        }
+      }
+    },
+    "llvip/yolo8_s1": {
+      "max_entropy": {
+        "ap50": 0.7080517854866267,
+        "gain": -0.09743884359470201,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 0,
+          "pia": 5,
+          "spg": 295
+        }
+      },
+      "max_ssim_fused": {
+        "ap50": 0.6762961751094648,
+        "gain": -0.1291944539718639,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 13,
+          "pia": 287,
+          "spg": 0
+        }
+      },
+      "max_vif_fused": {
+        "ap50": 0.8086952860189507,
+        "gain": 0.0032046569376219525,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 300,
+          "pia": 0,
+          "spg": 0
+        }
+      }
+    },
+    "m3fd/yolo26_m3fd6": {
+      "max_entropy": {
+        "ap50": 0.2328138501751262,
+        "gain": -0.13885775230898986,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 55,
+          "pia": 50,
+          "spg": 95
+        }
+      },
+      "max_ssim_fused": {
+        "ap50": 0.20749275984447033,
+        "gain": -0.16417884263964574,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 3,
+          "pia": 180,
+          "spg": 17
+        }
+      },
+      "max_vif_fused": {
+        "ap50": 0.3704743189089506,
+        "gain": -0.0011972835751654642,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 200,
+          "pia": 0,
+          "spg": 0
+        }
+      }
+    },
+    "m3fd/yolo8n_m3fd6": {
+      "max_entropy": {
+        "ap50": 0.2548748906792856,
+        "gain": -0.12415638291136405,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 55,
+          "pia": 50,
+          "spg": 95
+        }
+      },
+      "max_ssim_fused": {
+        "ap50": 0.23365332660106575,
+        "gain": -0.1453779469895839,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 3,
+          "pia": 180,
+          "spg": 17
+        }
+      },
+      "max_vif_fused": {
+        "ap50": 0.37308837584552174,
+        "gain": -0.005942897745127906,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 200,
+          "pia": 0,
+          "spg": 0
+        }
+      }
+    },
+    "dronevehicle_test/best": {
+      "max_entropy": {
+        "ap50": 0.7578283718781019,
+        "gain": 0.10151368308170927,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 16,
+          "pia": 45,
+          "spg": 239
+        }
+      },
+      "max_ssim_fused": {
+        "ap50": 0.6683680204981588,
+        "gain": 0.012053331701766146,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 105,
+          "pia": 195,
+          "spg": 0
+        }
+      },
+      "max_vif_fused": {
+        "ap50": 0.6550641677310406,
+        "gain": -0.0012505210653520615,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 295,
+          "pia": 3,
+          "spg": 2
+        }
+      }
+    },
+    "dronevehicle_test/last": {
+      "max_entropy": {
+        "ap50": 0.7659972941255853,
+        "gain": 0.11860360706825923,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 16,
+          "pia": 45,
+          "spg": 239
+        }
+      },
+      "max_ssim_fused": {
+        "ap50": 0.6608932479761896,
+        "gain": 0.013499560918863618,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 105,
+          "pia": 195,
+          "spg": 0
+        }
+      },
+      "max_vif_fused": {
+        "ap50": 0.6457957408642563,
+        "gain": -0.0015979461930697436,
+        "switch_fraction": 1.0,
+        "selected_counts": {
+          "vis": 0,
+          "cdf": 295,
+          "pia": 3,
+          "spg": 2
+        }
+      }
+    }
+  }
+}

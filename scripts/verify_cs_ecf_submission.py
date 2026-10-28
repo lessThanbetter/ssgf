@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 import shutil
 import subprocess
@@ -86,14 +87,19 @@ def main() -> None:
             "[-0.00057, 0.02980]",
             "0.0108",
             "0.0153",
+            "p=0.073",
+            "0.0833",
+            "10.5281/zenodo.23719721",
         ),
         SUPPLEMENT: (
             "-.0108",
             "[-.0342,+.0050]",
             "0.0153",
             "[+0.0072,+0.0267]",
+            "p=0.0730",
+            "12-member confirmatory family",
         ),
-        COVER: ("0.0108", "0.0153"),
+        COVER: ("0.0108", "0.0153", "p=0.073"),
     }
     for path, claims in required_claims.items():
         text = path.read_text(encoding="utf-8")
@@ -108,13 +114,17 @@ def main() -> None:
     )
     for stale in stale_values:
         require(stale not in source_text, f"stale domain interval present: {stale}")
+    require(
+        "10.5281/zenodo.23718751" not in source_text,
+        "superseded Zenodo version DOI is still present",
+    )
 
     reference_entries = len(re.findall(r"(?m)^@", REFERENCES.read_text(encoding="utf-8")))
-    require(reference_entries == 27, f"expected 27 references, found {reference_entries}")
+    require(reference_entries == 46, f"expected 46 references, found {reference_entries}")
 
     expected_pages = {
-        "main": (13, "Manuscript.pdf"),
-        "supplementary": (4, "Supplementary_Material.pdf"),
+        "main": (18, "Manuscript.pdf"),
+        "supplementary": (6, "Supplementary_Material.pdf"),
         "cover_letter": (1, "Cover_Letter.pdf"),
     }
     for stem, expected in expected_pages.items():
@@ -161,10 +171,50 @@ def main() -> None:
         matches = sorted(figure_dir.glob(f"fig{index}_*.pdf"))
         require(len(matches) == 1, f"expected one PDF for figure {index}")
 
+    evidence_dir = PAPER / "evidence" / "major_revision"
+    if evidence_dir.is_dir():
+        evidence_names = (
+            "major_revision_statistics.json",
+            "image_quality_baselines.json",
+            "image_quality_features.json",
+            "external_evaluator_diagnostics.json",
+            "m3fd_class_summary.json",
+            "alignment_csecf_sensitivity.json",
+        )
+        for name in evidence_names:
+            path = evidence_dir / name
+            require(path.is_file(), f"missing major-revision evidence: {name}")
+            json.loads(path.read_text(encoding="utf-8"))
+
+        statistics = json.loads(
+            (evidence_dir / "major_revision_statistics.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        primary = statistics["multiple_comparisons"]["visible_relative"]
+        require(primary["family_size"] == 12, "multiplicity family is not 12")
+        require(primary["positive_checkpoints"] == 9, "positive count is not 9")
+        require(
+            abs(primary["exact_sign_test_p"] - 0.0730) < 1e-5,
+            "sign-test value changed",
+        )
+        require(primary["survive_holm"] == [], "Holm-surviving checkpoint appeared")
+        balanced = statistics["dataset_balanced"]
+        require(
+            abs(balanced["visible"]["point"] - 0.0133) < 1e-4,
+            "balanced visible contrast changed",
+        )
+        require(
+            abs(balanced["cdf"]["point"] - 0.0102) < 1e-4,
+            "balanced CDF contrast changed",
+        )
+
     print(f"PASS: abstract={abstract_words} words; cover={cover_words} words")
     print(f"PASS: highlights={len(highlights)}; references={reference_entries}")
     print("PASS: placeholders, key claims, stale intervals, logs, pages, and figures")
-    print("PASS: main=13 pages; supplementary=4 pages; cover letter=1 page")
+    if evidence_dir.is_dir():
+        print("PASS: major-revision JSON evidence and canonical statistics")
+    print("PASS: main=18 pages; supplementary=6 pages; cover letter=1 page")
 
 
 if __name__ == "__main__":
