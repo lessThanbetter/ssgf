@@ -1,0 +1,25 @@
+{
+  "yolov9t_domain": {
+    "family": "fourteen fused inputs against the colour-scored visible source",
+    "correction": "Benjamini-Hochberg",
+    "alpha": 0.05,
+    "n_tests": 3,
+    "tests": {
+      "cdf": {
+        "delta50_observed": -0.0068,
+        "p_boot50": 0.521479,
+        "q_bh50": 0.521479
+      },
+      "piafusion": {
+        "delta50_observed": -0.2081,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.002997
+      },
+      "spgfusion": {
+        "delta50_observed": -0.2229,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.002997
+      }
+    }
+  }
+}

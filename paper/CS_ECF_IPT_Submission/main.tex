@@ -43,32 +43,30 @@
             country={China}}
 
 \begin{abstract}
-Infrared--visible fusion utility is usually assumed to benefit any downstream
-detector. In practice, the same fused image may improve one detector and degrade
-another because utility depends on detector representation and confidence
-calibration. We introduce
+Infrared--visible fusion is often treated as a global preprocessing gain, yet
+the same fused image may improve one detector and degrade another. We introduce
 Confidence-Shielded Evaluator-Conditioned Fusion (CS-ECF), a label-free policy
-that evaluates visible, CDF, PIAFusion, and SPGFusion candidates with the target
-detector. CS-ECF averages each candidate's five highest detection confidences
-and uses a fused input only when its score reaches 1.5 times the visible score;
-otherwise, it falls back to the visible image. The margin was frozen before
-testing.
+that scores visible, consensus-detail fusion (CDF), PIAFusion, and SPGFusion
+candidates with the target detector. CS-ECF averages the five highest
+confidences of each candidate and selects a fused input only when its score
+reaches 1.5 times that of visible; otherwise, visible is retained. The margin
+was frozen before testing.
 
-We evaluated CS-ECF on a fixed-split LLVIP test set, grouped six-class M3FD, and
-the official DroneVehicle test subset, comprising 12 detector checkpoints. Nine
-checkpoints improved over the visible input, with a dataset-balanced AP50 gain
-of 0.0133 and a training-run-by-group 95\% interval of [0.0026, 0.0261]. Against
-the stronger Always CDF baseline, the balanced difference was 0.0102
-[-0.00057, 0.02980], with no interval separation from zero; the point estimate
-was concentrated in M3FD and DroneVehicle and was negative on LLVIP. Removing
-the shield increased the worst AP50 loss from 0.0040 to 0.0584. On two unused
-zero-shot evaluators, gains over visible were 0.021--0.025 AP50, but differences
-from CDF crossed zero. Correlated DroneVehicle checkpoints improved by 0.0251
-and 0.0293. M3FD gains were concentrated in the people class, and LLVIP
-intervals crossed zero. These results support risk-controlled
-evaluator-conditioned fusion, not uniform class improvement or dominance over
-the strongest fixed input. Serial candidate generation and four detector
-evaluations required approximately \SI{0.71}{s} per image pair.
+Across fixed-split LLVIP, grouped six-class M3FD, and official DroneVehicle test
+subsets, comprising 12 confirmatory checkpoints, nine checkpoints improved over
+visible. The dataset-balanced AP50 gain was 0.0133 with a
+training-run-by-group 95\% interval of [0.0026, 0.0261]. Against Always CDF, the
+balanced difference was 0.0102 [-0.00057, 0.02980], so superiority over this
+fixed input was not established. Removing the shield increased the worst AP50
+loss from 0.0040 to 0.0584. Two zero-shot evaluators gained 0.021--0.025 AP50
+over visible without separating from CDF. A third evaluator, fine-tuned on
+LLVIP, lost 0.0108 AP50 relative to visible; its scene-group interval crossed
+zero, although shielding improved the unshielded policy by 0.0153. This negative
+check shows that confidence arbitration is not universally portable. The
+evidence supports bounded, evaluator-dependent risk control, not uniform
+improvement, CDF dominance, or low-latency deployment. Serial candidate
+generation and four detector evaluations required approximately
+\SI{0.71}{s} per image pair.
 \end{abstract}
 
 \begin{keyword}
@@ -135,7 +133,9 @@ failure boundaries. The contributions are:
   positive dataset-balanced gains;
   \item a three-dataset confirmation that separates image-level uncertainty,
   scene/group uncertainty, and checkpoint variability, including explicit
-  evidence that the M3FD gain is concentrated in the people class.
+  evidence that the M3FD gain is concentrated in the people class, the absence
+  of a separated advantage over Always CDF, and a fine-tuned-evaluator
+  counterexample to universal portability.
 \end{enumerate}
 
 \section{Methods}
@@ -276,6 +276,19 @@ Drone\-Vehicle & YOLO11x\-OBB & VIS, vehicle OBB & best/last, one run & 2 \\
 \end{tabular}
 \end{table}
 
+\paragraph{External evaluator stress tests.}
+We also applied the frozen selector to three checkpoints that were not used to
+construct the policy or select its margin. YOLOv9t and YOLOv10s were
+COCO-pretrained models without LLVIP fine-tuning, and only their person-class
+detections were retained \cite{wang2024yolov9,wang2024yolov10}. A third
+YOLOv9t was initialized from the same COCO weights and fine-tuned for a
+pre-specified 40 epochs on the 1,350 LLVIP visible training images. Training
+used AdamW, a learning rate of 0.002 with three-epoch warm-up and cosine decay,
+weight decay \(5\times10^{-4}\), batch size 16, 640-pixel inputs, horizontal
+flipping, and brightness/contrast jitter. A reproducible PIL-based loader and
+the Ultralytics detection loss were used. The last checkpoint was fixed after
+epoch 40; no epoch was selected using test results.
+
 \paragraph{Detection evaluation.}
 Predictions use a 640-pixel inference size and a confidence floor of
 \(0.001\). For YOLO models, non-maximum suppression uses an IoU threshold of
@@ -384,7 +397,7 @@ reports the dataset-specific contrasts rather than only the pooled endpoint.
 \begin{table}[t]
 \centering
 \small
-\caption{Paired mAP50 difference between CS-ECF and Always CDF. Intervals
+\caption{Paired AP50 difference between CS-ECF and Always CDF. Intervals
 resample scene or frame groups; the combined interval also resamples training
 runs within each dataset and then weights datasets equally.}
 \label{tab:cdf-paired}
@@ -407,43 +420,55 @@ The defensible contribution is risk-controlled evaluator-conditioned
 arbitration and its observed trade-off, not dominance over the strongest fixed
 input.
 
-\subsection{Independent zero-shot evaluator confirmation}
+\subsection{External evaluator stress tests}
 
 To test whether the result was tied to the evaluator families used during
-policy development, we applied the already frozen selector to two COCO-pretrained
-models that were not trained, validated, or used to choose the policy:
-YOLOv9t and YOLOv10s \cite{wang2024yolov9,wang2024yolov10}. We retained only
-their person-class detections and used the same top-five score, 1.5 margin, and
-four candidate images. Neither model was fine-tuned on LLVIP.
+policy development, we first applied the frozen selector to the two
+COCO-pretrained YOLOv9t and YOLOv10s checkpoints without LLVIP fine-tuning.
+We then tested the same selector with an LLVIP-fine-tuned YOLOv9t, whose lower
+test-set performance and larger train-to-test shift provide a stress case for
+the confidence score.
 
 \begin{table}[t]
 \centering
-\small
-\caption{Frozen-policy confirmation on two zero-shot evaluators. Values in the
-second column are visible / Always CDF / no-shield / CS-ECF AP50. Intervals
-resample LLVIP scene groups.}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{External evaluator stress tests on the same 300 LLVIP test pairs.
+Values in the second column are visible / Always CDF / no-shield / CS-ECF AP50.
+The first two evaluators are COCO-pretrained without LLVIP fine-tuning; the
+third is fine-tuned on LLVIP and tests a negative portability boundary.
+Intervals resample LLVIP scene groups. NS, no shield.}
 \label{tab:independent}
-\setlength{\tabcolsep}{4pt}
 \begin{tabular}{@{}lccc@{}}
 \toprule
 Evaluator & AP50 (V/CDF/NS/CS) &
 CS-ECF \(-\) visible & CS-ECF \(-\) CDF \\
 \midrule
-YOLOv9t & .7698 / .7888 / .8216 / .7948 &
+YOLOv9t, zero-shot & .7698 / .7888 / .8216 / .7948 &
 \(+.0250~[+.0053,+.0523]\) & \(+.0060~[-.0277,+.0374]\) \\
-YOLOv10s & .8344 / .8617 / .8699 / .8557 &
-\(+.0213~[+.0037,+.0431]\) & \(-.0059~[-.0254,+.0192]\) \\
+YOLOv10s, zero-shot & .8344 / .8617 / .8699 / .8557 &
+\(+.0213~[+.0041,+.0439]\) & \(-.0059~[-.0266,+.0180]\) \\
+YOLOv9t, LLVIP-trained & .6666 / .6598 / .6405 / .6558 &
+\(-.0108~[-.0342,+.0050]\) & \(-.0040~[-.0206,+.0108]\) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Both unused evaluators improved relative to visible, while neither provided a
-separated advantage over Always CDF. The external check therefore supports the
-evaluator-conditioned gain over the visible baseline but not CDF superiority.
-The shield's tail effect was also mixed: on YOLOv10s it reduced the worst scene
-loss from \(0.0337\) to \(0.0038\), whereas on YOLOv9t the worst scene loss was
-\(0.0167\) with the shield and \(0.0011\) without it. This heterogeneity is
-reported as a boundary of the risk-control claim.
+Both zero-shot evaluators improved relative to visible, while neither provided
+a separated advantage over Always CDF. The fine-tuned YOLOv9t changed the sign:
+CS-ECF was \(0.0108\) AP50 below visible, with a scene-group interval crossing
+zero, and \(0.0040\) below Always CDF. The shield nevertheless improved the
+unshielded selector by \(0.0153\) AP50, with a group interval of
+\([+0.0072,+0.0267]\). It selected visible for 230 of 300 images and reduced
+the worst scene loss from \(0.1208\) to \(0.0724\), but did not eliminate the
+loss.
+
+The shield's tail effect was mixed even among the zero-shot checks. On
+YOLOv10s it reduced the worst scene loss from \(0.0337\) to \(0.0038\);
+on zero-shot YOLOv9t the worst scene loss was \(0.0167\) with the shield and
+\(0.0011\) without it. Together with the fine-tuned-model result, these
+contrasts show that the confidence shield reduces some unconstrained-selection
+errors without guaranteeing a visible-relative gain.
 
 \subsection{The shield is a risk-control mechanism}
 
@@ -524,7 +549,6 @@ support a universal thermal switching rule. Source data are provided in
 \label{fig:thermal}
 \end{figure}
 
-\clearpage
 \section{Discussion}
 
 The central finding is that fusion utility is not an intrinsic property of a
@@ -549,19 +573,23 @@ vehicle-focused evaluation. Its small balanced advantage should therefore not
 be read as a demonstrated replacement for CDF everywhere: the interval
 included zero.
 
-The two zero-shot checkpoints point in the same direction for the visible
-baseline: CS-ECF gains of 0.021 and 0.025 AP50 had scene intervals above zero.
-They again fail to separate CS-ECF from Always CDF. This independent check
-therefore supports portability of the evaluator-conditioned gain, while
-reinforcing that the fixed CDF baseline remains competitive.
+The external evaluators provide a more heterogeneous picture. The two zero-shot
+checkpoints support a visible-relative gain but not superiority over Always CDF.
+The LLVIP-fine-tuned YOLOv9t provides the opposite result: CS-ECF falls below
+visible, while shielding still improves on the unshielded selector. The evidence
+therefore supports evaluator-conditioned risk reduction in some settings, not
+universal transfer of a fusion gain. The difference may reflect the lower test
+performance and changed ranking behavior of the fine-tuned checkpoint, but the
+current design cannot separate those explanations.
 
-Two boundaries constrain the interpretation. First, the strongest M3FD effect
+Three boundaries constrain the interpretation. First, the strongest M3FD effect
 is class-specific: people detection improves substantially while the remaining
-classes are nearly unchanged. The selected thermal evidence is therefore most
-useful for a subset of target appearances, not all six vehicle classes. Second,
-the DroneVehicle confirmation uses two checkpoints from the same training run.
-The official test groups are independent of model selection, but the checkpoints
-share training data and are correlated.
+classes are nearly unchanged. Second, the DroneVehicle confirmation uses two
+checkpoints from the same training run; the checkpoints share training data and
+are correlated. Third, the domain-fine-tuned YOLOv9t demonstrates that an
+unseen target detector can reverse the sign of the visible-relative contrast.
+The policy should therefore be validated for each deployed evaluator rather
+than assumed portable.
 
 The thermal stratification adds another limitation. Thermal contrast may
 increase the likelihood of selecting fused evidence in LLVIP and M3FD, but the
@@ -587,11 +615,14 @@ policy improved nine checkpoints, produced a dataset-balanced AP50 gain of
 dataset-balanced gain over the stronger Always CDF baseline was 0.0102, with a
 run-cluster by group interval that included zero. The
 two unused zero-shot evaluators also improved over visible by 0.021--0.025 AP50,
-without separating from Always CDF. The
-evidence supports risk-controlled, pedestrian-centric infrared--visible
-detection; it does not support uniform six-class improvement, and the additional
-cost of SPGFusion and four detector evaluations must be considered in
-deployment.
+without separating from Always CDF. An additional LLVIP-fine-tuned YOLOv9t
+exposed a counterexample: CS-ECF lost 0.0108 AP50 relative to visible, although
+it improved the unshielded selector by 0.0153. The evidence supports bounded,
+evaluator-dependent risk control for pedestrian-centric and mixed
+infrared--visible detection. It does not support uniform six-class improvement,
+universal portability across evaluators, or dominance over Always CDF, and the
+additional cost of SPGFusion and four detector evaluations must be considered
+in deployment.
 
 \section*{CRediT authorship contribution statement}
 
@@ -634,13 +665,15 @@ data, and the numerical checks used to generate the reported intervals. A
 versioned release will be deposited after acceptance so that the archive and
 the manuscript describe the same code revision.
 
-\section*{Use of generative artificial intelligence}
+\section*{Declaration of generative AI and AI-assisted technologies in the
+manuscript preparation process}
 
-During the preparation of this work the authors used AI-assisted tools to
-support language editing, data-analysis code development, figure preparation,
-and the organization of numerical results. The authors reviewed and edited the
-generated material, verified the reported analyses and figures against the
-source data, and take full responsibility for the content of the publication.
+During the preparation of this work, the authors used OpenAI Codex to support
+language editing, data-analysis code development, figure preparation, and the
+organization of numerical results. After using this tool, the authors reviewed
+and edited the content as needed and take full responsibility for the content
+of the published article. The detector models, numerical results, and reported
+conclusions were verified by the authors.
 
 \bibliographystyle{elsarticle-num}
 \bibliography{references}

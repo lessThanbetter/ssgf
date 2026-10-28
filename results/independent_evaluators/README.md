@@ -48,16 +48,37 @@ python scripts/generate_consensus_detail.py `
 CS-ECF minus visible:
 
 - YOLOv9t: `+0.0250`, scene-group 95% CI `[+0.0053,+0.0523]`
-- YOLOv10s: `+0.0213`, scene-group 95% CI `[+0.0037,+0.0431]`
+- YOLOv10s: `+0.0213`, scene-group 95% CI `[+0.0041,+0.0439]`
 
 CS-ECF minus Always CDF:
 
 - YOLOv9t: `+0.0060`, scene-group 95% CI `[-0.0277,+0.0374]`
-- YOLOv10s: `-0.0059`, scene-group 95% CI `[-0.0254,+0.0192]`
+- YOLOv10s: `-0.0059`, scene-group 95% CI `[-0.0266,+0.0180]`
 
 Both independent evaluators support improvement over visible. Neither supports
 dominance over Always CDF. The shield improves the worst scene on YOLOv10s but
 worsens it on YOLOv9t, so the tail-risk conclusion remains evaluator dependent.
+
+## Domain-fine-tuned YOLOv9t boundary
+
+A YOLOv9t initialized from COCO was fine-tuned for 40 pre-specified epochs on
+the LLVIP visible training split and frozen before test scoring. The checkpoint
+reached validation mAP50 `0.8456` and test visible AP50 `0.6666`.
+
+| Evaluator | Visible | CDF | No shield | CS-ECF |
+|---|---:|---:|---:|---:|
+| YOLOv9t, LLVIP-trained | 0.6666 | 0.6598 | 0.6405 | 0.6558 |
+
+- CS-ECF minus visible: `-0.0108`, scene-group CI
+  `[-0.0342,+0.0050]`.
+- CS-ECF minus CDF: `-0.0040`, scene-group CI
+  `[-0.0206,+0.0108]`.
+- CS-ECF minus no-shield: `+0.0153`, scene-group CI
+  `[+0.0072,+0.0267]`.
+
+The shield reduces, but does not remove, the loss relative to visible. This is
+a negative portability boundary and is retained in the manuscript. The detailed
+record is in `domain_yolov9t_v3/README.md`.
 
 ## Reproduction
 

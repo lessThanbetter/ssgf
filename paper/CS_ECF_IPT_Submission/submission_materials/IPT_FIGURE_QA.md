@@ -16,9 +16,10 @@ Exports: SVG, PDF, 600 dpi TIFF, PNG preview
 
 Manual visual QA was performed at full rendered size after the automated checks.
 
-The final manuscript build contains 13 pages, no undefined citations, no
-unresolved cross-references, and no overfull LaTeX boxes after the final
-recompilation. No author-input placeholders remain.
+The final manuscript build contains 13 pages, the supplementary material
+contains 4 pages, and the cover letter contains 1 page. There are no undefined
+citations, unresolved cross-references, overfull LaTeX boxes, or author-input
+placeholders after the final recompilation.
 
 ## Panel audit
 
@@ -57,7 +58,7 @@ recompilation. No author-input placeholders remain.
 ## Remaining production notes
 
 - Verify the current IPT artwork instruction for TIFF color mode, compression,
-  and maximum figure count before upload.
+  and maximum figure count in the live submission portal.
 - Figure captions must state that LLVIP intervals cross zero and DroneVehicle
   uses two checkpoints from the same training run.
 - No representative IR image plate is included yet. IPT may benefit from one

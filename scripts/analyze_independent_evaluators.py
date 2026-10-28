@@ -23,7 +23,17 @@ ROOT = Path(__file__).resolve().parents[1]
 RESULT_DIR = ROOT / "results" / "independent_evaluators"
 PER_IMAGE = RESULT_DIR / "per_image"
 OUT = RESULT_DIR / "policy_summary.json"
-MODELS = ("yolov9t_coco", "yolov10s_coco")
+MODELS = ("yolov9t_coco", "yolov10s_coco", "yolov9t_domain")
+MODEL_DIRS = {
+    "yolov9t_coco": PER_IMAGE,
+    "yolov10s_coco": PER_IMAGE,
+    "yolov9t_domain": RESULT_DIR / "domain_yolov9t_v3" / "per_image",
+}
+MODEL_SEEDS = {
+    "yolov9t_coco": 2219,
+    "yolov10s_coco": 2220,
+    "yolov9t_domain": 2221,
+}
 DRAWS = 1000
 SEED = 2219
 
@@ -35,7 +45,6 @@ def groups(stems: list[str]) -> list[np.ndarray]:
 
 
 def main() -> None:
-    rng = np.random.default_rng(SEED)
     output = {
         "policy": {
             "top_k": TOP_K,
@@ -44,7 +53,8 @@ def main() -> None:
         },
         "bootstrap": {
             "draws": DRAWS,
-            "seed": SEED,
+            "base_seed": SEED,
+            "model_seeds": MODEL_SEEDS,
             "interval": "percentile 95%",
             "unit": "LLVIP scene groups",
         },
@@ -52,6 +62,7 @@ def main() -> None:
     }
 
     for model_name in MODELS:
+        rng = np.random.default_rng(MODEL_SEEDS[model_name])
         states = {}
         filename_kind = {
             "vis": "vis",
@@ -61,7 +72,7 @@ def main() -> None:
         }
         for candidate in ("vis", "cdf", "pia", "spg"):
             path = (
-                PER_IMAGE
+                MODEL_DIRS[model_name]
                 / f"{model_name}__{filename_kind[candidate]}.npz"
             )
             if not path.is_file():

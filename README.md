@@ -23,6 +23,9 @@ Key frozen results:
   training-run-by-group interval `[-0.00057, +0.02980]` that includes zero;
 - two unused COCO-pretrained evaluators improved over visible by `+0.021` to
   `+0.025` AP50, while their differences from Always CDF still crossed zero;
+- an LLVIP-fine-tuned YOLOv9t exposed a negative portability boundary:
+  CS-ECF was `-0.0108` AP50 relative to visible, while the shield improved the
+  unshielded selector by `+0.0153`;
 - no-shield worst loss `-0.0584`, CS-ECF worst loss `-0.0040`;
 - DroneVehicle independent-test gains `+0.0251 / +0.0293`;
 - thermal-mask advantage over global injection `+0.0007 AP50`;
@@ -36,12 +39,16 @@ Artifacts:
 - `scripts/analyze_csecf_vs_cdf.py` — reconstruction and paired bootstrap for
   the strongest fixed CDF baseline;
 - `scripts/analyze_independent_evaluators.py` — frozen-policy check on unused
-  YOLOv9t and YOLOv10s evaluators;
+  YOLOv9t and YOLOv10s evaluators plus the LLVIP-fine-tuned boundary case;
+- `scripts/train_independent_manual.py` — reproducible PIL-loader training of
+  the LLVIP-fine-tuned YOLOv9t evaluator;
+- `scripts/verify_cs_ecf_submission.py` — abstract, claim, PDF, reference, and
+  placeholder preflight checks;
 - `analysis/cs_ecf/` — analysis and interval-reproduction scripts;
 - `results/selective_fusion/` — aggregate JSON, source-data CSV and per-image
   compressed score files;
-- `paper/CS_ECF_IPT_Submission/` — Elsevier LaTeX source, compiled working PDF,
-  cover letter, figures and source data;
+- `paper/CS_ECF_IPT_Submission/` — Elsevier LaTeX source, compiled PDF, cover
+  letter, figures, source data, and the versioned v9 submission package;
 - `paper/CS_ECF_IPT_DRAFT.md`, `paper/CS_ECF_RESULTS.md`,
   `paper/CS_ECF_2ZONE_MATERIALS.md` — manuscript and evidence notes.
 

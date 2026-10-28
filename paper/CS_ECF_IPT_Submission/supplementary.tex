@@ -156,48 +156,70 @@ estimate variability between independent DroneVehicle training runs. The lower
 endpoint of the combined interval is below zero, so the direct CDF comparison
 does not establish a separated average improvement.
 
-\section{Independent zero-shot evaluator check}
+\section{External evaluator stress tests}
 
 Two COCO-pretrained detectors, YOLOv9t and YOLOv10s, were used without LLVIP
 fine-tuning. They were not used in policy construction, threshold selection, or
 the primary evaluation. Person-class detections were retained before AP and
 selection scoring. The 1.5 margin and top-five score were unchanged.
 
+A third stress test used an LLVIP-fine-tuned YOLOv9t. The checkpoint was
+initialized from COCO YOLOv9t and trained on the 1,350 visible training images
+for a pre-specified 40 epochs. Training used AdamW, initial learning rate
+0.002, three-epoch warm-up, cosine decay, weight decay \(5\times10^{-4}\), batch
+size 16, 640-pixel inputs, random horizontal flipping, and
+brightness/contrast jitter. A reproducible PIL-based loader calling the
+Ultralytics detection loss was used. The final checkpoint after epoch 40 was
+frozen before the LLVIP test images were scored; no epoch was selected using
+test results. Its SHA-256 is
+\texttt{\seqsplit{AE0A44359C489DEEAE3F7443173588B9F68E264B6BE1EA455E961EB2DED0797D}}.
+The checkpoint reached mAP50 0.8456 on the 150-image validation set and 0.6666
+on the 300-image test visible input.
+
 \begin{table}[ht]
 \centering
 \small
-\caption{Zero-shot evaluator confirmation on the same 300 LLVIP test pairs.}
+\caption{External evaluator stress tests on the same 300 LLVIP test pairs.}
 \begin{tabular}{@{}lrrrr@{}}
 \toprule
 Model & Visible & Always CDF & No shield & CS-ECF \\
 \midrule
-YOLOv9t & .7698 & .7888 & .8216 & .7948 \\
-YOLOv10s & .8344 & .8617 & .8699 & .8557 \\
+YOLOv9t, zero-shot & .7698 & .7888 & .8216 & .7948 \\
+YOLOv10s, zero-shot & .8344 & .8617 & .8699 & .8557 \\
+YOLOv9t, LLVIP-trained & .6666 & .6598 & .6405 & .6558 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{table}[ht]
 \centering
-\small
-\caption{Paired confidence intervals and scene-tail behavior for the zero-shot
-evaluators.}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\caption{Paired confidence intervals and scene-tail behavior for the external
+evaluators. The final column reports the worst scene change for CS-ECF /
+no-shield.}
 \begin{tabular}{@{}lccc@{}}
 \toprule
-Model & CS-ECF \(-\) visible & CS-ECF \(-\) CDF & Worst scene change \\
+Model & CS-ECF \(-\) visible & CS-ECF \(-\) CDF & Worst (CS/NS) \\
 \midrule
-YOLOv9t & \(+.0250~[+.0053,+.0523]\) &
-  \(+.0060~[-.0277,+.0374]\) & shield \(-.0167\), no shield \(-.0011\) \\
-YOLOv10s & \(+.0213~[+.0037,+.0431]\) &
-  \(-.0059~[-.0254,+.0192]\) & shield \(-.0038\), no shield \(-.0337\) \\
+YOLOv9t, zero-shot & \(+.0250~[+.0053,+.0523]\) &
+  \(+.0060~[-.0277,+.0374]\) & \(-.0167 / -.0011\) \\
+YOLOv10s, zero-shot & \(+.0213~[+.0041,+.0439]\) &
+  \(-.0059~[-.0266,+.0180]\) & \(-.0038 / -.0337\) \\
+YOLOv9t, LLVIP-trained & \(-.0108~[-.0342,+.0050]\) &
+  \(-.0040~[-.0206,+.0108]\) & \(-.0724 / -.1208\) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The shield selected visible on 233/300 YOLOv9t and 245/300 YOLOv10s images.
-Both external evaluators support a positive difference from visible. Neither
-supports superiority over Always CDF. The shield improves the worst scene on
-YOLOv10s but worsens it on YOLOv9t, so tail behavior remains evaluator
+The shield selected visible on 233/300 zero-shot YOLOv9t, 245/300 YOLOv10s,
+and 230/300 LLVIP-trained YOLOv9t images. The two zero-shot evaluators support
+a positive difference from visible but not superiority over Always CDF. The
+fine-tuned YOLOv9t is a negative portability case: CS-ECF was below both
+visible and Always CDF, with scene-group intervals crossing zero. The shield
+improved the unshielded selector by 0.0153 AP50 (group interval
+\([+0.0072,+0.0267]\)) and reduced the worst scene loss from 0.1208 to 0.0724,
+but did not remove the loss. Tail behavior therefore remains evaluator
 dependent rather than universally controlled.
 
 \section{Validation choice and exploratory alternatives}
@@ -259,6 +281,12 @@ python scripts/analyze_csecf_vs_cdf.py
 
 This command validates each checkpoint AP before writing
 \path{results/selective_fusion/csecf_vs_cdf_paired.json}. Split and candidate
-manifests retain their seeds and selected groups.
+manifests retain their seeds and selected groups. The independent evaluator
+checkpoints were trained or loaded by
+\path{scripts/train_independent_manual.py}, scored with
+\path{scripts/score_clean_evaluators.py}, and summarized with
+\path{scripts/analyze_independent_evaluators.py}. The LLVIP-trained YOLOv9t
+result is stored in
+\path{results/independent_evaluators/domain_yolov9t_v3/}.
 
 \end{document}

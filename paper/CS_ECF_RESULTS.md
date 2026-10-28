@@ -80,10 +80,32 @@ scored on the same 300 LLVIP test pairs with person-only outputs:
 | Evaluator | Visible | CDF | No shield | CS-ECF | CS-ECF - visible CI | CS-ECF - CDF CI |
 |---|---:|---:|---:|---:|---:|---:|
 | YOLOv9t | 0.7698 | 0.7888 | 0.8216 | 0.7948 | `[+0.0053,+0.0523]` | `[-0.0277,+0.0374]` |
-| YOLOv10s | 0.8344 | 0.8617 | 0.8699 | 0.8557 | `[+0.0037,+0.0431]` | `[-0.0254,+0.0192]` |
+| YOLOv10s | 0.8344 | 0.8617 | 0.8699 | 0.8557 | `[+0.0041,+0.0439]` | `[-0.0266,+0.0180]` |
 
 Both unused evaluators support improvement over visible. Neither supports
 dominance over Always CDF. See `results/independent_evaluators/`.
+
+## Domain-fine-tuned YOLOv9t boundary
+
+A YOLOv9t initialized from COCO and fine-tuned on the 1,350 LLVIP visible
+training images was frozen after 40 epochs and evaluated once on the 300-image
+test split. The checkpoint reached validation mAP50 `0.8456` and test visible
+AP50 `0.6666`. It was not used to choose the policy or its threshold.
+
+| Evaluator | Visible | CDF | No shield | CS-ECF |
+|---|---:|---:|---:|---:|
+| YOLOv9t, LLVIP-trained | 0.6666 | 0.6598 | 0.6405 | 0.6558 |
+
+- CS-ECF minus visible: `-0.0108`, scene-group CI
+  `[-0.0342,+0.0050]`.
+- CS-ECF minus Always CDF: `-0.0040`, scene-group CI
+  `[-0.0206,+0.0108]`.
+- CS-ECF minus no-shield: `+0.0153`, scene-group CI
+  `[+0.0072,+0.0267]`.
+
+The shield retained visible for 230/300 images and reduced the worst scene loss
+from `0.1208` to `0.0724`, but did not preserve the visible AP. This is a
+negative portability boundary, not a scoring failure.
 
 ## Shield ablation
 
@@ -141,3 +163,6 @@ dominance over Always CDF. See `results/independent_evaluators/`.
 - DroneVehicle image-level intervals cross zero; its three fixed groups are non-negative, but only two are materially positive.
 - Group-aware dataset-balanced CI is positive, but M3FD contributes only two groups and LLVIP seven scenes.
 - The two DroneVehicle checkpoints come from the same training run; they are not independent architectures.
+- The two zero-shot evaluators support a visible-relative gain, but an
+  LLVIP-fine-tuned YOLOv9t reverses that sign; do not claim universal
+  portability across evaluator checkpoints.

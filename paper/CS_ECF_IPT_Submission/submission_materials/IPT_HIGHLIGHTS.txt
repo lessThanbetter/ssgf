@@ -1,5 +1,5 @@
 Fusion utility reverses across detector checkpoints.
 A confidence shield gates image-level fusion-input selection.
-Nine of 12 detector checkpoints improve AP50.
-The worst AP50 loss falls from 5.84 to 0.40 points.
-Unused detectors add 2.1-2.5 points; CDF superiority remains unproven.
+Nine of 12 confirmatory detector checkpoints improve AP50.
+The shield cuts the worst AP50 loss from 5.84 to 0.40 points.
+A fine-tuned YOLOv9t exposes a negative portability boundary.

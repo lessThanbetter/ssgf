@@ -12,45 +12,42 @@ Fusion for Risk-Controlled Infrared–Visible Object Detection”**, for publica
 in *Infrared Physics & Technology*.
 
 Infrared–visible fusion can make thermal evidence available to object detectors,
-but the same fused image does not benefit every detector. We show that fusion
-utility changes across detector checkpoints and formulate selection as a
-label-free input-arbitration problem. The proposed Confidence-Shielded
-Evaluator-Conditioned Fusion (CS-ECF) evaluates visible, CDF, PIAFusion, and
-SPGFusion candidates with the target detector. A fused input is used only when
-its top-five confidence exceeds that of the visible image by a factor of 1.5;
-otherwise, the system preserves the visible input as a safety fallback.
+but the same fused image does not benefit every detector. We formulate input
+selection as a label-free arbitration problem. The proposed Confidence-Shielded
+Evaluator-Conditioned Fusion (CS-ECF) evaluates visible, consensus-detail
+fusion (CDF), PIAFusion, and SPGFusion candidates with the target detector. A
+fused input is used only when its top-five confidence reaches 1.5 times that of
+visible; otherwise, visible is retained as a safety fallback.
 
 Across LLVIP, M3FD, and an independent official-test subset of DroneVehicle,
 CS-ECF improved 9 of 12 detector checkpoints. The dataset-balanced AP50 gain was
 0.0133, with a training-run-by-group hierarchical 95% interval of [0.0026, 0.0261].
 Removing the shield increased the worst observed AP50 loss from 0.0040 to
-0.0584. The two DroneVehicle checkpoints improved by 0.0251 and 0.0293; they
-belong to the same training run and are reported as correlated checks rather
-than independent architectures. A thermal-mask ablation on DroneVehicle further
-showed a small but consistent advantage over global detail injection
-(0.0007 AP50 on average).
+0.0584. A thermal-mask ablation also showed a small advantage over global detail
+injection.
 
 Against the stronger Always CDF baseline, the dataset-balanced difference was
 0.0102 AP50, with a training-run-by-group interval of [-0.00057, 0.02980].
 The interval included zero; the point estimate was concentrated in M3FD and
-DroneVehicle and was not present on LLVIP. We therefore describe a
-risk-control and conditional-generalization contribution, not dominance over
-the best fixed fusion input.
+DroneVehicle and was not present on LLVIP. We therefore describe a conditional
+risk-control contribution, not dominance over the best fixed fusion input.
 
-Two COCO-pretrained evaluators that were not used in policy construction
-provided an independent check. CS-ECF improved AP50 over visible by 0.0213 and
-0.0250, with scene-group intervals above zero; neither result separated from
-Always CDF. This supports portability of the visible-baseline gain while
-retaining the stated boundary.
+Three additional evaluators were not used in policy construction. Two
+COCO-pretrained models improved AP50 over visible by 0.0213 and 0.0250, with
+scene-group intervals above zero, but neither separated from Always CDF. An
+LLVIP-fine-tuned YOLOv9t then provided a negative boundary: CS-ECF lost 0.0108
+AP50 relative to visible, although the shield improved the unshielded selector
+by 0.0153. We report this counterexample explicitly because it shows that
+confidence arbitration is conditional rather than universally portable.
 
 We believe the work is relevant to the journal's readership because it addresses
 how thermal information should be admitted into a deployed detection system,
 uses real infrared–visible datasets, and reports both the benefit and cost of
-the fusion candidates. The analysis also identifies an important boundary:
-M3FD gains are concentrated in the people class, and the LLVIP intervals cross
-zero. We therefore present CS-ECF as a risk-controlled evaluator-conditioned
-system for pedestrian-centric and mixed IR–visible detection, not as evidence
-of uniform improvement over all object classes.
+the fusion candidates. The analysis also identifies three boundaries: M3FD
+gains are concentrated in the people class, LLVIP intervals cross zero, and the
+fine-tuned evaluator reverses the visible-relative sign. We therefore present
+CS-ECF as a bounded evaluator-conditioned system, not as evidence of uniform
+improvement or universal transfer.
 
 The manuscript is original, has not been published previously, and is not under
 consideration by another journal. An earlier, related manuscript by the same
@@ -61,7 +58,8 @@ earlier fidelity-ranking claims, and all shared datasets and evaluator
 infrastructure are identified in the manuscript. All authors have approved the
 submission and declare no competing interests. This research did not receive any
 specific grant from funding agencies in the public, commercial, or
-not-for-profit sectors. Data and code availability are stated in the manuscript.
+not-for-profit sectors. The manuscript includes an AI-use declaration and
+statements for data, code, CRediT contributions, and competing interests.
 
 Thank you for your consideration.
 

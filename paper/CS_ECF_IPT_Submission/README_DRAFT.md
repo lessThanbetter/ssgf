@@ -3,7 +3,7 @@
 Date: 2026-10-28  
 Target: *Infrared Physics & Technology*  
 Status: compiled working draft with inherited administrative metadata; ready
-with author checks, not yet journal-submission ready
+for final author and submission-portal checks
 
 ## Main files
 
@@ -21,6 +21,9 @@ with author checks, not yet journal-submission ready
 - `source_data/` — figure-level CSV source data.
 - `submission_materials/` — cover-letter, Highlights, keyword, caption,
   checklist, and figure-QA drafts.
+- `submission_package_v9/` — final assembled upload package with PDFs, LaTeX,
+  figures, source data, external-evaluator evidence, reproduction scripts, and
+  SHA-256 manifest.
 
 ## Current verified result anchors
 
@@ -32,6 +35,10 @@ with author checks, not yet journal-submission ready
 - LLVIP direct CDF contrast: -0.0057; M3FD +0.0147; DroneVehicle +0.0217.
 - Zero-shot YOLOv9t: CS-ECF +0.0250 over visible and +0.0060 over CDF.
 - Zero-shot YOLOv10s: CS-ECF +0.0213 over visible and -0.0059 over CDF.
+- LLVIP-trained YOLOv9t boundary: CS-ECF -0.0108 over visible and -0.0040 over
+  CDF; both scene-group intervals crossed zero.
+- The fine-tuned YOLOv9t shield improved the unshielded policy by +0.0153, but
+  did not prevent a loss relative to visible.
 - No-shield worst loss: -0.0584; CS-ECF worst loss: -0.0040.
 - DroneVehicle best/last gains: +0.0251 / +0.0293.
 - Thermal mask advantage over global injection: +0.0007 AP50.
@@ -39,14 +46,13 @@ with author checks, not yet journal-submission ready
 
 ## Before submission
 
-1. Expand and integrate the bibliography beyond the current verified seed set.
-2. Confirm the inherited author, affiliation, funding, competing-interest,
+1. Confirm the inherited author, affiliation, funding, competing-interest,
    CRediT, repository, and expanded AI-use statements.
-3. Verify the current IPT Guide for Authors, including article type, abstract
+2. Verify the current IPT Guide for Authors in the submission portal, including
+   article type, abstract
    limit, Highlights requirements, figure count, and artwork rules.
-4. Create a new Zenodo version for the CS-ECF submission. The current DOI still
-   resolves to the preceding fidelity-metric study and must not be cited as the
-   archive of this manuscript.
-5. Re-run the LaTeX build, figure QA, PDF page audit, and numerical consistency
+3. Freeze and push the GitHub revision used by the submission package; do not
+   cite the preceding study's Zenodo DOI.
+4. Re-run the LaTeX build, figure QA, PDF page audit, and numerical consistency
    checks after the final author metadata confirmation.
 
