@@ -78,8 +78,8 @@ language revision, DOI update, compilation, and PDF checks. Every packaged file
 is hashed, every manifest entry is present, and the sidecar digest is verified.
 
 The version-specific manuscript DOI is `10.5281/zenodo.23728385` under concept
-DOI `10.5281/zenodo.22984388`. The GitHub tag and Zenodo publication are
-verified only after the final package upload.
+DOI `10.5281/zenodo.22984388`. The GitHub tag `v2.4.1` and Zenodo publication
+were verified after the final package upload.
 
 ## Administrative confirmation
 

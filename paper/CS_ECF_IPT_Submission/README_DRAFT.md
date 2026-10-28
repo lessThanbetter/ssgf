@@ -2,8 +2,8 @@
 
 Date: 2026-10-28  
 Target: *Infrared Physics & Technology*  
-Status: 11-figure redesign and language polish complete; v18 package and Zenodo `v2.4.1`
-archival release prepared for the live submission-portal check
+Status: 11-figure redesign and language polish complete; v18 package and Zenodo
+`v2.4.1` archival release published; live submission-portal check pending
 
 ## Main files
 

@@ -18,7 +18,7 @@ current LLVIP/M3FD/DroneVehicle study.
 | Funding | No specific grant from public, commercial, or not-for-profit sectors | `PAPER_IPT_v3.tex` lines 1561--1563 |
 | Code repository | `https://github.com/lessThanbetter/ssgf` | `PAPER_IPT_v3.tex` lines 1593--1596 |
 | Preceding archive DOI | `https://doi.org/10.5281/zenodo.22984389`; not cited for CS-ECF because it resolves to the preceding study | `PAPER_IPT_v3.tex` lines 1593--1596 |
-| CS-ECF archive DOI | `https://doi.org/10.5281/zenodo.23728385`, version `v2.4.1`; reserved for the language-polished manuscript on 2026-10-28 | Zenodo record 23728385 |
+| CS-ECF archive DOI | `https://doi.org/10.5281/zenodo.23728385`, version `v2.4.1`; published for the language-polished manuscript on 2026-10-28 | Zenodo record 23728385 |
 | AI-use disclosure | OpenAI Codex for language editing, analysis-code development, figure preparation, and result organization, followed by author verification and responsibility | Current revision process; Elsevier generative-AI policy verified 2026-10-28 |
 | Originality | Original, not previously published, not under consideration, all authors approved | `COVER_LETTER_MEASUREMENT.tex` lines 40--42; `TIM_COVER_LETTER.tex` lines 49--51 |
 
