@@ -48,7 +48,7 @@ Artifacts:
 - `results/selective_fusion/` — aggregate JSON, source-data CSV and per-image
   compressed score files;
 - `paper/CS_ECF_IPT_Submission/` — Elsevier LaTeX source, compiled PDF, cover
-  letter, figures, source data, and the versioned v9 submission package;
+  letter, figures, source data, and the versioned v11 submission package;
 - `paper/CS_ECF_IPT_DRAFT.md`, `paper/CS_ECF_RESULTS.md`,
   `paper/CS_ECF_2ZONE_MATERIALS.md` — manuscript and evidence notes.
 

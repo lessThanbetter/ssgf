@@ -2,8 +2,8 @@
 
 Date: 2026-10-28  
 Target: *Infrared Physics & Technology*  
-Status: compiled working draft with inherited administrative metadata; ready
-for final author and submission-portal checks
+Status: author-confirmed working draft with original administrative metadata;
+ready for the live submission-portal check after completed technical QA
 
 ## Main files
 
@@ -21,9 +21,11 @@ for final author and submission-portal checks
 - `source_data/` — figure-level CSV source data.
 - `submission_materials/` — cover-letter, Highlights, keyword, caption,
   checklist, and figure-QA drafts.
-- `submission_package_v9/` — final assembled upload package with PDFs, LaTeX,
+- `submission_package_v11/` — final assembled upload package with PDFs, LaTeX,
   figures, source data, external-evaluator evidence, reproduction scripts, and
   SHA-256 manifest.
+- `submission_materials/FINAL_TECHNICAL_QA.md` — completed build, consistency,
+  reference, PDF, and archive checks.
 
 ## Current verified result anchors
 
@@ -46,13 +48,14 @@ for final author and submission-portal checks
 
 ## Before submission
 
-1. Confirm the inherited author, affiliation, funding, competing-interest,
-   CRediT, repository, and expanded AI-use statements.
+1. Author confirmation is complete: retain the original author, affiliation,
+   funding, competing-interest, CRediT, repository, AI-use, and originality
+   wording unchanged.
 2. Verify the current IPT Guide for Authors in the submission portal, including
    article type, abstract
    limit, Highlights requirements, figure count, and artwork rules.
-3. Confirm that GitHub tag `cs-ecf-ipt-submission-2026-10-28` remains
-   accessible; do not cite the preceding study's Zenodo DOI.
+3. Upload from `submission_package_v11/`; the GitHub submission tag has already
+   been verified, and the preceding study's Zenodo DOI must not be reused.
 4. Re-run the LaTeX build, figure QA, PDF page audit, and numerical consistency
-   checks after the final author metadata confirmation.
+   checks again only if the portal requires a content change.
 

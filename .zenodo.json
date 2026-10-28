@@ -1,0 +1,41 @@
+{
+  "title": "lessThanbetter/ssgf: Code for: Confidence-Shielded Evaluator-Conditioned Fusion for Risk-Controlled Infrared-Visible Object Detection",
+  "description": "<p>Archival release of the code, frozen manifests, aggregate results, source data, and submission materials for <em>Confidence-Shielded Evaluator-Conditioned Fusion for Risk-Controlled Infrared-Visible Object Detection</em>.</p><p>The release includes the CS-ECF selector, three-dataset evaluation and interval scripts, independent-evaluator checks, publication figures and source data, external-evaluator evidence, the Elsevier LaTeX sources and compiled PDFs, and the v11 submission package.</p><p>The LLVIP, M3FD, and DroneVehicle images, third-party detector weights, and generated fused-image corpora are not redistributed. Their public sources, fixed manifests, and reproducibility instructions are documented in the repository.</p>",
+  "creators": [
+    {
+      "name": "Zhao, Jianyong",
+      "affiliation": "North China Electric Power University",
+      "orcid": "0009-0005-3251-2785"
+    },
+    {
+      "name": "Wu, Zigao",
+      "affiliation": "North China Electric Power University",
+      "orcid": "0000-0002-7449-343X"
+    },
+    {
+      "name": "Ma, Mengfei",
+      "affiliation": "North China Electric Power University",
+      "orcid": "0009-0007-1328-1314"
+    }
+  ],
+  "keywords": [
+    "infrared-visible image fusion",
+    "object detection",
+    "evaluator-conditioned fusion",
+    "confidence calibration",
+    "risk control",
+    "thermal imaging"
+  ],
+  "license": "MIT",
+  "upload_type": "software",
+  "access_right": "open",
+  "language": "eng",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/lessThanbetter/ssgf/tree/v2.0.0",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ]
+}
