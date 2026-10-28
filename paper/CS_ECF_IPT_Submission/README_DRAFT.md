@@ -51,8 +51,8 @@ for final author and submission-portal checks
 2. Verify the current IPT Guide for Authors in the submission portal, including
    article type, abstract
    limit, Highlights requirements, figure count, and artwork rules.
-3. Freeze and push the GitHub revision used by the submission package; do not
-   cite the preceding study's Zenodo DOI.
+3. Confirm that GitHub tag `cs-ecf-ipt-submission-2026-10-28` remains
+   accessible; do not cite the preceding study's Zenodo DOI.
 4. Re-run the LaTeX build, figure QA, PDF page audit, and numerical consistency
    checks after the final author metadata confirmation.
 

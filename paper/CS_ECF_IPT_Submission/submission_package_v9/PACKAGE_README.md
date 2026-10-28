@@ -60,6 +60,7 @@ upload.
    CRediT roles, funding, competing interests, and the OpenAI Codex AI
    declaration.
 2. Confirm the no-preprint and not-under-consideration statements.
-3. Confirm the final GitHub revision or release tag used in the code statement.
+3. Confirm that GitHub tag `cs-ecf-ipt-submission-2026-10-28` remains
+   accessible; the documented pre-tag commit is `2d53dd1`.
 4. Check the live IPT portal for article-type labels, mandatory fields,
    reviewer-suggestion requests, and any optional graphical abstract.

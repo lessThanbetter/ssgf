@@ -11,6 +11,9 @@ Highlights, figures, source data, declarations, and reproducibility evidence
 are assembled. The final upload requires confirmation of the inherited
 administrative facts and a check of the live IPT portal prompts.
 
+The code revision is frozen at GitHub tag
+`cs-ecf-ipt-submission-2026-10-28` (commit `2d53dd1`).
+
 Reasons:
 
 - the administrative declarations were inherited from the existing manuscript
@@ -96,8 +99,8 @@ The following canonical values must remain identical everywhere:
 - Confirm that the cover-letter assertion “not previously published / not under
   consideration” is complete; the reviewed drafts contain no separate preprint
   identifier or related-manuscript list.
-- Confirm the GitHub revision or release tag cited at submission; do not reuse
-  the preceding study's Zenodo DOI.
+- Confirm that the frozen GitHub submission tag remains publicly accessible;
+  do not reuse the preceding study's Zenodo DOI.
 - Add reviewer suggestions only if the IPT portal requests them.
 
 ## Next actions
@@ -105,7 +108,7 @@ The following canonical values must remain identical everywhere:
 1. Complete the four author checks above.
 2. Open the live IPT submission portal and confirm article type, portal labels,
    abstract/display limits, and optional items.
-3. Freeze and push the GitHub revision used by the final package.
+3. Confirm that the frozen GitHub submission tag remains accessible.
 4. Recompile both PDFs and re-run numerical, reference, placeholder, and visual
    QA.
 5. Regenerate the submission ZIP and SHA-256 manifest.
