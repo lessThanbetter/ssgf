@@ -14,19 +14,21 @@ Zenodo archival release
   per-checkpoint results, direct-baseline comparison, validation record, and
   thermal controls.
 - `cover_letter.tex` and `cover_letter.pdf` — compiled editor-facing draft.
-- `references.bib` — 27 verified entries covering recent IPT positioning,
-  representative classical and deep fusion families, detectors, uncertainty,
-  and risk control. Broader domain synthesis remains desirable.
+- `references.bib` — 46 verified entries covering classical, sparse,
+  generative, encoder-decoder, transformer, diffusion, task-aware,
+  multispectral, detector, uncertainty, and risk-control literature.
 - `REFERENCE_VERIFICATION.md` — DOI-backed verification ledger.
 - `figures/` — four publication figures in PDF form.
 - `source_data/` — figure-level CSV source data.
 - `submission_materials/` — cover-letter, Highlights, keyword, caption,
   checklist, and figure-QA drafts.
-- `submission_package_v12/` — final assembled upload package with PDFs, LaTeX,
+- `submission_package_v13/` — final assembled upload package with PDFs, LaTeX,
   figures, source data, external-evaluator evidence, reproduction scripts, and
   SHA-256 manifest.
 - `submission_materials/FINAL_TECHNICAL_QA.md` — completed build, consistency,
   reference, PDF, and archive checks.
+- `submission_materials/RELATED_WORK_EVIDENCE.md` — section-to-reference
+  mapping and audit for the added literature.
 - Zenodo version DOI: `10.5281/zenodo.23718751`.
 
 ## Current verified result anchors
@@ -56,7 +58,7 @@ Zenodo archival release
 2. Verify the current IPT Guide for Authors in the submission portal, including
    article type, abstract
    limit, Highlights requirements, figure count, and artwork rules.
-3. Upload from `submission_package_v12/`. The CS-ECF Zenodo version DOI is
+3. Upload from `submission_package_v13/`. The CS-ECF Zenodo version DOI is
    `10.5281/zenodo.23718751`; the preceding study's DOI must not be reused.
 4. Re-run the LaTeX build, figure QA, PDF page audit, and numerical consistency
    checks again only if the portal requires a content change.

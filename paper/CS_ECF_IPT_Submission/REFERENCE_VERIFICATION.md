@@ -33,12 +33,32 @@ converter; records were also cross-checked by exact title and year.
 | gawlikowski2023uncertainty | 10.1007/s10462-023-10562-9 | verified |
 | chow1970reject | 10.1109/TIT.1970.1054406 | verified |
 | jocher2026ultralytics | no DOI | official software repository |
+| zhang2021twoscale | 10.1016/j.infrared.2020.103626 | verified |
+| yin2013sparsefusion | 10.1016/j.inffus.2012.01.008 | verified |
+| yin2015multiscale | 10.1016/j.neucom.2014.07.003 | verified |
+| zhang2016nsct | 10.1016/j.infrared.2015.11.003 | verified |
+| wei2017threescale | 10.23919/icif.2017.8009748 | verified |
+| hou2021ssgan | 10.3390/e23030376 | verified |
+| yi2021dfpgan | 10.1016/j.infrared.2021.103947 | verified |
+| song2022tdgan | 10.1016/j.neucom.2022.02.025 | verified |
+| liu2023dualpath | 10.1109/icip49359.2023.10222863 | verified |
+| hao2022vdfefuse | 10.1016/j.infrared.2022.104048 | verified |
+| yang2023dglt | 10.1016/j.infrared.2022.104522 | verified |
+| an2024mras | 10.1016/j.infrared.2024.105343 | verified |
+| zhou2026mtfusion | 10.1016/j.infrared.2025.106325 | verified |
+| xu2021classsaliency | 10.1109/tci.2021.3100986 | verified |
+| wang2025smae | 10.1016/j.inffus.2024.102841 | verified |
+| guo2024prior | 10.3390/electronics13091770 | verified |
+| li2010thermal | 10.1016/j.infrared.2010.03.005 | verified |
+| xiang2025unifusod | 10.3390/rs17213637 | verified |
+| yue2022lowlight | 10.1117/1.JEI.31.3.033029 | verified |
 
 ## Boundary
 
-All journal and conference entries in the current 27-entry `references.bib`
+All 45 journal and conference entries in the current 46-entry `references.bib`
 have DOI-backed Crossref records. The Ultralytics entry is a software citation
-to the official repository. The bibliography now supports the fusion,
-detector-architecture and uncertainty context, but it remains shorter than a
-full domain review and should be expanded only with verified literature.
+to the official repository. The expanded Related Work section covers classical,
+sparse, generative, encoder-decoder, transformer, diffusion, task-aware,
+multispectral and detector-coupled fusion research. The added entries retain
+the verified author lists, titles, publication details and DOI records.
 

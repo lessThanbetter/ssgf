@@ -16,7 +16,7 @@ Exports: SVG, PDF, 600 dpi TIFF, PNG preview
 
 Manual visual QA was performed at full rendered size after the automated checks.
 
-The final manuscript build contains 13 pages, the supplementary material
+The final manuscript build contains 16 pages, the supplementary material
 contains 4 pages, and the cover letter contains 1 page. There are no undefined
 citations, unresolved cross-references, overfull LaTeX boxes, or author-input
 placeholders after the final recompilation.

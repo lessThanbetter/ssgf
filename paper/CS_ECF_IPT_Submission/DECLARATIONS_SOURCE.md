@@ -33,9 +33,9 @@ current LLVIP/M3FD/DroneVehicle study.
 
 ## Required final verification
 
-- Freeze the GitHub revision used by the submission package and confirm that
-  its tag contains the CS-ECF manifests, scores, source data, and code. The
-  preceding study's Zenodo DOI must not be reused.
+- The archival GitHub revision is tag `v2.0.0` (commit `18ea5ba`), and its
+  Zenodo software DOI is `10.5281/zenodo.23718751`. The preceding study's
+  version DOI `10.5281/zenodo.22984389` must not be reused.
 - Use the CS-ECF version DOI `10.5281/zenodo.23718751` in the manuscript. The
   shared concept DOI `10.5281/zenodo.22984388` identifies the software series,
   not the preceding paper's archival version.

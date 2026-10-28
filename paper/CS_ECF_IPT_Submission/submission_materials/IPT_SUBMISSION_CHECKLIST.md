@@ -13,8 +13,9 @@ final local technical QA. The author has confirmed that the inherited
 administrative facts and declaration text remain unchanged from the original.
 The final upload requires a check of the live IPT portal prompts.
 
-The code revision is frozen at GitHub tag
-`cs-ecf-ipt-submission-2026-10-28` (commit `2d53dd1`).
+The archival code revision is frozen at GitHub tag `v2.0.0` (commit
+`18ea5ba`) and published as Zenodo version DOI
+`10.5281/zenodo.23718751`.
 
 Reasons:
 
@@ -24,9 +25,8 @@ Reasons:
   retrieval, so exact portal labels and any display-item prompts must be checked
   at upload;
 - the GitHub tag is remotely accessible and resolves to the documented commit;
-- the 27-entry bibliography consists of verified journal, conference, dataset,
-  and software records; further synthesis would improve breadth but is not a
-  submission blocker.
+- the 46-entry bibliography consists of verified journal, conference, dataset,
+  and software records, including a dedicated Related Work synthesis.
 
 ## Technical gate
 
@@ -35,8 +35,8 @@ Reasons:
 | LaTeX build | complete | `main.pdf`, `supplementary.pdf`, `cover_letter.pdf` |
 | Numerical/reference audit | complete | `FINAL_TECHNICAL_QA.md` |
 | PDF visual and font audit | complete | `FINAL_TECHNICAL_QA.md` |
-| GitHub submission tag | complete | remote tag resolves to `2d53dd1` |
-| Zenodo archival release | complete | `10.5281/zenodo.23718751`, version `v2.0.0` |
+| Related Work and citations | complete | 46 references; `RELATED_WORK_EVIDENCE.md` |
+| GitHub/Zenodo archive | complete | tag `v2.0.0`; DOI `10.5281/zenodo.23718751` |
 | Author administrative facts | complete | author confirmed unchanged on 2026-10-28 |
 | Live IPT portal prompts | pending | CAPTCHA/login blocks unattended check |
 
@@ -79,7 +79,9 @@ Reasons:
 - LLVIP-fine-tuned YOLOv9t negative boundary with frozen final checkpoint;
 - verified 2024–2026 IPT fusion/detection exemplars in `IPT_TARGETING.md`.
 - three PDFs rebuilt and visually inspected after the final source update;
-- 26 of 26 DOI records resolved through Crossref; the software entry has no DOI;
+- 45 of 45 DOI records resolved through Crossref; the software entry has no DOI;
+- 19 references and a four-part Related Work synthesis added from the revised
+  original manuscript and verified current fusion--detection literature;
 - 35 archived pre-QA files matched the v9 SHA-256 manifest before the
   administrative packages were assembled.
 - Zenodo version `v2.0.0` published as `10.5281/zenodo.23718751` under the
@@ -132,6 +134,6 @@ the preceding study's version DOI `10.5281/zenodo.22984389`.
 1. Open the live IPT submission portal with an interactive browser and confirm
    article type, portal labels,
    abstract/display limits, and optional items.
-2. Upload the files from `submission_package_v12/`.
+2. Upload the files from `submission_package_v13/`.
 3. If the portal requires any scientific or administrative change,
    recompile the PDFs and regenerate the manifest before upload.

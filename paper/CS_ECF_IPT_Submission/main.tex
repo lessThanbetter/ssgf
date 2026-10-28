@@ -144,6 +144,87 @@ failure boundaries. The contributions are:
   counterexample to universal portability.
 \end{enumerate}
 
+\section{Related work}
+
+\subsection{Fusion representations}
+
+Classical infrared--visible fusion methods combine complementary evidence in a
+hand-designed transform or representation. Representative examples use
+multi-scale top-hat transforms, non-subsampled contourlet transforms with
+compressed sensing, two-scale saliency decomposition, and three-scale framelet
+or shear representations \cite{zhu2017tophat,zhang2016nsct,zhang2021twoscale,wei2017threescale}.
+Sparse-representation methods instead describe local image content with learned
+or overcomplete dictionaries before applying a coefficient-level fusion rule
+\cite{yin2013sparsefusion,yin2015multiscale}. These approaches make target
+contrast, edges, and local saliency explicit. Their combining rules are
+typically designed for image-level visual quality, however, rather than for the
+ranking that a particular detector assigns to the resulting image.
+
+Learned fusion models replace handcrafted combination rules with trainable
+feature extraction and reconstruction. DenseFuse, IFCNN, U2Fusion, and
+RFN-Nest are representative encoder--decoder or residual designs
+\cite{li2019densefuse,zhang2020,xu2022u2fusion,li2021rfn}. Adversarial
+formulations add discriminative losses for texture and target preservation
+\cite{ma2019fusiongan,hou2021ssgan,yi2021dfpgan,song2022tdgan}. Dual-path
+wavelet networks and transformer-based designs subsequently added multi-scale
+context and long-range interaction \cite{liu2023dualpath,hao2022vdfefuse,yang2023dglt,an2024mras},
+while diffusion models introduced generative priors for fusion
+\cite{yi2024diffif,yang2025lfdt}. These methods enlarge the candidate design
+space, but they generally define a single fused output. They do not specify how
+to choose among several available candidates for a fixed deployed detector.
+
+\subsection{Task-aware fusion and detection}
+
+Task-aware fusion introduces an illumination, semantic, or saliency signal into
+the transfer rule. PIAFusion conditions fusion on illumination
+\cite{tang2022}; SPGFusion and MTFusion incorporate semantic priors
+\cite{zhang2026,zhou2026mtfusion}; and classification-saliency or masked
+autoencoder designs use auxiliary representations to decide which features to
+retain \cite{xu2021classsaliency,wang2025smae}. Such priors make the transfer
+more selective, but a proxy such as illumination or segmentation does not
+guarantee a better confidence ordering for every detector.
+
+On the detection side, one-stage and DETR-style architectures provide different
+confidence behaviour and receptive-field structure \cite{redmon2016yolo,wang2024yolov9,wang2024yolov10,zhao2024rtdetr}.
+Recent infrared--visible systems integrate fusion with detection through shared
+backbones, cross-modal feature exchange, saliency masking, or hierarchical
+fusion \cite{zhao2025cmifdf,gao2026coifsd,an2026mrtdetr,zhang2026hffn,xiang2025unifusod,yue2022lowlight}.
+Joint optimization can align the fused representation with the detector, but
+the resulting coupling is learned for a specified training objective. It does
+not by itself provide a label-free rule for selecting among already generated
+fusion candidates when the target checkpoint or data composition changes.
+
+\subsection{Evaluation and selection boundary}
+
+Fusion quality has commonly been assessed with reference or no-reference image
+metrics \cite{ma2019survey,mudavath2026review}. Those scores summarise source
+retention or perceptual quality; they do not identify which of several inputs
+will produce the higher AP for a particular detector. Multispectral
+detection studies show that thermal evidence can improve robustness under
+poor illumination \cite{li2010thermal,guo2024prior}, but gains depend on
+architecture, training data, and the operating regime
+\cite{abdar2021uncertainty,gawlikowski2023uncertainty}. The same dependence is
+visible across the detector checkpoints used in this study.
+
+The decision to depart from a visible-image fallback resembles the classical
+reject option \cite{chow1970reject}, but the object of the decision is an input
+candidate rather than a class prediction. The threshold must therefore be
+specified separately from accuracy, fixed before confirmation, and evaluated
+against both average gain and worst-case loss. Reporting only a fused-image
+score or a single benchmark pairing leaves that decision boundary untested.
+
+\subsection{Positioning}
+
+CS-ECF does not introduce another image-fusion operator. It treats an existing
+fusion library as a set of alternative inputs and uses the target detector as a
+label-free evaluator. Relative to task-aware networks, it requires neither a
+new fusion model nor joint detector-fusion training. Relative to fixed
+image-quality rankings, it measures the quantity of interest directly and
+separates detector checkpoints, scene or frame groups, and independent
+evaluators. The contribution is therefore an arbitration policy plus a
+risk-boundary evaluation, not a claim that any one fused representation is
+universally superior.
+
 \section{Methods}
 
 \subsection{Problem formulation}
@@ -349,7 +430,7 @@ training-run-by-group hierarchical 95\% interval of [0.0026, 0.0261]. The unshie
 selector improved seven of 12 checkpoints, had a larger dataset-balanced mean of
 0.0332, and produced a worst loss of 0.0584.
 
-\begin{figure}[H]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\linewidth]{fig1_evaluator_dependence.pdf}
 \caption{\textbf{Evaluator-dependent utility of infrared--visible fusion

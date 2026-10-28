@@ -2,23 +2,24 @@
 
 Date: 2026-10-28  
 Target: *Infrared Physics & Technology*  
-Package candidate: v12
+Package candidate: v13
 
 ## Status
 
 The scientific content is unchanged from v9. Version v10 added explicit PDF
 metadata and final technical checks; version v11 records the author instruction
 to retain the original administrative and declaration text unchanged. Version
-v12 adds the published CS-ECF Zenodo version DOI and is ready for an interactive
-check of the live submission portal.
+v12 added the published CS-ECF Zenodo version DOI. Version v13 adds the Related
+Work synthesis and 19 verified references and is ready for an interactive check
+of the live submission portal.
 
 ## Build and document checks
 
-- Main manuscript: 13 A4 pages; abstract 221 words.
+- Main manuscript: 16 A4 pages; abstract 221 words.
 - Supplementary material: 4 A4 pages.
 - Cover letter: 1 A4 page; 470 words in the letter body.
 - Highlights: 5 lines, each no longer than 85 characters.
-- Bibliography: 27 entries, including 26 DOI-backed records and one software
+- Bibliography: 46 entries, including 45 DOI-backed records and one software
   repository entry.
 - No author-input placeholders, stale interval strings, unresolved citations,
   unresolved cross-references, overfull boxes, or missing figures were found.
@@ -26,25 +27,23 @@ check of the live submission portal.
 - All manuscript, supplement, and cover-letter pages were rendered to PNG and
   inspected. No clipped text, overlapping elements, unreadable glyphs, or broken
   tables were found.
-- After the v10 metadata-only rebuild, all 13 manuscript, 4 supplement, and 1
-  cover page rasters were byte-identical to the inspected v9 renders.
-- The v12 DOI update changed only manuscript page 11. That page was re-rendered
-  and inspected; the other 12 manuscript pages and all supplement/cover pages
-  remained pixel-identical.
+- The v13 literature update adds the Related Work section on pages 2--3 and
+  reflows the remaining manuscript. All 16 manuscript pages were rendered and
+  visually inspected.
 
 ## Reference checks
 
-All 26 DOI records listed in `REFERENCE_VERIFICATION.md` resolved through
-Crossref on 2026-10-28. One request failed transiently with an SSL transport
-error and succeeded on immediate retry. The remaining bibliography entry is the
-Ultralytics software repository, which has no DOI.
+All 45 DOI records listed in `REFERENCE_VERIFICATION.md` resolved through
+Crossref on 2026-10-28. Transient SSL failures were retried successfully. The
+remaining bibliography entry is the Ultralytics software repository, which has
+no DOI.
 
 ## Archive checks
 
 The v9 ZIP contained 35 files apart from its manifest. All 35 hashes matched
-`SHA256SUMS.txt`, and no archive file was missing from the manifest. The v12 ZIP
-and manifest are regenerated after the DOI, compilation, and administrative
-updates.
+`SHA256SUMS.txt`, and no archive file was missing from the manifest. The v13 ZIP
+and manifest are regenerated after the Related Work, citation, DOI,
+compilation, and administrative updates.
 
 ## Repository check
 
