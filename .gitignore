@@ -49,5 +49,9 @@ figures/
 !paper/CS_ECF_IPT_Submission/submission_package_v14/*.pdf
 !paper/CS_ECF_IPT_Submission/submission_package_v14/figures/
 !paper/CS_ECF_IPT_Submission/submission_package_v14/figures/*.pdf
+!paper/CS_ECF_IPT_Submission/submission_package_v15/
+!paper/CS_ECF_IPT_Submission/submission_package_v15/*.pdf
+!paper/CS_ECF_IPT_Submission/submission_package_v15/figures/
+!paper/CS_ECF_IPT_Submission/submission_package_v15/figures/*.pdf
 !paper/figures_cs_ecf_ipt/*.pdf
 !paper/figures_cs_ecf_ipt/*.svg

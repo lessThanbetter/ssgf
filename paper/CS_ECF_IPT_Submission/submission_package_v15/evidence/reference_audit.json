@@ -1,0 +1,1049 @@
+{
+  "entries": 46,
+  "doi_entries": 45,
+  "verified": 45,
+  "issue_count": 0,
+  "results": [
+    {
+      "key": "zhao2025cmifdf",
+      "doi": "10.1016/j.infrared.2024.105631",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2025",
+        2025
+      ],
+      "volume": [
+        null,
+        "145"
+      ],
+      "pages": [
+        null,
+        "105631"
+      ],
+      "author_count": [
+        5,
+        5
+      ]
+    },
+    {
+      "key": "gao2026coifsd",
+      "doi": "10.1016/j.infrared.2026.106605",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2026",
+        2026
+      ],
+      "volume": [
+        null,
+        "156"
+      ],
+      "pages": [
+        null,
+        "106605"
+      ],
+      "author_count": [
+        3,
+        3
+      ]
+    },
+    {
+      "key": "an2026mrtdetr",
+      "doi": "10.1016/j.infrared.2025.106346",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2026",
+        2026
+      ],
+      "volume": [
+        null,
+        "153"
+      ],
+      "pages": [
+        null,
+        "106346"
+      ],
+      "author_count": [
+        6,
+        6
+      ]
+    },
+    {
+      "key": "zhang2026hffn",
+      "doi": "10.1016/j.infrared.2026.106429",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2026",
+        2026
+      ],
+      "volume": [
+        null,
+        "154"
+      ],
+      "pages": [
+        null,
+        "106429"
+      ],
+      "author_count": [
+        6,
+        6
+      ]
+    },
+    {
+      "key": "mudavath2026review",
+      "doi": "10.1016/j.infrared.2026.106573",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2026",
+        2026
+      ],
+      "volume": [
+        null,
+        "156"
+      ],
+      "pages": [
+        null,
+        "106573"
+      ],
+      "author_count": [
+        2,
+        2
+      ]
+    },
+    {
+      "key": "zhang2020",
+      "doi": "10.1016/j.inffus.2019.07.011",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2020",
+        2020
+      ],
+      "volume": [
+        "54",
+        "54"
+      ],
+      "pages": [
+        "99--118",
+        "99-118"
+      ],
+      "author_count": [
+        6,
+        6
+      ]
+    },
+    {
+      "key": "tang2022",
+      "doi": "10.1016/j.inffus.2022.03.007",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2022",
+        2022
+      ],
+      "volume": [
+        "83--84",
+        "83-84"
+      ],
+      "pages": [
+        "79--92",
+        "79-92"
+      ],
+      "author_count": [
+        5,
+        5
+      ]
+    },
+    {
+      "key": "zhang2026",
+      "doi": "10.1016/j.inffus.2025.103433",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2026",
+        2026
+      ],
+      "volume": [
+        "125",
+        "125"
+      ],
+      "pages": [
+        "103433",
+        "103433"
+      ],
+      "author_count": [
+        6,
+        6
+      ]
+    },
+    {
+      "key": "jia2021",
+      "doi": "10.1109/iccvw54120.2021.00389",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2021",
+        2021
+      ],
+      "volume": [
+        null,
+        null
+      ],
+      "pages": [
+        "3489--3497",
+        "3489-3497"
+      ],
+      "author_count": [
+        5,
+        5
+      ]
+    },
+    {
+      "key": "liu2022",
+      "doi": "10.1109/cvpr52688.2022.00571",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2022",
+        2022
+      ],
+      "volume": [
+        null,
+        null
+      ],
+      "pages": [
+        "5792--5801",
+        "5792-5801"
+      ],
+      "author_count": [
+        7,
+        7
+      ]
+    },
+    {
+      "key": "sun2022",
+      "doi": "10.1109/tcsvt.2022.3168279",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2022",
+        2022
+      ],
+      "volume": [
+        "32",
+        "32"
+      ],
+      "pages": [
+        "6700--6713",
+        "6700-6713"
+      ],
+      "author_count": [
+        4,
+        4
+      ]
+    },
+    {
+      "key": "ma2019survey",
+      "doi": "10.1016/j.inffus.2018.02.004",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2019",
+        2019
+      ],
+      "volume": [
+        "45",
+        "45"
+      ],
+      "pages": [
+        "153--178",
+        "153-178"
+      ],
+      "author_count": [
+        3,
+        3
+      ]
+    },
+    {
+      "key": "ma2019fusiongan",
+      "doi": "10.1016/j.inffus.2018.09.004",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2019",
+        2019
+      ],
+      "volume": [
+        "48",
+        "48"
+      ],
+      "pages": [
+        "11--26",
+        "11-26"
+      ],
+      "author_count": [
+        5,
+        5
+      ]
+    },
+    {
+      "key": "li2019densefuse",
+      "doi": "10.1109/TIP.2018.2887342",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2019",
+        2019
+      ],
+      "volume": [
+        "28",
+        "28"
+      ],
+      "pages": [
+        "2614--2623",
+        "2614-2623"
+      ],
+      "author_count": [
+        2,
+        2
+      ]
+    },
+    {
+      "key": "xu2022u2fusion",
+      "doi": "10.1109/TPAMI.2020.3012548",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2022",
+        2022
+      ],
+      "volume": [
+        "44",
+        "44"
+      ],
+      "pages": [
+        "502--518",
+        "502-518"
+      ],
+      "author_count": [
+        5,
+        5
+      ]
+    },
+    {
+      "key": "li2021rfn",
+      "doi": "10.1016/j.inffus.2021.02.023",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2021",
+        2021
+      ],
+      "volume": [
+        "73",
+        "73"
+      ],
+      "pages": [
+        "72--86",
+        "72-86"
+      ],
+      "author_count": [
+        3,
+        3
+      ]
+    },
+    {
+      "key": "zhu2017tophat",
+      "doi": "10.1016/j.infrared.2017.01.013",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2017",
+        2017
+      ],
+      "volume": [
+        "81",
+        "81"
+      ],
+      "pages": [
+        "282--295",
+        "282-295"
+      ],
+      "author_count": [
+        3,
+        3
+      ]
+    },
+    {
+      "key": "yi2024diffif",
+      "doi": "10.1016/j.inffus.2024.102450",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2024",
+        2024
+      ],
+      "volume": [
+        "110",
+        "110"
+      ],
+      "pages": [
+        "102450",
+        "102450"
+      ],
+      "author_count": [
+        5,
+        5
+      ]
+    },
+    {
+      "key": "yang2025lfdt",
+      "doi": "10.1016/j.inffus.2024.102639",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2025",
+        2025
+      ],
+      "volume": [
+        "113",
+        "113"
+      ],
+      "pages": [
+        "102639",
+        "102639"
+      ],
+      "author_count": [
+        6,
+        6
+      ]
+    },
+    {
+      "key": "redmon2016yolo",
+      "doi": "10.1109/CVPR.2016.91",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2016",
+        2016
+      ],
+      "volume": [
+        null,
+        null
+      ],
+      "pages": [
+        "779--788",
+        "779-788"
+      ],
+      "author_count": [
+        4,
+        4
+      ]
+    },
+    {
+      "key": "zhao2024rtdetr",
+      "doi": "10.1109/CVPR52733.2024.01605",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2024",
+        2024
+      ],
+      "volume": [
+        null,
+        null
+      ],
+      "pages": [
+        "16965--16974",
+        "16965-16974"
+      ],
+      "author_count": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "wang2024yolov9",
+      "doi": "10.1007/978-3-031-72751-1_1",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2025",
+        2025
+      ],
+      "volume": [
+        null,
+        null
+      ],
+      "pages": [
+        "1--21",
+        "1-21"
+      ],
+      "author_count": [
+        3,
+        3
+      ]
+    },
+    {
+      "key": "wang2024yolov10",
+      "doi": "10.52202/079017-3429",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2024",
+        2024
+      ],
+      "volume": [
+        null,
+        null
+      ],
+      "pages": [
+        "107984--108011",
+        "107984-108011"
+      ],
+      "author_count": [
+        7,
+        7
+      ]
+    },
+    {
+      "key": "abdar2021uncertainty",
+      "doi": "10.1016/j.inffus.2021.05.008",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2021",
+        2021
+      ],
+      "volume": [
+        "76",
+        "76"
+      ],
+      "pages": [
+        "243--297",
+        "243-297"
+      ],
+      "author_count": [
+        12,
+        12
+      ]
+    },
+    {
+      "key": "gawlikowski2023uncertainty",
+      "doi": "10.1007/s10462-023-10562-9",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2023",
+        2023
+      ],
+      "volume": [
+        "56",
+        "56"
+      ],
+      "pages": [
+        "1513--1589",
+        "1513-1589"
+      ],
+      "author_count": [
+        14,
+        14
+      ]
+    },
+    {
+      "key": "chow1970reject",
+      "doi": "10.1109/TIT.1970.1054406",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "1970",
+        1970
+      ],
+      "volume": [
+        "16",
+        "16"
+      ],
+      "pages": [
+        "41--46",
+        "41-46"
+      ],
+      "author_count": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "jocher2026ultralytics",
+      "doi": null,
+      "issues": [],
+      "status": "no-doi"
+    },
+    {
+      "key": "zhang2021twoscale",
+      "doi": "10.1016/j.infrared.2020.103626",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2021",
+        2021
+      ],
+      "volume": [
+        "114",
+        "114"
+      ],
+      "pages": [
+        "103626",
+        "103626"
+      ],
+      "author_count": [
+        4,
+        4
+      ]
+    },
+    {
+      "key": "yin2013sparsefusion",
+      "doi": "10.1016/j.inffus.2012.01.008",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2013",
+        2013
+      ],
+      "volume": [
+        "14",
+        "14"
+      ],
+      "pages": [
+        "229--240",
+        "229-240"
+      ],
+      "author_count": [
+        3,
+        3
+      ]
+    },
+    {
+      "key": "yin2015multiscale",
+      "doi": "10.1016/j.neucom.2014.07.003",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2015",
+        2015
+      ],
+      "volume": [
+        "148",
+        "148"
+      ],
+      "pages": [
+        "600--610",
+        "600-610"
+      ],
+      "author_count": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "zhang2016nsct",
+      "doi": "10.1016/j.infrared.2015.11.003",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2016",
+        2016
+      ],
+      "volume": [
+        "74",
+        "74"
+      ],
+      "pages": [
+        "11--20",
+        "11-20"
+      ],
+      "author_count": [
+        2,
+        2
+      ]
+    },
+    {
+      "key": "wei2017threescale",
+      "doi": "10.23919/icif.2017.8009748",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2017",
+        2017
+      ],
+      "volume": [
+        null,
+        null
+      ],
+      "pages": [
+        "1--6",
+        "1-6"
+      ],
+      "author_count": [
+        3,
+        3
+      ]
+    },
+    {
+      "key": "hou2021ssgan",
+      "doi": "10.3390/e23030376",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2021",
+        2021
+      ],
+      "volume": [
+        "23",
+        "23"
+      ],
+      "pages": [
+        "376",
+        "376"
+      ],
+      "author_count": [
+        5,
+        5
+      ]
+    },
+    {
+      "key": "yi2021dfpgan",
+      "doi": "10.1016/j.infrared.2021.103947",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2021",
+        2021
+      ],
+      "volume": [
+        "119",
+        "119"
+      ],
+      "pages": [
+        "103947",
+        "103947"
+      ],
+      "author_count": [
+        3,
+        3
+      ]
+    },
+    {
+      "key": "song2022tdgan",
+      "doi": "10.1016/j.neucom.2022.02.025",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2022",
+        2022
+      ],
+      "volume": [
+        "483",
+        "483"
+      ],
+      "pages": [
+        "183--194",
+        "183-194"
+      ],
+      "author_count": [
+        4,
+        4
+      ]
+    },
+    {
+      "key": "liu2023dualpath",
+      "doi": "10.1109/icip49359.2023.10222863",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2023",
+        2023
+      ],
+      "volume": [
+        null,
+        null
+      ],
+      "pages": [
+        "1995--1999",
+        "1995-1999"
+      ],
+      "author_count": [
+        4,
+        4
+      ]
+    },
+    {
+      "key": "hao2022vdfefuse",
+      "doi": "10.1016/j.infrared.2022.104048",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2022",
+        2022
+      ],
+      "volume": [
+        "121",
+        "121"
+      ],
+      "pages": [
+        "104048",
+        "104048"
+      ],
+      "author_count": [
+        6,
+        6
+      ]
+    },
+    {
+      "key": "yang2023dglt",
+      "doi": "10.1016/j.infrared.2022.104522",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2023",
+        2023
+      ],
+      "volume": [
+        "128",
+        "128"
+      ],
+      "pages": [
+        "104522",
+        "104522"
+      ],
+      "author_count": [
+        6,
+        6
+      ]
+    },
+    {
+      "key": "an2024mras",
+      "doi": "10.1016/j.infrared.2024.105343",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2024",
+        2024
+      ],
+      "volume": [
+        "139",
+        "139"
+      ],
+      "pages": [
+        "105343",
+        "105343"
+      ],
+      "author_count": [
+        5,
+        5
+      ]
+    },
+    {
+      "key": "zhou2026mtfusion",
+      "doi": "10.1016/j.infrared.2025.106325",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2026",
+        2026
+      ],
+      "volume": [
+        "153",
+        "153"
+      ],
+      "pages": [
+        "106325",
+        "106325"
+      ],
+      "author_count": [
+        4,
+        4
+      ]
+    },
+    {
+      "key": "xu2021classsaliency",
+      "doi": "10.1109/tci.2021.3100986",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2021",
+        2021
+      ],
+      "volume": [
+        "7",
+        "7"
+      ],
+      "pages": [
+        "824--836",
+        "824-836"
+      ],
+      "author_count": [
+        3,
+        3
+      ]
+    },
+    {
+      "key": "wang2025smae",
+      "doi": "10.1016/j.inffus.2024.102841",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2025",
+        2025
+      ],
+      "volume": [
+        "117",
+        "117"
+      ],
+      "pages": [
+        "102841",
+        "102841"
+      ],
+      "author_count": [
+        8,
+        8
+      ]
+    },
+    {
+      "key": "guo2024prior",
+      "doi": "10.3390/electronics13091770",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2024",
+        2024
+      ],
+      "volume": [
+        "13",
+        "13"
+      ],
+      "pages": [
+        "1770",
+        "1770"
+      ],
+      "author_count": [
+        3,
+        3
+      ]
+    },
+    {
+      "key": "li2010thermal",
+      "doi": "10.1016/j.infrared.2010.03.005",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2010",
+        2010
+      ],
+      "volume": [
+        "53",
+        "53"
+      ],
+      "pages": [
+        "267--273",
+        "267-273"
+      ],
+      "author_count": [
+        4,
+        4
+      ]
+    },
+    {
+      "key": "xiang2025unifusod",
+      "doi": "10.3390/rs17213637",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2025",
+        2025
+      ],
+      "volume": [
+        "17",
+        "17"
+      ],
+      "pages": [
+        "3637",
+        "3637"
+      ],
+      "author_count": [
+        9,
+        9
+      ]
+    },
+    {
+      "key": "yue2022lowlight",
+      "doi": "10.1117/1.JEI.31.3.033029",
+      "issues": [],
+      "status": "verified",
+      "title_similarity": 1.0,
+      "year": [
+        "2022",
+        2022
+      ],
+      "volume": [
+        "31",
+        "31"
+      ],
+      "pages": [
+        "1--17",
+        "1-17"
+      ],
+      "author_count": [
+        4,
+        4
+      ]
+    }
+  ]
+}

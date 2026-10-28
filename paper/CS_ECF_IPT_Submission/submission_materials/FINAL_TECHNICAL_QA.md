@@ -2,16 +2,23 @@
 
 Date: 2026-10-28  
 Target: *Infrared Physics & Technology*  
-Package candidate: v14
+Package candidate: v15
 
 ## Status
 
 The scientific content has changed materially from v9 in response to the
-major-revision review. Version v14 adds multiplicity control, selection and
+major-revision review. Version v14 added multiplicity control, selection and
 sensitivity protocols, deployable controls and an oracle headroom bound,
 external-evaluator calibration diagnostics, class-specific M3FD evidence, and
 registration sensitivity. The manuscript now reports the negative and
 non-separated findings as the primary claim boundary.
+
+Version v15 resolves the follow-up factual and reproducibility review. It
+identifies the LLVIP partitions as fixed subsets with explicit selection rules,
+defines the CDF detail maps and top-hat quantile, clarifies the validation and
+policy-table estimands, states that DroneVehicle was not used for margin
+selection, adds registration-residual scale context and supplementary Brier
+scores, and removes run-in heading punctuation artifacts.
 
 ## Build and document checks
 
@@ -35,24 +42,28 @@ non-separated findings as the primary claim boundary.
 - The five new analysis scripts pass `py_compile`. A bounded rerun of the main
   statistical script reproduces the sign test, the absence of Holm-surviving
   checkpoints, the balanced point estimate, and the oracle upper bound.
+- The reference auditor compares DOI resolution and normalized Crossref title,
+  author count, year, volume, and first page metadata against every BibTeX
+  record.
 
 ## Reference checks
 
 All 45 DOI records listed in `REFERENCE_VERIFICATION.md` resolved through
-Crossref in a fresh audit on 2026-10-28. Transient SSL failures were retried.
-The remaining bibliography entry is the Ultralytics software repository, which
-has no DOI.
+Crossref in a fresh field-level audit on 2026-10-28. The audit found zero
+unresolved title, author-count, year, volume, or first-page differences. The
+remaining bibliography entry is the Ultralytics software repository, which has
+no DOI.
 
 ## Archive checks
 
-The v14 ZIP and manifest are regenerated after the statistical, citation,
+The v15 ZIP and manifest are regenerated after the statistical, citation,
 archival-DOI, compilation, and administrative updates. Every packaged file is
 hashed, every manifest entry is present, and the ZIP-sidecar digest is checked.
 
 ## Repository check
 
-The `v2.1.0` release packages the major-revision analyses and scripts. Its
-Zenodo version DOI is `10.5281/zenodo.23719721` under concept DOI
+The `v2.2.0` release packages the minor-revision corrections and verifier. Its
+Zenodo version DOI is `10.5281/zenodo.23720111` under concept DOI
 `10.5281/zenodo.22984388`. The record title, authors, ORCIDs, MIT licence,
 software resource type, and release relation are checked through the Zenodo API
 before the version is published.

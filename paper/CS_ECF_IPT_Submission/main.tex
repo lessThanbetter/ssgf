@@ -248,7 +248,11 @@ oracle.
 
 The visible input is always included as a safety candidate. CDF combines a
 pixel-mean image and an IFCNN image through sign-consistent high-frequency
-details:
+details. Let \(x_m\) denote the pixel-mean image, let \(x_f\) denote the IFCNN
+image, and let \(G_\sigma\) denote Gaussian blur with \(\sigma=5\). The
+corresponding detail images are
+\(d_m=x_m-G_\sigma*x_m\) and \(d_i=x_f-G_\sigma*x_f\). Their consensus detail
+is
 \begin{equation}
 d(x)=
 \begin{cases}
@@ -258,11 +262,19 @@ d(x)=
 \end{equation}
 A thermal-validity mask \(M\) is formed from the infrared top-hat response,
 infrared intensity, visible luminance, connected components, and smoothing.
+The top-hat threshold \(q_{\mathrm{TH}}=0.95\) is the response quantile above
+which a pixel is considered thermally salient; it is distinct from the
+candidate score \(q_c\) defined below. We used a \(31\times31\) elliptical
+top-hat kernel, an infrared floor of 120, visible luminance below its 75th
+percentile, \(5\times5\) morphological opening, and retention of connected
+components with at least 64 pixels. The surviving mask was dilated and
+smoothed with \(31\times31\) kernels.
 The shared detail is injected into the LAB luminance channel:
 \begin{equation}
 L' = L + \alpha M d.
 \end{equation}
-The frozen settings are \(q=0.95\), \(\alpha=0.20\), and \(\sigma=5\).
+The frozen settings are \(q_{\mathrm{TH}}=0.95\), \(\alpha=0.20\), and
+\(\sigma=5\).
 PIAFusion and SPGFusion are generated with their official model definitions and
 pretrained weights under the same image-pair protocol.
 \cite{zhang2020,tang2022,zhang2026}
@@ -325,18 +337,28 @@ Margin & \(K=1\) & \(K=5\) & \(K=10\) \\
 \end{tabular}
 \end{table}
 
+The validation gains are selection diagnostics over four evaluator cells. They
+are not estimates of the 12-checkpoint confirmatory effect and should not be
+compared directly with the test-set point estimate. The margin was not tuned
+on DroneVehicle, and its public validation partition was not used for policy
+selection. DroneVehicle therefore serves as an external domain-transfer check.
+
 \subsection{Datasets and evaluators}
 
-LLVIP uses a fixed 1,350/150/300 train/validation/test split
-\cite{jia2021}. The split was formed from non-empty official training labels
-and the official 300-image test set. Train/test, validation/test and
-train/validation stem intersections are all empty; the three partitions
-contain 4,479, 419 and 744 pedestrian boxes. The eight LLVIP confirmatory
-checkpoints are YOLO11n trained on visible images, a modality-agnostic YOLO11n
-control, YOLO26n seeds 0--2, RT-DETR-l, and YOLOv8n seeds 0 and 1. YOLO11n
-seed 0 is used for each YOLO11n family; four independently trained runs of each
-family are retained as a seed sensitivity analysis. All best checkpoints were
-selected using the 150 validation images, not the scored test images.
+The official LLVIP partitions are larger than the experiment subsets
+\cite{jia2021}. The 300-image test subset contains the first 300 pairs after a
+uniformly random shuffle (seed 0) of official test pairs with non-empty labels.
+The 1,500-image training subset comprises the lexicographically first 1,500
+official training pairs with non-empty labels. Within this ordered subset, the
+first 1,350 pairs form training and the remaining 150 form validation.
+Train/test, validation/test and train/validation stem intersections are all
+empty; the three partitions contain 4,479, 419 and 744 pedestrian boxes. The
+eight LLVIP confirmatory checkpoints are YOLO11n trained on visible images, a
+modality-agnostic YOLO11n control, YOLO26n seeds 0--2, RT-DETR-l, and YOLOv8n
+seeds 0 and 1. YOLO11n seed 0 is used for each YOLO11n family; four
+independently trained runs of each family are retained as a seed sensitivity
+analysis. All best checkpoints were selected using the 150 validation images,
+not the scored test subset.
 
 M3FD contributes a grouped six-class split of 1,600 training, 400 validation
 and 200 test images \cite{liu2022}. Frames are partitioned by consecutive
@@ -400,7 +422,7 @@ Drone\-Vehicle & YOLO11x\-OBB & VIS, vehicle OBB & best/last, one run & 2 \\
 \end{tabular}
 \end{table}
 
-\paragraph{External evaluator stress tests.}
+\paragraph{External evaluator stress tests}
 We also applied the frozen selector to three checkpoints that were not used to
 construct the policy or select its margin. YOLOv9t and YOLOv10s were
 COCO-pretrained models without LLVIP fine-tuning, and only their person-class
@@ -413,7 +435,7 @@ flipping, and brightness/contrast jitter. A reproducible PIL-based loader and
 the Ultralytics detection loss were used. The last checkpoint was fixed after
 epoch 40; no epoch was selected using test results.
 
-\paragraph{Detection evaluation.}
+\paragraph{Detection evaluation}
 Predictions use a 640-pixel inference size and a confidence floor of
 \(0.001\). For YOLO models, non-maximum suppression uses an IoU threshold of
 \(0.7\). At each class and each IoU threshold from 0.50 to 0.95 in steps of
@@ -521,7 +543,10 @@ from the same training run and are not independent architectures.
 \begin{table}[t]
 \centering
 \small
-\caption{Confirmatory checkpoint summary and policy comparison.}
+\caption{Confirmatory checkpoint summary and policy comparison. Mean is the
+unweighted average over the 12 confirmatory checkpoints. Dataset-balanced
+assigns equal weight to LLVIP, M3FD, and DroneVehicle after averaging within
+each dataset; worst is the lowest checkpoint difference relative to visible.}
 \label{tab:policy}
 \begin{tabular}{@{}lrrrr@{}}
 \toprule
@@ -585,6 +610,10 @@ inputs. Uniform random selection sampled the four candidates independently
 for each image and checkpoint over 500 allocations. The oracle selected the
 candidate with the highest per-image AP50 using test labels and is an upper
 bound only.
+
+The common \(256\times256\) grayscale representation made the image-quality
+inputs comparable across source resolutions and detector architectures. These
+selectors used no target labels.
 
 The maximum-reference-VIF selector produced a dataset-balanced gain of 0.0008
 with 8/12 positive checkpoints, far below the confidence-based policy.
@@ -791,10 +820,12 @@ support a universal thermal switching rule. Source data are provided in
 \subsection{Registration sensitivity}
 
 We estimated translation residuals for all 300 LLVIP test pairs with ECC on
-normalized Sobel edges. The median residual was 2.53 pixels. On the 75
-best-aligned pairs (residual at most 1.61 pixels), the mean CS-ECF gain across
-the eight LLVIP checkpoints was 0.0007, with five positives. On the 75
-worst-aligned pairs, the mean gain was 0.0020, with six positives. Most
+normalized Sobel edges. The median residual was 2.53 pixels. The median
+test-set person box was 109 pixels wide and 246 pixels high, so the median
+residual corresponded to 2.3\% of median box width and 1.0\% of median box
+height. On the 75 best-aligned pairs (residual at most 1.61 pixels), the mean
+CS-ECF gain across the eight LLVIP checkpoints was 0.0007, with five positives.
+On the 75 worst-aligned pairs, the mean gain was 0.0020, with six positives. Most
 checkpoint-specific intervals still crossed zero, so these subsets do not
 identify a separate registration regime. They do show that the observed gain
 is not confined to the best-aligned quartile. The same residual audit was not
@@ -937,7 +968,7 @@ included in the public analysis repository described below.
 The code for reproducing the experiments is available at
 \url{https://github.com/lessThanbetter/ssgf} under an MIT licence. The
 version-specific archival release is available at
-\url{https://doi.org/10.5281/zenodo.23719721}. The repository and archive contain
+\url{https://doi.org/10.5281/zenodo.23720111}. The repository and archive contain
 the fusion and arbitration code, detector-evaluation scripts, fixed split and
 test manifests, per-image score files, result tables, figure source data, and
 the numerical checks used to generate the reported intervals.
@@ -952,7 +983,10 @@ and edited the content as needed and take full responsibility for the content
 of the published article. The detector models, numerical results, and reported
 conclusions were verified by the authors.
 
+\begingroup
+\footnotesize
 \bibliographystyle{elsarticle-num}
 \bibliography{references}
+\endgroup
 
 \end{document}

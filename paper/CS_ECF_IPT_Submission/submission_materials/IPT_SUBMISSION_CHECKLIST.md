@@ -6,7 +6,7 @@ Target: Infrared Physics & Technology (Elsevier)
 
 ## Submission readiness
 
-**Author-confirmed; major-revision self-repair complete; live portal check pending.** The
+**Author-confirmed; minor-revision self-repair complete; live portal check pending.** The
 manuscript, supplement, cover letter, Highlights, figures, source data,
 declarations, statistical diagnostics, and reproducibility evidence are
 assembled and have passed the final local technical QA. The author has
@@ -14,8 +14,8 @@ confirmed that the inherited
 administrative facts and declaration text remain unchanged from the original.
 The final upload requires a check of the live IPT portal prompts.
 
-The archival code revision is prepared as GitHub tag `v2.1.0` and Zenodo
-version DOI `10.5281/zenodo.23719721` under concept DOI
+The archival code revision is prepared as GitHub tag `v2.2.0` and Zenodo
+version DOI `10.5281/zenodo.23720111` under concept DOI
 `10.5281/zenodo.22984388`.
 
 Reasons:
@@ -38,7 +38,7 @@ Reasons:
 | PDF visual and font audit | complete | `FINAL_TECHNICAL_QA.md` |
 | Related Work and citations | complete | 46 references; `RELATED_WORK_EVIDENCE.md` |
 | Multiplicity and sensitivity audit | complete | `MAJOR_REVISION_STATISTICS.md` |
-| GitHub/Zenodo archive | publication step | tag `v2.1.0`; DOI `10.5281/zenodo.23719721` |
+| GitHub/Zenodo archive | publication step | tag `v2.2.0`; DOI `10.5281/zenodo.23720111` |
 | Author administrative facts | complete | author confirmed unchanged on 2026-10-28 |
 | Live IPT portal prompts | pending | CAPTCHA/login blocks unattended check |
 
@@ -88,15 +88,23 @@ Reasons:
   and switched-image degradation diagnostics;
 - M3FD class counts and image-bootstrap intervals;
 - LLVIP ECC registration-residual quartile sensitivity;
+- explicit LLVIP subset provenance: random-seed-0 test sampling, lexical
+  training selection, and a zero-overlap 1,350/150/300 partition;
+- complete definitions for CDF detail maps, top-hat quantile, mask morphology,
+  and the distinction between \(q_{\mathrm{TH}}\) and candidate score \(q_c\);
+- DroneVehicle explicitly excluded from margin tuning and treated as an
+  external domain-transfer check;
 - verified 2024–2026 IPT fusion/detection exemplars in `IPT_TARGETING.md`.
 - three PDFs rebuilt and visually inspected after the final source update:
   18-page manuscript, 6-page supplement, and 1-page cover letter;
-- 45 of 45 DOI records resolved through Crossref; the software entry has no DOI;
+- 45 of 45 DOI records passed a Crossref field audit of title, authors, year,
+  volume, and pages with zero unresolved differences; the software entry has no
+  DOI;
 - 19 references and a four-part Related Work synthesis added from the revised
   original manuscript and verified current fusion--detection literature;
 - 35 archived pre-QA files matched the v9 SHA-256 manifest before the
   administrative packages were assembled.
-- Zenodo version `v2.1.0` is reserved as `10.5281/zenodo.23719721` under the
+- Zenodo version `v2.2.0` is reserved as `10.5281/zenodo.23720111` under the
   shared software concept DOI `10.5281/zenodo.22984388`.
 
 ## Cross-file consistency checks
@@ -144,7 +152,7 @@ and declaration content without changes:
 
 - Add reviewer suggestions only if the IPT portal requests them.
 
-The CS-ECF Zenodo `v2.1.0` version DOI is `10.5281/zenodo.23719721`. Do not
+The CS-ECF Zenodo `v2.2.0` version DOI is `10.5281/zenodo.23720111`. Do not
 reuse the preceding study's version DOI `10.5281/zenodo.22984389`.
 
 ## Next actions
@@ -152,6 +160,6 @@ reuse the preceding study's version DOI `10.5281/zenodo.22984389`.
 1. Open the live IPT submission portal with an interactive browser and confirm
    article type, portal labels,
    abstract/display limits, and optional items.
-2. Upload the files from `submission_package_v14/`.
+2. Upload the files from `submission_package_v15/`.
 3. If the portal requires any scientific or administrative change,
    recompile the PDFs and regenerate the manifest before upload.

@@ -20,11 +20,11 @@ fused input is used only when its top-five confidence reaches 1.5 times that of
 visible; otherwise, visible is retained as a safety fallback.
 
 Across LLVIP, M3FD, and an independent official-test subset of DroneVehicle,
-9 of 12 detector checkpoints improved. No individual checkpoint contrast
-survived Holm correction, and the sign test was not significant (`p=0.073`).
-The prespecified dataset-balanced AP50 gain was 0.0133, with a
+the prespecified dataset-balanced AP50 gain was 0.0133, with a
 training-run-by-group hierarchical 95% interval of [0.0026, 0.0261]. Removing
-the shield increased the worst observed AP50 loss from 0.0040 to 0.0584.
+the shield increased the worst observed AP50 loss from 0.0040 to 0.0584. Nine
+of 12 detector checkpoints improved, but no individual contrast survived Holm
+correction and the sign test was not significant (`p=0.073`).
 
 Against the stronger Always CDF baseline, the dataset-balanced difference was
 0.0102 AP50, with a training-run-by-group interval of [-0.00057, 0.02980].

@@ -62,3 +62,18 @@ sparse, generative, encoder-decoder, transformer, diffusion, task-aware,
 multispectral and detector-coupled fusion research. The added entries retain
 the verified author lists, titles, publication details and DOI records.
 
+A final field-level audit on 2026-10-28 compared every DOI record against the
+normalized Crossref title, author count, publication year, volume, and first
+page. The result was 45/45 verified with zero unresolved differences. The
+reproducible audit command is:
+
+```text
+python scripts/verify_references_crossref.py
+  paper/CS_ECF_IPT_Submission/references.bib
+  --jobs 6 --fail-on-issues
+```
+
+The PDF text was also checked directly. DOI path segments such as `inffus` and
+`infrared` remain correct after line breaking; apparent character substitutions
+in low-resolution OCR are not present in the PDF text layer.
+

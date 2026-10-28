@@ -89,7 +89,12 @@ def main() -> None:
             "0.0153",
             "p=0.073",
             "0.0833",
-            "10.5281/zenodo.23719721",
+            "10.5281/zenodo.23720111",
+            "official LLVIP partitions are larger",
+            "q_{\\mathrm{TH}}=0.95",
+            "lexicographically first 1,500",
+            "external domain-transfer check",
+            "109 pixels wide and 246 pixels high",
         ),
         SUPPLEMENT: (
             "-.0108",
@@ -98,6 +103,7 @@ def main() -> None:
             "[+0.0072,+0.0267]",
             "p=0.0730",
             "12-member confirmatory family",
+            "0.087/0.086",
         ),
         COVER: ("0.0108", "0.0153", "p=0.073"),
     }
@@ -114,10 +120,14 @@ def main() -> None:
     )
     for stale in stale_values:
         require(stale not in source_text, f"stale domain interval present: {stale}")
-    require(
-        "10.5281/zenodo.23718751" not in source_text,
-        "superseded Zenodo version DOI is still present",
-    )
+    for superseded_doi in (
+        "10.5281/zenodo.23718751",
+        "10.5281/zenodo.23719721",
+    ):
+        require(
+            superseded_doi not in source_text,
+            f"superseded Zenodo version DOI is still present: {superseded_doi}",
+        )
 
     reference_entries = len(re.findall(r"(?m)^@", REFERENCES.read_text(encoding="utf-8")))
     require(reference_entries == 46, f"expected 46 references, found {reference_entries}")
