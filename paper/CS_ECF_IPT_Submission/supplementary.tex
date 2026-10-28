@@ -9,14 +9,14 @@
 \usepackage{url}
 
 \hypersetup{
-  pdftitle={Supplementary Material: Confidence-Shielded Evaluator-Conditioned Fusion for Risk-Controlled Infrared-Visible Object Detection},
+  pdftitle={Supplementary Material: Confidence-Shielded, Evaluator-Conditioned Fusion for Risk-Controlled Infrared-Visible Object Detection},
   pdfauthor={Jianyong Zhao, Zigao Wu, Mengfei Ma},
   pdfsubject={Supplementary material for a research paper submitted to Infrared Physics \& Technology}
 }
 
 \newcommand{\code}[1]{\texttt{#1}}
 
-\title{Supplementary Material for\\Confidence-Shielded
+\title{Supplementary Material for\\Confidence-Shielded,
 Evaluator-Conditioned Fusion for Risk-Controlled Infrared--Visible Object
 Detection}
 \author{Jianyong Zhao, Zigao Wu, Mengfei Ma}
@@ -227,11 +227,11 @@ on the 300-image test visible input.
 \caption{External evaluator stress tests on the same 300 LLVIP test pairs.}
 \begin{tabular}{@{}lrrrr@{}}
 \toprule
-Model & Visible & Always CDF & No shield & CS-ECF \\
+Model & Visible & Always CDF & No-shield & CS-ECF \\
 \midrule
 YOLOv9t, zero-shot & .7698 & .7888 & .8216 & .7948 \\
 YOLOv10s, zero-shot & .8344 & .8617 & .8699 & .8557 \\
-YOLOv9t, LLVIP-trained & .6666 & .6598 & .6405 & .6558 \\
+YOLOv9t, fine-tuned & .6666 & .6598 & .6405 & .6558 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -240,7 +240,7 @@ YOLOv9t, LLVIP-trained & .6666 & .6598 & .6405 & .6558 \\
 \centering
 \scriptsize
 \setlength{\tabcolsep}{3pt}
-\caption{Paired confidence intervals and scene-tail behavior for the external
+\caption{Paired confidence intervals and scene-tail behaviour for the external
 evaluators. The final column reports the worst scene change for CS-ECF /
 no-shield.}
 \begin{tabular}{@{}lccc@{}}
@@ -251,20 +251,20 @@ YOLOv9t, zero-shot & \(+.0250~[+.0053,+.0523]\) &
   \(+.0060~[-.0277,+.0374]\) & \(-.0167 / -.0011\) \\
 YOLOv10s, zero-shot & \(+.0213~[+.0041,+.0439]\) &
   \(-.0059~[-.0266,+.0180]\) & \(-.0038 / -.0337\) \\
-YOLOv9t, LLVIP-trained & \(-.0108~[-.0342,+.0050]\) &
+YOLOv9t, fine-tuned & \(-.0108~[-.0342,+.0050]\) &
   \(-.0040~[-.0206,+.0108]\) & \(-.0724 / -.1208\) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 The shield selected visible on 233/300 zero-shot YOLOv9t, 245/300 YOLOv10s,
-and 230/300 LLVIP-trained YOLOv9t images. The two zero-shot evaluators support
+and 230/300 LLVIP-fine-tuned YOLOv9t images. The two zero-shot evaluators support
 a positive difference from visible but not superiority over Always CDF. The
 fine-tuned YOLOv9t is a negative portability case: CS-ECF was below both
 visible and Always CDF, with scene-group intervals crossing zero. The shield
-improved the unshielded selector by 0.0153 AP50 (group interval
+improved the no-shield selector by 0.0153 AP50 (group interval
 \([+0.0072,+0.0267]\)) and reduced the worst scene loss from 0.1208 to 0.0724,
-but did not remove the loss. Tail behavior therefore remains evaluator
+but did not remove the loss. Tail behaviour therefore remains evaluator
 dependent rather than universally controlled.
 
 \begin{table}[ht]
@@ -283,7 +283,7 @@ YOLOv9t, zero-shot & 77.7\%/22.3\% & .009/.009 &
 46.3/32.8/20.9\% & 5/2 & 2.28 \\
 YOLOv10s, zero-shot & 81.7\%/18.3\% & .010/.012 &
 38.2/52.7/9.1\% & 4/3 & 2.04 \\
-YOLOv9t, LLVIP-trained & 76.7\%/23.3\% & .048/.046 &
+YOLOv9t, fine-tuned & 76.7\%/23.3\% & .048/.046 &
 25.7/32.9/41.4\% & 2/5 & 2.16 \\
 \bottomrule
 \end{tabular}
@@ -294,7 +294,7 @@ images. All three models satisfy the 1.5 selection margin at similar switch
 rates, but the fine-tuned checkpoint has a larger calibration error and a much
 higher fraction of harmful switches. Across the three external contrasts, the
 Benjamini--Hochberg q values are 0.043, 0.043, and 0.119 for YOLOv9t
-zero-shot, YOLOv10s zero-shot, and YOLOv9t LLVIP-trained, respectively.
+zero-shot, YOLOv10s zero-shot, and YOLOv9t LLVIP-fine-tuned, respectively.
 The corresponding detection-level Brier scores for visible and CS-ECF were
 0.015/0.013, 0.013/0.011, and 0.087/0.086, respectively.
 

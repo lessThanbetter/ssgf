@@ -1,5 +1,5 @@
-Fusion utility reverses across detector checkpoints.
-A confidence shield gates image-level fusion-input selection.
-Nine of 12 detector checkpoints improve AP50.
-The worst AP50 loss falls from 5.84 to 0.40 points.
-Gains concentrate in people; six-class uniformity is not claimed.
+Fusion gains change sign across detector checkpoints.
+A confidence shield gates image-level fused-input selection.
+No checkpoint survives Holm correction; balanced AP50 gain is +0.0133.
+The shield lowers the worst AP50-loss magnitude from 5.84 to 0.40 points.
+An LLVIP-fine-tuned YOLOv9t reveals a portability failure.

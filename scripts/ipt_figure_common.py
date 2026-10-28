@@ -323,4 +323,3 @@ def marker_handle(label, color, marker="o", markersize=5):
         markersize=markersize,
         label=label,
     )
-

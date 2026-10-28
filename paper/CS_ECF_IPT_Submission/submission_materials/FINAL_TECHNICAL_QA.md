@@ -2,11 +2,18 @@
 
 Date: 2026-10-28  
 Target: *Infrared Physics & Technology*  
-Package candidate: v17
+Package candidate: v18
 
 ## Status
 
-Version v17 replaces the four-figure layout with an 11-figure evidence sequence
+Version v18 retains the 11-figure evidence sequence from v17 and adds a
+language-focused revision of the title, abstract, Introduction, Methods,
+Results, Discussion, Conclusions, figure captions, supplement, and cover letter.
+The revision removes unnecessary repetition, shortens overloaded sentences, and
+aligns terminology without changing the experiments or quantitative results.
+
+The figure set replaces the earlier four-figure layout with an
+11-figure evidence sequence
 matching the target reference paper's display-item count. The redesign adds
 explicit figures for the workflow, threshold sensitivity, multiplicity
 correction, direct CDF comparison, control headroom, external-evaluator
@@ -20,9 +27,9 @@ the LLVIP-fine-tuned YOLOv9t reverses sign relative to visible.
 
 ## Build and document checks
 
-- Main manuscript: 25 A4 pages; abstract 240 words.
+- Main manuscript: 25 A4 pages; abstract 250 words.
 - Supplementary material: 6 A4 pages.
-- Cover letter: 1 A4 page; letter body 491 words.
+- Cover letter: 1 A4 page; letter body 490 words.
 - Main figures: exactly 11 figure environments, 11 unique labels, and 11
   rendered captions.
 - Figure-level source data: 11 CSV files.
@@ -66,11 +73,11 @@ bibliography entry is the Ultralytics software repository, which has no DOI.
 
 ## Archive checks
 
-The v17 submission ZIP and standalone sidecar digest are regenerated after the
-11-figure redesign, DOI update, compilation, and PDF checks. Every packaged file
+The v18 submission ZIP and standalone sidecar digest are regenerated after the
+language revision, DOI update, compilation, and PDF checks. Every packaged file
 is hashed, every manifest entry is present, and the sidecar digest is verified.
 
-The version-specific manuscript DOI is `10.5281/zenodo.23726338` under concept
+The version-specific manuscript DOI is `10.5281/zenodo.23728385` under concept
 DOI `10.5281/zenodo.22984388`. The GitHub tag and Zenodo publication are
 verified only after the final package upload.
 

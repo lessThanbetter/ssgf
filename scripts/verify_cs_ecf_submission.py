@@ -89,7 +89,7 @@ def main() -> None:
             "0.0153",
             "p=0.073",
             "0.0833",
-            "10.5281/zenodo.23726338",
+            "10.5281/zenodo.23728385",
             "official LLVIP partitions are larger",
             "3,463 test pairs",
             "1.00,1.10,1.20,1.30,1.50,1.75,2.00",
@@ -97,7 +97,7 @@ def main() -> None:
             "lexicographically first 1,500",
             "external domain-transfer check",
             "109 pixels wide and 246 pixels high",
-            "Both selected among the three fused candidates",
+            "VIF and SSIM selected only among",
             "AP50 of zero for every candidate",
         ),
         SUPPLEMENT: (
@@ -114,8 +114,9 @@ def main() -> None:
     }
     for path, claims in required_claims.items():
         text = path.read_text(encoding="utf-8")
+        normalized_text = " ".join(text.split())
         for claim in claims:
-            require(claim in text, f"{path.name} is missing {claim}")
+            require(claim in normalized_text, f"{path.name} is missing {claim}")
 
     stale_values = (
         "[-0.0331,+0.0048]",
@@ -130,6 +131,7 @@ def main() -> None:
         "10.5281/zenodo.23719721",
         "10.5281/zenodo.23720111",
         "10.5281/zenodo.23721458",
+        "10.5281/zenodo.23726338",
     ):
         require(
             superseded_doi not in source_text,

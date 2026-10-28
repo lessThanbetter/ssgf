@@ -2,7 +2,7 @@
 
 Date: 2026-10-28  
 Target: *Infrared Physics & Technology*  
-Status: 11-figure redesign complete; v17 package and Zenodo `v2.4.0`
+Status: 11-figure redesign and language polish complete; v18 package and Zenodo `v2.4.1`
 archival release prepared for the live submission-portal check
 
 ## Main files
@@ -21,7 +21,7 @@ archival release prepared for the live submission-portal check
 - `source_data/` — 11 figure-level CSV source data files.
 - `submission_materials/` — cover-letter, Highlights, keyword, caption,
   checklist, and figure-QA drafts.
-- `submission_package_v17/` — final assembled upload package with PDFs, LaTeX,
+- `submission_package_v18/` — final assembled upload package with PDFs, LaTeX,
   figures, source data, external-evaluator evidence, reproduction scripts, and
   SHA-256 manifest; includes the multiplicity, sensitivity, baseline, class,
   calibration, registration, PDF-text, and field-level reference audits.
@@ -29,7 +29,7 @@ archival release prepared for the live submission-portal check
   reference, PDF, and archive checks.
 - `submission_materials/RELATED_WORK_EVIDENCE.md` — section-to-reference
   mapping and audit for the added literature.
-- Zenodo version DOI for `v2.4.0`: `10.5281/zenodo.23726338`; concept DOI:
+- Zenodo version DOI for `v2.4.1`: `10.5281/zenodo.23728385`; concept DOI:
   `10.5281/zenodo.22984388`.
 
 ## Current verified result anchors
@@ -85,8 +85,8 @@ archival release prepared for the live submission-portal check
 2. Verify the current IPT Guide for Authors in the submission portal, including
    article type, abstract
    limit, Highlights requirements, figure count, and artwork rules.
-3. Upload from `submission_package_v17/`. The CS-ECF Zenodo `v2.4.0` version
-   DOI is `10.5281/zenodo.23726338`; the preceding study's DOI
+3. Upload from `submission_package_v18/`. The CS-ECF Zenodo `v2.4.1` version
+   DOI is `10.5281/zenodo.23728385`; the preceding study's DOI
    `10.5281/zenodo.22984389` must not be reused.
 4. Re-run the LaTeX build, figure QA, PDF page audit, and numerical consistency
    checks again only if the portal requires a content change.

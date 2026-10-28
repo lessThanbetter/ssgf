@@ -6,16 +6,16 @@ Target: *Infrared Physics & Technology* (Elsevier)
 
 ## Submission readiness
 
-**Author-confirmed; 11-figure redesign and technical QA complete; Zenodo v2.4.0
-draft reserved; live portal check pending.**
+**Author-confirmed; 11-figure redesign and language polish complete; Zenodo
+v2.4.1 draft reserved; live portal check pending.**
 
 The author confirmed that the inherited administrative facts and declaration
 text remain unchanged. The manuscript, supplement, cover letter, Highlights,
 keywords, 11 main figures, 11 figure-level source-data files, declarations,
 statistical diagnostics, and reproducibility evidence are assembled.
 
-The archival code revision is GitHub tag `v2.4.0`; the reserved Zenodo version
-DOI is `10.5281/zenodo.23726338` under concept DOI
+The archival code revision is GitHub tag `v2.4.1`; the reserved Zenodo version
+DOI is `10.5281/zenodo.23728385` under concept DOI
 `10.5281/zenodo.22984388`.
 
 ## Technical gate
@@ -31,7 +31,7 @@ DOI is `10.5281/zenodo.23726338` under concept DOI
 | PDF visual audit | complete | 25 manuscript pages rendered and inspected |
 | Related Work and citations | complete | 46 references, including 45 DOI-backed records |
 | Multiplicity and sensitivity audit | complete | `MAJOR_REVISION_STATISTICS.md` |
-| GitHub/Zenodo archive | draft reserved | version `v2.4.0`; DOI `10.5281/zenodo.23726338` |
+| GitHub/Zenodo archive | draft reserved | version `v2.4.1`; DOI `10.5281/zenodo.23728385` |
 | Author administrative facts | complete | author confirmed unchanged on 2026-10-28 |
 | Live IPT portal prompts | pending | CAPTCHA/login blocks unattended check |
 
@@ -109,7 +109,7 @@ Add reviewer suggestions only if the IPT portal requests them.
 1. Open the live IPT submission portal with an interactive browser.
 2. Confirm article type, portal labels, abstract/display limits, figure-upload
    order, and optional graphical-abstract fields.
-3. Upload files from `submission_package_v17/`.
+3. Upload files from `submission_package_v18/`.
 4. Compare the portal preview with `Manuscript.pdf` before final submission.
 5. If the portal requires a scientific or administrative change, rebuild the
    PDFs and regenerate the SHA-256 manifest before upload.

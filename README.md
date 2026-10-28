@@ -9,8 +9,8 @@ The current release accompanies the working manuscript
 **“Confidence-Shielded Evaluator-Conditioned Fusion for Risk-Controlled
 Infrared--Visible Object Detection.”**
 
-The version-specific archival release is **v2.4.0**, DOI
-[`10.5281/zenodo.23726338`](https://doi.org/10.5281/zenodo.23726338). The
+The version-specific archival release is **v2.4.1**, DOI
+[`10.5281/zenodo.23728385`](https://doi.org/10.5281/zenodo.23728385). The
 shared software-series concept DOI is
 [`10.5281/zenodo.22984388`](https://doi.org/10.5281/zenodo.22984388).
 
@@ -54,7 +54,7 @@ Artifacts:
   compressed score files;
 - `paper/CS_ECF_IPT_Submission/` — Elsevier LaTeX source, compiled 25-page PDF,
   cover letter, 11 numbered figures, 11 figure-level source-data files, and the
-  versioned v17 submission package;
+  versioned v18 submission package;
 - `paper/CS_ECF_IPT_DRAFT.md`, `paper/CS_ECF_RESULTS.md`,
   `paper/CS_ECF_2ZONE_MATERIALS.md` — manuscript and evidence notes.
 
