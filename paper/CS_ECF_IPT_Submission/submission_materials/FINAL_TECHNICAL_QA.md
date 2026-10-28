@@ -2,7 +2,7 @@
 
 Date: 2026-10-28  
 Target: *Infrared Physics & Technology*  
-Package candidate: v15
+Package candidate: v16
 
 ## Status
 
@@ -19,6 +19,12 @@ defines the CDF detail maps and top-hat quantile, clarifies the validation and
 policy-table estimands, states that DroneVehicle was not used for margin
 selection, adds registration-residual scale context and supplementary Brier
 scores, and removes run-in heading punctuation artifacts.
+
+Version v16 adds a technical-check gate for the rendered PDF itself. It
+verifies all 46 numbered reference entries, the complete `Figure 1:` caption,
+a single Discussion heading, correct `RT-DETR-l` naming, and the absence of
+repeated-character corruption lines. It also records the complete pre-freeze
+margin search and the exact LLVIP test sampling frame.
 
 ## Build and document checks
 
@@ -45,6 +51,10 @@ scores, and removes run-in heading punctuation artifacts.
 - The reference auditor compares DOI resolution and normalized Crossref title,
   author count, year, volume, and first page metadata against every BibTeX
   record.
+- A forced clean rebuild produced an 18-page manuscript with SHA-256
+  `FF97AC5FFB69AE6F64F73844A2DA26B49CEB7C3367044799CE1BD0F9AE7B78B1`.
+  Page 16 contains references [1]--[9], and page 17 begins with [10]; both
+  rendered text extractors found no repeated-character line.
 
 ## Reference checks
 
@@ -56,14 +66,14 @@ no DOI.
 
 ## Archive checks
 
-The v15 ZIP and manifest are regenerated after the statistical, citation,
+The v16 ZIP and manifest are regenerated after the statistical, citation,
 archival-DOI, compilation, and administrative updates. Every packaged file is
 hashed, every manifest entry is present, and the ZIP-sidecar digest is checked.
 
 ## Repository check
 
-The `v2.2.0` release packages the minor-revision corrections and verifier. Its
-Zenodo version DOI is `10.5281/zenodo.23720111` under concept DOI
+The `v2.3.0` release packages the technical-check corrections and PDF gate. Its
+Zenodo version DOI is `10.5281/zenodo.23721458` under concept DOI
 `10.5281/zenodo.22984388`. The record title, authors, ORCIDs, MIT licence,
 software resource type, and release relation are checked through the Zenodo API
 before the version is published.

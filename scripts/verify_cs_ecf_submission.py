@@ -89,12 +89,16 @@ def main() -> None:
             "0.0153",
             "p=0.073",
             "0.0833",
-            "10.5281/zenodo.23720111",
+            "10.5281/zenodo.23721458",
             "official LLVIP partitions are larger",
+            "3,463 test pairs",
+            "1.00,1.10,1.20,1.30,1.50,1.75,2.00",
             "q_{\\mathrm{TH}}=0.95",
             "lexicographically first 1,500",
             "external domain-transfer check",
             "109 pixels wide and 246 pixels high",
+            "Both selected among the three fused candidates",
+            "AP50 of zero for every candidate",
         ),
         SUPPLEMENT: (
             "-.0108",
@@ -104,6 +108,7 @@ def main() -> None:
             "p=0.0730",
             "12-member confirmatory family",
             "0.087/0.086",
+            "Complete pre-freeze margin search",
         ),
         COVER: ("0.0108", "0.0153", "p=0.073"),
     }
@@ -123,6 +128,7 @@ def main() -> None:
     for superseded_doi in (
         "10.5281/zenodo.23718751",
         "10.5281/zenodo.23719721",
+        "10.5281/zenodo.23720111",
     ):
         require(
             superseded_doi not in source_text,
@@ -131,6 +137,13 @@ def main() -> None:
 
     reference_entries = len(re.findall(r"(?m)^@", REFERENCES.read_text(encoding="utf-8")))
     require(reference_entries == 46, f"expected 46 references, found {reference_entries}")
+    reference_text = REFERENCES.read_text(encoding="utf-8")
+    for doi in (
+        "10.1016/j.inffus.2012.01.008",
+        "10.1016/j.infrared.2025.106325",
+        "10.1016/j.infrared.2010.03.005",
+    ):
+        require(doi in reference_text, f"required verified DOI is missing: {doi}")
 
     expected_pages = {
         "main": (18, "Manuscript.pdf"),
@@ -176,6 +189,43 @@ def main() -> None:
             f"{stem}.pdf has {pages[-1]} pages; expected {expected_count}",
         )
 
+    main_pdf = PAPER / "main.pdf"
+    if not main_pdf.is_file():
+        main_pdf = PAPER / "Manuscript.pdf"
+    pdftotext = shutil.which("pdftotext")
+    if pdftotext and main_pdf.is_file():
+        rendered_text = subprocess.run(
+            [pdftotext, "-layout", str(main_pdf), "-"],
+            check=True,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+        ).stdout
+        reference_numbers = {
+            int(value)
+            for value in re.findall(r"(?m)^\s*\[(\d+)\]", rendered_text)
+        }
+        require(
+            reference_numbers == set(range(1, 47)),
+            "PDF text does not contain all reference entries [1]--[46]",
+        )
+        require(
+            not re.search(r"(?m)^\s*(?:1\s+){10,}1?\s*$", rendered_text),
+            "PDF contains a repeated-character corruption line",
+        )
+        require("Figure 1:" in rendered_text, "Figure 1 caption prefix missing")
+        require(
+            re.search(r"(?<!F)igure 1:", rendered_text) is None,
+            "Figure 1 caption is truncated",
+        )
+        require(
+            rendered_text.count("5. Discussion") == 1,
+            "Discussion heading is missing or duplicated in PDF text",
+        )
+        require("RT-DETR-l" in rendered_text, "RT-DETR-l is missing from PDF text")
+        require("RT-DETR-1" not in rendered_text, "RT-DETR-1 OCR-like typo found")
+
     figure_dir = PAPER / "figures"
     for index in range(1, 5):
         matches = sorted(figure_dir.glob(f"fig{index}_*.pdf"))
@@ -190,6 +240,9 @@ def main() -> None:
             "external_evaluator_diagnostics.json",
             "m3fd_class_summary.json",
             "alignment_csecf_sensitivity.json",
+            "prefreeze_validation_summary.json",
+            "llvip_test_sampling_summary.json",
+            "llvip_test_manifest_3463.json",
         )
         for name in evidence_names:
             path = evidence_dir / name
@@ -218,6 +271,24 @@ def main() -> None:
             abs(balanced["cdf"]["point"] - 0.0102) < 1e-4,
             "balanced CDF contrast changed",
         )
+        sampling = json.loads(
+            (evidence_dir / "llvip_test_sampling_summary.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        require(sampling["official_test_pairs"] == 3463, "LLVIP count changed")
+        require(
+            sampling["official_test_pairs_with_nonempty_labels"] == 3463,
+            "LLVIP non-empty count changed",
+        )
+        require(sampling["unselected_eligible_test_pairs"] == 3163, "unused count changed")
+        prefreeze = json.loads(
+            (evidence_dir / "prefreeze_validation_summary.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        require(prefreeze["selected_margin"] == 1.5, "selected margin changed")
+        require(len(prefreeze["rows"]) == 7, "pre-freeze grid is incomplete")
 
     print(f"PASS: abstract={abstract_words} words; cover={cover_words} words")
     print(f"PASS: highlights={len(highlights)}; references={reference_entries}")

@@ -2,7 +2,7 @@
 
 Date: 2026-10-28  
 Target: *Infrared Physics & Technology*  
-Status: minor-revision self-repair complete; v15 package and Zenodo `v2.2.0`
+Status: technical-check repair complete; v16 package and Zenodo `v2.3.0`
 archival release prepared for the live submission-portal check
 
 ## Main files
@@ -21,15 +21,15 @@ archival release prepared for the live submission-portal check
 - `source_data/` — figure-level CSV source data.
 - `submission_materials/` — cover-letter, Highlights, keyword, caption,
   checklist, and figure-QA drafts.
-- `submission_package_v15/` — final assembled upload package with PDFs, LaTeX,
+- `submission_package_v16/` — final assembled upload package with PDFs, LaTeX,
   figures, source data, external-evaluator evidence, reproduction scripts, and
   SHA-256 manifest; includes the multiplicity, sensitivity, baseline, class,
-  calibration, registration, and field-level reference audits.
+  calibration, registration, PDF-text, and field-level reference audits.
 - `submission_materials/FINAL_TECHNICAL_QA.md` — completed build, consistency,
   reference, PDF, and archive checks.
 - `submission_materials/RELATED_WORK_EVIDENCE.md` — section-to-reference
   mapping and audit for the added literature.
-- Zenodo version DOI for `v2.2.0`: `10.5281/zenodo.23720111`; concept DOI:
+- Zenodo version DOI for `v2.3.0`: `10.5281/zenodo.23721458`; concept DOI:
   `10.5281/zenodo.22984388`.
 
 ## Current verified result anchors
@@ -66,6 +66,11 @@ archival release prepared for the live submission-portal check
   larger official test partition; the 1,350/150 training and validation sets
   are the first 1,350 and final 150 of a lexicographically ordered 1,500-pair
   subset of official non-empty training labels.
+- The LLVIP release used here has 3,463 non-empty official test pairs, so 3,163
+  eligible pairs were not selected.
+- The complete pre-freeze margin grid is reported; the selected margin 1.5 was
+  the first feasible setting and the largest balanced gain among feasible
+  settings.
 - All 45 DOI records passed a Crossref field audit of title, authors, year,
   volume, and pages with zero unresolved differences.
 - DroneVehicle best/last gains: +0.0251 / +0.0293.
@@ -80,8 +85,8 @@ archival release prepared for the live submission-portal check
 2. Verify the current IPT Guide for Authors in the submission portal, including
    article type, abstract
    limit, Highlights requirements, figure count, and artwork rules.
-3. Upload from `submission_package_v15/`. The CS-ECF Zenodo `v2.2.0` version
-   DOI is `10.5281/zenodo.23720111`; the preceding study's DOI
+3. Upload from `submission_package_v16/`. The CS-ECF Zenodo `v2.3.0` version
+   DOI is `10.5281/zenodo.23721458`; the preceding study's DOI
    `10.5281/zenodo.22984389` must not be reused.
 4. Re-run the LaTeX build, figure QA, PDF page audit, and numerical consistency
    checks again only if the portal requires a content change.

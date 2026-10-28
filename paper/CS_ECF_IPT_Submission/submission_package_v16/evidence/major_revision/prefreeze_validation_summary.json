@@ -1,0 +1,51 @@
+{
+  "selection_data": "validation only",
+  "candidate_policy": "visible, CDF, PIAFusion, and SPGFusion",
+  "score_policy": "top-5 mean confidence",
+  "objective": "maximize dataset-balanced gain subject to no evaluator losing more than 0.0005 AP50",
+  "selected_margin": 1.5,
+  "rows": [
+    {
+      "margin": 1.0,
+      "balanced_gain": -0.006393,
+      "worst_evaluator_gain": -0.024915,
+      "positive_evaluators": 1
+    },
+    {
+      "margin": 1.1,
+      "balanced_gain": -0.001913,
+      "worst_evaluator_gain": -0.010425,
+      "positive_evaluators": 1
+    },
+    {
+      "margin": 1.2,
+      "balanced_gain": -0.000233,
+      "worst_evaluator_gain": -0.005579,
+      "positive_evaluators": 2
+    },
+    {
+      "margin": 1.3,
+      "balanced_gain": 0.000038,
+      "worst_evaluator_gain": -0.002563,
+      "positive_evaluators": 2
+    },
+    {
+      "margin": 1.5,
+      "balanced_gain": 0.000845,
+      "worst_evaluator_gain": -0.000070,
+      "positive_evaluators": 3
+    },
+    {
+      "margin": 1.75,
+      "balanced_gain": -0.000588,
+      "worst_evaluator_gain": -0.001502,
+      "positive_evaluators": 1
+    },
+    {
+      "margin": 2.0,
+      "balanced_gain": 0.000051,
+      "worst_evaluator_gain": -0.000358,
+      "positive_evaluators": 2
+    }
+  ]
+}

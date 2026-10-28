@@ -304,16 +304,17 @@ confirmatory tests. The score averages five boxes rather than relying on one
 maximum, while retaining a small set that is not dominated by the low-confidence
 tail. The candidate library was chosen to span visible, region-selected,
 learned, and published fusion families. We evaluated margins
-\(\{1.05,1.10,1.20,1.30,1.50\}\) on the 150 LLVIP validation images and 400
-M3FD validation images using two detectors per dataset, before scoring the
-confirmatory test images. The objective was to maximize the dataset-balanced
-validation gain subject to no evaluator losing more than \(0.0005\) AP50.
-Within this fixed top-five rule, \(1.5\) was the first setting satisfying the
-constraint and gave the largest balanced validation gain. It switched
-\(4.7\%\) of validation decisions, compared with \(11.4\%\) at 1.2.
+\(\{1.00,1.10,1.20,1.30,1.50,1.75,2.00\}\) on the 150 LLVIP validation images
+and 400 M3FD validation images using two detectors per dataset, before scoring
+the confirmatory test images. The objective was to maximize the
+dataset-balanced validation gain subject to no evaluator losing more than
+\(0.0005\) AP50. Within this fixed top-five rule, \(1.5\) was the first setting
+satisfying the constraint and gave the largest balanced validation gain. It
+switched \(4.7\%\) of validation decisions, compared with \(11.4\%\) at 1.2.
 Table~\ref{tab:score-margin} reports a post-freeze sensitivity check over other
 score depths and margins. The expanded grid was not used to reselect the policy
-after test performance was observed.
+after test performance was observed. The complete pre-freeze search is reported
+in the Supplementary Material.
 
 \begin{table}[t]
 \centering
@@ -348,6 +349,8 @@ selection. DroneVehicle therefore serves as an external domain-transfer check.
 The official LLVIP partitions are larger than the experiment subsets
 \cite{jia2021}. The 300-image test subset contains the first 300 pairs after a
 uniformly random shuffle (seed 0) of official test pairs with non-empty labels.
+The release used here contains 3,463 test pairs, all with non-empty labels;
+3,163 eligible pairs were therefore not evaluated.
 The 1,500-image training subset comprises the lexicographically first 1,500
 official training pairs with non-empty labels. Within this ordered subset, the
 first 1,350 pairs form training and the remaining 150 form validation.
@@ -603,13 +606,15 @@ input.
 We added label-free controls and a labelled upper bound to determine whether
 the confidence signal adds information beyond choosing a visually strong
 candidate. The VIF selector chose the fused candidate with the highest mean
-reference VIF to visible and infrared, the SSIM selector used the analogous
-mean structural similarity, and the entropy selector chose among all four
-inputs. All image statistics were computed on \(256\times256\) grayscale
-inputs. Uniform random selection sampled the four candidates independently
-for each image and checkpoint over 500 allocations. The oracle selected the
-candidate with the highest per-image AP50 using test labels and is an upper
-bound only.
+reference VIF to visible and infrared, and the SSIM selector used the analogous
+mean structural similarity. Both selected among the three fused candidates
+only, whereas the entropy selector chose among all four inputs. All image
+statistics were computed on \(256\times256\) grayscale inputs. Uniform random
+selection sampled the four candidates independently for each image and
+checkpoint over 500 allocations. The oracle selected the candidate with the
+highest per-image AP50 using test labels and is an upper bound only. Images
+without ground-truth boxes received an AP50 of zero for every candidate, so
+ties resolved to visible.
 
 The common \(256\times256\) grayscale representation made the image-quality
 inputs comparable across source resolutions and detector architectures. These
@@ -872,7 +877,7 @@ failure, but the domain-trained checkpoint also has lower test performance and
 a larger train-to-test shift. The current design cannot separate those
 explanations causally.
 
-Three boundaries constrain the interpretation. First, the strongest M3FD effect
+Four boundaries constrain the interpretation. First, the strongest M3FD effect
 is class-specific: people detection improves substantially while the remaining
 classes are nearly unchanged. Second, the DroneVehicle confirmation uses two
 checkpoints from the same training run; the checkpoints share training data and
@@ -880,6 +885,11 @@ are correlated. Third, the domain-fine-tuned YOLOv9t demonstrates that an
 unseen target detector can reverse the sign of the visible-relative contrast.
 The policy should therefore be validated for each deployed evaluator rather
 than assumed portable.
+
+A fourth boundary concerns the LLVIP training subset. It was selected
+lexicographically rather than by scene-stratified sampling, so its scene
+composition may differ from the full official training partition. The test
+subset was sampled randomly from all 3,463 non-empty official test pairs.
 
 The thermal stratification adds another limitation. Thermal contrast may
 increase the likelihood of selecting fused evidence in LLVIP and M3FD, but the
@@ -897,7 +907,7 @@ implemented or claimed; measuring their latency--accuracy trade-off is a
 separate deployment study.
 
 A practical decision sequence follows from these boundaries:
-\begin{itemize}
+\begin{enumerate}
   \item use Always CDF when the detector is fixed and validation shows stable
   CDF behaviour;
   \item consider CS-ECF when the evaluator or domain may change and the target
@@ -908,7 +918,7 @@ A practical decision sequence follows from these boundaries:
   pruning or early termination is evaluated separately;
   \item do not deploy the policy after a fine-tuning jump that substantially
   worsens confidence calibration without rerunning threshold validation.
-\end{itemize}
+\end{enumerate}
 
 \section{Conclusions}
 
@@ -968,7 +978,7 @@ included in the public analysis repository described below.
 The code for reproducing the experiments is available at
 \url{https://github.com/lessThanbetter/ssgf} under an MIT licence. The
 version-specific archival release is available at
-\url{https://doi.org/10.5281/zenodo.23720111}. The repository and archive contain
+\url{https://doi.org/10.5281/zenodo.23721458}. The repository and archive contain
 the fusion and arbitration code, detector-evaluation scripts, fixed split and
 test manifests, per-image score files, result tables, figure source data, and
 the numerical checks used to generate the reported intervals.

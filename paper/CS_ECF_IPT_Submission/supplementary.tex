@@ -298,6 +298,7 @@ zero-shot, YOLOv10s zero-shot, and YOLOv9t LLVIP-trained, respectively.
 The corresponding detection-level Brier scores for visible and CS-ECF were
 0.015/0.013, 0.013/0.011, and 0.087/0.086, respectively.
 
+\small
 \section{Validation choice, multiplicity, and exploratory alternatives}
 
 The policy was fixed before the confirmatory comparisons. The candidate set
@@ -309,39 +310,34 @@ groups and no confirmatory-test labels.
 \begin{table}[ht]
 \centering
 \small
-\caption{Validation sensitivity for the four-candidate selector. Values are
-dataset-balanced AP50 gain, worst evaluator gain, and mean switched-decision
-fraction over the four validation evaluators.
-The preselection search used margins through 1.5; larger margins and alternate
-score depths are post-freeze sensitivity analyses.}
-\label{tab:validation-grid}
-\begin{tabular}{@{}rrrrr@{}}
+\caption{Complete pre-freeze margin search for the four-candidate top-five
+selector on validation data. Balanced gain and worst evaluator gain are over
+the four validation evaluators. Positive counts are evaluator-level point
+estimates. Margin 1.5 was the first setting satisfying the 0.0005 per-evaluator
+loss bound and had the largest balanced gain among feasible settings.}
+\label{tab:prefreeze-validation}
+\begin{tabular}{@{}rrrr@{}}
 \toprule
-\(K\) & Margin & Balanced gain & Worst & Switch (\%) \\
+Margin & Balanced gain & Worst gain & Positive \\
 \midrule
-1 & 1.2 & -0.0014 & -0.0048 & 0.54 \\
-1 & 1.5 & -0.0000 & -0.0004 & 0.13 \\
-1 & 2.0 & -0.0000 & -0.0004 & 0.13 \\
-1 & 2.5 & 0.0000 & 0.0000 & 0.00 \\
-5 & 1.2 & -0.0002 & -0.0056 & 11.40 \\
-5 & 1.5 & \textbf{+0.0008} & \textbf{-0.0001} & 4.71 \\
-5 & 2.0 & +0.0001 & -0.0004 & 0.92 \\
-5 & 2.5 & +0.0001 & 0.0000 & 0.23 \\
-10 & 1.2 & -0.0029 & -0.0073 & 17.10 \\
-10 & 1.5 & +0.0004 & -0.0010 & 6.10 \\
-10 & 2.0 & +0.0016 & 0.0000 & 1.38 \\
-10 & 2.5 & +0.0000 & -0.0004 & 0.35 \\
+1.00 & -0.0064 & -0.0249 & 1/4 \\
+1.10 & -0.0019 & -0.0104 & 1/4 \\
+1.20 & -0.0002 & -0.0056 & 2/4 \\
+1.30 & +0.0000 & -0.0026 & 2/4 \\
+1.50 & \textbf{+0.0008} & \textbf{-0.0001} & \textbf{3/4} \\
+1.75 & -0.0006 & -0.0015 & 1/4 \\
+2.00 & +0.0001 & -0.0004 & 2/4 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 For the frozen \(K=5\) rule, margin 1.5 was the first setting meeting the
 \(0.0005\) per-evaluator loss bound and had the largest balanced gain in the
-preselected margin grid. Its validation gains were 0.001850 and \(-0.000070\)
+complete pre-freeze grid. Its validation gains were 0.001850 and \(-0.000070\)
 for the two LLVIP evaluators and 0.001518 and 0.000083 for the two M3FD
-evaluators. The expanded grid contains settings with higher validation means,
-but they were observed after the primary policy was frozen and are not used to
-redefine it.
+evaluators. The post-freeze test grid contains settings with higher observed
+means, but those settings were evaluated after the primary policy was frozen
+and are not used to redefine it.
 
 \begin{table}[ht]
 \centering

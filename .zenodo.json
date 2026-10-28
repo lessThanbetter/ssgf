@@ -1,7 +1,7 @@
 {
   "title": "lessThanbetter/ssgf: Code for: Confidence-Shielded Evaluator-Conditioned Fusion for Risk-Controlled Infrared-Visible Object Detection",
-  "version": "v2.2.0",
-  "description": "<p>Archival release of the code, frozen manifests, aggregate results, source data, and submission materials for <em>Confidence-Shielded Evaluator-Conditioned Fusion for Risk-Controlled Infrared-Visible Object Detection</em>.</p><p>Version v2.2.0 adds the follow-up factual and reproducibility corrections: explicit LLVIP subset selection, complete CDF detail and mask definitions, clarified validation and policy estimands, DroneVehicle external-transfer status, registration-scale context, supplementary Brier scores, and a Crossref field-level audit. It includes the final manuscript and supplement, all result JSON files, four publication figures with source data, the v15 submission package, and reproduction scripts.</p><p>The LLVIP, M3FD, and DroneVehicle images, third-party detector weights, and generated fused-image corpora are not redistributed. Their public sources, fixed manifests, and reproducibility instructions are documented in the repository.</p>",
+  "version": "v2.3.0",
+  "description": "<p>Archival release of the code, frozen manifests, aggregate results, source data, and submission materials for <em>Confidence-Shielded Evaluator-Conditioned Fusion for Risk-Controlled Infrared-Visible Object Detection</em>.</p><p>Version v2.3.0 adds the technical-check and reproducibility corrections: all 46 reference entries are checked in the rendered PDF, Figure 1 and Discussion headings are audited, repeated-character corruption is rejected, the complete pre-freeze margin grid is reported, and the 3,463-pair LLVIP test sampling frame is documented. It includes the final manuscript and supplement, all result JSON files, four publication figures with source data, the v16 submission package, and reproduction scripts.</p><p>The LLVIP, M3FD, and DroneVehicle images, third-party detector weights, and generated fused-image corpora are not redistributed. Their public sources, fixed manifests, and reproducibility instructions are documented in the repository.</p>",
   "creators": [
     {
       "name": "Zhao, Jianyong",
@@ -33,7 +33,7 @@
   "language": "eng",
   "related_identifiers": [
     {
-      "identifier": "https://github.com/lessThanbetter/ssgf/tree/v2.2.0",
+      "identifier": "https://github.com/lessThanbetter/ssgf/tree/v2.3.0",
       "relation": "isSupplementTo",
       "resource_type": "software",
       "scheme": "url"

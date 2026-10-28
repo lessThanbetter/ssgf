@@ -77,3 +77,10 @@ The PDF text was also checked directly. DOI path segments such as `inffus` and
 `infrared` remain correct after line breaking; apparent character substitutions
 in low-resolution OCR are not present in the PDF text layer.
 
+The final PDF text gate found every numbered entry from [1] through [46].
+In particular, the audited values include
+`10.1016/j.inffus.2012.01.008` for [23],
+`10.1016/j.infrared.2025.106325` for [34], and
+`10.1016/j.infrared.2010.03.005` for [41]. It also rejects repeated-character
+reference lines and truncated figure captions.
+
