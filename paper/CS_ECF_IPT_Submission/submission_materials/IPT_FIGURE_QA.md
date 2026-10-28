@@ -2,66 +2,68 @@
 
 Date: 2026-10-28  
 Backend: Python / matplotlib  
-Final width: approximately 160 mm  
+Manuscript figure count: 11  
+Final width: approximately 161 mm (A4 text block)  
 Exports: SVG, PDF, 600 dpi TIFF, PNG preview
 
 ## Automated checks
 
-| Figure | Static preflight | PDF glyph audit |
-|---|---|---|
-| Fig. 1 | 20/20 pass | PASS, min about 6.1 pt |
-| Fig. 2 | 20/20 pass | PASS, min about 6.8 pt |
-| Fig. 3 | 20/20 pass | PASS, min about 7.6 pt |
-| Fig. 4 | 20/20 pass | PASS, min about 8.1 pt |
+| Final figure | Generator | Static preflight | PDF glyph audit |
+|---|---|---|---|
+| 1 | `make_ipt_fig2.py` | 20/20 pass | pass; minimum 5.4 pt |
+| 2 | `make_ipt_fig5.py` | 20/20 pass | pass; minimum 5.1 pt |
+| 3 | `make_ipt_fig1.py` | 20/20 pass | pass; minimum 5.7 pt |
+| 4 | `make_ipt_fig6.py` | 20/20 pass after removing sub-5-pt footer text | pass; minimum 5.0 pt |
+| 5 | `make_ipt_fig10.py` | 20/20 pass | pass; minimum 5.0 pt |
+| 6 | `make_ipt_fig7.py` | 20/20 pass | pass; minimum 5.0 pt |
+| 7 | `make_ipt_fig8.py` | 20/20 pass | pass; minimum 5.1 pt |
+| 8 | `make_ipt_fig9.py` | 20/20 pass | pass; minimum 5.0 pt |
+| 9 | `make_ipt_fig3.py` | 20/20 pass | pass; minimum 5.0 pt |
+| 10 | `make_ipt_fig4.py` | 20/20 pass | pass; minimum 5.2 pt |
+| 11 | `make_ipt_fig11.py` | 19/20 pass plus one documented log-axis warning | pass; minimum 5.0 pt |
 
-Manual visual QA was performed at full rendered size after the automated checks.
+The 161 mm width warning is expected because the manuscript uses a 162 mm
+text block rather than Nature's 89/183 mm defaults. The Figure 11 warning
+concerns a positive log-scaled latency axis used only for the cost display.
 
-The final manuscript build contains 16 pages, the supplementary material
-contains 4 pages, and the cover letter contains 1 page. There are no undefined
-citations, unresolved cross-references, overfull LaTeX boxes, or author-input
-placeholders after the final recompilation.
+## Manual panel-by-panel audit
 
-## Panel audit
+| Figure | Unique claim | Statistics / interval | Collision and hierarchy check | Pass |
+|---|---|---|---|---|
+| 1 | A fused input is used only after a large detector-supported margin; visible remains the fallback. | Decision counts over checkpoint-image trials; no labels used for selection. | Panel labels, arrows, detector block, margin gate, fallback path, and stacked percentages are legible. | yes |
+| 2 | The threshold was frozen before confirmation and the K/margin grid is sensitivity analysis. | Validation objective; post-freeze descriptive cells. | Margin ticks reduced to avoid collision; selected cell outlined once. | yes |
+| 3 | Candidate utility changes sign across evaluator checkpoints and datasets. | Signed AP50 point contrasts and dataset means; no per-cell significance. | Matrix labels, selected-policy outline, colorbar, and dataset panel are clear. | yes |
+| 4 | Positive point estimates do not survive multiplicity correction. | Scene/frame-group intervals, sign test, Holm/BH survivors, aggregate interval. | Forest labels and summary card checked; no raw-p columns crowd the plot. | yes |
+| 5 | CS-ECF is not separated from Always CDF. | Dataset/group-aware intervals and paired checkpoint differences. | The zero-crossing interval, equality line, dataset colors, and six/six split remain visible. | yes |
+| 6 | Confidence selection beats label-free controls but remains below the oracle. | Random-policy mean, checkpoint extrema, image-bootstrap or released aggregate controls as documented. | Positive-count column separated from gain labels; oracle identified as label-using upper bound. | yes |
+| 7 | Portability reverses after LLVIP fine-tuning. | Scene-group intervals and three-check BH q-values. | Absolute performance and paired contrasts are separated; negative result is prominent. | yes |
+| 8 | Calibration error and switched-image degradation accompany the fine-tuned failure. | Detection ECE/Brier, switched-outcome fractions, scene contrasts. | ECE markers, stacked bars, scene heatmap, and legends checked. | yes |
+| 9 | The shield reduces worst-case risk at a cost in mean return. | Run-cluster-by-group interval; paired checkpoint changes. | Low-tail guard and large-regression region remain visible; labels clear the markers. | yes |
+| 10 | The M3FD gain is people-specific; thermal association is domain-dependent. | Class image-bootstrap intervals, annotation counts, mask ablation, Spearman rho. | Previously clipped people-class intervals are now fully visible on the percentage-point axis. | yes |
+| 11 | Cost is dominated by SPGFusion and deployment depends on stability, calibration, and latency. | Stage timings, peak memory, parameter counts; no additive-memory claim. | Log ticks corrected; decision matrix avoids crossing arrows; all card text at least 5 pt. | yes |
 
-| Figure | Panel | Unique claim | Statistics | Collision check | Pass |
-|---|---|---|---|---|---|
-| 1 | a | Fixed-policy utility changes sign across checkpoints | Point AP50 contrasts; no significance claimed per cell | Long y labels and colorbar clear | yes |
-| 1 | b | Fusion ranking reverses across datasets | Dataset-level checkpoint contrast | Legend separated above bars | yes |
-| 2 | a | The target detector arbitrates four input candidates with visible fallback | No statistical estimate | Arrows, equations, and blocks clear | yes |
-| 2 | b | Most frozen decisions retain visible input | Counts divided by checkpoint–image trials | Stacked labels and legend clear | yes |
-| 3 | a | CS-ECF occupies a different risk–return position from fixed/no-shield policies | Dataset-balanced contrast and CS-ECF run-cluster/group CI on x | Labels remain inside panel | yes |
-| 3 | b | The shield reduces worst losses while sacrificing some DroneVehicle gain | Paired checkpoint contrast; zero line shown | Long labels shortened; no panel crossing | yes |
-| 4 | a | M3FD gain is concentrated in people | Point AP50 contrasts | Dominate class effect remains intentional | yes |
-| 4 | b | Thermal mask modestly exceeds global injection | Fixed-input AP50 contrast | Legend clears bars | yes |
-| 4 | c | Thermal association is not universal | Spearman rho; p values in source/caption | Legend below panel; zero line visible | yes |
+## Manuscript-level checks
 
-## Statistical definitions
-
-- Fig. 1: signed AP50 difference from the visible input. Individual cells are
-  point estimates, not independent significance tests.
-- Fig. 2: decision fractions use all checkpoint–image decisions within each
-  dataset.
-- Fig. 3a: x is the equal-weight mean of LLVIP, M3FD, and DroneVehicle; y is the
-  worst checkpoint gain. The CS-ECF error bar is the training-run-by-group hierarchical
-  interval.
-- Fig. 3b: lines connect the same checkpoint under no-shield and CS-ECF.
-- Fig. 4: class, mask, and thermal panels report descriptive contrasts. Thermal
-  Spearman p values are provided in source data and the caption.
+- The compiled manuscript contains 11 figure environments and 11 unique figure
+  references.
+- Figure numbers follow first appearance through Methods, Results, and
+  Discussion.
+- The main PDF renders as 25 A4 pages after three LaTeX/BibTeX passes, with no
+  undefined citations, unresolved cross-references, overfull boxes, or duplicate
+  Discussion heading.
+- Figure captions are attached to their figures and include panel definitions,
+  statistical meaning, and source-data filenames.
+- Every final figure PDF is present in
+  `CS_ECF_IPT_Submission/figures/` under a filename matching its manuscript
+  number.
 
 ## Source data
 
-- `figure1_source.csv`
-- `figure2_source.csv`
-- `figure3_source.csv`
-- `figure4_source.csv`
+`Figure1_source.csv` through `Figure11_source.csv` are stored in
+`CS_ECF_IPT_Submission/source_data/`.
 
-## Remaining production notes
+## Remaining production note
 
-- Verify the current IPT artwork instruction for TIFF color mode, compression,
-  and maximum figure count in the live submission portal.
-- Figure captions must state that LLVIP intervals cross zero and DroneVehicle
-  uses two checkpoints from the same training run.
-- No representative IR image plate is included yet. IPT may benefit from one
-  additional qualitative panel, but it should not replace the quantitative
-  boundary evidence.
-
+The live IPT portal still determines whether separate figure files, a graphical
+abstract, or a specific display-item order is requested. No additional
+experiment is needed for the figure set.

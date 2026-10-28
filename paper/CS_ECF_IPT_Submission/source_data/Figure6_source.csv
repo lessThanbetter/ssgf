@@ -1,0 +1,8 @@
+policy,dataset_balanced_gain_points,worst_checkpoint_gain_points,positive_checkpoints
+Uniform random,-3.411275,-13.414861,2
+Maximum SSIM,-9.460463,-28.546853,3
+Maximum entropy,-5.992189,-24.316855,2
+Maximum reference VIF,0.075392,-0.59429,8
+Always CDF,0.31,-0.59,10
+CS-ECF,1.33,-0.4,9
+Per-image oracle,8.330661,2.046908,12

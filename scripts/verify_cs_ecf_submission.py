@@ -89,7 +89,7 @@ def main() -> None:
             "0.0153",
             "p=0.073",
             "0.0833",
-            "10.5281/zenodo.23721458",
+            "10.5281/zenodo.23726338",
             "official LLVIP partitions are larger",
             "3,463 test pairs",
             "1.00,1.10,1.20,1.30,1.50,1.75,2.00",
@@ -129,6 +129,7 @@ def main() -> None:
         "10.5281/zenodo.23718751",
         "10.5281/zenodo.23719721",
         "10.5281/zenodo.23720111",
+        "10.5281/zenodo.23721458",
     ):
         require(
             superseded_doi not in source_text,
@@ -146,7 +147,7 @@ def main() -> None:
         require(doi in reference_text, f"required verified DOI is missing: {doi}")
 
     expected_pages = {
-        "main": (18, "Manuscript.pdf"),
+        "main": (25, "Manuscript.pdf"),
         "supplementary": (6, "Supplementary_Material.pdf"),
         "cover_letter": (1, "Cover_Letter.pdf"),
     }
@@ -214,11 +215,11 @@ def main() -> None:
             not re.search(r"(?m)^\s*(?:1\s+){10,}1?\s*$", rendered_text),
             "PDF contains a repeated-character corruption line",
         )
-        require("Figure 1:" in rendered_text, "Figure 1 caption prefix missing")
-        require(
-            re.search(r"(?<!F)igure 1:", rendered_text) is None,
-            "Figure 1 caption is truncated",
-        )
+        for figure_index in range(1, 12):
+            require(
+                rendered_text.count(f"Figure {figure_index}:") == 1,
+                f"Figure {figure_index} caption is missing or duplicated",
+            )
         require(
             rendered_text.count("5. Discussion") == 1,
             "Discussion heading is missing or duplicated in PDF text",
@@ -227,9 +228,19 @@ def main() -> None:
         require("RT-DETR-1" not in rendered_text, "RT-DETR-1 OCR-like typo found")
 
     figure_dir = PAPER / "figures"
-    for index in range(1, 5):
-        matches = sorted(figure_dir.glob(f"fig{index}_*.pdf"))
+    for index in range(1, 12):
+        matches = sorted(figure_dir.glob(f"Figure{index}_*.pdf"))
         require(len(matches) == 1, f"expected one PDF for figure {index}")
+
+    source_data_dir = PAPER / "source_data"
+    for index in range(1, 12):
+        path = source_data_dir / f"Figure{index}_source.csv"
+        require(path.is_file(), f"missing source data for figure {index}")
+
+    require(
+        len(re.findall(r"\\begin\{figure\}", main_text)) == 11,
+        "main.tex does not contain exactly 11 figures",
+    )
 
     evidence_dir = PAPER / "evidence" / "major_revision"
     if evidence_dir.is_dir():
@@ -295,7 +306,7 @@ def main() -> None:
     print("PASS: placeholders, key claims, stale intervals, logs, pages, and figures")
     if evidence_dir.is_dir():
         print("PASS: major-revision JSON evidence and canonical statistics")
-    print("PASS: main=18 pages; supplementary=6 pages; cover letter=1 page")
+    print("PASS: main=25 pages with 11 figures; supplementary=6 pages; cover letter=1 page")
 
 
 if __name__ == "__main__":

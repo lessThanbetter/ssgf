@@ -1,132 +1,67 @@
 # IPT Figure Contract
 
-Date: 2026-10-27  
-Target journal: Infrared Physics & Technology  
+Date: 2026-10-28  
+Target: Infrared Physics & Technology  
 Backend: Python / matplotlib  
-Primary export width: 183 mm (double column)  
-Text floor: 5 pt rendered; source minimum 7 pt  
-Formats: editable SVG + PDF, 600 dpi TIFF, PNG preview
+Final width: approximately 161 mm to match the A4 manuscript text block  
+Typography: source text at least 5 pt; exported PDF text floor 5 pt  
+Formats: editable SVG and PDF, 600 dpi TIFF, PNG preview  
+Reference language: flat editorial diagrams, pale outlined containers, thin
+arrows, restrained blue/teal/orange/purple encoding, direct labels, compact
+multi-panel plots, and `(a)`, `(b)`, `(c)` panel labels
 
-## Figure 1 — Fusion utility is evaluator-dependent
+## Final evidence chain
 
-Core conclusion: the same IR–visible candidate library produces positive and
-negative AP50 changes across detector checkpoints, so one fusion image cannot be
-treated as universally optimal.
+| Figure | Core conclusion | Archetype | Reviewer boundary |
+|---|---|---|---|
+| 1 | CS-ECF admits a fused input only when the target detector supports a frozen visible-relative margin; otherwise it retains visible. | schematic-led composite | The flow must show detector reuse and visible fallback, not a label oracle. |
+| 2 | Margin 1.5 was selected on validation before confirmation, and post-freeze K/margin cells are descriptive. | quantitative grid | Do not imply that test results selected the threshold. |
+| 3 | The same candidate library changes sign across evaluator checkpoints and datasets. | hero heatmap plus dataset summary | Cells are point contrasts, not independent significance tests. |
+| 4 | Nine of 12 checkpoint point estimates are positive, but no individual contrast survives Holm or BH correction and the sign test is not significant. | forest plot plus evidence summary | Preserve `p=0.073`, `0/12` corrected survivors, and the positive aggregate interval. |
+| 5 | CS-ECF is not established as superior to Always CDF; the balanced interval crosses zero. | multi-panel paired comparison | Keep the balanced interval and six-versus-six checkpoint count visible. |
+| 6 | Detector confidence adds information beyond random and image-quality controls, while substantial oracle headroom remains. | forest plot plus linear headroom comparison | The oracle uses labels and is an upper bound only. |
+| 7 | Portability holds for two zero-shot evaluators but reverses for an LLVIP-fine-tuned evaluator. | asymmetric paired comparison | Preserve the negative result and BH exploratory status. |
+| 8 | The fine-tuned failure is associated with calibration error, more degraded switches, and negative scene groups; causality is unresolved. | quantitative triptych | Do not attribute the reversal solely to calibration without an intervention. |
+| 9 | The shield trades a smaller average return for a much smaller worst-case loss. | hero risk-return plane plus paired panels | Axes must retain the large-regression region and zero lines. |
+| 10 | The M3FD gain is concentrated in people; thermal association reverses by domain. | asymmetric mixed quantitative grid | Two test groups make class intervals descriptive; thermal evidence is not a universal switch score. |
+| 11 | Candidate generation is dominated by SPGFusion, total serial cost is about 706 ms, and deployment depends on evaluator stability, calibration, and latency. | cost panels plus decision matrix | No pruning or early termination was implemented. |
 
-Archetype: quantitative grid with one hero heatmap.
+## Source-data map
 
-Panel map:
+| Final figure | Generator | Source data |
+|---|---|---|
+| 1 | `scripts/make_ipt_fig2.py` | `Figure1_source.csv` |
+| 2 | `scripts/make_ipt_fig5.py` | `Figure2_source.csv` |
+| 3 | `scripts/make_ipt_fig1.py` | `Figure3_source.csv` |
+| 4 | `scripts/make_ipt_fig6.py` | `Figure4_source.csv` |
+| 5 | `scripts/make_ipt_fig10.py` | `Figure5_source.csv` |
+| 6 | `scripts/make_ipt_fig7.py` | `Figure6_source.csv` |
+| 7 | `scripts/make_ipt_fig8.py` | `Figure7_source.csv` |
+| 8 | `scripts/make_ipt_fig9.py` | `Figure8_source.csv` |
+| 9 | `scripts/make_ipt_fig3.py` | `Figure9_source.csv` |
+| 10 | `scripts/make_ipt_fig4.py` | `Figure10_source.csv` |
+| 11 | `scripts/make_ipt_fig11.py` | `Figure11_source.csv` |
 
-- a — hero heatmap of fixed-policy gains for 12 checkpoints.
-- b — dataset-level means for Always CDF, Always PIAFusion, Always SPGFusion,
-  Top-5 no-shield, and CS-ECF.
+## Global statistical contract
 
-Evidence hierarchy:
+- Confirmatory family: 12 prespecified CS-ECF-minus-visible checkpoint
+  contrasts.
+- Paired intervals resample scene or consecutive frame groups; combined
+  intervals also account for training-run clusters.
+- No individual checkpoint survives Holm or BH correction at 0.05.
+- The dataset-balanced gain is +0.0133 with 95% interval [0.0026, 0.0261].
+- CS-ECF minus Always CDF is +0.0102 with 95% interval [-0.00057, 0.02980].
+- The fine-tuned YOLOv9t result is a negative portability boundary, not a
+  successful replication.
+- DroneVehicle best/last checkpoints come from one training run and one model
+  cluster.
 
-- hero: checkpoint-by-policy signed gains;
-- validation: dataset-level sign reversal and CS-ECF positive model count.
+## Export and QA contract
 
-Statistics: gain is AP50 difference from visible; no error bars in the heatmap;
-dataset-level means use the checkpoint means in the generated result files.
-
-Source data:
-
-- `confirmatory_policy_comparison.json`
-- export `figure1_source.csv`
-
-Reviewer risk: the heatmap must not imply statistical significance for
-individual cells. Caption states that cells are point contrasts.
-
-## Figure 2 — CS-ECF system
-
-Core conclusion: CS-ECF admits thermal fusion only when the target detector
-supports a large visible-relative confidence margin; otherwise it preserves the
-visible fallback.
-
-Archetype: schematic-led composite.
-
-Panel map:
-
-- a — hero workflow from visible/IR pair to CDF, PIAFusion, SPGFusion, candidate
-  confidence, shield, and selected detector input.
-- b — decision equation and selected-image counts for the three confirmatory
-  datasets.
-
-Evidence hierarchy:
-
-- hero: complete inference pathway;
-- support: measured switch counts, not stylized imagery.
-
-Statistics: counts are image-level selections from the frozen policy; dataset
-sample sizes are 300, 200, and 300 for LLVIP, M3FD, and DroneVehicle.
-
-Source data:
-
-- `confidence_shield_three_dataset_summary.json`
-- export `figure2_source.csv`
-
-Reviewer risk: the figure must show that the detector is reused, not an external
-label oracle. The scheme must show visible fallback explicitly.
-
-## Figure 3 — Risk–return trade-off
-
-Core conclusion: the unshielded selector has a higher mean on DroneVehicle but a
-much worse worst-case LLVIP loss; the shield trades some average gain for a
-smaller tail loss.
-
-Archetype: quantitative grid with a hero risk–return plane.
-
-Panel map:
-
-- a — dataset-balanced mean gain versus worst checkpoint gain for five policies.
-- b — paired checkpoint gains for no-shield and CS-ECF, sorted by no-shield gain.
-
-Evidence hierarchy:
-
-- hero: risk–return plane;
-- validation: paired differences preserve checkpoint identity.
-
-Statistics: point estimates only; no significance stars. The legend defines the
-worst-case statistic and dataset-balanced weighting.
-
-Source data:
-
-- `confirmatory_policy_comparison.json`
-- export `figure3_source.csv`
-
-Reviewer risk: axes must not truncate away the loss region; the zero lines remain
-visible.
-
-## Figure 4 — Thermal constraints and class boundary
-
-Core conclusion: the thermal mask provides a small consistent fixed-input gain,
-but thermal contrast alone is not a sufficient switching rule, and M3FD gains
-concentrate in people.
-
-Archetype: asymmetric mixed quantitative grid.
-
-Panel map:
-
-- a — M3FD per-class gains for YOLO26n and YOLOv8n.
-- b — thermal-mask versus global-injection CDF gains on DroneVehicle.
-- c — Spearman association between switch fraction and thermal contrast/visible
-  luminance across datasets.
-
-Evidence hierarchy:
-
-- hero: class concentration and its boundary;
-- validation: mask ablation and thermal association.
-
-Statistics: class bars report point AP50 gain; mask bars report fixed-input gain;
-panel c reports Spearman rho and p as descriptive association.
-
-Source data:
-
-- `confidence_shield_class_bootstrap.json`
-- `ipt_mask_ablation.json`
-- `ipt_thermal_stratification.json`
-- export `figure4_source.csv`
-
-Reviewer risk: never imply that high thermal contrast always causes a switch or
-improves AP. The DroneVehicle negative association remains visible.
-
+- Every figure exports SVG, PDF, 600 dpi TIFF, and PNG.
+- PDF text remains editable and every rendered glyph is at least 5 pt.
+- Every quantitative panel traces to a clean CSV.
+- Whole figures are inspected at final physical size, including panel labels,
+  legends, uncertainty extents, zero lines, and direct annotations.
+- Final manuscript figures are named `Figure1_*.pdf` through
+  `Figure11_*.pdf` so upload filenames match their displayed numbers.

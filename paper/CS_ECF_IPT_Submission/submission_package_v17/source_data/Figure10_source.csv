@@ -1,0 +1,24 @@
+panel,model,class,gain_ap50_points,ci_low_ap50_points,ci_high_ap50_points,annotations,checkpoint,thermal_mask_gain_ap50_points,global_gain_ap50_points,mask_minus_global_points,dataset,association,spearman_rho,p_value
+a,YOLO26n,people,2.14,-0.7,4.98,166,,,,,,,,
+a,YOLO26n,car,0.0,0.0,0.0,1597,,,,,,,,
+a,YOLO26n,bus,0.0,0.0,0.0,16,,,,,,,,
+a,YOLO26n,motorcycle,0.0,0.0,0.0,189,,,,,,,,
+a,YOLO26n,lamp,0.3,0.0,1.02,20,,,,,,,,
+a,YOLO26n,truck,0.0,0.0,0.0,34,,,,,,,,
+a,YOLOv8n,people,10.9,4.4,19.13,166,,,,,,,,
+a,YOLOv8n,car,-0.01,-0.03,0.0,1597,,,,,,,,
+a,YOLOv8n,bus,0.0,0.0,0.0,16,,,,,,,,
+a,YOLOv8n,motorcycle,0.0,-0.01,0.0,189,,,,,,,,
+a,YOLOv8n,lamp,0.01,0.0,0.02,20,,,,,,,,
+a,YOLOv8n,truck,0.03,0.0,0.1,34,,,,,,,,
+b,,,,,,,best,0.6,0.57,0.03,,,,
+b,,,,,,,last,0.5,0.38,0.12,,,,
+c,,,,,,,,,,,LLVIP,Thermal top-hat,0.1505,0.009018
+c,,,,,,,,,,,LLVIP,Visible luminance,-0.1044,0.071098
+c,,,,,,,,,,,LLVIP,Mask activity,-0.0293,0.613493
+c,,,,,,,,,,,M3FD,Thermal top-hat,0.3198,4e-06
+c,,,,,,,,,,,M3FD,Visible luminance,-0.0656,0.356068
+c,,,,,,,,,,,M3FD,Mask activity,-0.3315,2e-06
+c,,,,,,,,,,,DroneVehicle,Thermal top-hat,-0.4027,0.0
+c,,,,,,,,,,,DroneVehicle,Visible luminance,-0.4413,0.0
+c,,,,,,,,,,,DroneVehicle,Mask activity,0.064,0.268922

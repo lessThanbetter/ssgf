@@ -1,0 +1,156 @@
+{
+  "selection": {
+    "method": "ECC translation residual on normalized Sobel edges",
+    "fraction": 0.25,
+    "min_ecc": 0.1,
+    "valid_pairs": 300,
+    "subset_size": 75,
+    "median_residual_px": 2.533357544002791,
+    "best_residual_cutoff_px": 1.6131995621226065,
+    "worst_residual_min_px": 3.664915786632991
+  },
+  "checkpoints": {
+    "best_aligned/yolo11": {
+      "n_images": 75,
+      "gain": 0.00610558377356929,
+      "image_bootstrap_ci95": [
+        -0.003883871227423283,
+        0.019436202523587565
+      ]
+    },
+    "best_aligned/agnostic": {
+      "n_images": 75,
+      "gain": 0.0016906334926759525,
+      "image_bootstrap_ci95": [
+        -3.0271481680954616e-05,
+        0.005137188400598088
+      ]
+    },
+    "best_aligned/yolo26_s0": {
+      "n_images": 75,
+      "gain": -0.008856641707273072,
+      "image_bootstrap_ci95": [
+        -0.02590798948786012,
+        0.008972737615587208
+      ]
+    },
+    "best_aligned/rtdetr": {
+      "n_images": 75,
+      "gain": 0.012812977909730794,
+      "image_bootstrap_ci95": [
+        0.0,
+        0.029943864133863858
+      ]
+    },
+    "best_aligned/yolo26_s1": {
+      "n_images": 75,
+      "gain": -0.01253970060752585,
+      "image_bootstrap_ci95": [
+        -0.024231360331299835,
+        -0.0003900828058441234
+      ]
+    },
+    "best_aligned/yolo26_s2": {
+      "n_images": 75,
+      "gain": 0.004476476006726848,
+      "image_bootstrap_ci95": [
+        0.0,
+        0.013349090960754194
+      ]
+    },
+    "best_aligned/yolo8_s0": {
+      "n_images": 75,
+      "gain": -0.0008586240899587372,
+      "image_bootstrap_ci95": [
+        -0.0031029742105589007,
+        0.0
+      ]
+    },
+    "best_aligned/yolo8_s1": {
+      "n_images": 75,
+      "gain": 0.0025144239929892898,
+      "image_bootstrap_ci95": [
+        -1.0692660412647218e-07,
+        0.005621666829433178
+      ]
+    },
+    "worst_aligned/yolo11": {
+      "n_images": 75,
+      "gain": 0.0032629829306448643,
+      "image_bootstrap_ci95": [
+        -0.018428264076823162,
+        0.021629238138853632
+      ]
+    },
+    "worst_aligned/agnostic": {
+      "n_images": 75,
+      "gain": 0.007906908844371063,
+      "image_bootstrap_ci95": [
+        -0.0022455222836630763,
+        0.02307173230021204
+      ]
+    },
+    "worst_aligned/yolo26_s0": {
+      "n_images": 75,
+      "gain": 0.0023034858557298143,
+      "image_bootstrap_ci95": [
+        -0.008854971784300484,
+        0.014510805896310075
+      ]
+    },
+    "worst_aligned/rtdetr": {
+      "n_images": 75,
+      "gain": 0.0,
+      "image_bootstrap_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "worst_aligned/yolo26_s1": {
+      "n_images": 75,
+      "gain": 0.0006448955050631922,
+      "image_bootstrap_ci95": [
+        -0.03130363663684736,
+        0.04045198997934723
+      ]
+    },
+    "worst_aligned/yolo26_s2": {
+      "n_images": 75,
+      "gain": 0.01080029978298036,
+      "image_bootstrap_ci95": [
+        -0.0006947055882797315,
+        0.027224722623837228
+      ]
+    },
+    "worst_aligned/yolo8_s0": {
+      "n_images": 75,
+      "gain": -0.023693418488391682,
+      "image_bootstrap_ci95": [
+        -0.045133649467404245,
+        -0.004094856740395301
+      ]
+    },
+    "worst_aligned/yolo8_s1": {
+      "n_images": 75,
+      "gain": 0.01501300310889142,
+      "image_bootstrap_ci95": [
+        0.0026299674943283504,
+        0.03457812720404558
+      ]
+    }
+  },
+  "summary": {
+    "best_aligned": {
+      "mean_gain": 0.0006681410963668144,
+      "min_gain": -0.01253970060752585,
+      "max_gain": 0.012812977909730794,
+      "positive_checkpoints": 5
+    },
+    "worst_aligned": {
+      "mean_gain": 0.002029769692411129,
+      "min_gain": -0.023693418488391682,
+      "max_gain": 0.01501300310889142,
+      "positive_checkpoints": 6
+    }
+  }
+}

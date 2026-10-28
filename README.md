@@ -9,12 +9,10 @@ The current release accompanies the working manuscript
 **“Confidence-Shielded Evaluator-Conditioned Fusion for Risk-Controlled
 Infrared--Visible Object Detection.”**
 
-The version-specific archival release is **v2.0.0**, DOI
-[`10.5281/zenodo.23718751`](https://doi.org/10.5281/zenodo.23718751). The
+The version-specific archival release is **v2.4.0**, DOI
+[`10.5281/zenodo.23726338`](https://doi.org/10.5281/zenodo.23726338). The
 shared software-series concept DOI is
-[`10.5281/zenodo.22984388`](https://doi.org/10.5281/zenodo.22984388); cite the
-version DOI for this manuscript. The preceding study has its own version DOI,
-`10.5281/zenodo.22984389`.
+[`10.5281/zenodo.22984388`](https://doi.org/10.5281/zenodo.22984388).
 
 CS-ECF evaluates visible, CDF, PIAFusion, and SPGFusion candidates with the
 target detector. A fused candidate is selected only when its top-five mean
@@ -54,8 +52,9 @@ Artifacts:
 - `analysis/cs_ecf/` — analysis and interval-reproduction scripts;
 - `results/selective_fusion/` — aggregate JSON, source-data CSV and per-image
   compressed score files;
-- `paper/CS_ECF_IPT_Submission/` — Elsevier LaTeX source, compiled PDF, cover
-  letter, figures, source data, and the versioned v13 submission package;
+- `paper/CS_ECF_IPT_Submission/` — Elsevier LaTeX source, compiled 25-page PDF,
+  cover letter, 11 numbered figures, 11 figure-level source-data files, and the
+  versioned v17 submission package;
 - `paper/CS_ECF_IPT_DRAFT.md`, `paper/CS_ECF_RESULTS.md`,
   `paper/CS_ECF_2ZONE_MATERIALS.md` — manuscript and evidence notes.
 

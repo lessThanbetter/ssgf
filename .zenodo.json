@@ -1,7 +1,7 @@
 {
   "title": "lessThanbetter/ssgf: Code for: Confidence-Shielded Evaluator-Conditioned Fusion for Risk-Controlled Infrared-Visible Object Detection",
-  "version": "v2.3.0",
-  "description": "<p>Archival release of the code, frozen manifests, aggregate results, source data, and submission materials for <em>Confidence-Shielded Evaluator-Conditioned Fusion for Risk-Controlled Infrared-Visible Object Detection</em>.</p><p>Version v2.3.0 adds the technical-check and reproducibility corrections: all 46 reference entries are checked in the rendered PDF, Figure 1 and Discussion headings are audited, repeated-character corruption is rejected, the complete pre-freeze margin grid is reported, and the 3,463-pair LLVIP test sampling frame is documented. It includes the final manuscript and supplement, all result JSON files, four publication figures with source data, the v16 submission package, and reproduction scripts.</p><p>The LLVIP, M3FD, and DroneVehicle images, third-party detector weights, and generated fused-image corpora are not redistributed. Their public sources, fixed manifests, and reproducibility instructions are documented in the repository.</p>",
+  "version": "v2.4.0",
+  "description": "<p>Archival release of the code, frozen manifests, aggregate results, source data, and submission materials for <em>Confidence-Shielded Evaluator-Conditioned Fusion for Risk-Controlled Infrared-Visible Object Detection</em>.</p><p>Version v2.4.0 completes the publication-grade figure redesign requested for the Infrared Physics &amp; Technology submission. The main article now contains 11 figures, matching the target reference-paper display-item count, with explicit panels for threshold selection, multiplicity correction, direct Always CDF comparison, label-free controls, external-evaluator portability, calibration failure, risk-return trade-offs, class and thermal boundaries, and deployment cost. Every quantitative figure is backed by a traceable CSV, and every figure PDF passes a 5 pt rendered-text audit. The release includes the final 25-page manuscript, six-page supplement, cover letter, v17 submission package, 11 SVG/PDF figure pairs, reproducibility scripts, and all supporting analyses.</p><p>The LLVIP, M3FD, and DroneVehicle images, third-party detector weights, and generated fused-image corpora are not redistributed. Their public sources, fixed manifests, and reproducibility instructions are documented in the repository.</p>",
   "creators": [
     {
       "name": "Zhao, Jianyong",
@@ -33,7 +33,7 @@
   "language": "eng",
   "related_identifiers": [
     {
-      "identifier": "https://github.com/lessThanbetter/ssgf/tree/v2.3.0",
+      "identifier": "https://github.com/lessThanbetter/ssgf/tree/v2.4.0",
       "relation": "isSupplementTo",
       "resource_type": "software",
       "scheme": "url"

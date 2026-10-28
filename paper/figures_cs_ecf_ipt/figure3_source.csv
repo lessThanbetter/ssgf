@@ -1,18 +1,18 @@
 panel,policy,dataset_balanced_mean_ap50_points,worst_checkpoint_ap50_points,mean_ci_low_points,mean_ci_high_points,checkpoint,no_shield_ap50_points,cs_ecf_ap50_points,shield_minus_no_shield_points
+b,,,,,,llvip/yolo26_s1,-5.84,-0.27,5.57
+b,,,,,,llvip/yolo26_s0,-4.31,-0.34,3.97
+b,,,,,,llvip/yolo26_s2,-0.55,0.26,0.81
+b,,,,,,llvip/yolo8_s0,-0.64,-0.4,0.24
+b,,,,,,llvip/rtdetr,0.45,0.4,-0.05
+b,,,,,,llvip/yolo8_s1,0.95,0.64,-0.31
+b,,,,,,llvip/yolo11,0.99,0.34,-0.65
+b,,,,,,llvip/agnostic,3.43,0.61,-2.82
+b,,,,,,m3fd/yolo26_m3fd6,-0.57,0.41,0.98
+b,,,,,,m3fd/yolo8n_m3fd6,1.09,1.82,0.73
+b,,,,,,dronevehicle_test/last,10.16,2.93,-7.23
+b,,,,,,dronevehicle_test/best,10.64,2.51,-8.13
 a,Always CDF,0.31,-0.59,,,,,,
 a,Always PIAFusion,-7.1,-29.1,,,,,,
 a,Always SPGFusion,-6.02,-25.01,,,,,,
 a,No shield,3.32,-5.84,,,,,,
 a,CS-ECF,1.33,-0.4,0.25849,2.613388,,,,
-b,,,,,,llvip/yolo26_s1,-5.84,-0.27,5.57
-b,,,,,,llvip/yolo26_s0,-4.31,-0.34,3.97
-b,,,,,,llvip/yolo8_s0,-0.64,-0.4,0.24
-b,,,,,,m3fd/yolo26_m3fd6,-0.57,0.41,0.98
-b,,,,,,llvip/yolo26_s2,-0.55,0.26,0.81
-b,,,,,,llvip/rtdetr,0.45,0.4,-0.05
-b,,,,,,llvip/yolo8_s1,0.95,0.64,-0.31
-b,,,,,,llvip/yolo11,0.99,0.34,-0.65
-b,,,,,,m3fd/yolo8n_m3fd6,1.09,1.82,0.73
-b,,,,,,llvip/agnostic,3.43,0.61,-2.82
-b,,,,,,dronevehicle_test/last,10.16,2.93,-7.23
-b,,,,,,dronevehicle_test/best,10.64,2.51,-8.13

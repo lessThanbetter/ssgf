@@ -1,107 +1,115 @@
 # Infrared Physics & Technology Submission Checklist
 
-Date: 2026-10-28  
-Target: Infrared Physics & Technology (Elsevier)
+Date: 2026-10-28
+
+Target: *Infrared Physics & Technology* (Elsevier)
 
 ## Submission readiness
 
-**Ready with author checks for the identified manuscript; journal submission is
-still blocked by the incomplete domain bibliography, an unversioned Zenodo
-archive, and unverified current IPT instructions.**
+**Author-confirmed; 11-figure redesign and technical QA complete; Zenodo v2.4.0
+draft reserved; live portal check pending.**
 
-Reasons:
+The author confirmed that the inherited administrative facts and declaration
+text remain unchanged. The manuscript, supplement, cover letter, Highlights,
+keywords, 11 main figures, 11 figure-level source-data files, declarations,
+statistical diagnostics, and reproducibility evidence are assembled.
 
-- the bibliography is a verified 27-entry set rather than a full domain review;
-- exact current IPT author-instruction limits and declarations still need
-  verification;
-- the administrative declarations were inherited from the existing manuscript
-  family and require final author confirmation;
-- the supplementary file is assembled and compiled, but must be rechecked after
-  the final main-text changes.
+The archival code revision is GitHub tag `v2.4.0`; the reserved Zenodo version
+DOI is `10.5281/zenodo.23726338` under concept DOI
+`10.5281/zenodo.22984388`.
+
+## Technical gate
+
+| Gate | Status | Evidence |
+|---|---|---|
+| LaTeX build | complete | `Manuscript.pdf`, `Supplementary_Material.pdf`, `Cover_Letter.pdf` |
+| Main figure count | complete | 11 final figures, matching the target reference-paper display-item count |
+| Figure rendering | complete | SVG, PDF, 600 dpi TIFF, and PNG for all 11 figures |
+| Figure source data | complete | `Figure1_source.csv` through `Figure11_source.csv` |
+| Figure typography | complete | all PDF text runs at least 5 pt; 0 below-minimum runs |
+| Numerical/reference audit | complete | `FINAL_TECHNICAL_QA.md` |
+| PDF visual audit | complete | 25 manuscript pages rendered and inspected |
+| Related Work and citations | complete | 46 references, including 45 DOI-backed records |
+| Multiplicity and sensitivity audit | complete | `MAJOR_REVISION_STATISTICS.md` |
+| GitHub/Zenodo archive | draft reserved | version `v2.4.0`; DOI `10.5281/zenodo.23726338` |
+| Author administrative facts | complete | author confirmed unchanged on 2026-10-28 |
+| Live IPT portal prompts | pending | CAPTCHA/login blocks unattended check |
 
 ## Deliverable matrix
 
-| Item | Status | Source or missing input | Draft/output |
-|---|---|---|---|
-| Main manuscript | required | compiled working draft | `CS_ECF_IPT_Submission/main.tex` and `main.pdf` |
-| Title page | required | author metadata imported from existing drafts | compiled title page in `main.pdf` |
-| Cover letter | required/useful | result facts supplied | `IPT_COVER_LETTER_DRAFT.md`; compiled `cover_letter.pdf` |
-| Highlights | verify IPT requirement | five verified-result bullets | `IPT_HIGHLIGHTS.txt` |
-| Keywords | required | supplied | `IPT_KEYWORDS.txt` |
-| Main figures | required | four figures exported and QA'd | `figures_cs_ecf_ipt/` |
-| Tables | required | included in compiled draft | `CS_ECF_IPT_Submission/main.tex` |
-| Supplementary information | required if referenced | compiled | `supplementary.tex` and `supplementary.pdf` |
-| Independent evaluator check | internal evidence | two zero-shot COCO models | `INDEPENDENT_EVALUATOR_CHECK.md`; `results/independent_evaluators/` |
-| Data availability | required | inherited and adapted for the current datasets | compiled in `main.tex` |
-| Code availability | required | inherited GitHub/Zenodo/MIT statement | compiled in `main.tex` |
-| CRediT contributions | required | inherited from existing drafts | compiled in `main.tex` |
-| Competing interests | required | inherited no-conflict statement | compiled in `main.tex` |
-| Funding | required | inherited no-specific-grant statement | compiled in `main.tex` |
-| Related/preprint disclosure | required | inherited originality/status statement | compiled cover letter; no separate related list found |
-| Suggested reviewers | verify IPT requirement | candidate identities missing | do not invent |
-| Graphical abstract | verify IPT requirement | none supplied | optional pending rule |
+| Item | Status | Draft/output |
+|---|---|---|
+| Main manuscript | ready | `Manuscript.pdf`, `main.tex` |
+| Title page | ready | compiled in `Manuscript.pdf` |
+| Cover letter | ready | `Cover_Letter.pdf`, `cover_letter.tex` |
+| Highlights | ready | `Highlights.txt` |
+| Keywords | ready | `Keywords.txt` |
+| Main figures | ready | `figures/Figure1_*.pdf` through `Figure11_*.pdf` |
+| Figure captions and QA | ready | `IPT_FIGURE_CAPTIONS.md`, `IPT_FIGURE_QA.md` |
+| Tables | ready | embedded in `Manuscript.pdf` |
+| Supplementary information | ready | `Supplementary_Material.pdf`, `supplementary.tex` |
+| External evaluator checks | ready | `External_Evaluator_Checks.md`, evidence JSON |
+| Data and code availability | ready | compiled in `main.tex` |
+| CRediT, interests, funding, AI use | ready | compiled in `main.tex` |
+| Related/preprint disclosure | ready | compiled cover letter |
+| Suggested reviewers | portal-dependent | omit unless requested |
+| Graphical abstract | portal-dependent | submit only if requested |
 
-## Completed evidence
+## Figure evidence chain
 
-- LLVIP 8-checkpoint confirmatory test;
-- M3FD 2-checkpoint grouped six-class test;
-- DroneVehicle 2-checkpoint independent official-test subset;
-- DroneVehicle source archive size/hash and fixed-group manifest retained;
-- dataset-balanced AP50 gain `+0.0133`;
-- training-run-by-group hierarchical CI `[+0.0026,+0.0261]`;
-- no-shield worst loss `-0.0584`, shield worst loss `-0.0040`;
-- class-aware M3FD analysis showing a people-specific effect;
-- thermal-top-hat stratification and thermal-mask/global ablation;
-- standardized serial latency estimate `706.3 ms`;
-- paired CS-ECF versus Always CDF comparison with direct intervals;
-- independent zero-shot YOLOv9t/YOLOv10s confirmation;
-- verified 2024–2026 IPT fusion/detection exemplars in `IPT_TARGETING.md`.
+1. Frozen CS-ECF workflow and visible fallback.
+2. Pre-freeze margin selection and K/margin sensitivity.
+3. Evaluator-dependent fusion utility.
+4. Checkpoint contrasts with Holm/BH correction and sign test.
+5. Direct CS-ECF versus Always CDF comparison.
+6. Random/image-quality controls and oracle headroom.
+7. External-evaluator portability, including the fine-tuned negative result.
+8. Calibration and switched-image failure boundary.
+9. Risk-return trade-off and shield effect.
+10. M3FD class concentration and domain-dependent thermal evidence.
+11. Latency, memory, and deployment decision boundaries.
 
-## Cross-file consistency checks
-
-The following canonical values must remain identical everywhere:
+## Canonical values
 
 | Metric | Canonical value |
 |---|---:|
 | Confirmatory checkpoints | 12 |
 | Positive checkpoints | 9 |
+| Exact sign-test p value | 0.0730 |
+| Checkpoints surviving Holm/BH at 0.05 | 0 |
 | Dataset-balanced AP50 gain | +0.0133 |
 | Training-run-by-group hierarchical CI | [+0.0026,+0.0261] |
-| No-shield worst AP50 loss | -0.0584 |
-| CS-ECF worst AP50 loss | -0.0040 |
-| DroneVehicle best gain | +0.0251 |
-| DroneVehicle last gain | +0.0293 |
-| DroneVehicle group CI | [+0.0002,+0.0406] |
-| Thermal-mask advantage over global | +0.0007 |
-| Serial latency estimate | 706.3 ms |
 | CS-ECF minus Always CDF, balanced | +0.0102 |
 | Direct-comparison hierarchical CI | [-0.00057,+0.02980] |
+| No-shield / CS-ECF worst AP50 loss | -0.0584 / -0.0040 |
 | Zero-shot gain over visible | +0.0213 to +0.0250 AP50 |
-| Zero-shot gain over CDF | -0.0059 to +0.0060 AP50 |
+| Fine-tuned YOLOv9t minus visible | -0.0108 AP50 |
+| Fine-tuned shield gain over no-shield | +0.0153 AP50 |
+| Uniform-random balanced gain | -0.0341 AP50 |
+| Per-image oracle balanced upper bound | +0.0833 AP50 |
+| Selected validation policy | K=5, margin=1.5 |
+| Serial latency estimate | 706.3 ms |
 
-## Author checks
+## Author confirmation record
 
-- Confirm Research Paper against the current IPT author guide.
-- Confirm continued use of the extracted author order, affiliations, emails,
-  ORCIDs, CRediT roles, no-specific-grant funding, and no-competing-interest
-  statements for this new manuscript.
-- Confirm that the cover-letter assertion “not previously published / not under
-  consideration” is complete; the reviewed drafts contain no separate preprint
-  identifier or related-manuscript list.
-- Create a new Zenodo version for the CS-ECF submission. The existing DOI
-  resolves to the preceding study.
-- Confirm the expanded AI-assisted-work disclosure.
-- Add reviewer suggestions only if the IPT portal requests them.
+On 2026-10-28, the author confirmed retention of the original administrative
+and declaration content without changes:
+
+- author order, affiliations, emails, ORCIDs, CRediT roles, no-specific-grant
+  funding, and no-competing-interest statements;
+- the named OpenAI Codex AI tool and final AI declaration wording;
+- the cover-letter “not previously published / not under consideration”
+  assertion and related-manuscript disclosure;
+- Research Paper as the intended article type.
+
+Add reviewer suggestions only if the IPT portal requests them.
 
 ## Next actions
 
-1. Verify the current IPT Guide for Authors, article type, abstract limit,
-   Highlights character limit, figure limits, and declarations.
-2. Expand the verified bibliography into a complete related-work synthesis.
-3. Review the compiled Elsevier preprint and resolve remaining layout choices.
-4. Expand the seed bibliography and incorporate verified dataset/method papers.
-5. Confirm the inherited administrative declarations and create a new Zenodo
-   version.
-6. Re-run numerical consistency checks and compile both PDFs.
-7. Only then generate the IPT submission zip.
-
+1. Open the live IPT submission portal with an interactive browser.
+2. Confirm article type, portal labels, abstract/display limits, figure-upload
+   order, and optional graphical-abstract fields.
+3. Upload files from `submission_package_v17/`.
+4. Compare the portal preview with `Manuscript.pdf` before final submission.
+5. If the portal requires a scientific or administrative change, rebuild the
+   PDFs and regenerate the SHA-256 manifest before upload.

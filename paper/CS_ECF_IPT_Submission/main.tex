@@ -299,6 +299,8 @@ c^\ast, & c^\ast\ne\mathrm{vis}\ \text{and}\ q_{c^\ast}\ge1.5q_{\mathrm{vis}},\\
 \mathrm{vis}, & \text{otherwise}.
 \end{cases}
 \end{equation}
+The complete inference pathway, including visible fallback, is summarized in
+Fig.~\ref{fig:workflow}.
 The four-candidate library and the top-five score were fixed before the
 confirmatory tests. The score averages five boxes rather than relying on one
 maximum, while retaining a small set that is not dominated by the low-confidence
@@ -314,7 +316,23 @@ switched \(4.7\%\) of validation decisions, compared with \(11.4\%\) at 1.2.
 Table~\ref{tab:score-margin} reports a post-freeze sensitivity check over other
 score depths and margins. The expanded grid was not used to reselect the policy
 after test performance was observed. The complete pre-freeze search is reported
-in the Supplementary Material.
+in the Supplementary Material and summarized in Fig.~\ref{fig:selection}.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{Figure1_workflow.pdf}
+\caption{\textbf{Confidence-shielded evaluator-conditioned fusion.}
+(\textbf{a}), The registered visible--infrared pair is passed to visible, CDF,
+PIAFusion, and SPGFusion candidates. The target detector computes the mean of
+its five highest confidences for every candidate. A fused candidate is selected
+only when its score is at least 1.5 times the visible score; otherwise the
+visible input is retained. No ground-truth labels are used for arbitration.
+(\textbf{b}), Composition of the frozen input decisions across all
+checkpoint--image trials for LLVIP (8\(\times\)300), M3FD (2\(\times\)200), and
+the DroneVehicle official test subset (2\(\times\)300). Source data are provided
+in \texttt{Figure1\_source.csv}.}
+\label{fig:workflow}
+\end{figure}
 
 \begin{table}[t]
 \centering
@@ -343,6 +361,20 @@ are not estimates of the 12-checkpoint confirmatory effect and should not be
 compared directly with the test-set point estimate. The margin was not tuned
 on DroneVehicle, and its public validation partition was not used for policy
 selection. DroneVehicle therefore serves as an external domain-transfer check.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{Figure2_selection_sensitivity.pdf}
+\caption{\textbf{Threshold selection and post-freeze sensitivity.}
+(\textbf{a}), Pre-freeze validation search over seven visible margins at
+\(K=5\). The selected policy maximizes the dataset-balanced validation gain
+subject to no evaluator losing more than 0.0005 AP50. (\textbf{b},
+\textbf{c}), Post-freeze descriptive sensitivity of dataset-balanced gain and
+the worst checkpoint loss to score depth \(K\) and margin. Margin 1.5 was fixed
+before confirmatory testing; the expanded grid was not used to reselect the
+policy. Source data are provided in \texttt{Figure2\_source.csv}.}
+\label{fig:selection}
+\end{figure}
 
 \subsection{Datasets and evaluators}
 
@@ -517,20 +549,35 @@ correction across the 12 checkpoint family, no individual contrast had
 adjusted \(p<0.05\); the smallest raw p-value, for LLVIP/YOLO11n, was 0.005
 (Holm-adjusted \(p=0.060\)). We therefore interpret the balanced estimate as a
 small average effect and do not claim that any individual checkpoint improved
-significantly. The unshielded
+significantly (Fig.~\ref{fig:multiplicity}). The unshielded
 selector improved seven of 12 checkpoints, had a larger dataset-balanced mean of
 0.0332, and produced a worst loss of 0.0584.
 
 \begin{figure}[tbp]
 \centering
-\includegraphics[width=\linewidth]{fig1_evaluator_dependence.pdf}
+\includegraphics[width=\linewidth]{Figure3_evaluator_dependence.pdf}
 \caption{\textbf{Evaluator-dependent utility of infrared--visible fusion
-candidates.} \textbf{a}, Signed AP50 change from the visible input for CDF,
+candidates.} (\textbf{a}), Signed AP50 change from the visible input for CDF,
 PIAFusion, SPGFusion, the unshielded selector, and CS-ECF across 12 detector
-checkpoints. Cells are point contrasts. \textbf{b}, Dataset-level mean AP50
+checkpoints. Cells are point contrasts. (\textbf{b}), Dataset-level mean AP50
 changes. Equal candidate sets produce opposite signs across datasets. Source
-data are provided in \texttt{figure1\_source.csv}.}
+data are provided in \texttt{Figure3\_source.csv}.}
 \label{fig:evaluator}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{Figure4_multiplicity.pdf}
+\caption{\textbf{Checkpoint-level evidence and multiplicity correction.}
+(\textbf{a}), CS-ECF-minus-visible AP50 changes and scene/frame-group 95\%
+intervals for the 12 confirmatory checkpoints. Horizontal rules separate
+datasets. (\textbf{b}), The nine positive point estimates are not a collection
+of significant checkpoint wins: the exact sign test gives \(p=0.073\), and no
+checkpoint survives Benjamini--Hochberg or Holm correction at 0.05. The
+dataset-balanced estimate is \(+0.0133\) with interval \([0.0026,0.0261]\).
+Raw p-values, Holm-adjusted p-values, and BH q-values are supplied in
+\texttt{Figure4\_source.csv}.}
+\label{fig:multiplicity}
 \end{figure}
 
 \subsection{Dataset-specific behavior}
@@ -574,6 +621,9 @@ interval was \([-0.00057,0.02980]\) and included zero: LLVIP favoured Always
 CDF, DroneVehicle was represented by a single training-run cluster, and only
 M3FD had a clearly positive point contrast. Table~\ref{tab:cdf-paired} therefore
 reports the dataset-specific contrasts rather than only the pooled endpoint.
+Figure~\ref{fig:cdfcomparison} shows the same dataset structure with paired
+checkpoint positions and does not average over it for the primary graphical
+summary.
 
 \begin{table}[t]
 \centering
@@ -593,6 +643,20 @@ Dataset-balanced & \(+0.0102\) & \([-0.00057,+0.02980]\) \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{Figure5_cdf_comparison.pdf}
+\caption{\textbf{CS-ECF versus the strongest fixed fusion baseline.}
+(\textbf{a}), Dataset-level and dataset-balanced CS-ECF-minus-Always CDF AP50
+contrasts with 95\% group-aware intervals. The dataset-balanced interval crosses
+zero. (\textbf{b}), Paired checkpoint AP50 positions relative to the equality
+line. (\textbf{c}), Paired checkpoint contrasts. The point estimates favour
+CS-ECF in six checkpoints and Always CDF in six; the comparison therefore does
+not establish dominance over Always CDF. Source data are provided in
+\texttt{Figure5\_source.csv}.}
+\label{fig:cdfcomparison}
+\end{figure}
 
 The direct comparison changes the claim boundary. CS-ECF is not a statistically
 separated improvement over Always CDF; its average difference is concentrated
@@ -625,7 +689,8 @@ with 8/12 positive checkpoints, far below the confidence-based policy.
 SSIM and entropy selection were strongly negative. CS-ECF lies about 40\% of
 the distance from the mean uniform-random policy to the per-image oracle on
 dataset-balanced AP50, showing both that detector confidence adds value beyond
-image-only statistics and that substantial headroom remains.
+image-only statistics and that substantial headroom remains
+(Fig.~\ref{fig:controls}).
 
 \begin{table}[t]
 \centering
@@ -650,6 +715,21 @@ Per-image oracle & +0.0833 & +0.0205 & 12/12 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{Figure6_controls_headroom.pdf}
+\caption{\textbf{Label-free controls and oracle headroom.}
+(\textbf{a}), Dataset-balanced and worst-checkpoint AP50 changes for uniform
+random selection, three image-quality selectors, Always CDF, CS-ECF, and a
+per-image oracle. The count at the right gives positive checkpoints out of 12.
+(\textbf{b}), Position of CS-ECF between the mean uniform-random policy and the
+label-using oracle. The oracle is an optimistic upper bound, not a deployable
+selector. VIF and SSIM selected only among fused candidates; entropy selected
+among all four inputs. Source data are provided in
+\texttt{Figure6\_source.csv}.}
+\label{fig:controls}
+\end{figure}
 
 \subsection{External evaluator stress tests}
 
@@ -684,6 +764,20 @@ YOLOv9t, LLVIP-trained & .6666 / .6598 / .6405 / .6558 &
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{Figure7_external_evaluators.pdf}
+\caption{\textbf{External-evaluator portability stress tests.}
+(\textbf{a}), Absolute AP50 for visible, Always CDF, the unshielded selector,
+and CS-ECF under two zero-shot COCO evaluators and one LLVIP-fine-tuned
+YOLOv9t. (\textbf{b}), Paired CS-ECF contrasts against visible and Always CDF
+with scene-group 95\% intervals. The fine-tuned evaluator reverses the
+visible-relative sign, and the Benjamini--Hochberg q-values retain the
+exploratory status of these external checks. Source data are provided in
+\texttt{Figure7\_source.csv}.}
+\label{fig:external}
+\end{figure}
 
 Both zero-shot evaluators improved relative to visible, while neither provided
 a separated advantage over Always CDF. The fine-tuned YOLOv9t changed the sign:
@@ -726,6 +820,20 @@ YOLOv9t, LLVIP-trained & 76.7\%/23.3\% & 0.048/0.046 &
 \end{tabular}
 \end{table}
 
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{Figure8_calibration_boundary.pdf}
+\caption{\textbf{Calibration and switched-image failure boundary.}
+(\textbf{a}), Detection-level ECE and Brier scores for visible and CS-ECF.
+(\textbf{b}), Improved, unchanged, and degraded per-image AP50 among images
+assigned to a fused candidate. (\textbf{c}), Scene-level CS-ECF-minus-visible
+AP50 changes. The LLVIP-fine-tuned evaluator has substantially higher
+calibration error, more degraded switches, and two positive versus five
+negative scene groups. Source data are provided in
+\texttt{Figure8\_source.csv}.}
+\label{fig:calibration}
+\end{figure}
+
 The fine-tuned checkpoint switched to fusion at a rate similar to the
 zero-shot evaluators, so the sign reversal was not explained by a different
 switching budget. Its calibration error was about five times larger
@@ -735,7 +843,8 @@ degradation fractions were 20.9\% and 9.1\% for the zero-shot evaluators. The
 fine-tuned model produced 2 positive and 5 negative scenes. Benjamini--Hochberg
 correction across the three external contrasts gave \(q=0.043\), \(0.043\),
 and \(0.119\), respectively. This supports a calibration-related boundary
-hypothesis, but the current data cannot assign causality.
+hypothesis, but the current data cannot assign causality
+(Figs.~\ref{fig:external} and~\ref{fig:calibration}).
 
 \subsection{The shield is a risk-control mechanism}
 
@@ -744,32 +853,18 @@ DroneVehicle images and occasionally produced large confidence gains that did
 not translate into AP. The 1.5 margin reduced switches and lowered the worst
 AP50 loss from 0.0584 to 0.0040. On DroneVehicle, however, the shield also
 reduced the mean gain from 0.1040 to 0.0272. This trade-off is the central
-quantitative meaning of risk control in this study.
+quantitative meaning of risk control in this study (Fig.~\ref{fig:risk}).
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{fig2_csecf_workflow.pdf}
-\caption{\textbf{Confidence-shielded evaluator-conditioned fusion.}
-\textbf{a}, The visible--infrared pair is passed to visible, CDF, PIAFusion,
-and SPGFusion candidates. The target detector computes its top-five mean
-confidence for each candidate. A fused candidate is selected only when its
-score is at least 1.5 times the visible score; otherwise the visible input is
-retained. No labels are used for arbitration. \textbf{b}, Composition of the
-frozen decisions across all checkpoint--image trials. Source data are provided
-in \texttt{figure2\_source.csv}.}
-\label{fig:workflow}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\linewidth]{fig3_risk_return.pdf}
+\includegraphics[width=\linewidth]{Figure9_risk_return.pdf}
 \caption{\textbf{Risk--return trade-off of fusion-input policies.}
-\textbf{a}, Dataset-balanced mean AP50 change versus worst-checkpoint AP50
+(\textbf{a}), Dataset-balanced mean AP50 change versus worst-checkpoint AP50
 change. The CS-ECF horizontal error bar is the training-run-by-group hierarchical
-95\% interval. \textbf{b}, Paired checkpoint changes under the unshielded
+95\% interval. (\textbf{b}), Paired checkpoint changes under the unshielded
 selector and CS-ECF. The shield sacrifices part of the DroneVehicle mean gain
 to reduce the worst LLVIP loss. Source data are provided in
-\texttt{figure3\_source.csv}.}
+\texttt{Figure9\_source.csv}.}
 \label{fig:risk}
 \end{figure}
 
@@ -810,15 +905,17 @@ average relative to global injection.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{fig4_thermal_class_boundary.pdf}
+\includegraphics[width=\linewidth]{Figure10_thermal_class_boundary.pdf}
 \caption{\textbf{Thermal constraints and class-specific effects.}
-\textbf{a}, M3FD AP50 changes for six classes. The gain is concentrated in
-people. \textbf{b}, Fixed-input DroneVehicle CDF gain with the thermal-validity
-mask or global detail injection. \textbf{c}, Spearman association between the
+(\textbf{a}), M3FD AP50 changes for six classes with image-bootstrap 95\%
+intervals and annotation counts. The gain is concentrated in people.
+(\textbf{b}), Fixed-input DroneVehicle CDF gain with the thermal-validity mask
+or global detail injection. (\textbf{c}), Spearman association between the
 fused-selection fraction and thermal top-hat contrast, visible luminance, or
-CDF-mask activity. The association reverses on DroneVehicle, which does not
-support a universal thermal switching rule. Source data are provided in
-\texttt{figure4\_source.csv}.}
+CDF-mask activity; asterisks denote p-values below 0.05, 0.01, and 0.001,
+respectively. The association reverses on DroneVehicle, which does not support
+a universal thermal switching rule. Source data are provided in
+\texttt{Figure10\_source.csv}.}
 \label{fig:thermal}
 \end{figure}
 
@@ -904,7 +1001,7 @@ settings in which the target detector is already run and the cost of a
 catastrophic input choice is high. It is not a low-latency replacement for a
 single fusion operator. Candidate pruning and early termination were not
 implemented or claimed; measuring their latency--accuracy trade-off is a
-separate deployment study.
+separate deployment study (Fig.~\ref{fig:cost}).
 
 A practical decision sequence follows from these boundaries:
 \begin{enumerate}
@@ -919,6 +1016,23 @@ A practical decision sequence follows from these boundaries:
   \item do not deploy the policy after a fine-tuning jump that substantially
   worsens confidence calibration without rerunning threshold validation.
 \end{enumerate}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{Figure11_cost_deployment.pdf}
+\caption{\textbf{Runtime cost and deployment boundaries.}
+(\textbf{a}), Serial latency of candidate generation and four detector passes
+at the stated hardware and input sizes; the estimate excludes model swapping,
+data loading, and final post-processing. (\textbf{b}), Per-stage latency and
+extra peak memory, with marker area scaled by parameter count. Per-stage memory
+values are not additive. (\textbf{c}), Decision matrix implied by the observed
+evidence: Always CDF for a fixed, calibration-stable setting; CS-ECF after
+held-out revalidation when the evaluator or domain changes; visible or a
+stronger shield when calibration is unstable; and no four-candidate search for
+latency-sensitive deployment unless pruning or early termination is measured.
+Source data are provided in \texttt{Figure11\_source.csv}.}
+\label{fig:cost}
+\end{figure}
 
 \section{Conclusions}
 
@@ -978,7 +1092,7 @@ included in the public analysis repository described below.
 The code for reproducing the experiments is available at
 \url{https://github.com/lessThanbetter/ssgf} under an MIT licence. The
 version-specific archival release is available at
-\url{https://doi.org/10.5281/zenodo.23721458}. The repository and archive contain
+\url{https://doi.org/10.5281/zenodo.23726338}. The repository and archive contain
 the fusion and arbitration code, detector-evaluation scripts, fixed split and
 test manifests, per-image score files, result tables, figure source data, and
 the numerical checks used to generate the reported intervals.

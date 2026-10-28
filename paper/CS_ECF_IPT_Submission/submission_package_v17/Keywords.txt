@@ -1,0 +1,6 @@
+infrared–visible image fusion
+object detection
+evaluator-conditioned fusion
+confidence calibration
+risk control
+thermal imaging

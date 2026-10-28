@@ -1,0 +1,168 @@
+{
+  "policy": {
+    "top_k": 5,
+    "visible_margin": 1.5,
+    "candidates": [
+      "vis",
+      "cdf",
+      "pia",
+      "spg"
+    ]
+  },
+  "bootstrap": {
+    "draws": 1000,
+    "base_seed": 2219,
+    "model_seeds": {
+      "yolov9t_coco": 2219,
+      "yolov10s_coco": 2220,
+      "yolov9t_domain": 2221
+    },
+    "interval": "percentile 95%",
+    "unit": "LLVIP scene groups"
+  },
+  "models": {
+    "yolov9t_domain": {
+      "ap50": {
+        "visible": 0.6666027633607623,
+        "always_cdf": 0.6597628361667149,
+        "no_shield": 0.6405196670279474,
+        "csecf": 0.6558055223380699
+      },
+      "delta": {
+        "csecf_minus_visible": -0.010797241022692416,
+        "csecf_minus_cdf": -0.003957313828645059,
+        "csecf_minus_no_shield": 0.015285855310122498
+      },
+      "image_ci95": {
+        "csecf_minus_visible": [
+          -0.026733603876163504,
+          0.0046189091751077885
+        ],
+        "csecf_minus_cdf": [
+          -0.030318100784339018,
+          0.02196759676499594
+        ],
+        "csecf_minus_no_shield": [
+          -0.004366157978553048,
+          0.034545614882680084
+        ]
+      },
+      "group_ci95": {
+        "csecf_minus_visible": [
+          -0.03418803863060129,
+          0.004989436072778996
+        ],
+        "csecf_minus_cdf": [
+          -0.020586159390598158,
+          0.010827281595649035
+        ],
+        "csecf_minus_no_shield": [
+          0.007216423522251714,
+          0.02669732827994607
+        ]
+      },
+      "per_group": [
+        {
+          "scene": "190",
+          "n_images": 78,
+          "ap50": {
+            "visible": 0.7685712091246986,
+            "always_cdf": 0.7731789586365079,
+            "no_shield": 0.772855644470381,
+            "csecf": 0.7782622573028368
+          },
+          "csecf_minus_visible": 0.009691048178138262,
+          "no_shield_minus_visible": 0.004284435345682458
+        },
+        {
+          "scene": "200",
+          "n_images": 31,
+          "ap50": {
+            "visible": 0.4459911992518822,
+            "always_cdf": 0.37929829970354223,
+            "no_shield": 0.3901186710435912,
+            "csecf": 0.42252252171528504
+          },
+          "csecf_minus_visible": -0.02346867753659715,
+          "no_shield_minus_visible": -0.05587252820829097
+        },
+        {
+          "scene": "210",
+          "n_images": 32,
+          "ap50": {
+            "visible": 0.7470699852058285,
+            "always_cdf": 0.7705129337210953,
+            "no_shield": 0.7268100993333013,
+            "csecf": 0.7346747023304221
+          },
+          "csecf_minus_visible": -0.012395282875406366,
+          "no_shield_minus_visible": -0.02025988587252714
+        },
+        {
+          "scene": "220",
+          "n_images": 38,
+          "ap50": {
+            "visible": 0.7004114957815658,
+            "always_cdf": 0.7128052301322791,
+            "no_shield": 0.665999013358068,
+            "csecf": 0.695302567429195
+          },
+          "csecf_minus_visible": -0.005108928352370756,
+          "no_shield_minus_visible": -0.034412482423497814
+        },
+        {
+          "scene": "230",
+          "n_images": 46,
+          "ap50": {
+            "visible": 0.6354374059729587,
+            "always_cdf": 0.6258188976014638,
+            "no_shield": 0.6432009914652239,
+            "csecf": 0.6473993456970245
+          },
+          "csecf_minus_visible": 0.011961939724065784,
+          "no_shield_minus_visible": 0.00776358549226519
+        },
+        {
+          "scene": "240",
+          "n_images": 31,
+          "ap50": {
+            "visible": 0.5040403639915697,
+            "always_cdf": 0.43650946986730055,
+            "no_shield": 0.3832103545485497,
+            "csecf": 0.4316064119960265
+          },
+          "csecf_minus_visible": -0.0724339519955432,
+          "no_shield_minus_visible": -0.12083000944302003
+        },
+        {
+          "scene": "260",
+          "n_images": 44,
+          "ap50": {
+            "visible": 0.6565497985400615,
+            "always_cdf": 0.6228738450952279,
+            "no_shield": 0.632424695970706,
+            "csecf": 0.6486612292603245
+          },
+          "csecf_minus_visible": -0.007888569279736912,
+          "no_shield_minus_visible": -0.024125102569355406
+        }
+      ],
+      "worst_group": {
+        "csecf_minus_visible": -0.0724339519955432,
+        "no_shield_minus_visible": -0.12083000944302003
+      },
+      "selected_counts": {
+        "vis": 230,
+        "cdf": 11,
+        "pia": 26,
+        "spg": 33
+      },
+      "unshielded_counts": {
+        "vis": 118,
+        "cdf": 91,
+        "pia": 38,
+        "spg": 53
+      }
+    }
+  }
+}
