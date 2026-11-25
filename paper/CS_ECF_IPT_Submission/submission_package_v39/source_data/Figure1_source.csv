@@ -1,0 +1,13 @@
+dataset,display_dataset,selected_input,count,fraction,checkpoint_image_trials
+llvip,LLVIP,Visible,2262,0.9425,2400
+llvip,LLVIP,CDF,6,0.0025,2400
+llvip,LLVIP,PIAFusion,22,0.009167,2400
+llvip,LLVIP,SPGFusion,110,0.045833,2400
+m3fd,M3FD,Visible,369,0.9225,400
+m3fd,M3FD,CDF,3,0.0075,400
+m3fd,M3FD,PIAFusion,25,0.0625,400
+m3fd,M3FD,SPGFusion,3,0.0075,400
+dronevehicle_test,DroneVehicle,Visible,474,0.79,600
+dronevehicle_test,DroneVehicle,CDF,0,0.0,600
+dronevehicle_test,DroneVehicle,PIAFusion,70,0.116667,600
+dronevehicle_test,DroneVehicle,SPGFusion,56,0.093333,600

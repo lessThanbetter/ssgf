@@ -1,0 +1,3008 @@
+{
+  "protocol": {
+    "task": "budgeted candidate-library selection",
+    "top_k": 5,
+    "frozen_margin": 1.5,
+    "margin_sensitivity_grid": [
+      1.2,
+      1.3,
+      1.5,
+      1.75,
+      2.0
+    ],
+    "cost_model": {
+      "device": "NVIDIA GeForce RTX 2080 Ti",
+      "detector_once_ms": 32.5,
+      "fusion_ms": {
+        "cdf": 22.282,
+        "pia": 37.7,
+        "spg": 516.3
+      },
+      "note": "Serial component estimate with models already loaded. Peak memory is reported as the largest independently measured fusion peak and is not additive."
+    },
+    "status": "exploratory_post_review_analysis"
+  },
+  "selection": {
+    "procedure": "Fix K=5 and margin=1.5. For every subset containing visible, require every development evaluator gain to be at least -0.0005 AP50. Among feasible subsets, take those within 0.00001 of the largest mean gain, then choose the fewest detector forwards and lowest measured component cost.",
+    "frozen_margin": 1.5,
+    "validation_loss_bound": -0.0005,
+    "practical_equivalence_gain": 1e-05,
+    "selected_policy": "vis+pia@m1.5",
+    "selected_candidates": [
+      "vis",
+      "pia"
+    ],
+    "selected_validation_mean_gain": 0.0020613306852155233,
+    "selected_validation_worst_cell_gain": 0.00039024501670426037,
+    "selected_validation_positive_cells": 4,
+    "selected_cost": {
+      "detector_forwards": 2,
+      "fusion_latency_ms": 37.7,
+      "estimated_serial_ms": 102.7,
+      "max_independent_peak_mib": 869.1
+    },
+    "shortlist": [
+      "vis+pia@m1.5",
+      "vis+cdf+pia@m1.5"
+    ],
+    "status": "exploratory_post_review_analysis"
+  },
+  "llvip_standard_matching": {
+    "matching": "confidence-ordered one-to-one matching",
+    "sequences": [
+      "050",
+      "060",
+      "070"
+    ],
+    "models": [
+      "yolo26_s0",
+      "yolo26_s1",
+      "yolo26_s2",
+      "yolo8_s0",
+      "yolo8_s1",
+      "rtdetr_l"
+    ],
+    "policies": {
+      "visible": {
+        "candidates": [
+          "vis"
+        ],
+        "margin": 1.0,
+        "top_k": 5,
+        "name": "vis@m1",
+        "detector_forwards": 1,
+        "fusion_latency_ms": 0.0,
+        "estimated_serial_ms": 32.5,
+        "max_independent_peak_mib": null
+      },
+      "always_cdf": {
+        "candidates": [
+          "cdf"
+        ],
+        "margin": 1.0,
+        "top_k": 5,
+        "name": "cdf@m1",
+        "detector_forwards": 1,
+        "fusion_latency_ms": 22.282,
+        "estimated_serial_ms": 54.782,
+        "max_independent_peak_mib": null
+      },
+      "candidate": {
+        "candidates": [
+          "vis",
+          "pia"
+        ],
+        "margin": 1.5,
+        "top_k": 5,
+        "name": "vis+pia@m1.5",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 37.7,
+        "estimated_serial_ms": 102.7,
+        "max_independent_peak_mib": 869.1
+      },
+      "full_csecf": {
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia",
+          "spg"
+        ],
+        "margin": 1.5,
+        "top_k": 5,
+        "name": "vis+cdf+pia+spg@m1.5",
+        "detector_forwards": 4,
+        "fusion_latency_ms": 576.282,
+        "estimated_serial_ms": 706.282,
+        "max_independent_peak_mib": 1453.5
+      },
+      "no_shield": {
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia",
+          "spg"
+        ],
+        "margin": 0.0,
+        "top_k": 5,
+        "name": "vis+cdf+pia+spg@m0",
+        "detector_forwards": 4,
+        "fusion_latency_ms": 576.282,
+        "estimated_serial_ms": 706.282,
+        "max_independent_peak_mib": 1453.5
+      }
+    },
+    "comparisons": {
+      "candidate_minus_visible": {
+        "mean": 0.003370482972478784,
+        "positive_checkpoints": 5,
+        "worst_checkpoint": -0.0004314154826377483,
+        "per_checkpoint": {
+          "yolo26_s0": 0.0005123639899618958,
+          "yolo26_s1": 0.0011139212283386246,
+          "yolo26_s2": -0.0004314154826377483,
+          "yolo8_s0": 0.006717166567737632,
+          "yolo8_s1": 0.011170345738614031,
+          "rtdetr_l": 0.0011405157928582664
+        },
+        "per_sequence": {
+          "050": -7.946851300506664e-05,
+          "060": 0.0003630508128163877,
+          "070": 0.00982786661762503
+        },
+        "conditional_sequence_by_run_interval": [
+          -0.0001575355935713774,
+          0.01266724914428523
+        ],
+        "ap50_95": {
+          "mean": 0.002213754818616499,
+          "positive_checkpoints": 6,
+          "worst_checkpoint": 3.262704242331643e-05,
+          "per_checkpoint": {
+            "yolo26_s0": 0.00016973620570015299,
+            "yolo26_s1": 0.000509591300760661,
+            "yolo26_s2": 3.262704242331643e-05,
+            "yolo8_s0": 0.006115158305687655,
+            "yolo8_s1": 0.005754225492263481,
+            "rtdetr_l": 0.0007011905648637264
+          },
+          "per_sequence": {
+            "050": -1.4924379777221508e-05,
+            "060": 0.0003194556601797043,
+            "070": 0.006336733175447014
+          },
+          "conditional_sequence_by_run_interval": [
+            -6.138760387371316e-05,
+            0.007879955013673908
+          ]
+        },
+        "mean_switch_fraction": 0.040523486180891626,
+        "selected_counts": {
+          "vis": 8035,
+          "cdf": 0,
+          "pia": 335,
+          "spg": 0
+        }
+      },
+      "candidate_minus_no_shield": {
+        "mean": 0.012183958954020841,
+        "positive_checkpoints": 6,
+        "worst_checkpoint": 0.00022129404893811463,
+        "per_checkpoint": {
+          "yolo26_s0": 0.00022129404893811463,
+          "yolo26_s1": 0.006119633141550024,
+          "yolo26_s2": 0.0067081786928347015,
+          "yolo8_s0": 0.01542776331254035,
+          "yolo8_s1": 0.043871502635883027,
+          "rtdetr_l": 0.0007553818923788175
+        },
+        "per_sequence": {
+          "050": 0.019620652103589046,
+          "060": 0.005538351765868013,
+          "070": 0.01139287299260546
+        },
+        "conditional_sequence_by_run_interval": [
+          0.0013559207872737087,
+          0.029147379354805162
+        ],
+        "ap50_95": {
+          "mean": 0.0019334232183981128,
+          "positive_checkpoints": 3,
+          "worst_checkpoint": -0.004126384863431898,
+          "per_checkpoint": {
+            "yolo26_s0": -0.003809780332522638,
+            "yolo26_s1": -0.002025931926412482,
+            "yolo26_s2": 0.0010742634124923552,
+            "yolo8_s0": 0.0024849987466663208,
+            "yolo8_s1": 0.01800337427359702,
+            "rtdetr_l": -0.004126384863431898
+          },
+          "per_sequence": {
+            "050": 0.008258280497290967,
+            "060": -0.004487602828400208,
+            "070": 0.0020295919863035803
+          },
+          "conditional_sequence_by_run_interval": [
+            -0.005674360599541912,
+            0.01210687340553983
+          ]
+        }
+      },
+      "candidate_minus_full_csecf": {
+        "mean": 0.0032488784780879128,
+        "positive_checkpoints": 4,
+        "worst_checkpoint": -0.0003228415206052929,
+        "per_checkpoint": {
+          "yolo26_s0": -0.0003228415206052929,
+          "yolo26_s1": 0.0010558522272515463,
+          "yolo26_s2": 0.0023128292187769017,
+          "yolo8_s0": 0.0009871535313773787,
+          "yolo8_s1": 0.015680010000522215,
+          "rtdetr_l": -0.00021973258879527376
+        },
+        "per_sequence": {
+          "050": 0.0034842743198052143,
+          "060": 1.1131492669544066e-06,
+          "070": 0.006261247965191569
+        },
+        "conditional_sequence_by_run_interval": [
+          -0.0002628662262851061,
+          0.010505981569116167
+        ],
+        "ap50_95": {
+          "mean": 0.0020235796151455714,
+          "positive_checkpoints": 4,
+          "worst_checkpoint": -0.00016160065661455542,
+          "per_checkpoint": {
+            "yolo26_s0": -4.474625412487986e-05,
+            "yolo26_s1": 0.0001574838619417887,
+            "yolo26_s2": 0.003011824604709425,
+            "yolo8_s0": 0.0002930214198256091,
+            "yolo8_s1": 0.008885494715136041,
+            "rtdetr_l": -0.00016160065661455542
+          },
+          "per_sequence": {
+            "050": 0.002013033870923478,
+            "060": 9.089983070795899e-05,
+            "070": 0.003966805143805278
+          },
+          "conditional_sequence_by_run_interval": [
+            -0.00021252424291579044,
+            0.006570443683102118
+          ]
+        }
+      },
+      "full_csecf_minus_visible": {
+        "mean": 0.00012160449439087139,
+        "positive_checkpoints": 4,
+        "worst_checkpoint": -0.004509664261908183,
+        "per_checkpoint": {
+          "yolo26_s0": 0.0008352055105671887,
+          "yolo26_s1": 5.806900108707831e-05,
+          "yolo26_s2": -0.00274424470141465,
+          "yolo8_s0": 0.005730013036360254,
+          "yolo8_s1": -0.004509664261908183,
+          "rtdetr_l": 0.00136024838165354
+        },
+        "per_sequence": {
+          "050": -0.003563742832810281,
+          "060": 0.00036193766354943334,
+          "070": 0.003566618652433462
+        },
+        "conditional_sequence_by_run_interval": [
+          -0.004836545500051585,
+          0.0066956586201504
+        ],
+        "ap50_95": {
+          "mean": 0.00019017520347092728,
+          "positive_checkpoints": 4,
+          "worst_checkpoint": -0.0031312692228725614,
+          "per_checkpoint": {
+            "yolo26_s0": 0.00021448245982503287,
+            "yolo26_s1": 0.0003521074388188723,
+            "yolo26_s2": -0.002979197562286108,
+            "yolo8_s0": 0.005822136885862046,
+            "yolo8_s1": -0.0031312692228725614,
+            "rtdetr_l": 0.0008627912214782818
+          },
+          "per_sequence": {
+            "050": -0.0020279582507006996,
+            "060": 0.00022855582947174527,
+            "070": 0.002369928031641736
+          },
+          "conditional_sequence_by_run_interval": [
+            -0.0030614256540225622,
+            0.004917640215737175
+          ]
+        }
+      },
+      "full_csecf_minus_always_cdf": {
+        "mean": -0.004455621293120636,
+        "positive_checkpoints": 1,
+        "worst_checkpoint": -0.012074011654534094,
+        "per_checkpoint": {
+          "yolo26_s0": 0.0021976324547452707,
+          "yolo26_s1": -0.007186895909071354,
+          "yolo26_s2": -0.004478086761491649,
+          "yolo8_s0": -0.004900714542189033,
+          "yolo8_s1": -0.012074011654534094,
+          "rtdetr_l": -0.00029165134618296205
+        },
+        "per_sequence": {
+          "050": -0.004865100180648074,
+          "060": 0.0002285533599013712,
+          "070": -0.008730317058615208
+        },
+        "conditional_sequence_by_run_interval": [
+          -0.011089486835663093,
+          0.0017244733671896843
+        ],
+        "ap50_95": {
+          "mean": -0.007164193947802329,
+          "positive_checkpoints": 0,
+          "worst_checkpoint": -0.010487723064266685,
+          "per_checkpoint": {
+            "yolo26_s0": -0.0044567548109676275,
+            "yolo26_s1": -0.010487723064266685,
+            "yolo26_s2": -0.008663959371477481,
+            "yolo8_s0": -0.004562829914489455,
+            "yolo8_s1": -0.009732628443467407,
+            "rtdetr_l": -0.005081268082145315
+          },
+          "per_sequence": {
+            "050": -0.004957845510985113,
+            "060": -0.010614757904798308,
+            "070": -0.005919978427623564
+          },
+          "conditional_sequence_by_run_interval": [
+            -0.010997172377118588,
+            -0.0032927070040048513
+          ]
+        }
+      },
+      "full_csecf_minus_no_shield": {
+        "mean": 0.008935080475932927,
+        "positive_checkpoints": 6,
+        "worst_checkpoint": 0.0005441355695434078,
+        "per_checkpoint": {
+          "yolo26_s0": 0.0005441355695434078,
+          "yolo26_s1": 0.0050637809142984784,
+          "yolo26_s2": 0.0043953494740578,
+          "yolo8_s0": 0.01444060978116297,
+          "yolo8_s1": 0.028191492635360815,
+          "rtdetr_l": 0.0009751144811740911
+        },
+        "per_sequence": {
+          "050": 0.016136377783783833,
+          "060": 0.005537238616601058,
+          "070": 0.0051316250274138905
+        },
+        "conditional_sequence_by_run_interval": [
+          0.0009609908997479101,
+          0.021547108085744338
+        ],
+        "ap50_95": {
+          "mean": -9.015639674745891e-05,
+          "positive_checkpoints": 2,
+          "worst_checkpoint": -0.003964784206817343,
+          "per_checkpoint": {
+            "yolo26_s0": -0.0037650340783977575,
+            "yolo26_s1": -0.0021834157883542696,
+            "yolo26_s2": -0.0019375611922170695,
+            "yolo8_s0": 0.0021919773268407106,
+            "yolo8_s1": 0.009117879558460976,
+            "rtdetr_l": -0.003964784206817343
+          },
+          "per_sequence": {
+            "050": 0.006245246626367488,
+            "060": -0.004578502659108168,
+            "070": -0.0019372131575016965
+          },
+          "conditional_sequence_by_run_interval": [
+            -0.005834766040319205,
+            0.007999653801170964
+          ]
+        }
+      },
+      "no_shield_minus_visible": {
+        "mean": -0.008813475981542055,
+        "positive_checkpoints": 2,
+        "worst_checkpoint": -0.032701156897269,
+        "per_checkpoint": {
+          "yolo26_s0": 0.00029106994102378117,
+          "yolo26_s1": -0.005005711913211399,
+          "yolo26_s2": -0.007139594175472449,
+          "yolo8_s0": -0.008710596744802715,
+          "yolo8_s1": -0.032701156897269,
+          "rtdetr_l": 0.00038513390047944927
+        },
+        "per_sequence": {
+          "050": -0.019700120616594114,
+          "060": -0.0051753009530516245,
+          "070": -0.0015650063749804279
+        },
+        "conditional_sequence_by_run_interval": [
+          -0.025925234861040078,
+          0.002563360895019523
+        ],
+        "ap50_95": {
+          "mean": 0.00028033160021838626,
+          "positive_checkpoints": 4,
+          "worst_checkpoint": -0.012249148781333536,
+          "per_checkpoint": {
+            "yolo26_s0": 0.00397951653822279,
+            "yolo26_s1": 0.0025355232271731423,
+            "yolo26_s2": -0.0010416363700690389,
+            "yolo8_s0": 0.003630159559021335,
+            "yolo8_s1": -0.012249148781333536,
+            "rtdetr_l": 0.004827575428295625
+          },
+          "per_sequence": {
+            "050": -0.008273204877068188,
+            "060": 0.004807058488579913,
+            "070": 0.004307141189143431
+          },
+          "conditional_sequence_by_run_interval": [
+            -0.010470136973996748,
+            0.008304136169893589
+          ]
+        }
+      }
+    },
+    "status": "exploratory_post_review_analysis"
+  },
+  "vedai_standard_matching": {
+    "runs": [
+      "vedai_run1",
+      "vedai_run2"
+    ],
+    "policies": {
+      "visible": {
+        "candidates": [
+          "vis"
+        ],
+        "margin": 1.0,
+        "top_k": 5,
+        "name": "vis@m1",
+        "detector_forwards": 1,
+        "fusion_latency_ms": 0.0,
+        "estimated_serial_ms": 32.5,
+        "max_independent_peak_mib": null
+      },
+      "always_cdf": {
+        "candidates": [
+          "cdf"
+        ],
+        "margin": 1.0,
+        "top_k": 5,
+        "name": "cdf@m1",
+        "detector_forwards": 1,
+        "fusion_latency_ms": 22.282,
+        "estimated_serial_ms": 54.782,
+        "max_independent_peak_mib": null
+      },
+      "candidate": {
+        "candidates": [
+          "vis",
+          "pia"
+        ],
+        "margin": 1.5,
+        "top_k": 5,
+        "name": "vis+pia@m1.5",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 37.7,
+        "estimated_serial_ms": 102.7,
+        "max_independent_peak_mib": 869.1
+      },
+      "full_csecf": {
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia",
+          "spg"
+        ],
+        "margin": 1.5,
+        "top_k": 5,
+        "name": "vis+cdf+pia+spg@m1.5",
+        "detector_forwards": 4,
+        "fusion_latency_ms": 576.282,
+        "estimated_serial_ms": 706.282,
+        "max_independent_peak_mib": 1453.5
+      },
+      "no_shield": {
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia",
+          "spg"
+        ],
+        "margin": 0.0,
+        "top_k": 5,
+        "name": "vis+cdf+pia+spg@m0",
+        "detector_forwards": 4,
+        "fusion_latency_ms": 576.282,
+        "estimated_serial_ms": 706.282,
+        "max_independent_peak_mib": 1453.5
+      }
+    },
+    "comparisons": {
+      "candidate_minus_visible": {
+        "equal_run_mean": -0.003285186194350187,
+        "per_run": {
+          "vedai_run1": -0.005019333787168345,
+          "vedai_run2": -0.0015510386015320289
+        },
+        "positive_runs": 0,
+        "worst_run": -0.005019333787168345,
+        "conditional_run_by_block_interval": [
+          -0.008841827663321398,
+          0.00011365731830395028
+        ]
+      },
+      "candidate_minus_no_shield": {
+        "equal_run_mean": 0.051309559593476994,
+        "per_run": {
+          "vedai_run1": 0.03094793951631162,
+          "vedai_run2": 0.07167117967064238
+        },
+        "positive_runs": 2,
+        "worst_run": 0.03094793951631162,
+        "conditional_run_by_block_interval": [
+          0.016125137642107424,
+          0.09018721619415473
+        ]
+      },
+      "candidate_minus_full_csecf": {
+        "equal_run_mean": 0.010280838808699367,
+        "per_run": {
+          "vedai_run1": 0.007356580365954457,
+          "vedai_run2": 0.013205097251444276
+        },
+        "positive_runs": 2,
+        "worst_run": 0.007356580365954457,
+        "conditional_run_by_block_interval": [
+          0.002324721092804252,
+          0.02119389814739462
+        ]
+      },
+      "full_csecf_minus_visible": {
+        "equal_run_mean": -0.013566025003049553,
+        "per_run": {
+          "vedai_run1": -0.012375914153122803,
+          "vedai_run2": -0.014756135852976304
+        },
+        "positive_runs": 0,
+        "worst_run": -0.014756135852976304,
+        "conditional_run_by_block_interval": [
+          -0.023532599847070738,
+          -0.005911237918190777
+        ]
+      },
+      "full_csecf_minus_always_cdf": {
+        "equal_run_mean": -0.024159766085315237,
+        "per_run": {
+          "vedai_run1": -0.014577137816251329,
+          "vedai_run2": -0.033742394354379146
+        },
+        "positive_runs": 0,
+        "worst_run": -0.033742394354379146,
+        "conditional_run_by_block_interval": [
+          -0.04954580311475749,
+          -0.008633015479729118
+        ]
+      },
+      "full_csecf_minus_no_shield": {
+        "equal_run_mean": 0.041028720784777636,
+        "per_run": {
+          "vedai_run1": 0.02359135915035716,
+          "vedai_run2": 0.05846608241919811
+        },
+        "positive_runs": 2,
+        "worst_run": 0.02359135915035716,
+        "conditional_run_by_block_interval": [
+          0.009594563050051184,
+          0.07830064711347114
+        ]
+      },
+      "no_shield_minus_visible": {
+        "equal_run_mean": -0.05459474578782719,
+        "per_run": {
+          "vedai_run1": -0.035967273303479964,
+          "vedai_run2": -0.07322221827217441
+        },
+        "positive_runs": 0,
+        "worst_run": -0.07322221827217441,
+        "conditional_run_by_block_interval": [
+          -0.09187002087859378,
+          -0.021965352850597496
+        ]
+      }
+    },
+    "switch_fraction": {
+      "vedai_run1": 0.10743801652892562,
+      "vedai_run2": 0.06611570247933884
+    },
+    "selected_counts": {
+      "vedai_run1": {
+        "vis": 108,
+        "cdf": 0,
+        "pia": 13,
+        "spg": 0
+      },
+      "vedai_run2": {
+        "vis": 113,
+        "cdf": 0,
+        "pia": 8,
+        "spg": 0
+      }
+    },
+    "status": "exploratory_post_review_analysis"
+  },
+  "dronevehicle_native_obb": {
+    "runs": [
+      "yolo11n_obb_run1",
+      "yolo11n_obb_run2"
+    ],
+    "policies": {
+      "visible": {
+        "candidates": [
+          "vis"
+        ],
+        "margin": 1.0,
+        "top_k": 5,
+        "name": "vis@m1",
+        "detector_forwards": 1,
+        "fusion_latency_ms": 0.0,
+        "estimated_serial_ms": 32.5,
+        "max_independent_peak_mib": null
+      },
+      "always_cdf": {
+        "candidates": [
+          "cdf"
+        ],
+        "margin": 1.0,
+        "top_k": 5,
+        "name": "cdf@m1",
+        "detector_forwards": 1,
+        "fusion_latency_ms": 22.282,
+        "estimated_serial_ms": 54.782,
+        "max_independent_peak_mib": null
+      },
+      "candidate": {
+        "candidates": [
+          "vis",
+          "pia"
+        ],
+        "margin": 1.5,
+        "top_k": 5,
+        "name": "vis+pia@m1.5",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 37.7,
+        "estimated_serial_ms": 102.7,
+        "max_independent_peak_mib": 869.1
+      },
+      "full_csecf": {
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia",
+          "spg"
+        ],
+        "margin": 1.5,
+        "top_k": 5,
+        "name": "vis+cdf+pia+spg@m1.5",
+        "detector_forwards": 4,
+        "fusion_latency_ms": 576.282,
+        "estimated_serial_ms": 706.282,
+        "max_independent_peak_mib": 1453.5
+      },
+      "no_shield": {
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia",
+          "spg"
+        ],
+        "margin": 0.0,
+        "top_k": 5,
+        "name": "vis+cdf+pia+spg@m0",
+        "detector_forwards": 4,
+        "fusion_latency_ms": 576.282,
+        "estimated_serial_ms": 706.282,
+        "max_independent_peak_mib": 1453.5
+      }
+    },
+    "comparisons": {
+      "candidate_minus_visible": {
+        "equal_run_mean": -0.0013614269001847774,
+        "per_run": {
+          "yolo11n_obb_run1": -0.0002520425335835186,
+          "yolo11n_obb_run2": -0.0024708112667860362
+        },
+        "positive_runs": 0,
+        "worst_run": -0.0024708112667860362,
+        "conditional_run_by_block_interval": [
+          -0.005813874021048493,
+          0.002264876712778502
+        ]
+      },
+      "candidate_minus_no_shield": {
+        "equal_run_mean": 0.0026261967659352244,
+        "per_run": {
+          "yolo11n_obb_run1": 0.004894514195808959,
+          "yolo11n_obb_run2": 0.0003578793360614896
+        },
+        "positive_runs": 2,
+        "worst_run": 0.0003578793360614896,
+        "conditional_run_by_block_interval": [
+          -0.009087916918614533,
+          0.014413203656000998
+        ]
+      },
+      "candidate_minus_full_csecf": {
+        "equal_run_mean": -0.0019514651578664923,
+        "per_run": {
+          "yolo11n_obb_run1": 0.00025375636072483276,
+          "yolo11n_obb_run2": -0.004156686676457817
+        },
+        "positive_runs": 1,
+        "worst_run": -0.004156686676457817,
+        "conditional_run_by_block_interval": [
+          -0.007205973892230193,
+          0.0005730797500287932
+        ]
+      },
+      "full_csecf_minus_visible": {
+        "equal_run_mean": 0.000590038257681715,
+        "per_run": {
+          "yolo11n_obb_run1": -0.0005057988943083513,
+          "yolo11n_obb_run2": 0.0016858754096717814
+        },
+        "positive_runs": 1,
+        "worst_run": -0.0005057988943083513,
+        "conditional_run_by_block_interval": [
+          -0.0030704834871103093,
+          0.003094819258003608
+        ]
+      },
+      "full_csecf_minus_always_cdf": {
+        "equal_run_mean": 0.006292418425622411,
+        "per_run": {
+          "yolo11n_obb_run1": 0.009037042855568703,
+          "yolo11n_obb_run2": 0.0035477939956761184
+        },
+        "positive_runs": 2,
+        "worst_run": 0.0035477939956761184,
+        "conditional_run_by_block_interval": [
+          0.00019700236643904745,
+          0.019494635601167043
+        ]
+      },
+      "full_csecf_minus_no_shield": {
+        "equal_run_mean": 0.004577661923801717,
+        "per_run": {
+          "yolo11n_obb_run1": 0.0046407578350841265,
+          "yolo11n_obb_run2": 0.004514566012519307
+        },
+        "positive_runs": 2,
+        "worst_run": 0.004514566012519307,
+        "conditional_run_by_block_interval": [
+          -0.007135444997692383,
+          0.014478770684580127
+        ]
+      },
+      "no_shield_minus_visible": {
+        "equal_run_mean": -0.003987623666120002,
+        "per_run": {
+          "yolo11n_obb_run1": -0.005146556729392478,
+          "yolo11n_obb_run2": -0.002828690602847526
+        },
+        "positive_runs": 0,
+        "worst_run": -0.005146556729392478,
+        "conditional_run_by_block_interval": [
+          -0.01258382354209305,
+          0.004064961510582074
+        ]
+      }
+    },
+    "switch_fraction": {
+      "yolo11n_obb_run1": 0.08333333333333333,
+      "yolo11n_obb_run2": 0.13
+    },
+    "selected_counts": {
+      "yolo11n_obb_run1": {
+        "vis": 275,
+        "cdf": 0,
+        "pia": 25,
+        "spg": 0
+      },
+      "yolo11n_obb_run2": {
+        "vis": 261,
+        "cdf": 0,
+        "pia": 39,
+        "spg": 0
+      }
+    },
+    "status": "exploratory_post_review_analysis"
+  },
+  "dronevehicle_standard_matching": {
+    "runs": [
+      "yolo11n_obb_run1",
+      "yolo11n_obb_run2"
+    ],
+    "policies": {
+      "visible": {
+        "candidates": [
+          "vis"
+        ],
+        "margin": 1.0,
+        "top_k": 5,
+        "name": "vis@m1",
+        "detector_forwards": 1,
+        "fusion_latency_ms": 0.0,
+        "estimated_serial_ms": 32.5,
+        "max_independent_peak_mib": null
+      },
+      "always_cdf": {
+        "candidates": [
+          "cdf"
+        ],
+        "margin": 1.0,
+        "top_k": 5,
+        "name": "cdf@m1",
+        "detector_forwards": 1,
+        "fusion_latency_ms": 22.282,
+        "estimated_serial_ms": 54.782,
+        "max_independent_peak_mib": null
+      },
+      "candidate": {
+        "candidates": [
+          "vis",
+          "pia"
+        ],
+        "margin": 1.5,
+        "top_k": 5,
+        "name": "vis+pia@m1.5",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 37.7,
+        "estimated_serial_ms": 102.7,
+        "max_independent_peak_mib": 869.1
+      },
+      "full_csecf": {
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia",
+          "spg"
+        ],
+        "margin": 1.5,
+        "top_k": 5,
+        "name": "vis+cdf+pia+spg@m1.5",
+        "detector_forwards": 4,
+        "fusion_latency_ms": 576.282,
+        "estimated_serial_ms": 706.282,
+        "max_independent_peak_mib": 1453.5
+      },
+      "no_shield": {
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia",
+          "spg"
+        ],
+        "margin": 0.0,
+        "top_k": 5,
+        "name": "vis+cdf+pia+spg@m0",
+        "detector_forwards": 4,
+        "fusion_latency_ms": 576.282,
+        "estimated_serial_ms": 706.282,
+        "max_independent_peak_mib": 1453.5
+      }
+    },
+    "comparisons": {
+      "candidate_minus_visible": {
+        "equal_run_mean": -0.0012393305829093888,
+        "per_run": {
+          "yolo11n_obb_run1": -0.00016525782410486967,
+          "yolo11n_obb_run2": -0.002313403341713908
+        },
+        "positive_runs": 0,
+        "worst_run": -0.002313403341713908,
+        "conditional_run_by_block_interval": [
+          -0.005784978876997739,
+          0.00280254233021876
+        ]
+      },
+      "candidate_minus_no_shield": {
+        "equal_run_mean": 0.004214049843773021,
+        "per_run": {
+          "yolo11n_obb_run1": 0.007809521550041332,
+          "yolo11n_obb_run2": 0.0006185781375047106
+        },
+        "positive_runs": 2,
+        "worst_run": 0.0006185781375047106,
+        "conditional_run_by_block_interval": [
+          -0.00668448476661021,
+          0.017484926905772774
+        ]
+      },
+      "candidate_minus_full_csecf": {
+        "equal_run_mean": -0.002084910986585263,
+        "per_run": {
+          "yolo11n_obb_run1": 0.00021036996157282792,
+          "yolo11n_obb_run2": -0.004380191934743353
+        },
+        "positive_runs": 1,
+        "worst_run": -0.004380191934743353,
+        "conditional_run_by_block_interval": [
+          -0.007731559623481247,
+          0.0005037036661827421
+        ]
+      },
+      "full_csecf_minus_visible": {
+        "equal_run_mean": 0.0008455804036758737,
+        "per_run": {
+          "yolo11n_obb_run1": -0.00037562778567769756,
+          "yolo11n_obb_run2": 0.002066788593029445
+        },
+        "positive_runs": 1,
+        "worst_run": -0.00037562778567769756,
+        "conditional_run_by_block_interval": [
+          -0.0033879646279328475,
+          0.003806686015114765
+        ]
+      },
+      "full_csecf_minus_always_cdf": {
+        "equal_run_mean": 0.008766894927237551,
+        "per_run": {
+          "yolo11n_obb_run1": 0.011980749463813703,
+          "yolo11n_obb_run2": 0.005553040390661401
+        },
+        "positive_runs": 2,
+        "worst_run": 0.005553040390661401,
+        "conditional_run_by_block_interval": [
+          0.0021434094051611396,
+          0.021244638816200628
+        ]
+      },
+      "full_csecf_minus_no_shield": {
+        "equal_run_mean": 0.006298960830358284,
+        "per_run": {
+          "yolo11n_obb_run1": 0.007599151588468504,
+          "yolo11n_obb_run2": 0.004998770072248064
+        },
+        "positive_runs": 2,
+        "worst_run": 0.004998770072248064,
+        "conditional_run_by_block_interval": [
+          -0.004428360306656452,
+          0.01756789064880986
+        ]
+      },
+      "no_shield_minus_visible": {
+        "equal_run_mean": -0.00545338042668241,
+        "per_run": {
+          "yolo11n_obb_run1": -0.007974779374146201,
+          "yolo11n_obb_run2": -0.0029319814792186185
+        },
+        "positive_runs": 0,
+        "worst_run": -0.007974779374146201,
+        "conditional_run_by_block_interval": [
+          -0.014682384575554014,
+          0.002338457866197685
+        ]
+      }
+    },
+    "switch_fraction": {
+      "yolo11n_obb_run1": 0.08333333333333333,
+      "yolo11n_obb_run2": 0.13
+    },
+    "selected_counts": {
+      "yolo11n_obb_run1": {
+        "vis": 275,
+        "cdf": 0,
+        "pia": 25,
+        "spg": 0
+      },
+      "yolo11n_obb_run2": {
+        "vis": 261,
+        "cdf": 0,
+        "pia": 39,
+        "spg": 0
+      }
+    },
+    "status": "exploratory_post_review_analysis"
+  },
+  "external_evaluators": {
+    "runs": [
+      "yolov9t_coco",
+      "yolov10s_coco",
+      "yolov9t_domain"
+    ],
+    "policies": {
+      "visible": {
+        "candidates": [
+          "vis"
+        ],
+        "margin": 1.0,
+        "top_k": 5,
+        "name": "vis@m1",
+        "detector_forwards": 1,
+        "fusion_latency_ms": 0.0,
+        "estimated_serial_ms": 32.5,
+        "max_independent_peak_mib": null
+      },
+      "always_cdf": {
+        "candidates": [
+          "cdf"
+        ],
+        "margin": 1.0,
+        "top_k": 5,
+        "name": "cdf@m1",
+        "detector_forwards": 1,
+        "fusion_latency_ms": 22.282,
+        "estimated_serial_ms": 54.782,
+        "max_independent_peak_mib": null
+      },
+      "candidate": {
+        "candidates": [
+          "vis",
+          "pia"
+        ],
+        "margin": 1.5,
+        "top_k": 5,
+        "name": "vis+pia@m1.5",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 37.7,
+        "estimated_serial_ms": 102.7,
+        "max_independent_peak_mib": 869.1
+      },
+      "full_csecf": {
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia",
+          "spg"
+        ],
+        "margin": 1.5,
+        "top_k": 5,
+        "name": "vis+cdf+pia+spg@m1.5",
+        "detector_forwards": 4,
+        "fusion_latency_ms": 576.282,
+        "estimated_serial_ms": 706.282,
+        "max_independent_peak_mib": 1453.5
+      },
+      "no_shield": {
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia",
+          "spg"
+        ],
+        "margin": 0.0,
+        "top_k": 5,
+        "name": "vis+cdf+pia+spg@m0",
+        "detector_forwards": 4,
+        "fusion_latency_ms": 576.282,
+        "estimated_serial_ms": 706.282,
+        "max_independent_peak_mib": 1453.5
+      }
+    },
+    "comparisons": {
+      "candidate_minus_visible": {
+        "equal_run_mean": 0.01843607712444351,
+        "per_run": {
+          "yolov9t_coco": 0.028992209796186736,
+          "yolov10s_coco": 0.024526632604848744,
+          "yolov9t_domain": 0.001789388972295049
+        },
+        "positive_runs": 3,
+        "worst_run": 0.001789388972295049,
+        "conditional_run_by_block_interval": [
+          0.001873014419817524,
+          0.03870808376239456
+        ]
+      },
+      "candidate_minus_no_shield": {
+        "equal_run_mean": 0.003002345465173971,
+        "per_run": {
+          "yolov9t_coco": -0.019999507089167597,
+          "yolov10s_coco": -0.0075617008702832155,
+          "yolov9t_domain": 0.036568244354972725
+        },
+        "positive_runs": 1,
+        "worst_run": -0.019999507089167597,
+        "conditional_run_by_block_interval": [
+          -0.02402339506092236,
+          0.037011725812885615
+        ]
+      },
+      "candidate_minus_full_csecf": {
+        "equal_run_mean": 0.005369421253178445,
+        "per_run": {
+          "yolov9t_coco": -0.002106129528703942,
+          "yolov10s_coco": 0.0021903725820227515,
+          "yolov9t_domain": 0.016024020706216526
+        },
+        "positive_runs": 2,
+        "worst_run": -0.002106129528703942,
+        "conditional_run_by_block_interval": [
+          -0.0024166408593739607,
+          0.01973465228293347
+        ]
+      },
+      "full_csecf_minus_visible": {
+        "equal_run_mean": 0.013066655871265064,
+        "per_run": {
+          "yolov9t_coco": 0.031098339324890676,
+          "yolov10s_coco": 0.02233626002282599,
+          "yolov9t_domain": -0.014234631733921477
+        },
+        "positive_runs": 2,
+        "worst_run": -0.014234631733921477,
+        "conditional_run_by_block_interval": [
+          -0.01356633011070264,
+          0.03948663392391896
+        ]
+      },
+      "full_csecf_minus_always_cdf": {
+        "equal_run_mean": 0.0037718104363554995,
+        "per_run": {
+          "yolov9t_coco": 0.009820362822586312,
+          "yolov10s_coco": -0.0038522745097623484,
+          "yolov9t_domain": 0.0053473429962425335
+        },
+        "positive_runs": 2,
+        "worst_run": -0.0038522745097623484,
+        "conditional_run_by_block_interval": [
+          -0.012088648886067832,
+          0.020492752084015898
+        ]
+      },
+      "full_csecf_minus_no_shield": {
+        "equal_run_mean": -0.002367075788004476,
+        "per_run": {
+          "yolov9t_coco": -0.017893377560463657,
+          "yolov10s_coco": -0.009752073452305967,
+          "yolov9t_domain": 0.020544223648756195
+        },
+        "positive_runs": 1,
+        "worst_run": -0.017893377560463657,
+        "conditional_run_by_block_interval": [
+          -0.023703530258135166,
+          0.019937822429952366
+        ]
+      },
+      "no_shield_minus_visible": {
+        "equal_run_mean": 0.015433731659269541,
+        "per_run": {
+          "yolov9t_coco": 0.04899171688535433,
+          "yolov10s_coco": 0.03208833347513196,
+          "yolov9t_domain": -0.03477885538267767
+        },
+        "positive_runs": 2,
+        "worst_run": -0.03477885538267767,
+        "conditional_run_by_block_interval": [
+          -0.03212938926774741,
+          0.05452322707000836
+        ]
+      }
+    },
+    "switch_fraction": {
+      "yolov9t_coco": 0.16666666666666666,
+      "yolov10s_coco": 0.14666666666666667,
+      "yolov9t_domain": 0.13666666666666666
+    },
+    "selected_counts": {
+      "yolov9t_coco": {
+        "vis": 250,
+        "cdf": 0,
+        "pia": 50,
+        "spg": 0
+      },
+      "yolov10s_coco": {
+        "vis": 256,
+        "cdf": 0,
+        "pia": 44,
+        "spg": 0
+      },
+      "yolov9t_domain": {
+        "vis": 259,
+        "cdf": 0,
+        "pia": 41,
+        "spg": 0
+      }
+    },
+    "status": "exploratory_post_review_analysis"
+  },
+  "retrospective_max_cardinality": {
+    "checkpoint_count": 12,
+    "margin_sensitivity_grid": [
+      1.2,
+      1.3,
+      1.5,
+      1.75,
+      2.0
+    ],
+    "rows": [
+      {
+        "policy": "vis@m1.2",
+        "candidates": [
+          "vis"
+        ],
+        "margin": 1.2,
+        "dataset_balanced_gain": 0.0,
+        "mean_checkpoint_gain": 0.0,
+        "worst_checkpoint_gain": 0.0,
+        "positive_checkpoints": 0,
+        "mean_switch_fraction": 0.0,
+        "dataset_means": {
+          "llvip": 0.0,
+          "m3fd": 0.0,
+          "dronevehicle_test": 0.0
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "m3fd": [
+            0.0,
+            0.0
+          ],
+          "dronevehicle_test": [
+            0.0,
+            0.0
+          ]
+        },
+        "top_k": 5,
+        "name": "vis@m1.2",
+        "detector_forwards": 1,
+        "fusion_latency_ms": 0.0,
+        "estimated_serial_ms": 32.5,
+        "max_independent_peak_mib": null
+      },
+      {
+        "policy": "vis@m1.3",
+        "candidates": [
+          "vis"
+        ],
+        "margin": 1.3,
+        "dataset_balanced_gain": 0.0,
+        "mean_checkpoint_gain": 0.0,
+        "worst_checkpoint_gain": 0.0,
+        "positive_checkpoints": 0,
+        "mean_switch_fraction": 0.0,
+        "dataset_means": {
+          "llvip": 0.0,
+          "m3fd": 0.0,
+          "dronevehicle_test": 0.0
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "m3fd": [
+            0.0,
+            0.0
+          ],
+          "dronevehicle_test": [
+            0.0,
+            0.0
+          ]
+        },
+        "top_k": 5,
+        "name": "vis@m1.3",
+        "detector_forwards": 1,
+        "fusion_latency_ms": 0.0,
+        "estimated_serial_ms": 32.5,
+        "max_independent_peak_mib": null
+      },
+      {
+        "policy": "vis@m1.5",
+        "candidates": [
+          "vis"
+        ],
+        "margin": 1.5,
+        "dataset_balanced_gain": 0.0,
+        "mean_checkpoint_gain": 0.0,
+        "worst_checkpoint_gain": 0.0,
+        "positive_checkpoints": 0,
+        "mean_switch_fraction": 0.0,
+        "dataset_means": {
+          "llvip": 0.0,
+          "m3fd": 0.0,
+          "dronevehicle_test": 0.0
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "m3fd": [
+            0.0,
+            0.0
+          ],
+          "dronevehicle_test": [
+            0.0,
+            0.0
+          ]
+        },
+        "top_k": 5,
+        "name": "vis@m1.5",
+        "detector_forwards": 1,
+        "fusion_latency_ms": 0.0,
+        "estimated_serial_ms": 32.5,
+        "max_independent_peak_mib": null
+      },
+      {
+        "policy": "vis@m1.75",
+        "candidates": [
+          "vis"
+        ],
+        "margin": 1.75,
+        "dataset_balanced_gain": 0.0,
+        "mean_checkpoint_gain": 0.0,
+        "worst_checkpoint_gain": 0.0,
+        "positive_checkpoints": 0,
+        "mean_switch_fraction": 0.0,
+        "dataset_means": {
+          "llvip": 0.0,
+          "m3fd": 0.0,
+          "dronevehicle_test": 0.0
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "m3fd": [
+            0.0,
+            0.0
+          ],
+          "dronevehicle_test": [
+            0.0,
+            0.0
+          ]
+        },
+        "top_k": 5,
+        "name": "vis@m1.75",
+        "detector_forwards": 1,
+        "fusion_latency_ms": 0.0,
+        "estimated_serial_ms": 32.5,
+        "max_independent_peak_mib": null
+      },
+      {
+        "policy": "vis@m2",
+        "candidates": [
+          "vis"
+        ],
+        "margin": 2.0,
+        "dataset_balanced_gain": 0.0,
+        "mean_checkpoint_gain": 0.0,
+        "worst_checkpoint_gain": 0.0,
+        "positive_checkpoints": 0,
+        "mean_switch_fraction": 0.0,
+        "dataset_means": {
+          "llvip": 0.0,
+          "m3fd": 0.0,
+          "dronevehicle_test": 0.0
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "m3fd": [
+            0.0,
+            0.0
+          ],
+          "dronevehicle_test": [
+            0.0,
+            0.0
+          ]
+        },
+        "top_k": 5,
+        "name": "vis@m2",
+        "detector_forwards": 1,
+        "fusion_latency_ms": 0.0,
+        "estimated_serial_ms": 32.5,
+        "max_independent_peak_mib": null
+      },
+      {
+        "policy": "vis+cdf@m1.2",
+        "candidates": [
+          "vis",
+          "cdf"
+        ],
+        "margin": 1.2,
+        "dataset_balanced_gain": 0.00046634716794168984,
+        "mean_checkpoint_gain": 0.0003086692228661772,
+        "worst_checkpoint_gain": -0.0005895824617279269,
+        "positive_checkpoints": 8,
+        "mean_switch_fraction": 0.03444444444444445,
+        "dataset_means": {
+          "llvip": 0.0001509912777906646,
+          "m3fd": 6.548094214556266e-05,
+          "dronevehicle_test": 0.0011825692838888422
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0007864981480661948,
+            0.0002665787904797545,
+            0.0015638305746659936,
+            -0.00011812521130127873,
+            -0.0005895824617279269,
+            -0.0002164970470666264,
+            2.7116514637096474e-05,
+            -0.0005118890854278904
+          ],
+          "m3fd": [
+            0.00013094351618384015,
+            1.8368107285171575e-08
+          ],
+          "dronevehicle_test": [
+            0.0012490446421417611,
+            0.001116093925635923
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf@m1.2",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 22.282,
+        "estimated_serial_ms": 87.282,
+        "max_independent_peak_mib": null
+      },
+      {
+        "policy": "vis+cdf@m1.3",
+        "candidates": [
+          "vis",
+          "cdf"
+        ],
+        "margin": 1.3,
+        "dataset_balanced_gain": 0.0005350421231559831,
+        "mean_checkpoint_gain": 0.0006059191903875158,
+        "worst_checkpoint_gain": 0.0,
+        "positive_checkpoints": 11,
+        "mean_switch_fraction": 0.01902777777777778,
+        "dataset_means": {
+          "llvip": 0.0006767962576190485,
+          "m3fd": 6.567966847566276e-05,
+          "dronevehicle_test": 0.0008626504433732382
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0009600367773089211,
+            0.0012925949032517314,
+            0.0016947868571958022,
+            0.0,
+            0.00011570432352432063,
+            6.5029872820453e-05,
+            0.0009599138319977353,
+            0.00032630349485342414
+          ],
+          "m3fd": [
+            0.00013094351618384015,
+            4.1582076748536423e-07
+          ],
+          "dronevehicle_test": [
+            0.0008840658569041112,
+            0.0008412350298423651
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf@m1.3",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 22.282,
+        "estimated_serial_ms": 87.282,
+        "max_independent_peak_mib": null
+      },
+      {
+        "policy": "vis+cdf@m1.5",
+        "candidates": [
+          "vis",
+          "cdf"
+        ],
+        "margin": 1.5,
+        "dataset_balanced_gain": 0.0004860012116794097,
+        "mean_checkpoint_gain": 0.00043448560784353963,
+        "worst_checkpoint_gain": -0.001243329423277714,
+        "positive_checkpoints": 8,
+        "mean_switch_fraction": 0.008194444444444443,
+        "dataset_means": {
+          "llvip": 0.0003829700040076695,
+          "m3fd": 6.543601114787634e-05,
+          "dronevehicle_test": 0.0010095976198826833
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0002748878957019902,
+            0.0015880550115948847,
+            0.0013704445662586773,
+            0.0,
+            -0.001243329423277714,
+            -0.0001947522495487432,
+            0.001268454231332261,
+            0.0
+          ],
+          "m3fd": [
+            0.00013059488618880066,
+            2.7713610695201396e-07
+          ],
+          "dronevehicle_test": [
+            0.0008911452488118051,
+            0.0011280499909535613
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf@m1.5",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 22.282,
+        "estimated_serial_ms": 87.282,
+        "max_independent_peak_mib": null
+      },
+      {
+        "policy": "vis+cdf@m1.75",
+        "candidates": [
+          "vis",
+          "cdf"
+        ],
+        "margin": 1.75,
+        "dataset_balanced_gain": 0.0003579202983498802,
+        "mean_checkpoint_gain": 0.0001719431873107431,
+        "worst_checkpoint_gain": -0.001243329423277714,
+        "positive_checkpoints": 5,
+        "mean_switch_fraction": 0.005416666666666667,
+        "dataset_means": {
+          "llvip": -1.4033923728394007e-05,
+          "m3fd": 6.543601114787634e-05,
+          "dronevehicle_test": 0.0010223588076301582
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            -0.00014679621271768934,
+            0.0014726064957169946,
+            0.0,
+            0.0,
+            -0.001243329423277714,
+            -0.0001947522495487432,
+            0.0,
+            0.0
+          ],
+          "m3fd": [
+            0.00013059488618880066,
+            2.7713610695201396e-07
+          ],
+          "dronevehicle_test": [
+            0.0008911452488118051,
+            0.0011535723664485114
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf@m1.75",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 22.282,
+        "estimated_serial_ms": 87.282,
+        "max_independent_peak_mib": null
+      },
+      {
+        "policy": "vis+cdf@m2",
+        "candidates": [
+          "vis",
+          "cdf"
+        ],
+        "margin": 2.0,
+        "dataset_balanced_gain": 0.00034242080290675217,
+        "mean_checkpoint_gain": 0.00020399684512389002,
+        "worst_checkpoint_gain": -0.0006126681680757663,
+        "positive_checkpoints": 5,
+        "mean_switch_fraction": 0.003888888888888889,
+        "dataset_means": {
+          "llvip": 6.557288734102787e-05,
+          "m3fd": 6.52712264236216e-05,
+          "dronevehicle_test": 0.000896418294955607
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            -0.00014679621271768934,
+            0.001478799729070422,
+            0.0,
+            0.0,
+            -0.0006126681680757663,
+            -0.0001947522495487432,
+            0.0,
+            0.0
+          ],
+          "m3fd": [
+            0.00013026531674029118,
+            2.7713610695201396e-07
+          ],
+          "dronevehicle_test": [
+            0.0008911452488118051,
+            0.0009016913410994087
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf@m2",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 22.282,
+        "estimated_serial_ms": 87.282,
+        "max_independent_peak_mib": null
+      },
+      {
+        "policy": "vis+pia@m1.2",
+        "candidates": [
+          "vis",
+          "pia"
+        ],
+        "margin": 1.2,
+        "dataset_balanced_gain": 0.013293062823988571,
+        "mean_checkpoint_gain": 0.007109372280923762,
+        "worst_checkpoint_gain": -0.0057070951111001566,
+        "positive_checkpoints": 8,
+        "mean_switch_fraction": 0.10361111111111111,
+        "dataset_means": {
+          "llvip": 0.0009256817378589521,
+          "m3fd": 0.006819254491920487,
+          "dronevehicle_test": 0.03213425224218627
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.000871951023468471,
+            0.012159263099593714,
+            -0.0057070951111001566,
+            0.004322417763833226,
+            -0.003512172053829429,
+            -0.0054637102085498546,
+            -0.0019508039178085682,
+            0.006685603307264214
+          ],
+          "m3fd": [
+            0.0017961523587780859,
+            0.011842356625062889
+          ],
+          "dronevehicle_test": [
+            0.03063020645866769,
+            0.03363829802570486
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+pia@m1.2",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 37.7,
+        "estimated_serial_ms": 102.7,
+        "max_independent_peak_mib": 869.1
+      },
+      {
+        "policy": "vis+pia@m1.3",
+        "candidates": [
+          "vis",
+          "pia"
+        ],
+        "margin": 1.3,
+        "dataset_balanced_gain": 0.00900288122472088,
+        "mean_checkpoint_gain": 0.0042123621395277686,
+        "worst_checkpoint_gain": -0.0073786508677434115,
+        "positive_checkpoints": 8,
+        "mean_switch_fraction": 0.08347222222222221,
+        "dataset_means": {
+          "llvip": -0.000578156945665342,
+          "m3fd": 0.007095216283420636,
+          "dronevehicle_test": 0.020491584336407347
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0006072532449542216,
+            0.006296730736172762,
+            -0.0073786508677434115,
+            0.0029772243359855255,
+            -0.0035135218974203636,
+            -0.00507758181183401,
+            -0.000797279481854469,
+            0.0022605701764170094
+          ],
+          "m3fd": [
+            0.0017961523587780859,
+            0.012394280208063185
+          ],
+          "dronevehicle_test": [
+            0.01964545399241091,
+            0.02133771468040378
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+pia@m1.3",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 37.7,
+        "estimated_serial_ms": 102.7,
+        "max_independent_peak_mib": 869.1
+      },
+      {
+        "policy": "vis+pia@m1.5",
+        "candidates": [
+          "vis",
+          "pia"
+        ],
+        "margin": 1.5,
+        "dataset_balanced_gain": 0.009073011311119861,
+        "mean_checkpoint_gain": 0.004991183203984055,
+        "worst_checkpoint_gain": -0.003941418502146766,
+        "positive_checkpoints": 9,
+        "mean_switch_fraction": 0.058194444444444444,
+        "dataset_means": {
+          "llvip": 0.0009093550968482482,
+          "m3fd": 0.008159829811391406,
+          "dronevehicle_test": 0.01814984902511993
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.00331762875642651,
+            0.007845902199102353,
+            -0.001841714250235398,
+            0.00016080636730811789,
+            -0.0013278214726185305,
+            -0.003941418502146766,
+            0.0010002351322523045,
+            0.002061222544697396
+          ],
+          "m3fd": [
+            0.0033962471977325714,
+            0.01292341242505024
+          ],
+          "dronevehicle_test": [
+            0.01538396368295484,
+            0.020915734367285017
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+pia@m1.5",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 37.7,
+        "estimated_serial_ms": 102.7,
+        "max_independent_peak_mib": 869.1
+      },
+      {
+        "policy": "vis+pia@m1.75",
+        "candidates": [
+          "vis",
+          "pia"
+        ],
+        "margin": 1.75,
+        "dataset_balanced_gain": 0.007621345665417186,
+        "mean_checkpoint_gain": 0.004363553883598883,
+        "worst_checkpoint_gain": -0.003941418502146766,
+        "positive_checkpoints": 9,
+        "mean_switch_fraction": 0.049861111111111106,
+        "dataset_means": {
+          "llvip": 0.00110576210178058,
+          "m3fd": 0.008224331998579928,
+          "dronevehicle_test": 0.013533942895891049
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0034582211126702933,
+            0.00844103170683668,
+            -0.001488708021423852,
+            0.00016080636730811789,
+            -0.0008452935259495309,
+            -0.003941418502146766,
+            0.0010002351322523045,
+            0.002061222544697396
+          ],
+          "m3fd": [
+            0.003390333724800132,
+            0.013058330272359725
+          ],
+          "dronevehicle_test": [
+            0.009503168927128436,
+            0.017564716864653662
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+pia@m1.75",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 37.7,
+        "estimated_serial_ms": 102.7,
+        "max_independent_peak_mib": 869.1
+      },
+      {
+        "policy": "vis+pia@m2",
+        "candidates": [
+          "vis",
+          "pia"
+        ],
+        "margin": 2.0,
+        "dataset_balanced_gain": 0.006159255159549415,
+        "mean_checkpoint_gain": 0.0036056015396202148,
+        "worst_checkpoint_gain": -0.003941418502146766,
+        "positive_checkpoints": 8,
+        "mean_switch_fraction": 0.04055555555555556,
+        "dataset_means": {
+          "llvip": 0.0010519479196910134,
+          "m3fd": 0.007653527018086609,
+          "dronevehicle_test": 0.009772290540870626
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0012530903304583476,
+            0.00844103170683668,
+            -0.001488708021423852,
+            0.0,
+            -0.0007121613156529293,
+            -0.003941418502146766,
+            0.0028025266147592314,
+            0.002061222544697396
+          ],
+          "m3fd": [
+            0.0031956888282632656,
+            0.012111365207909952
+          ],
+          "dronevehicle_test": [
+            0.008773149291012436,
+            0.010771431790728814
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+pia@m2",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 37.7,
+        "estimated_serial_ms": 102.7,
+        "max_independent_peak_mib": 869.1
+      },
+      {
+        "policy": "vis+spg@m1.2",
+        "candidates": [
+          "vis",
+          "spg"
+        ],
+        "margin": 1.2,
+        "dataset_balanced_gain": 0.011109732933225753,
+        "mean_checkpoint_gain": 0.003631364819631089,
+        "worst_checkpoint_gain": -0.034193152929243596,
+        "positive_checkpoints": 6,
+        "mean_switch_fraction": 0.15,
+        "dataset_means": {
+          "llvip": -0.0038470032939635756,
+          "m3fd": 0.0006894214552333744,
+          "dronevehicle_test": 0.03648678063840746
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            -1.8124208905076094e-05,
+            0.012220212050643069,
+            -0.017183330809847512,
+            0.0055779592674080536,
+            -0.034193152929243596,
+            -0.004894777081407921,
+            -0.0058055539818713964,
+            0.013520741341515772
+          ],
+          "m3fd": [
+            -0.0004527530529521706,
+            0.0018315959634189194
+          ],
+          "dronevehicle_test": [
+            0.029535247145897503,
+            0.04343831413091742
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+spg@m1.2",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 516.3,
+        "estimated_serial_ms": 581.3,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+spg@m1.3",
+        "candidates": [
+          "vis",
+          "spg"
+        ],
+        "margin": 1.3,
+        "dataset_balanced_gain": 0.00851604246297751,
+        "mean_checkpoint_gain": 0.004258907384055947,
+        "worst_checkpoint_gain": -0.02193063985514124,
+        "positive_checkpoints": 8,
+        "mean_switch_fraction": 0.11361111111111111,
+        "dataset_means": {
+          "llvip": 1.7723051343853519e-06,
+          "m3fd": 0.0006685992982964489,
+          "dronevehicle_test": 0.024877755785501693
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.002540632697027264,
+            0.01103325932842804,
+            -0.008577197194640975,
+            0.004892072482060171,
+            -0.02193063985514124,
+            0.0018765105677004401,
+            -0.005088890111790224,
+            0.015268430527431607
+          ],
+          "m3fd": [
+            -0.0005114717273866087,
+            0.0018486703239795066
+          ],
+          "dronevehicle_test": [
+            0.02047910440601508,
+            0.029276407164988305
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+spg@m1.3",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 516.3,
+        "estimated_serial_ms": 581.3,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+spg@m1.5",
+        "candidates": [
+          "vis",
+          "spg"
+        ],
+        "margin": 1.5,
+        "dataset_balanced_gain": 0.007501096737903313,
+        "mean_checkpoint_gain": 0.005076195396338503,
+        "worst_checkpoint_gain": -0.004760516922936275,
+        "positive_checkpoints": 9,
+        "mean_switch_fraction": 0.0725,
+        "dataset_means": {
+          "llvip": 0.002651294054773695,
+          "m3fd": 0.0009513722761167048,
+          "dronevehicle_test": 0.018900623882819538
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.004169761927979021,
+            0.01041791682881678,
+            -0.0020757064472939507,
+            0.00213390298804339,
+            -0.004050368624447155,
+            0.005816259258937774,
+            -0.004760516922936275,
+            0.009559103429089975
+          ],
+          "m3fd": [
+            3.0042880450525944e-05,
+            0.0018727016717828837
+          ],
+          "dronevehicle_test": [
+            0.01589438940515601,
+            0.02190685836048306
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+spg@m1.5",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 516.3,
+        "estimated_serial_ms": 581.3,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+spg@m1.75",
+        "candidates": [
+          "vis",
+          "spg"
+        ],
+        "margin": 1.75,
+        "dataset_balanced_gain": 0.005346129100559504,
+        "mean_checkpoint_gain": 0.004126965775835145,
+        "worst_checkpoint_gain": -0.0024976490467740276,
+        "positive_checkpoints": 10,
+        "mean_switch_fraction": 0.052361111111111115,
+        "dataset_means": {
+          "llvip": 0.0029078024511107847,
+          "m3fd": 0.0008990793170395861,
+          "dronevehicle_test": 0.012231505533528142
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.004811446988710817,
+            0.008047231003066495,
+            0.0005098253185323388,
+            0.0014525953692707974,
+            -0.002371501324210728,
+            0.006366425412378022,
+            -0.0024976490467740276,
+            0.006944045887912563
+          ],
+          "m3fd": [
+            3.0042880450525944e-05,
+            0.0017681157536286463
+          ],
+          "dronevehicle_test": [
+            0.010251179596787785,
+            0.014211831470268499
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+spg@m1.75",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 516.3,
+        "estimated_serial_ms": 581.3,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+spg@m2",
+        "candidates": [
+          "vis",
+          "spg"
+        ],
+        "margin": 2.0,
+        "dataset_balanced_gain": 0.004376286573928354,
+        "mean_checkpoint_gain": 0.00296708416918073,
+        "worst_checkpoint_gain": -0.0028764908877272977,
+        "positive_checkpoints": 9,
+        "mean_switch_fraction": 0.04222222222222222,
+        "dataset_means": {
+          "llvip": 0.001557881764433105,
+          "m3fd": 0.0012494113620200031,
+          "dronevehicle_test": 0.010321566595331955
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0020276482234633996,
+            0.008047231003066495,
+            -0.00011546001449751804,
+            0.00015746361836193362,
+            -0.0028764908877272977,
+            0.004497424030470836,
+            -0.0016247386476207412,
+            0.0023499767899477337
+          ],
+          "m3fd": [
+            0.00073070697041136,
+            0.0017681157536286463
+          ],
+          "dronevehicle_test": [
+            0.010438954892389293,
+            0.010204178298274616
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+spg@m2",
+        "detector_forwards": 2,
+        "fusion_latency_ms": 516.3,
+        "estimated_serial_ms": 581.3,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+cdf+pia@m1.2",
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia"
+        ],
+        "margin": 1.2,
+        "dataset_balanced_gain": 0.013261963329586677,
+        "mean_checkpoint_gain": 0.007019999076133851,
+        "worst_checkpoint_gain": -0.005889720565095783,
+        "positive_checkpoints": 8,
+        "mean_switch_fraction": 0.12277777777777778,
+        "dataset_means": {
+          "llvip": 0.0007780348226810254,
+          "m3fd": 0.006899295814711395,
+          "dronevehicle_test": 0.03210855935136761
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0007210325988105749,
+            0.01197079179300588,
+            -0.00440782932407053,
+            0.004205094916400817,
+            -0.002114526553153235,
+            -0.005889720565095783,
+            -0.003335657640294341,
+            0.005075093355844821
+          ],
+          "m3fd": [
+            0.0019560606641933487,
+            0.011842530965229442
+          ],
+          "dronevehicle_test": [
+            0.03063020645866769,
+            0.033586912244067534
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf+pia@m1.2",
+        "detector_forwards": 3,
+        "fusion_latency_ms": 59.982,
+        "estimated_serial_ms": 157.482,
+        "max_independent_peak_mib": 869.1
+      },
+      {
+        "policy": "vis+cdf+pia@m1.3",
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia"
+        ],
+        "margin": 1.3,
+        "dataset_balanced_gain": 0.009086639244122703,
+        "mean_checkpoint_gain": 0.004356811766467401,
+        "worst_checkpoint_gain": -0.005609778781958119,
+        "positive_checkpoints": 8,
+        "mean_switch_fraction": 0.09263888888888888,
+        "dataset_means": {
+          "llvip": -0.00037301571118790076,
+          "m3fd": 0.007175260881105469,
+          "dronevehicle_test": 0.02045767256245054
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0004896960271882593,
+            0.006314728902974306,
+            -0.005609778781958119,
+            0.0029772243359855255,
+            -0.0021852242554514234,
+            -0.005017060756995849,
+            -0.0014570986971143007,
+            0.0015033875358683962
+          ],
+          "m3fd": [
+            0.0019560606641933487,
+            0.01239446109801759
+          ],
+          "dronevehicle_test": [
+            0.01964545399241091,
+            0.02126989113249017
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf+pia@m1.3",
+        "detector_forwards": 3,
+        "fusion_latency_ms": 59.982,
+        "estimated_serial_ms": 157.482,
+        "max_independent_peak_mib": 869.1
+      },
+      {
+        "policy": "vis+cdf+pia@m1.5",
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia"
+        ],
+        "margin": 1.5,
+        "dataset_balanced_gain": 0.00910029809182228,
+        "mean_checkpoint_gain": 0.005020363567824986,
+        "worst_checkpoint_gain": -0.003941418502146766,
+        "positive_checkpoints": 9,
+        "mean_switch_fraction": 0.06138888888888889,
+        "dataset_means": {
+          "llvip": 0.000940429043827692,
+          "m3fd": 0.008210616206519222,
+          "dronevehicle_test": 0.01814984902511993
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0032000715386605477,
+            0.00799219766968619,
+            -0.0004712696839767209,
+            0.00016080636730811789,
+            -0.0020786982491236084,
+            -0.003941418502146766,
+            0.0006005206655163813,
+            0.002061222544697396
+          ],
+          "m3fd": [
+            0.0034976494508581757,
+            0.012923582962180269
+          ],
+          "dronevehicle_test": [
+            0.01538396368295484,
+            0.020915734367285017
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf+pia@m1.5",
+        "detector_forwards": 3,
+        "fusion_latency_ms": 59.982,
+        "estimated_serial_ms": 157.482,
+        "max_independent_peak_mib": 869.1
+      },
+      {
+        "policy": "vis+cdf+pia@m1.75",
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia"
+        ],
+        "margin": 1.75,
+        "dataset_balanced_gain": 0.007603659134847114,
+        "mean_checkpoint_gain": 0.004302790979030618,
+        "worst_checkpoint_gain": -0.003941418502146766,
+        "positive_checkpoints": 9,
+        "mean_switch_fraction": 0.05222222222222222,
+        "dataset_means": {
+          "llvip": 0.001001922823214122,
+          "m3fd": 0.008275111685436168,
+          "dronevehicle_test": 0.013533942895891049
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0034582211126702933,
+            0.008547314752592674,
+            -0.001488708021423852,
+            0.00016080636730811789,
+            -0.0017822908002371898,
+            -0.003941418502146766,
+            0.0010002351322523045,
+            0.002061222544697396
+          ],
+          "m3fd": [
+            0.0034917319573052608,
+            0.013058491413567075
+          ],
+          "dronevehicle_test": [
+            0.009503168927128436,
+            0.017564716864653662
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf+pia@m1.75",
+        "detector_forwards": 3,
+        "fusion_latency_ms": 59.982,
+        "estimated_serial_ms": 157.482,
+        "max_independent_peak_mib": 869.1
+      },
+      {
+        "policy": "vis+cdf+pia@m2",
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia"
+        ],
+        "margin": 2.0,
+        "dataset_balanced_gain": 0.006149156639224172,
+        "mean_checkpoint_gain": 0.0035600850043255305,
+        "worst_checkpoint_gain": -0.003941418502146766,
+        "positive_checkpoints": 8,
+        "mean_switch_fraction": 0.04194444444444445,
+        "dataset_means": {
+          "llvip": 0.0009710133694268889,
+          "m3fd": 0.007704166007375002,
+          "dronevehicle_test": 0.009772290540870626
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0012530903304583476,
+            0.008546190016320352,
+            -0.001488708021423852,
+            0.0,
+            -0.0014647960272495977,
+            -0.003941418502146766,
+            0.0028025266147592314,
+            0.002061222544697396
+          ],
+          "m3fd": [
+            0.003296793457624486,
+            0.012111538557125517
+          ],
+          "dronevehicle_test": [
+            0.008773149291012436,
+            0.010771431790728814
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf+pia@m2",
+        "detector_forwards": 3,
+        "fusion_latency_ms": 59.982,
+        "estimated_serial_ms": 157.482,
+        "max_independent_peak_mib": 869.1
+      },
+      {
+        "policy": "vis+cdf+spg@m1.2",
+        "candidates": [
+          "vis",
+          "cdf",
+          "spg"
+        ],
+        "margin": 1.2,
+        "dataset_balanced_gain": 0.01108773430819946,
+        "mean_checkpoint_gain": 0.003570777840326727,
+        "worst_checkpoint_gain": -0.031244736476673116,
+        "positive_checkpoints": 6,
+        "mean_switch_fraction": 0.16625,
+        "dataset_means": {
+          "llvip": -0.003946178627546006,
+          "m3fd": 0.0007516717806542034,
+          "dronevehicle_test": 0.03645770977149018
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            -0.000291897266243362,
+            0.01208135842384144,
+            -0.017290590706226214,
+            0.00546143053352193,
+            -0.031244736476673116,
+            -0.005354964403473971,
+            -0.007025152203502686,
+            0.012095123078387924
+          ],
+          "m3fd": [
+            -0.00032863785789627453,
+            0.0018319814192046813
+          ],
+          "dronevehicle_test": [
+            0.029535247145897503,
+            0.04338017239708286
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf+spg@m1.2",
+        "detector_forwards": 3,
+        "fusion_latency_ms": 538.582,
+        "estimated_serial_ms": 636.082,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+cdf+spg@m1.3",
+        "candidates": [
+          "vis",
+          "cdf",
+          "spg"
+        ],
+        "margin": 1.3,
+        "dataset_balanced_gain": 0.008634065877300158,
+        "mean_checkpoint_gain": 0.004479561545664859,
+        "worst_checkpoint_gain": -0.01941090146462256,
+        "positive_checkpoints": 8,
+        "mean_switch_fraction": 0.12180555555555556,
+        "dataset_means": {
+          "llvip": 0.00032505721402956026,
+          "m3fd": 0.0007274472166113877,
+          "dronevehicle_test": 0.024849693201259522
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0024394060478367834,
+            0.011175690338545406,
+            -0.007090098236756897,
+            0.004892072482060171,
+            -0.01941090146462256,
+            0.0016103905851298744,
+            -0.005531958633770516,
+            0.014515856593814222
+          ],
+          "m3fd": [
+            -0.0003941898234236796,
+            0.001849084256646455
+          ],
+          "dronevehicle_test": [
+            0.02047910440601508,
+            0.029220281996503967
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf+spg@m1.3",
+        "detector_forwards": 3,
+        "fusion_latency_ms": 538.582,
+        "estimated_serial_ms": 636.082,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+cdf+spg@m1.5",
+        "candidates": [
+          "vis",
+          "cdf",
+          "spg"
+        ],
+        "margin": 1.5,
+        "dataset_balanced_gain": 0.007588499061386515,
+        "mean_checkpoint_gain": 0.005218550192848888,
+        "worst_checkpoint_gain": -0.005097336372914628,
+        "positive_checkpoints": 9,
+        "mean_switch_fraction": 0.0751388888888889,
+        "dataset_means": {
+          "llvip": 0.0028486013243112594,
+          "m3fd": 0.0010162719770287487,
+          "dronevehicle_test": 0.018900623882819538
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.00406853527878854,
+            0.010322884668619938,
+            -0.000713641728731356,
+            0.00213390298804339,
+            -0.0033008969273435568,
+            0.005816259258937774,
+            -0.005097336372914628,
+            0.009559103429089975
+          ],
+          "m3fd": [
+            0.0001595744384318698,
+            0.0018729695156256276
+          ],
+          "dronevehicle_test": [
+            0.01589438940515601,
+            0.02190685836048306
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf+spg@m1.5",
+        "detector_forwards": 3,
+        "fusion_latency_ms": 538.582,
+        "estimated_serial_ms": 636.082,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+cdf+spg@m1.75",
+        "candidates": [
+          "vis",
+          "cdf",
+          "spg"
+        ],
+        "margin": 1.75,
+        "dataset_balanced_gain": 0.005344859699279112,
+        "mean_checkpoint_gain": 0.004091974448012074,
+        "worst_checkpoint_gain": -0.002826451524087527,
+        "positive_checkpoints": 10,
+        "mean_switch_fraction": 0.05444444444444444,
+        "dataset_means": {
+          "llvip": 0.0028390891967450343,
+          "m3fd": 0.0009639843675641607,
+          "dronevehicle_test": 0.012231505533528142
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.004811446988710817,
+            0.00795247516801729,
+            0.0005098253185323388,
+            0.0014525953692707974,
+            -0.002826451524087527,
+            0.006366425412378022,
+            -0.0024976490467740276,
+            0.006944045887912563
+          ],
+          "m3fd": [
+            0.0001595744384318698,
+            0.0017683942966964517
+          ],
+          "dronevehicle_test": [
+            0.010251179596787785,
+            0.014211831470268499
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf+spg@m1.75",
+        "detector_forwards": 3,
+        "fusion_latency_ms": 538.582,
+        "estimated_serial_ms": 636.082,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+cdf+spg@m2",
+        "candidates": [
+          "vis",
+          "cdf",
+          "spg"
+        ],
+        "margin": 2.0,
+        "dataset_balanced_gain": 0.004376865061749695,
+        "mean_checkpoint_gain": 0.002934978955175407,
+        "worst_checkpoint_gain": -0.0032983154795342496,
+        "positive_checkpoints": 9,
+        "mean_switch_fraction": 0.04361111111111111,
+        "dataset_means": {
+          "llvip": 0.0014930928486011192,
+          "m3fd": 0.0013159357413160128,
+          "dronevehicle_test": 0.010321566595331955
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0020276482234633996,
+            0.00795074426821756,
+            -0.00011546001449751804,
+            0.00015746361836193362,
+            -0.0032983154795342496,
+            0.004497424030470836,
+            -0.0016247386476207412,
+            0.0023499767899477337
+          ],
+          "m3fd": [
+            0.0008634771859355739,
+            0.0017683942966964517
+          ],
+          "dronevehicle_test": [
+            0.010438954892389293,
+            0.010204178298274616
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf+spg@m2",
+        "detector_forwards": 3,
+        "fusion_latency_ms": 538.582,
+        "estimated_serial_ms": 636.082,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+pia+spg@m1.2",
+        "candidates": [
+          "vis",
+          "pia",
+          "spg"
+        ],
+        "margin": 1.2,
+        "dataset_balanced_gain": 0.01261951931505323,
+        "mean_checkpoint_gain": 0.004045043239842258,
+        "worst_checkpoint_gain": -0.03700522446791853,
+        "positive_checkpoints": 7,
+        "mean_switch_fraction": 0.16722222222222224,
+        "dataset_means": {
+          "llvip": -0.004529432835368716,
+          "m3fd": 0.00628878923038291,
+          "dronevehicle_test": 0.036099201550145496
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            -0.0035352994270958027,
+            0.014613229099473315,
+            -0.019070349338502473,
+            0.0055779592674080536,
+            -0.03700522446791853,
+            -0.004541528305724661,
+            -0.0058055539818713964,
+            0.013531304471281766
+          ],
+          "m3fd": [
+            0.0008593827006596888,
+            0.011718195760106132
+          ],
+          "dronevehicle_test": [
+            0.03252505071077194,
+            0.03967335238951906
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+pia+spg@m1.2",
+        "detector_forwards": 3,
+        "fusion_latency_ms": 554.0,
+        "estimated_serial_ms": 651.5,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+pia+spg@m1.3",
+        "candidates": [
+          "vis",
+          "pia",
+          "spg"
+        ],
+        "margin": 1.3,
+        "dataset_balanced_gain": 0.00949361687689914,
+        "mean_checkpoint_gain": 0.004219558578770207,
+        "worst_checkpoint_gain": -0.022895239199529818,
+        "positive_checkpoints": 8,
+        "mean_switch_fraction": 0.1288888888888889,
+        "dataset_means": {
+          "llvip": -0.001054499719358726,
+          "m3fd": 0.006550946785052608,
+          "dronevehicle_test": 0.022984403565003537
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            -0.0021448545864861035,
+            0.009553553735518472,
+            -0.010594678713905212,
+            0.004892072482060171,
+            -0.022895239199529818,
+            0.0025579406480422196,
+            -0.005088890111790224,
+            0.015284097991220689
+          ],
+          "m3fd": [
+            0.0008061415056216659,
+            0.01229575206448355
+          ],
+          "dronevehicle_test": [
+            0.01884098203940965,
+            0.02712782509059743
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+pia+spg@m1.3",
+        "detector_forwards": 3,
+        "fusion_latency_ms": 554.0,
+        "estimated_serial_ms": 651.5,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+pia+spg@m1.5",
+        "candidates": [
+          "vis",
+          "pia",
+          "spg"
+        ],
+        "margin": 1.5,
+        "dataset_balanced_gain": 0.009071469881901396,
+        "mean_checkpoint_gain": 0.005742783217576206,
+        "worst_checkpoint_gain": -0.004760516922936275,
+        "positive_checkpoints": 9,
+        "mean_switch_fraction": 0.0836111111111111,
+        "dataset_means": {
+          "llvip": 0.002414096553251016,
+          "m3fd": 0.0077924120381229756,
+          "dronevehicle_test": 0.0170079010543302
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.003480693682089903,
+            0.01032815292703136,
+            -0.0030365205672640483,
+            0.00213390298804339,
+            -0.004208302368983952,
+            0.005816259258937774,
+            -0.004760516922936275,
+            0.009559103429089975
+          ],
+          "m3fd": [
+            0.002779513756510643,
+            0.012805310319735308
+          ],
+          "dronevehicle_test": [
+            0.014712172804237053,
+            0.019303629304423347
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+pia+spg@m1.5",
+        "detector_forwards": 3,
+        "fusion_latency_ms": 554.0,
+        "estimated_serial_ms": 651.5,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+pia+spg@m1.75",
+        "candidates": [
+          "vis",
+          "pia",
+          "spg"
+        ],
+        "margin": 1.75,
+        "dataset_balanced_gain": 0.007550675150700899,
+        "mean_checkpoint_gain": 0.005342205379081265,
+        "worst_checkpoint_gain": -0.0024976490467740276,
+        "positive_checkpoints": 10,
+        "mean_switch_fraction": 0.06166666666666667,
+        "dataset_means": {
+          "llvip": 0.003133735607461629,
+          "m3fd": 0.007855766756355118,
+          "dronevehicle_test": 0.011662523088285952
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0054924654162586805,
+            0.008604019935567333,
+            0.0005098253185323388,
+            0.0014525953692707974,
+            -0.001801843433452672,
+            0.006366425412378022,
+            -0.0024976490467740276,
+            0.006944045887912563
+          ],
+          "m3fd": [
+            0.0027736186135969565,
+            0.012937914899113279
+          ],
+          "dronevehicle_test": [
+            0.009045942204345181,
+            0.014279103972226722
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+pia+spg@m1.75",
+        "detector_forwards": 3,
+        "fusion_latency_ms": 554.0,
+        "estimated_serial_ms": 651.5,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+pia+spg@m2",
+        "candidates": [
+          "vis",
+          "pia",
+          "spg"
+        ],
+        "margin": 2.0,
+        "dataset_balanced_gain": 0.005925029020946641,
+        "mean_checkpoint_gain": 0.003860128182737245,
+        "worst_checkpoint_gain": -0.002940073633044699,
+        "positive_checkpoints": 9,
+        "mean_switch_fraction": 0.050555555555555555,
+        "dataset_means": {
+          "llvip": 0.0017952273445278493,
+          "m3fd": 0.00774954241618199,
+          "dronevehicle_test": 0.008230317302130086
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.003433206677037916,
+            0.008604019935567333,
+            -0.00011546001449751804,
+            0.00015746361836193362,
+            -0.002940073633044699,
+            0.004497424030470836,
+            -0.0016247386476207412,
+            0.0023499767899477337
+          ],
+          "m3fd": [
+            0.00339127442257095,
+            0.01210781040979303
+          ],
+          "dronevehicle_test": [
+            0.009423375245481314,
+            0.007037259358778858
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+pia+spg@m2",
+        "detector_forwards": 3,
+        "fusion_latency_ms": 554.0,
+        "estimated_serial_ms": 651.5,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+cdf+pia+spg@m1.2",
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia",
+          "spg"
+        ],
+        "margin": 1.2,
+        "dataset_balanced_gain": 0.012623238174598513,
+        "mean_checkpoint_gain": 0.0040279580752209864,
+        "worst_checkpoint_gain": -0.03405680801534804,
+        "positive_checkpoints": 7,
+        "mean_switch_fraction": 0.1825,
+        "dataset_means": {
+          "llvip": -0.004567322024156542,
+          "m3fd": 0.006362834685655017,
+          "dronevehicle_test": 0.03607420186229707
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            -0.0037217112501137955,
+            0.014488846676522029,
+            -0.019129811549982532,
+            0.00546143053352193,
+            -0.03405680801534804,
+            -0.004660458198885197,
+            -0.007025152203502686,
+            0.012105087814535962
+          ],
+          "m3fd": [
+            0.0010072989085838369,
+            0.011718370462726196
+          ],
+          "dronevehicle_test": [
+            0.03252505071077194,
+            0.03962335301382219
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf+pia+spg@m1.2",
+        "detector_forwards": 4,
+        "fusion_latency_ms": 576.282,
+        "estimated_serial_ms": 706.282,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+cdf+pia+spg@m1.3",
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia",
+          "spg"
+        ],
+        "margin": 1.3,
+        "dataset_balanced_gain": 0.009617052916676768,
+        "mean_checkpoint_gain": 0.004444807981564343,
+        "worst_checkpoint_gain": -0.020375500809011134,
+        "positive_checkpoints": 8,
+        "mean_switch_fraction": 0.1363888888888889,
+        "dataset_means": {
+          "llvip": -0.0007274369535480806,
+          "m3fd": 0.006622458152896055,
+          "dronevehicle_test": 0.022956137550682328
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            -0.002246081235676584,
+            0.009681224824714991,
+            -0.009062596979776532,
+            0.004892072482060171,
+            -0.020375500809011134,
+            0.002291820665471654,
+            -0.005531958633770516,
+            0.014531524057603305
+          ],
+          "m3fd": [
+            0.0009489829755765788,
+            0.01229593333021553
+          ],
+          "dronevehicle_test": [
+            0.01884098203940965,
+            0.02707129306195501
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf+pia+spg@m1.3",
+        "detector_forwards": 4,
+        "fusion_latency_ms": 576.282,
+        "estimated_serial_ms": 706.282,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+cdf+pia+spg@m1.5",
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia",
+          "spg"
+        ],
+        "margin": 1.5,
+        "dataset_balanced_gain": 0.009159233308574948,
+        "mean_checkpoint_gain": 0.0058855117978517104,
+        "worst_checkpoint_gain": -0.005097336372914628,
+        "positive_checkpoints": 9,
+        "mean_switch_fraction": 0.08625,
+        "dataset_means": {
+          "llvip": 0.0026117902871284713,
+          "m3fd": 0.007858008584266177,
+          "dronevehicle_test": 0.0170079010543302
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0033794670328994225,
+            0.010236212481553644,
+            -0.0016744558487014536,
+            0.00213390298804339,
+            -0.003458830671880353,
+            0.005816259258937774,
+            -0.005097336372914628,
+            0.009559103429089975
+          ],
+          "m3fd": [
+            0.0029105359586795165,
+            0.012805481209852837
+          ],
+          "dronevehicle_test": [
+            0.014712172804237053,
+            0.019303629304423347
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf+pia+spg@m1.5",
+        "detector_forwards": 4,
+        "fusion_latency_ms": 576.282,
+        "estimated_serial_ms": 706.282,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+cdf+pia+spg@m1.75",
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia",
+          "spg"
+        ],
+        "margin": 1.75,
+        "dataset_balanced_gain": 0.00754953884747427,
+        "mean_checkpoint_gain": 0.005307137921965865,
+        "worst_checkpoint_gain": -0.0024976490467740276,
+        "positive_checkpoints": 10,
+        "mean_switch_fraction": 0.06375,
+        "dataset_means": {
+          "llvip": 0.0030647369964574606,
+          "m3fd": 0.007921356457679399,
+          "dronevehicle_test": 0.011662523088285952
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.0054924654162586805,
+            0.008506981247410783,
+            0.0005098253185323388,
+            0.0014525953692707974,
+            -0.0022567936333294713,
+            0.006366425412378022,
+            -0.0024976490467740276,
+            0.006944045887912563
+          ],
+          "m3fd": [
+            0.0029046365417575715,
+            0.012938076373601226
+          ],
+          "dronevehicle_test": [
+            0.009045942204345181,
+            0.014279103972226722
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf+pia+spg@m1.75",
+        "detector_forwards": 4,
+        "fusion_latency_ms": 576.282,
+        "estimated_serial_ms": 706.282,
+        "max_independent_peak_mib": 1453.5
+      },
+      {
+        "policy": "vis+cdf+pia+spg@m2",
+        "candidates": [
+          "vis",
+          "cdf",
+          "pia",
+          "spg"
+        ],
+        "margin": 2.0,
+        "dataset_balanced_gain": 0.005920218831785499,
+        "mean_checkpoint_gain": 0.0038251859519214722,
+        "worst_checkpoint_gain": -0.003361898224851651,
+        "positive_checkpoints": 9,
+        "mean_switch_fraction": 0.05194444444444445,
+        "dataset_means": {
+          "llvip": 0.0017301530720574456,
+          "m3fd": 0.007800186121168964,
+          "dronevehicle_test": 0.008230317302130086
+        },
+        "per_dataset_gains": {
+          "llvip": [
+            0.003433206677037916,
+            0.008505250347611055,
+            -0.00011546001449751804,
+            0.00015746361836193362,
+            -0.003361898224851651,
+            0.004497424030470836,
+            -0.0016247386476207412,
+            0.0023499767899477337
+          ],
+          "m3fd": [
+            0.0034923790519321707,
+            0.012107993190405758
+          ],
+          "dronevehicle_test": [
+            0.009423375245481314,
+            0.007037259358778858
+          ]
+        },
+        "top_k": 5,
+        "name": "vis+cdf+pia+spg@m2",
+        "detector_forwards": 4,
+        "fusion_latency_ms": 576.282,
+        "estimated_serial_ms": 706.282,
+        "max_independent_peak_mib": 1453.5
+      }
+    ]
+  }
+}

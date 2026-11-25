@@ -1,0 +1,3 @@
+case,sequence,stem,selected_input,visible_top5_confidence,selected_top5_confidence,selected_ratio,visible_ap50,selected_ap50,ap50_change,ground_truth_count,detector,visible_true_positives,selected_true_positives,visible_max_confidence,selected_max_confidence
+success,070,070142,SPGFusion,0.067819,0.169854,2.504501,0.0,1.0,1.0,1,yolo26_s0,0,1,0.097194,0.665453
+failure,070,070162,SPGFusion,0.095652,0.182427,1.907188,0.418317,0.336634,-0.081683,3,yolo26_s0,2,1,0.26857,0.297997

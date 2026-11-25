@@ -1,0 +1,65 @@
+{
+  "dataset": "DroneVehicle official test",
+  "selection": "three consecutive groups fixed before evaluation",
+  "n_images": 300,
+  "groups": [
+    7,
+    32,
+    71
+  ],
+  "policy": {
+    "top_k": 5,
+    "visible_margin": 1.5,
+    "candidates": [
+      "vis",
+      "cdf",
+      "pia",
+      "spg"
+    ]
+  },
+  "visible_ap50": 0.6563,
+  "fixed_ap50": {
+    "vis": 0.6563,
+    "cdf": 0.6624,
+    "pia": 0.7497,
+    "spg": 0.7575
+  },
+  "fixed_gain": {
+    "vis": 0.0,
+    "cdf": 0.006,
+    "pia": 0.0934,
+    "spg": 0.1012
+  },
+  "no_shield_ap50": 0.7627,
+  "no_shield_gain": 0.1064,
+  "shielded_ap50": 0.6814,
+  "shielded_gain": 0.0251,
+  "shielded_image_ci95": [
+    -0.0052,
+    0.0657
+  ],
+  "shielded_group_ci95": [
+    0.0002,
+    0.0374
+  ],
+  "no_shield_image_ci95": [
+    0.0668,
+    0.1605
+  ],
+  "no_shield_group_ci95": [
+    0.0779,
+    0.1251
+  ],
+  "shielded_selected_counts": {
+    "vis": 241,
+    "cdf": 0,
+    "pia": 30,
+    "spg": 29
+  },
+  "no_shield_selected_counts": {
+    "vis": 23,
+    "cdf": 26,
+    "pia": 91,
+    "spg": 160
+  }
+}

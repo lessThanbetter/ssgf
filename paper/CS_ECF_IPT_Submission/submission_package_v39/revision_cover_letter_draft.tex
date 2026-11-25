@@ -1,0 +1,73 @@
+\documentclass[a4paper,10pt]{letter}
+\usepackage[margin=0.8in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\hypersetup{
+  hidelinks,
+  pdftitle={Revision Cover Letter: Fusion Utility Depends on the Evaluator},
+  pdfauthor={Zigao Wu},
+  pdfsubject={Revision for Infrared Physics \& Technology}
+}
+\setlength{\parskip}{0.42em}
+
+\begin{document}
+\sloppy
+\begin{letter}{The Editor\\Infrared Physics \& Technology}
+\opening{Dear Editor,}
+
+We thank you and the reviewers for the constructive assessment of manuscript
+INFPHY-D-26-02423, ``Fusion Utility Depends on the Evaluator: A Boundary
+Study of Confidence-Shielded Input Selection for Infrared--Visible Object
+Detection.'' We also thank you for the invitation to revise by December 25,
+2026. We submit a revised manuscript and a separate point-by-point response
+for entry in the peer-review platform.
+
+The revision keeps the original visible margin and score depth fixed while
+testing whether the full four-candidate library is necessary. On the same four
+development evaluator cells, the smallest feasible subset was visible plus
+PIAFusion. We then measured the complete pipeline and confirmed the frozen
+policy on a later 900-frame LLVIP holdout recorded before scoring. It gained
+\(+0.01560\) \([+0.00249,+0.02874]\) AP50 and \(+0.00946\)
+\([+0.00113,+0.01769]\) AP50--95 over visible, with positive gains in all
+three sequences and six checkpoints. The measured end-to-end median was
+\(1.67\) s for the selected pipeline and \(2.52\) s for the full library.
+
+We also retained the boundaries of this result. The same two-candidate policy
+was below visible input on VEDAI and on the two independent DroneVehicle runs.
+The manuscript therefore presents candidate-library reduction only after
+target-specific validation and returns visible input when validation fails.
+The later confirmation protocol and its sample amendment were recorded before
+candidate or detector scoring, though the policy itself was selected during
+revision and the protocol was not externally registered. The measured
+pipeline remains too slow for a low-latency claim.
+
+Several reporting and sensitivity gaps raised in review are now closed. We
+report the development margin alternatives and the sequence-040 audit values,
+the direct no-shield-minus-visible contrast, and the no-detection sentinel
+frequency. DroneVehicle now includes confidence-ordered OBB results for both
+independent runs and all named comparators. We added a one-at-a-time CDF
+sensitivity analysis for qTH, alpha, sigma, and minimum-detail magnitude.
+Fixed-CDF AP50 varied across settings, while the selected visible-plus-PIA
+policy was unchanged and the full policy changed by at most 0.00018 on test.
+
+The M3FD paired equal-group estimates are now reported explicitly. We also
+trained seeds 1 and 2 for both model families with the original 40-epoch recipe
+and jointly rescored all six checkpoints. CS-ECF minus visible was positive in
+6/6 runs, with a pooled mean of \(+0.00852\) and an equal-group mean of
+\(+0.00617\). The magnitude varied across seeds, and the evidence remains
+conditional on two fixed frame groups and two model families. We do not present
+it as cross-domain confirmation. We also consolidated the limitations and
+revised the discussion of prior work to distinguish fixed-detector reporting
+from the evaluator- and domain-transfer question studied here.
+
+The clean manuscript, marked revision summary, supplementary material, source
+data, and point-by-point responses are provided with this revision. We would
+be grateful for re-evaluation.
+
+\closing{Sincerely,}
+Zigao Wu\\
+North China Electric Power University\\
+Baoding, Hebei 071003, China\\
+\href{mailto:zgwu@ncepu.edu.cn}{zgwu@ncepu.edu.cn}
+\end{letter}
+\end{document}

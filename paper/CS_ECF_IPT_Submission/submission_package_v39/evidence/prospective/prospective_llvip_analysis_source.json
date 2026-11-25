@@ -1,0 +1,556 @@
+{
+  "protocol": {
+    "frozen_margin": 1.5,
+    "top_k": 5,
+    "validation_sequence": "040",
+    "confirmation_sequences": [
+      "050",
+      "060",
+      "070"
+    ],
+    "models": [
+      "yolo26_s0",
+      "yolo26_s1",
+      "yolo26_s2",
+      "yolo8_s0",
+      "yolo8_s1",
+      "rtdetr_l"
+    ],
+    "block_size_frames": 50,
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 2917
+  },
+  "confirmation": {
+    "frozen_policy": {
+      "sequence_equal_point": -0.0006542925486884511,
+      "per_sequence": {
+        "050": -0.003634895565408716,
+        "060": 0.000425942006720761,
+        "070": 0.0012460759126226013
+      },
+      "per_checkpoint": {
+        "yolo26_s0": 0.0007853885378775053,
+        "yolo26_s1": -0.0008825050932828301,
+        "yolo26_s2": -0.0037801067761230084,
+        "yolo8_s0": 0.0042351085183149695,
+        "yolo8_s1": -0.004611633464235897,
+        "rtdetr_l": 0.00032799298531855335
+      },
+      "positive_checkpoints": 3,
+      "worst_checkpoint": -0.004611633464235897,
+      "switch_fraction": 0.09269055000657099,
+      "image_win_fraction": 0.024707495041423114,
+      "image_loss_fraction": 0.036268776949199596
+    },
+    "conditional_sequence_by_run_interval": [
+      -0.005496419135594561,
+      0.005277406117548536
+    ],
+    "comparisons": {
+      "csecf_minus_visible": {
+        "summary": {
+          "sequence_equal_point": -0.0006542925486884511,
+          "per_sequence": {
+            "050": -0.003634895565408716,
+            "060": 0.000425942006720761,
+            "070": 0.0012460759126226013
+          },
+          "per_checkpoint": {
+            "yolo26_s0": 0.0007853885378775053,
+            "yolo26_s1": -0.0008825050932828301,
+            "yolo26_s2": -0.0037801067761230084,
+            "yolo8_s0": 0.0042351085183149695,
+            "yolo8_s1": -0.004611633464235897,
+            "rtdetr_l": 0.00032799298531855335
+          },
+          "positive_checkpoints": 3,
+          "worst_checkpoint": -0.004611633464235897,
+          "switch_fraction": 0.0,
+          "image_win_fraction": 0.0,
+          "image_loss_fraction": 0.0
+        },
+        "conditional_sequence_by_run_interval": [
+          -0.005496419135594561,
+          0.005277406117548536
+        ]
+      },
+      "cdf_minus_visible": {
+        "summary": {
+          "sequence_equal_point": 0.00474887241451538,
+          "per_sequence": {
+            "050": 0.0014259578750743342,
+            "060": 0.0011865736898746023,
+            "070": 0.011634085678597203
+          },
+          "per_checkpoint": {
+            "yolo26_s0": -0.0036717549830760764,
+            "yolo26_s1": 0.008040871526804423,
+            "yolo26_s2": 0.0027586366653836116,
+            "yolo8_s0": 0.010160459450974354,
+            "yolo8_s1": 0.007003814966513228,
+            "rtdetr_l": 0.004201206860492746
+          },
+          "positive_checkpoints": 5,
+          "worst_checkpoint": -0.0036717549830760764,
+          "switch_fraction": 0.0,
+          "image_win_fraction": 0.0,
+          "image_loss_fraction": 0.0
+        },
+        "conditional_sequence_by_run_interval": [
+          -0.001596787038912789,
+          0.012249016779691724
+        ]
+      },
+      "no_shield_minus_visible": {
+        "summary": {
+          "sequence_equal_point": -0.010414669542903142,
+          "per_sequence": {
+            "050": -0.020018229982046366,
+            "060": -0.005170508959367952,
+            "070": -0.006055269687295112
+          },
+          "per_checkpoint": {
+            "yolo26_s0": -0.0005423210698550148,
+            "yolo26_s1": -0.006149265225687511,
+            "yolo26_s2": -0.00889288988419655,
+            "yolo8_s0": -0.01149572148740751,
+            "yolo8_s1": -0.035452756970807055,
+            "rtdetr_l": 4.493738053478535e-05
+          },
+          "positive_checkpoints": 1,
+          "worst_checkpoint": -0.035452756970807055,
+          "switch_fraction": 0.0,
+          "image_win_fraction": 0.0,
+          "image_loss_fraction": 0.0
+        },
+        "conditional_sequence_by_run_interval": [
+          -0.02715295714363976,
+          0.0006268164568157093
+        ]
+      },
+      "csecf_minus_cdf": {
+        "summary": {
+          "sequence_equal_point": -0.005403164963203834,
+          "per_sequence": {
+            "050": -0.005060853440483051,
+            "060": -0.0007606316831538416,
+            "070": -0.010388009765974603
+          },
+          "per_checkpoint": {
+            "yolo26_s0": 0.004457143520953582,
+            "yolo26_s1": -0.008923376620087251,
+            "yolo26_s2": -0.00653874344150662,
+            "yolo8_s0": -0.005925350932659384,
+            "yolo8_s1": -0.011615448430749124,
+            "rtdetr_l": -0.0038732138751741926
+          },
+          "positive_checkpoints": 1,
+          "worst_checkpoint": -0.011615448430749124,
+          "switch_fraction": 0.0,
+          "image_win_fraction": 0.0,
+          "image_loss_fraction": 0.0
+        },
+        "conditional_sequence_by_run_interval": [
+          -0.012800260276399859,
+          0.0015029441496562186
+        ]
+      },
+      "csecf_minus_no_shield": {
+        "summary": {
+          "sequence_equal_point": 0.009760376994214691,
+          "per_sequence": {
+            "050": 0.016383334416637647,
+            "060": 0.005596450966088712,
+            "070": 0.007301345599917711
+          },
+          "per_checkpoint": {
+            "yolo26_s0": 0.0013277096077325202,
+            "yolo26_s1": 0.005266760132404681,
+            "yolo26_s2": 0.0051127831080735415,
+            "yolo8_s0": 0.01573083000572248,
+            "yolo8_s1": 0.030841123506571155,
+            "rtdetr_l": 0.00028305560478376814
+          },
+          "positive_checkpoints": 6,
+          "worst_checkpoint": 0.00028305560478376814,
+          "switch_fraction": 0.0,
+          "image_win_fraction": 0.0,
+          "image_loss_fraction": 0.0
+        },
+        "conditional_sequence_by_run_interval": [
+          0.0011312466430863214,
+          0.02252130003674214
+        ]
+      }
+    }
+  },
+  "validation_margin_audit": {
+    "grid": {
+      "1.00": {
+        "balanced_gain": -0.002320581418312345,
+        "per_checkpoint": {
+          "yolo26_s0": 0.001534492235072993,
+          "yolo26_s1": -0.005035698468400884,
+          "yolo26_s2": -0.014139761015813102,
+          "yolo8_s0": -0.0014921490471463184,
+          "yolo8_s1": 0.004505577658437498,
+          "rtdetr_l": 0.0007040501279757417
+        },
+        "worst_checkpoint": -0.014139761015813102,
+        "switch_fraction": 0.5066948555320648
+      },
+      "1.10": {
+        "balanced_gain": -0.0009647304232636621,
+        "per_checkpoint": {
+          "yolo26_s0": 0.0036863154971121916,
+          "yolo26_s1": -0.0015070421673799906,
+          "yolo26_s2": -0.011973704954726206,
+          "yolo8_s0": -0.0007507324041167385,
+          "yolo8_s1": 0.002383490637353947,
+          "rtdetr_l": 0.002373290852174825
+        },
+        "worst_checkpoint": -0.011973704954726206,
+        "switch_fraction": 0.1324876673713883
+      },
+      "1.20": {
+        "balanced_gain": -0.0005442933475691692,
+        "per_checkpoint": {
+          "yolo26_s0": 0.0013355074365121954,
+          "yolo26_s1": -0.0015183201790786472,
+          "yolo26_s2": -0.005758178887862975,
+          "yolo8_s0": -0.0002091080016860647,
+          "yolo8_s1": 0.0015223973980366568,
+          "rtdetr_l": 0.0013619421486638194
+        },
+        "worst_checkpoint": -0.005758178887862975,
+        "switch_fraction": 0.07928118393234672
+      },
+      "1.30": {
+        "balanced_gain": -0.0001851686142293955,
+        "per_checkpoint": {
+          "yolo26_s0": 0.00030155024398592634,
+          "yolo26_s1": -0.00023076812756055441,
+          "yolo26_s2": -2.4347390741397133e-05,
+          "yolo8_s0": -0.0005960412219362388,
+          "yolo8_s1": -0.0003529741589107793,
+          "rtdetr_l": -0.00020843103021332964
+        },
+        "worst_checkpoint": -0.0005960412219362388,
+        "switch_fraction": 0.04404510218463706
+      },
+      "1.50": {
+        "balanced_gain": -0.0004323928724576339,
+        "per_checkpoint": {
+          "yolo26_s0": 3.0994012193086284e-05,
+          "yolo26_s1": -0.0017136945578757334,
+          "yolo26_s2": -0.00017642882052357756,
+          "yolo8_s0": -0.00031125030750533966,
+          "yolo8_s1": -0.00040329466488965294,
+          "rtdetr_l": -2.068289614458596e-05
+        },
+        "worst_checkpoint": -0.0017136945578757334,
+        "switch_fraction": 0.017970401691331923
+      },
+      "1.75": {
+        "balanced_gain": -0.00012300077688101412,
+        "per_checkpoint": {
+          "yolo26_s0": -0.0005185945525905567,
+          "yolo26_s1": -0.00023107934937982577,
+          "yolo26_s2": 0.00038254963215482717,
+          "yolo8_s0": -0.00047433578907223327,
+          "yolo8_s1": 0.00010345539760170386,
+          "rtdetr_l": 0.0
+        },
+        "worst_checkpoint": -0.0005185945525905567,
+        "switch_fraction": 0.007399577167019028
+      },
+      "2.00": {
+        "balanced_gain": -1.0414954460589524e-05,
+        "per_checkpoint": {
+          "yolo26_s0": 0.0,
+          "yolo26_s1": -0.00011063393639095808,
+          "yolo26_s2": -0.00021866511772464792,
+          "yolo8_s0": 1.826031713796361e-05,
+          "yolo8_s1": 0.00024854901021410526,
+          "rtdetr_l": 0.0
+        },
+        "worst_checkpoint": -0.00021866511772464792,
+        "switch_fraction": 0.002466525722339676
+      }
+    },
+    "selected_margin": 2.0,
+    "constraint": "every checkpoint gain >= -0.0005 AP50"
+  },
+  "matched_quality": {
+    "vif": {
+      "validation_grid": {
+        "1.00": {
+          "balanced_gain": 0.0,
+          "worst_checkpoint": 0.0,
+          "switch_fraction": 0.0
+        },
+        "1.10": {
+          "balanced_gain": 0.0,
+          "worst_checkpoint": 0.0,
+          "switch_fraction": 0.0
+        },
+        "1.20": {
+          "balanced_gain": 0.0,
+          "worst_checkpoint": 0.0,
+          "switch_fraction": 0.0
+        },
+        "1.30": {
+          "balanced_gain": 0.0,
+          "worst_checkpoint": 0.0,
+          "switch_fraction": 0.0
+        },
+        "1.50": {
+          "balanced_gain": 0.0,
+          "worst_checkpoint": 0.0,
+          "switch_fraction": 0.0
+        },
+        "1.75": {
+          "balanced_gain": 0.0,
+          "worst_checkpoint": 0.0,
+          "switch_fraction": 0.0
+        },
+        "2.00": {
+          "balanced_gain": 0.0,
+          "worst_checkpoint": 0.0,
+          "switch_fraction": 0.0
+        }
+      },
+      "selected_target_switch_fraction": 0.017970401691331923,
+      "variants": {
+        "gain_tuned": {
+          "margin": 2.0,
+          "summary": {
+            "sequence_equal_point": 0.0,
+            "per_sequence": {
+              "050": 0.0,
+              "060": 0.0,
+              "070": 0.0
+            },
+            "per_checkpoint": {
+              "yolo26_s0": 0.0,
+              "yolo26_s1": 0.0,
+              "yolo26_s2": 0.0,
+              "yolo8_s0": 0.0,
+              "yolo8_s1": 0.0,
+              "rtdetr_l": 0.0
+            },
+            "positive_checkpoints": 0,
+            "worst_checkpoint": 0.0,
+            "switch_fraction": 0.0,
+            "image_win_fraction": 0.0,
+            "image_loss_fraction": 0.0
+          }
+        },
+        "budget_matched": {
+          "margin": 1.0,
+          "summary": {
+            "sequence_equal_point": 0.0,
+            "per_sequence": {
+              "050": 0.0,
+              "060": 0.0,
+              "070": 0.0
+            },
+            "per_checkpoint": {
+              "yolo26_s0": 0.0,
+              "yolo26_s1": 0.0,
+              "yolo26_s2": 0.0,
+              "yolo8_s0": 0.0,
+              "yolo8_s1": 0.0,
+              "rtdetr_l": 0.0
+            },
+            "positive_checkpoints": 0,
+            "worst_checkpoint": 0.0,
+            "switch_fraction": 0.0,
+            "image_win_fraction": 0.0,
+            "image_loss_fraction": 0.0
+          }
+        }
+      }
+    },
+    "ssim": {
+      "validation_grid": {
+        "1.00": {
+          "balanced_gain": -0.03601544899406323,
+          "worst_checkpoint": -0.04390267773131229,
+          "switch_fraction": 0.14799154334038056
+        },
+        "1.10": {
+          "balanced_gain": 0.0,
+          "worst_checkpoint": 0.0,
+          "switch_fraction": 0.0
+        },
+        "1.20": {
+          "balanced_gain": 0.0,
+          "worst_checkpoint": 0.0,
+          "switch_fraction": 0.0
+        },
+        "1.30": {
+          "balanced_gain": 0.0,
+          "worst_checkpoint": 0.0,
+          "switch_fraction": 0.0
+        },
+        "1.50": {
+          "balanced_gain": 0.0,
+          "worst_checkpoint": 0.0,
+          "switch_fraction": 0.0
+        },
+        "1.75": {
+          "balanced_gain": 0.0,
+          "worst_checkpoint": 0.0,
+          "switch_fraction": 0.0
+        },
+        "2.00": {
+          "balanced_gain": 0.0,
+          "worst_checkpoint": 0.0,
+          "switch_fraction": 0.0
+        }
+      },
+      "selected_target_switch_fraction": 0.017970401691331923,
+      "variants": {
+        "gain_tuned": {
+          "margin": 2.0,
+          "summary": {
+            "sequence_equal_point": 0.0,
+            "per_sequence": {
+              "050": 0.0,
+              "060": 0.0,
+              "070": 0.0
+            },
+            "per_checkpoint": {
+              "yolo26_s0": 0.0,
+              "yolo26_s1": 0.0,
+              "yolo26_s2": 0.0,
+              "yolo8_s0": 0.0,
+              "yolo8_s1": 0.0,
+              "rtdetr_l": 0.0
+            },
+            "positive_checkpoints": 0,
+            "worst_checkpoint": 0.0,
+            "switch_fraction": 0.0,
+            "image_win_fraction": 0.0,
+            "image_loss_fraction": 0.0
+          }
+        },
+        "budget_matched": {
+          "margin": 1.1,
+          "summary": {
+            "sequence_equal_point": 0.0,
+            "per_sequence": {
+              "050": 0.0,
+              "060": 0.0,
+              "070": 0.0
+            },
+            "per_checkpoint": {
+              "yolo26_s0": 0.0,
+              "yolo26_s1": 0.0,
+              "yolo26_s2": 0.0,
+              "yolo8_s0": 0.0,
+              "yolo8_s1": 0.0,
+              "rtdetr_l": 0.0
+            },
+            "positive_checkpoints": 0,
+            "worst_checkpoint": 0.0,
+            "switch_fraction": 0.0,
+            "image_win_fraction": 0.0,
+            "image_loss_fraction": 0.0
+          }
+        }
+      }
+    },
+    "entropy": {
+      "validation_grid": {
+        "1.00": {
+          "balanced_gain": -0.3168435952552782,
+          "worst_checkpoint": -0.3664081725712265,
+          "switch_fraction": 1.0
+        },
+        "1.10": {
+          "balanced_gain": -0.3042954301343193,
+          "worst_checkpoint": -0.35200919450414225,
+          "switch_fraction": 0.9577167019027485
+        },
+        "1.20": {
+          "balanced_gain": -0.24000250170269585,
+          "worst_checkpoint": -0.27981261070640145,
+          "switch_fraction": 0.689217758985201
+        },
+        "1.30": {
+          "balanced_gain": -0.14192091613373536,
+          "worst_checkpoint": -0.1672724981787402,
+          "switch_fraction": 0.4080338266384778
+        },
+        "1.50": {
+          "balanced_gain": -0.09400593808238467,
+          "worst_checkpoint": -0.11366281378789482,
+          "switch_fraction": 0.23255813953488372
+        },
+        "1.75": {
+          "balanced_gain": -0.05648088025662088,
+          "worst_checkpoint": -0.07108110918844676,
+          "switch_fraction": 0.12896405919661733
+        },
+        "2.00": {
+          "balanced_gain": 0.0,
+          "worst_checkpoint": 0.0,
+          "switch_fraction": 0.0
+        }
+      },
+      "selected_target_switch_fraction": 0.017970401691331923,
+      "variants": {
+        "gain_tuned": {
+          "margin": 2.0,
+          "summary": {
+            "sequence_equal_point": 0.0,
+            "per_sequence": {
+              "050": 0.0,
+              "060": 0.0,
+              "070": 0.0
+            },
+            "per_checkpoint": {
+              "yolo26_s0": 0.0,
+              "yolo26_s1": 0.0,
+              "yolo26_s2": 0.0,
+              "yolo8_s0": 0.0,
+              "yolo8_s1": 0.0,
+              "rtdetr_l": 0.0
+            },
+            "positive_checkpoints": 0,
+            "worst_checkpoint": 0.0,
+            "switch_fraction": 0.0,
+            "image_win_fraction": 0.0,
+            "image_loss_fraction": 0.0
+          }
+        },
+        "budget_matched": {
+          "margin": 2.0,
+          "summary": {
+            "sequence_equal_point": 0.0,
+            "per_sequence": {
+              "050": 0.0,
+              "060": 0.0,
+              "070": 0.0
+            },
+            "per_checkpoint": {
+              "yolo26_s0": 0.0,
+              "yolo26_s1": 0.0,
+              "yolo26_s2": 0.0,
+              "yolo8_s0": 0.0,
+              "yolo8_s1": 0.0,
+              "rtdetr_l": 0.0
+            },
+            "positive_checkpoints": 0,
+            "worst_checkpoint": 0.0,
+            "switch_fraction": 0.0,
+            "image_win_fraction": 0.0,
+            "image_loss_fraction": 0.0
+          }
+        }
+      }
+    }
+  }
+}

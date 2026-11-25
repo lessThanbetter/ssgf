@@ -1,0 +1,81 @@
+\documentclass[a4paper,10pt]{letter}
+\usepackage[margin=0.8in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\hypersetup{
+  hidelinks,
+  pdftitle={Cover Letter: Fusion Utility Depends on the Evaluator},
+  pdfauthor={Zigao Wu},
+  pdfsubject={Submission to Infrared Physics \& Technology}
+}
+\setlength{\parskip}{0.45em}
+
+\begin{document}
+\sloppy
+\begin{letter}{Editors\\Infrared Physics \& Technology}
+\opening{Dear Editors,}
+
+Please consider our manuscript, ``Fusion Utility Depends on the Evaluator:
+A Boundary Study of Confidence-Shielded Input Selection for Infrared--Visible Object Detection,'' for
+publication in \emph{Infrared Physics \& Technology}.
+
+Infrared--visible fusion can expose complementary evidence, but the same fused
+image may improve one detector and degrade another. We study an inference-time
+policy that requires no ground-truth boxes. Confidence-Shielded,
+Evaluator-Conditioned Fusion-Input Selection (CS-ECF) scores visible input,
+consensus-detail fusion (CDF), PIAFusion, and SPGFusion with the target
+detector. It uses a fused input only when its top-five confidence reaches 1.5
+times visible; otherwise, visible is retained.
+
+The contribution is a bounded empirical result, not a claim of general
+accuracy improvement. On the scene-disjoint LLVIP evaluation, the primary
+visible contrast was \(+0.00012\) \([-0.00484,+0.00670]\) and CS-ECF did not
+outperform Always CDF. Relative to the unconstrained no-shield selector, its
+mean AP50 gain was \(+0.00894\) \([+0.00096,+0.02155]\). A random allocation
+matched to the same switch count and candidate mix was worse. On VEDAI,
+both training runs favoured the shield over no shield, with an equal-run gain
+of \(+0.0410\) \([+0.0097,+0.0782]\), while CS-ECF remained below visible
+input by \(-0.0136\). The apparent safeguard was specific to AP50 and did not
+persist under AP50--95.
+
+We also trained the public YOLOv11-RGBT early-fusion detector on the same M3FD
+split as a single-seed implementation pilot. It provides a recent end-to-end
+system context but not a tuned performance ranking. External evaluators
+reversed both the visible-relative and no-shield orderings. Matched
+image-statistic controls did not establish a confidence-specific mechanism.
+
+The manuscript therefore supports CS-ECF only as an AP50 safeguard after
+detector-specific validation. It recommends visible fallback or a stable CDF
+as the default and a switch-budget-matched random check before deployment.
+The new case-study figure shows one successful and one failed switch selected
+by a fixed rule.
+
+The manuscript is original, has not been published previously, and is not under
+consideration by another journal. It is a substantially revised successor to
+manuscript INFPHY-D-26-02136, which the same authors previously submitted to
+this journal and which was not accepted. The earlier study examined
+evaluator-dependent rankings of fidelity metrics. The present study instead
+evaluates an inference-time selection policy and does not reproduce the earlier
+fidelity-ranking claims. To address the principal concerns raised in prior
+review, we added scene-disjoint LLVIP and VEDAI evaluation, independent training
+runs, standard confidence-ordered AP scoring, a switch-budget and candidate-mix
+matched random control, external-evaluator stress tests, a recent joint
+fusion-detection baseline, explicit operational conditions, and complete
+supplementary evidence. We also narrowed every claim to the observed AP50
+setting and report the null visible contrast, negative CDF comparison, and
+external reversal directly. All shared datasets and evaluator infrastructure
+are identified in the manuscript. All authors have approved the submission and
+declare no competing interests. This research did not receive any specific
+grant from funding agencies in the public, commercial, or not-for-profit
+sectors. The manuscript includes an AI-use declaration and statements for data,
+code, CRediT contributions, and competing interests.
+
+Thank you for your consideration.
+
+\closing{Sincerely,}
+Zigao Wu\\
+North China Electric Power University\\
+Baoding, Hebei 071003, China\\
+\href{mailto:zgwu@ncepu.edu.cn}{zgwu@ncepu.edu.cn}
+\end{letter}
+\end{document}

@@ -1,0 +1,267 @@
+{
+  "llvip": {
+    "models": {
+      "yolo11": {
+        "visible_ap50": 0.8811,
+        "selected_ap50": 0.8845,
+        "gain": 0.0034,
+        "image_ci95": [
+          -0.0028,
+          0.0101
+        ],
+        "selected_counts": {
+          "vis": 276,
+          "cdf": 1,
+          "pia": 9,
+          "spg": 14
+        }
+      },
+      "agnostic": {
+        "visible_ap50": 0.855,
+        "selected_ap50": 0.8611,
+        "gain": 0.0061,
+        "image_ci95": [
+          0.0013,
+          0.0135
+        ],
+        "selected_counts": {
+          "vis": 286,
+          "cdf": 2,
+          "pia": 6,
+          "spg": 6
+        }
+      },
+      "yolo26_s0": {
+        "visible_ap50": 0.8122,
+        "selected_ap50": 0.8088,
+        "gain": -0.0034,
+        "image_ci95": [
+          -0.0094,
+          0.0032
+        ],
+        "selected_counts": {
+          "vis": 288,
+          "cdf": 1,
+          "pia": 3,
+          "spg": 8
+        }
+      },
+      "rtdetr": {
+        "visible_ap50": 0.8095,
+        "selected_ap50": 0.8136,
+        "gain": 0.004,
+        "image_ci95": [
+          0.0001,
+          0.0079
+        ],
+        "selected_counts": {
+          "vis": 293,
+          "cdf": 0,
+          "pia": 0,
+          "spg": 7
+        }
+      },
+      "yolo26_s1": {
+        "visible_ap50": 0.7937,
+        "selected_ap50": 0.7911,
+        "gain": -0.0027,
+        "image_ci95": [
+          -0.0105,
+          0.0112
+        ],
+        "selected_counts": {
+          "vis": 265,
+          "cdf": 1,
+          "pia": 4,
+          "spg": 30
+        }
+      },
+      "yolo26_s2": {
+        "visible_ap50": 0.8061,
+        "selected_ap50": 0.8087,
+        "gain": 0.0026,
+        "image_ci95": [
+          -0.0022,
+          0.0083
+        ],
+        "selected_counts": {
+          "vis": 282,
+          "cdf": 0,
+          "pia": 0,
+          "spg": 18
+        }
+      },
+      "yolo8_s0": {
+        "visible_ap50": 0.7801,
+        "selected_ap50": 0.7761,
+        "gain": -0.004,
+        "image_ci95": [
+          -0.0098,
+          0.0023
+        ],
+        "selected_counts": {
+          "vis": 282,
+          "cdf": 1,
+          "pia": 0,
+          "spg": 17
+        }
+      },
+      "yolo8_s1": {
+        "visible_ap50": 0.8055,
+        "selected_ap50": 0.8119,
+        "gain": 0.0064,
+        "image_ci95": [
+          0.0005,
+          0.0135
+        ],
+        "selected_counts": {
+          "vis": 290,
+          "cdf": 0,
+          "pia": 0,
+          "spg": 10
+        }
+      }
+    },
+    "summary": {
+      "n_models": 8,
+      "positive_models": 5,
+      "mean_gain": 0.0016,
+      "min_gain": -0.004,
+      "max_gain": 0.0064,
+      "model_ci95": [
+        -0.0014,
+        0.0042
+      ],
+      "image_ci95": [
+        -0.001,
+        0.0051
+      ]
+    }
+  },
+  "m3fd": {
+    "models": {
+      "yolo26_m3fd6": {
+        "visible_ap50": 0.3717,
+        "selected_ap50": 0.3757,
+        "gain": 0.0041,
+        "image_ci95": [
+          0.0001,
+          0.0083
+        ],
+        "selected_counts": {
+          "vis": 185,
+          "cdf": 2,
+          "pia": 11,
+          "spg": 2
+        }
+      },
+      "yolo8n_m3fd6": {
+        "visible_ap50": 0.379,
+        "selected_ap50": 0.3972,
+        "gain": 0.0182,
+        "image_ci95": [
+          0.0063,
+          0.0295
+        ],
+        "selected_counts": {
+          "vis": 184,
+          "cdf": 1,
+          "pia": 14,
+          "spg": 1
+        }
+      }
+    },
+    "summary": {
+      "n_models": 2,
+      "positive_models": 2,
+      "mean_gain": 0.0111,
+      "min_gain": 0.0041,
+      "max_gain": 0.0182,
+      "model_ci95": [
+        0.0041,
+        0.0182
+      ],
+      "image_ci95": [
+        0.0036,
+        0.0187
+      ]
+    }
+  },
+  "dronevehicle_test": {
+    "models": {
+      "best": {
+        "visible_ap50": 0.6563,
+        "selected_ap50": 0.6814,
+        "gain": 0.0251,
+        "image_ci95": [
+          -0.0038,
+          0.062
+        ],
+        "selected_counts": {
+          "vis": 241,
+          "cdf": 0,
+          "pia": 30,
+          "spg": 29
+        }
+      },
+      "last": {
+        "visible_ap50": 0.6474,
+        "selected_ap50": 0.6767,
+        "gain": 0.0293,
+        "image_ci95": [
+          0.0026,
+          0.0619
+        ],
+        "selected_counts": {
+          "vis": 233,
+          "cdf": 0,
+          "pia": 40,
+          "spg": 27
+        }
+      }
+    },
+    "summary": {
+      "n_models": 2,
+      "positive_models": 2,
+      "mean_gain": 0.0272,
+      "min_gain": 0.0251,
+      "max_gain": 0.0293,
+      "model_ci95": [
+        0.0251,
+        0.0293
+      ],
+      "image_ci95": [
+        0.0002,
+        0.0611
+      ]
+    }
+  },
+  "aggregate": {
+    "datasets": [
+      "llvip",
+      "m3fd",
+      "dronevehicle_test"
+    ],
+    "n_checkpoints": 12,
+    "positive_checkpoints": 9,
+    "dataset_balanced_mean": 0.0133,
+    "min_checkpoint_gain": -0.004,
+    "max_checkpoint_gain": 0.0293,
+    "fixed_checkpoints_image_ci95": [
+      0.0032,
+      0.0248
+    ],
+    "all_checkpoints_image_ci95": [
+      0.0023,
+      0.0138
+    ],
+    "dataset_balanced_model_ci95": [
+      0.0101,
+      0.0167
+    ],
+    "dataset_balanced_hierarchical_ci95": [
+      0.0028,
+      0.0256
+    ]
+  }
+}

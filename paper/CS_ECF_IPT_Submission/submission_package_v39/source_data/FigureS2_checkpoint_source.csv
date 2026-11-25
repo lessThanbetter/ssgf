@@ -1,0 +1,13 @@
+checkpoint,display_checkpoint,equal_group_gain_ap50_points,ci_low_ap50_points,ci_high_ap50_points
+llvip/yolo11,LLVIP · YOLO11n,0.337947,0.112837,0.553483
+llvip/agnostic,LLVIP · Modality-agnostic,1.023621,0.024077,2.624082
+llvip/yolo26_s0,LLVIP · YOLO26n s0,-0.167446,-0.679272,0.205749
+llvip/rtdetr,LLVIP · RT-DETR-l,0.21339,0.0,0.485941
+llvip/yolo26_s1,LLVIP · YOLO26n s1,-0.345883,-1.450251,0.729254
+llvip/yolo26_s2,LLVIP · YOLO26n s2,0.581626,-0.324946,2.102997
+llvip/yolo8_s0,LLVIP · YOLOv8n s0,-0.509734,-1.91157,0.327859
+llvip/yolo8_s1,LLVIP · YOLOv8n s1,0.95591,0.014728,2.528676
+m3fd/yolo26_m3fd6,M3FD · YOLO26n,0.291054,0.0,0.582107
+m3fd/yolo8n_m3fd6,M3FD · YOLOv8n,1.280548,0.0,2.561096
+dronevehicle_test/best,DV · OBB best,1.471217,0.019501,2.405705
+dronevehicle_test/last,DV · OBB last,1.930363,0.022858,3.87589

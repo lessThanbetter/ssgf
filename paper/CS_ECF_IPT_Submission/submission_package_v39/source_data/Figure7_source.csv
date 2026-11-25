@@ -1,0 +1,22 @@
+panel,evaluator,policy,ap50,comparison,delta_ap50_points,ci_low_ap50_points,ci_high_ap50_points
+a,YOLOv9t zero-shot,Visible,0.769755,,,,
+a,YOLOv9t zero-shot,Always CDF,0.788758,,,,
+a,YOLOv9t zero-shot,No shield,0.821635,,,,
+a,YOLOv9t zero-shot,CS-ECF,0.794754,,,,
+a,YOLOv10s zero-shot,Visible,0.834404,,,,
+a,YOLOv10s zero-shot,Always CDF,0.861684,,,,
+a,YOLOv10s zero-shot,No shield,0.86988,,,,
+a,YOLOv10s zero-shot,CS-ECF,0.85574,,,,
+a,YOLOv9t LLVIP-trained,Visible,0.666603,,,,
+a,YOLOv9t LLVIP-trained,Always CDF,0.659763,,,,
+a,YOLOv9t LLVIP-trained,No shield,0.64052,,,,
+a,YOLOv9t LLVIP-trained,CS-ECF,0.655806,,,,
+b,YOLOv9t zero-shot,,,vs visible,3.109834,0.203969,7.056636
+b,YOLOv9t zero-shot,,,vs Always CDF,0.982036,-2.796915,4.190755
+b,YOLOv9t zero-shot,,,vs no shield,-1.789338,-3.772249,0.764806
+b,YOLOv10s zero-shot,,,vs visible,2.233626,0.300316,4.495824
+b,YOLOv10s zero-shot,,,vs Always CDF,-0.385227,-2.432758,1.828033
+b,YOLOv10s zero-shot,,,vs no shield,-0.975207,-3.167117,1.21517
+b,YOLOv9t LLVIP-trained,,,vs visible,-1.423463,-3.558464,0.244758
+b,YOLOv9t LLVIP-trained,,,vs Always CDF,0.534734,-1.345893,2.325467
+b,YOLOv9t LLVIP-trained,,,vs no shield,2.054422,0.979078,3.255663

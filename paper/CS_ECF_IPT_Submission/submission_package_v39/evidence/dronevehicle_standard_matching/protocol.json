@@ -1,0 +1,14 @@
+{
+  "matching": "confidence-ordered one-to-one matching",
+  "iou": "probabilistic rotated-box IoU",
+  "n_images": 300,
+  "models": [
+    "yolo11n_obb_run1=results\\prospective_20261029\\dronevehicle\\run1\\weights\\last.pt",
+    "yolo11n_obb_run2=results\\prospective_20261029\\dronevehicle\\run2\\weights\\last.pt"
+  ],
+  "device": "cpu",
+  "confidence_floor": 0.001,
+  "nms_iou": 0.7,
+  "image_size": 640,
+  "status": "post-review sensitivity analysis"
+}

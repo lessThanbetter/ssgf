@@ -1,7 +1,7 @@
 {
-  "title": "lessThanbetter/ssgf: Code for: Confidence-Shielded Evaluator-Conditioned Fusion for Risk-Controlled Infrared-Visible Object Detection",
-  "version": "v2.4.1",
-  "description": "<p>Archival release of the code, frozen manifests, aggregate results, source data, and submission materials for <em>Confidence-Shielded, Evaluator-Conditioned Fusion for Risk-Controlled Infrared-Visible Object Detection</em>.</p><p>Version v2.4.1 is a language-focused revision of the 11-figure release. The manuscript, supplement, and cover letter were re-edited for sentence flow, terminology consistency, and separation of results from interpretation. The figures and quantitative results are unchanged. The release includes the final 25-page manuscript, six-page supplement, one-page cover letter, v18 submission package, 11 SVG/PDF figure pairs, traceable figure source data, reproducibility scripts, and all supporting analyses.</p><p>The LLVIP, M3FD, and DroneVehicle images, third-party detector weights, and generated fused-image corpora are not redistributed. Their public sources, fixed manifests, and reproducibility instructions are documented in the repository.</p>",
+  "title": "Fusion Utility Depends on the Evaluator: Code, protocols, source data, and revision package",
+  "version": "v3.0.0",
+  "description": "<p>Archival release accompanying <em>Fusion Utility Depends on the Evaluator: A Boundary Study of Confidence-Shielded Input Selection for Infrared-Visible Object Detection</em>.</p><p>Version v3.0.0 contains the final code, fixed split and test manifests, hashed prospective protocols, per-image detector score arrays, source-data tables, and the complete v39 submission package. It adds the development-constrained candidate-library analysis, a 900-frame temporal LLVIP confirmation of the visible-plus-PIAFusion policy, six-checkpoint end-to-end latency measurements, M3FD seed replication, CDF parameter sensitivity, standard confidence-ordered matching analyses, independent DroneVehicle and VEDAI evaluations, and the joint fusion-detection baseline.</p><p>The LLVIP, M3FD, DroneVehicle, and VEDAI images, third-party detector weights, fusion-model weights, and generated fused-image corpora are not redistributed. Their public sources, fixed manifests, per-file hashes, and reproduction instructions are documented in the repository and submission archive.</p>",
   "creators": [
     {
       "name": "Zhao, Jianyong",
@@ -22,9 +22,10 @@
   "keywords": [
     "infrared-visible image fusion",
     "object detection",
-    "evaluator-conditioned fusion",
-    "confidence calibration",
-    "risk control",
+    "fusion-input selection",
+    "confidence-gated fallback",
+    "evaluator dependence",
+    "temporal validation",
     "thermal imaging"
   ],
   "license": "MIT",
@@ -33,10 +34,16 @@
   "language": "eng",
   "related_identifiers": [
     {
-      "identifier": "https://github.com/lessThanbetter/ssgf/tree/v2.4.1",
+      "identifier": "https://github.com/lessThanbetter/ssgf/tree/v3.0.0",
       "relation": "isSupplementTo",
       "resource_type": "software",
       "scheme": "url"
+    },
+    {
+      "identifier": "10.5281/zenodo.23728385",
+      "relation": "isVersionOf",
+      "resource_type": "software",
+      "scheme": "doi"
     }
   ]
 }

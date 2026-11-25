@@ -1,0 +1,232 @@
+{
+  "status": "prospective_temporal_holdout",
+  "scope": "LLVIP sequences 080, 090, and 100, first 300 non-empty labels each",
+  "n_images": 900,
+  "policy": {
+    "candidate_library": [
+      "vis",
+      "piafusion"
+    ],
+    "top_k": 5,
+    "margin": 1.5,
+    "selection_rule": "Select PIAFusion when its top-five score is at least max(visible score, 1.5 * visible score); otherwise visible."
+  },
+  "matching": "confidence-ordered one-to-one",
+  "primary": {
+    "estimand": "equal-sequence mean AP50 difference versus visible",
+    "point": 0.015597409723488165,
+    "conditional_interval": [
+      0.002490192145605046,
+      0.028737425683704458
+    ],
+    "per_sequence": {
+      "080": 0.02542746378427137,
+      "090": 0.01923540457482074,
+      "100": 0.002129360811372386
+    },
+    "per_checkpoint": {
+      "yolo26_s0": 0.011750954927128923,
+      "yolo26_s1": 0.01366285759277889,
+      "yolo26_s2": 0.014435388662412377,
+      "yolo8_s0": 0.021168620615732065,
+      "yolo8_s1": 0.024730553958019142,
+      "rtdetr_l": 0.007836082584857598
+    },
+    "positive_sequences": 3,
+    "positive_checkpoints": 6,
+    "worst_checkpoint": 0.007836082584857598
+  },
+  "ap50_95": {
+    "point": 0.009461094251703417,
+    "conditional_interval": [
+      0.0011290308537667143,
+      0.01769442503366269
+    ]
+  },
+  "raw_pia_vs_visible": {
+    "ap50": {
+      "point": -0.01236617986357332,
+      "conditional_interval": [
+        -0.15111000624492585,
+        0.07786584392343204
+      ],
+      "per_sequence": {
+        "080": 0.0541515640615484,
+        "090": 0.06766292084393327,
+        "100": -0.15891302449620162
+      }
+    },
+    "ap50_95": {
+      "point": 0.025192474607488424,
+      "conditional_interval": [
+        -0.04183715886974948,
+        0.07025278952180325
+      ]
+    }
+  },
+  "switch_fraction": 0.052222222222222225,
+  "image_metrics": {
+    "win": 0.04222222222222223,
+    "tie": 0.952037037037037,
+    "loss": 0.005740740740740741
+  },
+  "runs": {
+    "yolo26_s0": {
+      "080": {
+        "point50": 0.015190269221229643,
+        "point95": 0.008837967932041965,
+        "switch_fraction": 0.04,
+        "image_win_fraction": 0.03666666666666667,
+        "image_tie_fraction": 0.9633333333333334,
+        "image_loss_fraction": 0.0
+      },
+      "090": {
+        "point50": 0.017578151003205367,
+        "point95": 0.010528358021223408,
+        "switch_fraction": 0.06333333333333334,
+        "image_win_fraction": 0.04666666666666667,
+        "image_tie_fraction": 0.9466666666666667,
+        "image_loss_fraction": 0.006666666666666667
+      },
+      "100": {
+        "point50": 0.0024844445569517557,
+        "point95": 0.0008305770870543164,
+        "switch_fraction": 0.03666666666666667,
+        "image_win_fraction": 0.013333333333333334,
+        "image_tie_fraction": 0.9733333333333334,
+        "image_loss_fraction": 0.013333333333333334
+      }
+    },
+    "yolo26_s1": {
+      "080": {
+        "point50": 0.019647880900592146,
+        "point95": 0.012828610878647154,
+        "switch_fraction": 0.04666666666666667,
+        "image_win_fraction": 0.04,
+        "image_tie_fraction": 0.9533333333333334,
+        "image_loss_fraction": 0.006666666666666667
+      },
+      "090": {
+        "point50": 0.013917368116771986,
+        "point95": 0.0069246908845810124,
+        "switch_fraction": 0.08,
+        "image_win_fraction": 0.056666666666666664,
+        "image_tie_fraction": 0.9333333333333333,
+        "image_loss_fraction": 0.01
+      },
+      "100": {
+        "point50": 0.007423323760972544,
+        "point95": 0.0032091180693187096,
+        "switch_fraction": 0.023333333333333334,
+        "image_win_fraction": 0.02,
+        "image_tie_fraction": 0.98,
+        "image_loss_fraction": 0.0
+      }
+    },
+    "yolo26_s2": {
+      "080": {
+        "point50": 0.017391755998220886,
+        "point95": 0.010392671977517884,
+        "switch_fraction": 0.04666666666666667,
+        "image_win_fraction": 0.04666666666666667,
+        "image_tie_fraction": 0.9533333333333334,
+        "image_loss_fraction": 0.0
+      },
+      "090": {
+        "point50": 0.02304601343870623,
+        "point95": 0.015300999363549303,
+        "switch_fraction": 0.07333333333333333,
+        "image_win_fraction": 0.06333333333333334,
+        "image_tie_fraction": 0.93,
+        "image_loss_fraction": 0.006666666666666667
+      },
+      "100": {
+        "point50": 0.002868396550310015,
+        "point95": 0.0016478728867188504,
+        "switch_fraction": 0.016666666666666666,
+        "image_win_fraction": 0.01,
+        "image_tie_fraction": 0.9866666666666667,
+        "image_loss_fraction": 0.0033333333333333335
+      }
+    },
+    "yolo8_s0": {
+      "080": {
+        "point50": 0.031796827014434426,
+        "point95": 0.018748079643784204,
+        "switch_fraction": 0.12666666666666668,
+        "image_win_fraction": 0.09333333333333334,
+        "image_tie_fraction": 0.8966666666666666,
+        "image_loss_fraction": 0.01
+      },
+      "090": {
+        "point50": 0.03170903483276177,
+        "point95": 0.019993361231663048,
+        "switch_fraction": 0.11,
+        "image_win_fraction": 0.09,
+        "image_tie_fraction": 0.89,
+        "image_loss_fraction": 0.02
+      },
+      "100": {
+        "point50": 0.0,
+        "point95": 0.0,
+        "switch_fraction": 0.0,
+        "image_win_fraction": 0.0,
+        "image_tie_fraction": 1.0,
+        "image_loss_fraction": 0.0
+      }
+    },
+    "yolo8_s1": {
+      "080": {
+        "point50": 0.05006216814161409,
+        "point95": 0.0317769713282936,
+        "switch_fraction": 0.14333333333333334,
+        "image_win_fraction": 0.13,
+        "image_tie_fraction": 0.8566666666666667,
+        "image_loss_fraction": 0.013333333333333334
+      },
+      "090": {
+        "point50": 0.02412949373244333,
+        "point95": 0.0158561362769003,
+        "switch_fraction": 0.08333333333333333,
+        "image_win_fraction": 0.06666666666666667,
+        "image_tie_fraction": 0.9233333333333333,
+        "image_loss_fraction": 0.01
+      },
+      "100": {
+        "point50": 0.0,
+        "point95": 0.0,
+        "switch_fraction": 0.0,
+        "image_win_fraction": 0.0,
+        "image_tie_fraction": 1.0,
+        "image_loss_fraction": 0.0
+      }
+    },
+    "rtdetr_l": {
+      "080": {
+        "point50": 0.018475881429537044,
+        "point95": 0.009513015301535773,
+        "switch_fraction": 0.043333333333333335,
+        "image_win_fraction": 0.04,
+        "image_tie_fraction": 0.9566666666666667,
+        "image_loss_fraction": 0.0033333333333333335
+      },
+      "090": {
+        "point50": 0.005032366325035749,
+        "point95": 0.00391126564783197,
+        "switch_fraction": 0.006666666666666667,
+        "image_win_fraction": 0.006666666666666667,
+        "image_tie_fraction": 0.9933333333333333,
+        "image_loss_fraction": 0.0
+      },
+      "100": {
+        "point50": 0.0,
+        "point95": 0.0,
+        "switch_fraction": 0.0,
+        "image_win_fraction": 0.0,
+        "image_tie_fraction": 1.0,
+        "image_loss_fraction": 0.0
+      }
+    }
+  },
+  "limitations": "Three fixed sequences, six fixed detector runs, and 300 lexicographically selected frames per sequence. The interval resamples within the observed sequence and checkpoint set."
+}

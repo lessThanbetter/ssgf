@@ -1,0 +1,70 @@
+{
+  "purpose": "Per-image score arrays used for external-evaluator switching, calibration, and equal-scene analyses.",
+  "matching_boundary": "These arrays retain the study's released TP flags. Raw detection geometry is not present in every array, so standard-matching rescoring requires detector inference.",
+  "groups": {
+    "yolov9t_coco_and_yolov10s_coco": [
+      {
+        "file": "per_image/yolov10s_coco__cdf.npz",
+        "bytes": 62641,
+        "sha256": "cb325e3a35c60c216c1f1f73e2847ab76b8326fa52fe2e5ea9e6db73427ff41c"
+      },
+      {
+        "file": "per_image/yolov10s_coco__piafusion.npz",
+        "bytes": 82230,
+        "sha256": "770bd08df0c0325edcef99a54e9877b99892f33950e6c52e32af1e4c10800bdf"
+      },
+      {
+        "file": "per_image/yolov10s_coco__spgfusion.npz",
+        "bytes": 76393,
+        "sha256": "f85238942a03ae7534424b016fb5b70ef10d517a467fada402e1fbda22d2f701"
+      },
+      {
+        "file": "per_image/yolov10s_coco__vis.npz",
+        "bytes": 61971,
+        "sha256": "82dc9f8706c3199ac077d866b832fa0adda50d561a3469f5370c653e5587c27e"
+      },
+      {
+        "file": "per_image/yolov9t_coco__cdf.npz",
+        "bytes": 70923,
+        "sha256": "64fbe9d1451d58d4f771e2325a847e7638feb2d3963af84c1be920aa68dd0408"
+      },
+      {
+        "file": "per_image/yolov9t_coco__piafusion.npz",
+        "bytes": 77481,
+        "sha256": "3232ada7bb78a63fbefb244d7a7712d213cb88cb463d0c8ffa7d246edb7c3cda"
+      },
+      {
+        "file": "per_image/yolov9t_coco__spgfusion.npz",
+        "bytes": 84760,
+        "sha256": "774e938368cb4c33075a0cf3faeb190dac1d66a7e98db438e3c040efd05aaf8c"
+      },
+      {
+        "file": "per_image/yolov9t_coco__vis.npz",
+        "bytes": 69941,
+        "sha256": "eef19dbf2e58722caabea45fa34171c6441f9b58c0b911bd973aa586946bf69f"
+      }
+    ],
+    "yolov9t_llvip_trained": [
+      {
+        "file": "per_image/yolov9t_domain__cdf.npz",
+        "bytes": 15983,
+        "sha256": "d0f592c40847b07aec371121baa32403e04fceb8a965a038d9777e76248501bc"
+      },
+      {
+        "file": "per_image/yolov9t_domain__piafusion.npz",
+        "bytes": 12739,
+        "sha256": "2203da546e2a0eef6be5926ed532dbece02e71c1d688ac5c1ebb84b18a14fbbc"
+      },
+      {
+        "file": "per_image/yolov9t_domain__spgfusion.npz",
+        "bytes": 14842,
+        "sha256": "c2c70ad497a2a8e692c885f124dcfa92c07520770aa01d46cee93bdce40afb57"
+      },
+      {
+        "file": "per_image/yolov9t_domain__vis.npz",
+        "bytes": 15881,
+        "sha256": "362dcfde5715d45e3d21b724c0ee503679fa845c5b5475d7f4aef69e77f2ccdf"
+      }
+    ]
+  }
+}

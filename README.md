@@ -5,12 +5,11 @@ visible--infrared studies.
 
 ## 1. Evaluator-conditioned fusion input arbitration (CS-ECF)
 
-The current release accompanies the working manuscript
-**“Confidence-Shielded Evaluator-Conditioned Fusion for Risk-Controlled
-Infrared--Visible Object Detection.”**
+The current release accompanies the revised manuscript
+**“Fusion Utility Depends on the Evaluator: A Boundary Study of
+Confidence-Shielded Input Selection for Infrared--Visible Object Detection.”**
 
-The version-specific archival release is **v2.4.1**, DOI
-[`10.5281/zenodo.23728385`](https://doi.org/10.5281/zenodo.23728385). The
+The version-specific archival release for this revision is **v3.0.0**. The
 shared software-series concept DOI is
 [`10.5281/zenodo.22984388`](https://doi.org/10.5281/zenodo.22984388).
 
@@ -19,22 +18,21 @@ target detector. A fused candidate is selected only when its top-five mean
 confidence reaches 1.5 times the visible-image score; otherwise the visible
 input is retained. The policy uses no test labels.
 
-Key frozen results:
+Key results in the revised evidence set:
 
-- 12 confirmatory detector checkpoints; 9 positive;
-- dataset-balanced AP50 gain `+0.0133`;
-- training-run-by-group hierarchical 95% CI `[+0.0026, +0.0261]`;
-- direct dataset-balanced difference from Always CDF `+0.0102`, with a
-  training-run-by-group interval `[-0.00057, +0.02980]` that includes zero;
-- two unused COCO-pretrained evaluators improved over visible by `+0.021` to
-  `+0.025` AP50, while their differences from Always CDF still crossed zero;
-- an LLVIP-fine-tuned YOLOv9t exposed a negative portability boundary:
-  CS-ECF was `-0.0108` AP50 relative to visible, while the shield improved the
-  unshielded selector by `+0.0153`;
-- no-shield worst loss `-0.0584`, CS-ECF worst loss `-0.0040`;
-- DroneVehicle independent-test gains `+0.0251 / +0.0293`;
-- thermal-mask advantage over global injection `+0.0007 AP50`;
-- standardized serial cost estimate `706.3 ms`.
+- held-out LLVIP CS-ECF minus no-shield AP50:
+  `+0.00894 [+0.00096,+0.02155]`;
+- switch-matched random control deficit: `+0.01392`;
+- development-selected visible plus PIAFusion on 900 new LLVIP frames:
+  AP50 `+0.01560 [+0.00249,+0.02874]` and
+  AP50--95 `+0.00946 [+0.00113,+0.01769]`, positive in 3/3 sequences and
+  6/6 detector checkpoints;
+- ungated PIAFusion was unstable on sequence 100 (`-0.15891` AP50), so the
+  result supported the gate rather than PIAFusion as a universal input;
+- measured complete-pipeline median: `1.67 s` for visible plus PIAFusion and
+  `2.52 s` for the four-candidate library; this is not a real-time claim;
+- M3FD CS-ECF minus visible was positive in 6/6 independently scored seed
+  runs.
 
 Artifacts:
 
@@ -52,9 +50,10 @@ Artifacts:
 - `analysis/cs_ecf/` — analysis and interval-reproduction scripts;
 - `results/selective_fusion/` — aggregate JSON, source-data CSV and per-image
   compressed score files;
-- `paper/CS_ECF_IPT_Submission/` — Elsevier LaTeX source, compiled 25-page PDF,
-  cover letter, 11 numbered figures, 11 figure-level source-data files, and the
-  versioned v18 submission package;
+- `paper/CS_ECF_IPT_Submission/submission_package_v39/` — final 21-page
+  manuscript, 23-page supplement, marked manuscript, response letters,
+  six main figures, eight supplementary figures, source data, evidence, and
+  reproduction scripts;
 - `paper/CS_ECF_IPT_DRAFT.md`, `paper/CS_ECF_RESULTS.md`,
   `paper/CS_ECF_2ZONE_MATERIALS.md` — manuscript and evidence notes.
 

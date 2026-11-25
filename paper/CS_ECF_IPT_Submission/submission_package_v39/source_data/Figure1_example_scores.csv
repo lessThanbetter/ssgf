@@ -1,0 +1,5 @@
+stem,checkpoint,candidate,display_candidate,score_top5,detection_count
+070142,YOLO26n-s0,vis,Visible,0.06781933,32
+070142,YOLO26n-s0,cdf,CDF,0.10033266,30
+070142,YOLO26n-s0,pia,PIAFusion,0.13262379,37
+070142,YOLO26n-s0,spg,SPGFusion,0.16985357,115
