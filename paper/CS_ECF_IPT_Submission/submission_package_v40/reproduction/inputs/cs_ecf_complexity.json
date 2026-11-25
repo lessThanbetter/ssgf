@@ -1,0 +1,35 @@
+{
+  "device": "NVIDIA GeForce RTX 2080 Ti",
+  "standardized_fusion_input_hw": [
+    384,
+    512
+  ],
+  "detector_input": 640,
+  "batch": 1,
+  "execution_model": "serial GPU stages; models assumed loaded or swapped outside the reported latency",
+  "fusion_components_ms": {
+    "cdf_pipeline": 22.282,
+    "piafusion": 37.7,
+    "spgfusion": 516.3
+  },
+  "fusion_generation_total_ms": 576.282,
+  "detector_once_ms": 32.5,
+  "four_detector_forwards_ms": 130.0,
+  "estimated_serial_total_ms": 706.282,
+  "parameters": {
+    "ifcnn_frozen": 75073,
+    "cdf_trainable": 0,
+    "piafusion_m": 1.18,
+    "spgfusion_m": 75.86
+  },
+  "per_stage_extra_peak_mib": {
+    "piafusion": 869.1,
+    "spgfusion": 1453.5,
+    "detector_once": 115.6
+  },
+  "notes": [
+    "Four detector forwards are counted serially; batching was not assumed.",
+    "Per-stage memory is not additive because models were benchmarked independently.",
+    "End-to-end wall time including data loading and model swapping was not measured."
+  ]
+}

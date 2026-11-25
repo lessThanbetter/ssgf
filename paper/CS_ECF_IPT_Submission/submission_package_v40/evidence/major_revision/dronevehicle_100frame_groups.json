@@ -1,0 +1,37 @@
+{
+  "dataset": "DroneVehicle",
+  "official_split": "test",
+  "selection_seed": 2037,
+  "selection_unit": "consecutive 100-frame block",
+  "analysis_unit": "the same three prespecified 100-frame blocks",
+  "blocks": [
+    {
+      "id": 7,
+      "frame_range": "00701-00800",
+      "n_images": 100,
+      "source_prefixes": {
+        "007": 99,
+        "008": 1
+      }
+    },
+    {
+      "id": 32,
+      "frame_range": "03201-03300",
+      "n_images": 100,
+      "source_prefixes": {
+        "032": 99,
+        "033": 1
+      }
+    },
+    {
+      "id": 71,
+      "frame_range": "07101-07200",
+      "n_images": 100,
+      "source_prefixes": {
+        "071": 99,
+        "072": 1
+      }
+    }
+  ],
+  "note": "Source filename prefixes span block boundaries and are not additional evaluation groups."
+}

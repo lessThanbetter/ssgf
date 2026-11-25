@@ -1,0 +1,131 @@
+{
+  "dataset": "DroneVehicle official test",
+  "independent_status": "Official test subset scored with native OBB AP; best and last checkpoints share one upstream training run.",
+  "n_images": 300,
+  "groups": [
+    7,
+    32,
+    71
+  ],
+  "checkpoint_results": {
+    "best": {
+      "visible_ap50": 0.6563,
+      "shielded_ap50": 0.6814,
+      "shielded_gain": 0.0251,
+      "no_shield_gain": 0.1064,
+      "shielded_selected_counts": {
+        "vis": 241,
+        "cdf": 0,
+        "pia": 30,
+        "spg": 29
+      },
+      "per_group": {
+        "7": {
+          "n": 100,
+          "visible_ap50": 0.486,
+          "shielded_ap50": 0.5059,
+          "gain": 0.0199
+        },
+        "32": {
+          "n": 100,
+          "visible_ap50": 0.801,
+          "shielded_ap50": 0.8012,
+          "gain": 0.0002
+        },
+        "71": {
+          "n": 100,
+          "visible_ap50": 0.7225,
+          "shielded_ap50": 0.7466,
+          "gain": 0.0241
+        }
+      }
+    },
+    "last": {
+      "visible_ap50": 0.6474,
+      "shielded_ap50": 0.6767,
+      "shielded_gain": 0.0293,
+      "no_shield_gain": 0.1016,
+      "shielded_selected_counts": {
+        "vis": 233,
+        "cdf": 0,
+        "pia": 40,
+        "spg": 27
+      },
+      "per_group": {
+        "7": {
+          "n": 100,
+          "visible_ap50": 0.478,
+          "shielded_ap50": 0.497,
+          "gain": 0.0189
+        },
+        "32": {
+          "n": 100,
+          "visible_ap50": 0.798,
+          "shielded_ap50": 0.7982,
+          "gain": 0.0002
+        },
+        "71": {
+          "n": 100,
+          "visible_ap50": 0.7138,
+          "shielded_ap50": 0.7526,
+          "gain": 0.0388
+        }
+      }
+    }
+  },
+  "combined": {
+    "estimand": "equal-group paired AP50 difference",
+    "equal_group_csecf_minus_visible": {
+      "point": 0.0170079010543302,
+      "group_ci95": [
+        0.0002117948472455944,
+        0.0314079758575323
+      ]
+    },
+    "equal_group_csecf_minus_cdf": {
+      "point": 0.010157850302305382,
+      "group_ci95": [
+        0.001018505107899692,
+        0.028194446166852072
+      ]
+    },
+    "equal_group_cdf_minus_visible": {
+      "point": 0.006850050752024818,
+      "group_ci95": [
+        -0.0008067102606540977,
+        0.018143332826048325
+      ]
+    },
+    "equal_group_no_shield_minus_visible": {
+      "point": 0.09799384894195698,
+      "group_ci95": [
+        0.07789487072579934,
+        0.11150896258022175
+      ]
+    }
+  },
+  "pooled_combined": {
+    "mean_shielded_gain": 0.0272,
+    "min_checkpoint_gain": 0.0251,
+    "max_checkpoint_gain": 0.0293,
+    "mean_no_shield_gain": 0.104,
+    "image_ci95": [
+      -0.0028,
+      0.0682
+    ],
+    "group_ci95": [
+      0.0002,
+      0.0406
+    ],
+    "no_shield_image_ci95": [
+      0.0605,
+      0.1602
+    ],
+    "no_shield_group_ci95": [
+      0.0779,
+      0.1176
+    ]
+  },
+  "metric": "Native oriented-box AP50 using probabilistic rotated-box IoU and one-to-one maximum-cardinality matching.",
+  "estimand_note": "checkpoint_results retain pooled-image AP values. The combined object is the canonical equal-group paired contrast used in the manuscript."
+}

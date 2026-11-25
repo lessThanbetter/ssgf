@@ -1,0 +1,18 @@
+panel,policy,dataset_balanced_equal_group_ap50_points,worst_checkpoint_ap50_points,mean_ci_low_points,mean_ci_high_points,checkpoint,no_shield_equal_group_ap50_points,csecf_equal_group_ap50_points,shield_minus_no_shield_points
+b,,,,,,llvip/yolo26_s1,-7.4539,-0.345883,7.108017
+b,,,,,,llvip/yolo26_s0,-4.078049,-0.167446,3.910603
+b,,,,,,llvip/yolo26_s2,-1.540982,0.581626,2.122608
+b,,,,,,llvip/yolo8_s0,-1.110239,-0.509734,0.600506
+b,,,,,,llvip/yolo8_s1,1.24024,0.95591,-0.28433
+b,,,,,,llvip/rtdetr,0.556615,0.21339,-0.343224
+b,,,,,,llvip/yolo11,0.98868,0.337947,-0.650733
+b,,,,,,llvip/agnostic,3.953063,1.023621,-2.929442
+b,,,,,,m3fd/yolo26_m3fd6,-0.187918,0.291054,0.478971
+b,,,,,,m3fd/yolo8n_m3fd6,1.346638,1.280548,-0.06609
+b,,,,,,dronevehicle_test/last,9.382023,1.930363,-7.45166
+b,,,,,,dronevehicle_test/best,10.216747,1.471217,-8.745529
+a,Always CDF,0.208995,-0.758559,,,,,,
+a,Always PIAFusion,-7.33414,-26.310811,,,,,,
+a,Always SPGFusion,-5.129081,-24.298934,,,,,,
+a,No shield,3.149391,-7.4539,,,,,,
+a,CS-ECF,0.915923,-0.509734,0.260015,1.663658,,,,

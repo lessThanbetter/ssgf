@@ -1,0 +1,6 @@
+stem,input,role,display_width_px,display_height_px
+070142,Visible,visible,640,512
+070142,Infrared,infrared,640,512
+070142,CDF,candidate,640,512
+070142,PIAFusion,candidate,640,512
+070142,SPGFusion,candidate,640,512

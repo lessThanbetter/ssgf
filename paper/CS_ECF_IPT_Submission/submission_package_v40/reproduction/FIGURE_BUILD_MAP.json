@@ -1,0 +1,71 @@
+{
+  "main": {
+    "1": {
+      "generator": "render_figure1_svg.py",
+      "figure": "Figure1_workflow.pdf",
+      "source_data": "Figure1_source.csv"
+    },
+    "2": {
+      "generator": "make_ipt_fig_core_v2.py",
+      "figure": "Figure3_core_evidence.pdf",
+      "source_data": "Figure3_source.csv"
+    },
+    "3": {
+      "generator": "make_ipt_fig8.py",
+      "figure": "Figure7_external_evaluators.pdf",
+      "source_data": "Figure7_source.csv"
+    },
+    "4": {
+      "generator": "make_ipt_case_studies.py",
+      "figure": "Figure6_case_studies.pdf",
+      "source_data": "Figure6_source.csv"
+    },
+    "5": {
+      "generator": "render_figure11_svg.py",
+      "figure": "Figure11_cost_deployment.pdf",
+      "source_data": "Figure11_source.csv"
+    }
+  },
+  "supplementary": {
+    "S1": {
+      "generator": "make_ipt_fig7.py",
+      "figure": "FigureS1_controls_heuristic.pdf",
+      "source_data": "FigureS1_controls_source.csv"
+    },
+    "S2": {
+      "generator": "make_ipt_fig6.py",
+      "figure": "FigureS2_checkpoint_intervals.pdf",
+      "source_data": "FigureS2_checkpoint_source.csv"
+    },
+    "S3": {
+      "generator": "make_ipt_fig9.py",
+      "figure": "FigureS3_calibration_boundary.pdf",
+      "source_data": "FigureS3_calibration_source.csv"
+    },
+    "S4": {
+      "generator": "make_ipt_fig4.py",
+      "figure": "FigureS4_thermal_class_boundary.pdf",
+      "source_data": "FigureS4_thermal_class_source.csv"
+    },
+    "S5": {
+      "generator": "make_ipt_fig1.py",
+      "figure": "FigureS5_evaluator_dependence.pdf",
+      "source_data": "FigureS5_evaluator_source.csv"
+    },
+    "S6": {
+      "generator": "make_ipt_fig3.py",
+      "figure": "FigureS6_observed_tail_tradeoff.pdf",
+      "source_data": "FigureS6_tail_source.csv"
+    },
+    "S7": {
+      "generator": "make_ipt_fig10.py",
+      "figure": "FigureS7_cdf_comparison.pdf",
+      "source_data": "FigureS7_cdf_source.csv"
+    },
+    "S8": {
+      "generator": "make_ipt_fig5.py",
+      "figure": "FigureS8_selection_sensitivity.pdf",
+      "source_data": "FigureS8_selection_source.csv"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+infrared–visible image fusion
+object detection
+evaluator-conditioned fusion-input selection
+confidence-gated fallback
+selective prediction
+thermal imaging

@@ -1,0 +1,61 @@
+{
+  "data": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\det\\data.yaml",
+  "epochs": 40,
+  "device": "NVIDIA GeForce RTX 2080 Ti",
+  "batch": 16,
+  "workers": 4,
+  "initialization": {
+    "yolo26n_m3fd_6cls": "D:\\Code\\_ssgf_external\\r2_clean\\weights\\yolo26n.pt",
+    "yolo8n_m3fd_6cls": "D:\\Code\\_ssgf_external\\r2_clean\\weights\\yolov8n.pt"
+  },
+  "runs": [
+    {
+      "model": "yolo26n_m3fd_6cls",
+      "seed": 0,
+      "run_name": "yolo26n_m3fd_6cls",
+      "save_dir": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo26n_m3fd_6cls",
+      "last_weights": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo26n_m3fd_6cls\\weights\\last.pt",
+      "best_weights": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo26n_m3fd_6cls\\weights\\best.pt"
+    },
+    {
+      "model": "yolo26n_m3fd_6cls",
+      "seed": 1,
+      "run_name": "yolo26n_m3fd_6cls_s1",
+      "save_dir": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo26n_m3fd_6cls_s1",
+      "last_weights": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo26n_m3fd_6cls_s1\\weights\\last.pt",
+      "best_weights": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo26n_m3fd_6cls_s1\\weights\\best.pt"
+    },
+    {
+      "model": "yolo26n_m3fd_6cls",
+      "seed": 2,
+      "run_name": "yolo26n_m3fd_6cls_s2",
+      "save_dir": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo26n_m3fd_6cls_s2",
+      "last_weights": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo26n_m3fd_6cls_s2\\weights\\last.pt",
+      "best_weights": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo26n_m3fd_6cls_s2\\weights\\best.pt"
+    },
+    {
+      "model": "yolo8n_m3fd_6cls",
+      "seed": 0,
+      "run_name": "yolo8n_m3fd_6cls",
+      "save_dir": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo8n_m3fd_6cls",
+      "last_weights": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo8n_m3fd_6cls\\weights\\last.pt",
+      "best_weights": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo8n_m3fd_6cls\\weights\\best.pt"
+    },
+    {
+      "model": "yolo8n_m3fd_6cls",
+      "seed": 1,
+      "run_name": "yolo8n_m3fd_6cls_s1",
+      "save_dir": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo8n_m3fd_6cls_s1",
+      "last_weights": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo8n_m3fd_6cls_s1\\weights\\last.pt",
+      "best_weights": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo8n_m3fd_6cls_s1\\weights\\best.pt"
+    },
+    {
+      "model": "yolo8n_m3fd_6cls",
+      "seed": 2,
+      "run_name": "yolo8n_m3fd_6cls_s2",
+      "save_dir": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo8n_m3fd_6cls_s2",
+      "last_weights": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo8n_m3fd_6cls_s2\\weights\\last.pt",
+      "best_weights": "D:\\Code\\_ssgf_external\\m3fd_erf_pilot\\runs\\yolo8n_m3fd_6cls_s2\\weights\\best.pt"
+    }
+  ]
+}

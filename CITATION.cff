@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this software or evidence package, cite the accompanying article when available and this archival release."
 title: "Fusion Utility Depends on the Evaluator: Code, protocols, source data, and revision package"
-version: "v3.0.0"
+version: "v3.0.1"
 date-released: "2026-11-26"
 license: MIT
 repository-code: "https://github.com/lessThanbetter/ssgf"

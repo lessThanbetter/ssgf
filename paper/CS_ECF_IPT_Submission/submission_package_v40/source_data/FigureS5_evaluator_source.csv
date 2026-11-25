@@ -1,0 +1,61 @@
+dataset,checkpoint,display_checkpoint,policy,gain_ap50_points
+llvip,yolo11,YOLO11n,Always CDF,1.09
+llvip,yolo11,YOLO11n,Always PIAFusion,-8.84
+llvip,yolo11,YOLO11n,Always SPGFusion,-13.95
+llvip,yolo11,YOLO11n,No shield,0.99
+llvip,yolo11,YOLO11n,CS-ECF,0.34
+llvip,agnostic,Modality-agnostic,Always CDF,0.79
+llvip,agnostic,Modality-agnostic,Always PIAFusion,1.53
+llvip,agnostic,Modality-agnostic,Always SPGFusion,-2.93
+llvip,agnostic,Modality-agnostic,No shield,3.43
+llvip,agnostic,Modality-agnostic,CS-ECF,0.61
+llvip,yolo26_s0,YOLO26n s0,Always CDF,0.78
+llvip,yolo26_s0,YOLO26n s0,Always PIAFusion,-19.79
+llvip,yolo26_s0,YOLO26n s0,Always SPGFusion,-22.29
+llvip,yolo26_s0,YOLO26n s0,No shield,-4.31
+llvip,yolo26_s0,YOLO26n s0,CS-ECF,-0.34
+llvip,rtdetr,RT-DETR-l,Always CDF,0.04
+llvip,rtdetr,RT-DETR-l,Always PIAFusion,-20.71
+llvip,rtdetr,RT-DETR-l,Always SPGFusion,-24.57
+llvip,rtdetr,RT-DETR-l,No shield,0.45
+llvip,rtdetr,RT-DETR-l,CS-ECF,0.4
+llvip,yolo26_s1,YOLO26n s1,Always CDF,1.11
+llvip,yolo26_s1,YOLO26n s1,Always PIAFusion,-14.23
+llvip,yolo26_s1,YOLO26n s1,Always SPGFusion,-17.88
+llvip,yolo26_s1,YOLO26n s1,No shield,-5.84
+llvip,yolo26_s1,YOLO26n s1,CS-ECF,-0.27
+llvip,yolo26_s2,YOLO26n s2,Always CDF,1.21
+llvip,yolo26_s2,YOLO26n s2,Always PIAFusion,-12.17
+llvip,yolo26_s2,YOLO26n s2,Always SPGFusion,-16.41
+llvip,yolo26_s2,YOLO26n s2,No shield,-0.55
+llvip,yolo26_s2,YOLO26n s2,CS-ECF,0.26
+llvip,yolo8_s0,YOLOv8n s0,Always CDF,0.46
+llvip,yolo8_s0,YOLOv8n s0,Always PIAFusion,-29.1
+llvip,yolo8_s0,YOLOv8n s0,Always SPGFusion,-25.01
+llvip,yolo8_s0,YOLOv8n s0,No shield,-0.64
+llvip,yolo8_s0,YOLOv8n s0,CS-ECF,-0.4
+llvip,yolo8_s1,YOLOv8n s1,Always CDF,0.32
+llvip,yolo8_s1,YOLOv8n s1,Always PIAFusion,-13.78
+llvip,yolo8_s1,YOLOv8n s1,Always SPGFusion,-10.6
+llvip,yolo8_s1,YOLOv8n s1,No shield,0.95
+llvip,yolo8_s1,YOLOv8n s1,CS-ECF,0.64
+m3fd,yolo26_m3fd6,YOLO26n,Always CDF,-0.12
+m3fd,yolo26_m3fd6,YOLO26n,Always PIAFusion,-16.38
+m3fd,yolo26_m3fd6,YOLO26n,Always SPGFusion,-12.93
+m3fd,yolo26_m3fd6,YOLO26n,No shield,-0.57
+m3fd,yolo26_m3fd6,YOLO26n,CS-ECF,0.41
+m3fd,yolo8n_m3fd6,YOLOv8n,Always CDF,-0.59
+m3fd,yolo8n_m3fd6,YOLOv8n,Always PIAFusion,-15.88
+m3fd,yolo8n_m3fd6,YOLOv8n,Always SPGFusion,-12.0
+m3fd,yolo8n_m3fd6,YOLOv8n,No shield,1.09
+m3fd,yolo8n_m3fd6,YOLOv8n,CS-ECF,1.82
+dronevehicle_test,best,OBB best,Always CDF,0.6
+dronevehicle_test,best,OBB best,Always PIAFusion,9.34
+dronevehicle_test,best,OBB best,Always SPGFusion,10.12
+dronevehicle_test,best,OBB best,No shield,10.64
+dronevehicle_test,best,OBB best,CS-ECF,2.51
+dronevehicle_test,last,OBB last,Always CDF,0.5
+dronevehicle_test,last,OBB last,Always PIAFusion,9.59
+dronevehicle_test,last,OBB last,Always SPGFusion,12.1
+dronevehicle_test,last,OBB last,No shield,10.16
+dronevehicle_test,last,OBB last,CS-ECF,2.93

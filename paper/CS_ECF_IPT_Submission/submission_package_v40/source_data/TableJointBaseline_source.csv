@@ -1,0 +1,6 @@
+system,setting,ap50
+YOLO26n + visible,visible-only checkpoint,0.371672
+YOLO26n + CS-ECF,same checkpoint with confidence shield,0.375745
+YOLOv8n + visible,visible-only checkpoint,0.379031
+YOLOv8n + CS-ECF,same checkpoint with confidence shield,0.397238
+YOLOv11-RGBT early fusion,joint four-channel fusion and detection,0.096323

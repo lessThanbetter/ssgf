@@ -1,0 +1,12 @@
+{
+  "run": "run1",
+  "seed": 0,
+  "data": "D:\\Code\\_ssgf_external\\dronevehicle_val300\\det_obb\\data_run1.yaml",
+  "weights_initialization": "D:\\Code\\_server_handoff_v2\\ssgf\\yolo11n-obb.pt",
+  "epochs": 30,
+  "batch": 4,
+  "imgsz": 640,
+  "save_dir": "D:\\Code\\_server_handoff_v2\\ssgf\\results\\prospective_20261029\\dronevehicle\\run1",
+  "last_weights": "D:\\Code\\_server_handoff_v2\\ssgf\\results\\prospective_20261029\\dronevehicle\\run1\\weights\\last.pt",
+  "best_weights": "D:\\Code\\_server_handoff_v2\\ssgf\\results\\prospective_20261029\\dronevehicle\\run1\\weights\\best.pt"
+}

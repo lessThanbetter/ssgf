@@ -1,0 +1,455 @@
+{
+  "scope": "M3FD held-out test, 200 images, two frame groups",
+  "matching": "all-at-once maximum-cardinality matching",
+  "top_k": 5,
+  "margin": 1.5,
+  "runs": [
+    {
+      "model": "yolo26_m3fd6_s0",
+      "visible_ap50": 0.3894597097803678,
+      "groups": 2,
+      "full": {
+        "pooled_ap50": 0.3935342318533366,
+        "pooled_gain_vs_visible": 0.004074522072968767,
+        "equal_group_gain_vs_visible": 0.0029293412627736104,
+        "group_gains": [
+          0.005858682525547221,
+          0.0
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 0.075
+      },
+      "selected": {
+        "pooled_ap50": 0.39418298488101994,
+        "pooled_gain_vs_visible": 0.0047232751006521245,
+        "equal_group_gain_vs_visible": 0.0033251586102772956,
+        "group_gains": [
+          0.006650317220554591,
+          0.0
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 0.06
+      },
+      "no_shield": {
+        "pooled_ap50": 0.37646220472883013,
+        "pooled_gain_vs_visible": -0.012997505051537683,
+        "equal_group_gain_vs_visible": -0.007042752582374218,
+        "group_gains": [
+          -0.009199927742941094,
+          -0.004885577421807341
+        ],
+        "positive_groups": 0,
+        "switch_fraction": 0.52
+      },
+      "always_cdf": {
+        "pooled_ap50": 0.3831358090358174,
+        "pooled_gain_vs_visible": -0.006323900744550415,
+        "equal_group_gain_vs_visible": -0.011142552619664625,
+        "group_gains": [
+          -0.009443805807887173,
+          -0.012841299431442077
+        ],
+        "positive_groups": 0,
+        "switch_fraction": 1.0
+      }
+    },
+    {
+      "model": "yolo26_m3fd6_s1",
+      "visible_ap50": 0.3964677822578111,
+      "groups": 2,
+      "full": {
+        "pooled_ap50": 0.411164654390399,
+        "pooled_gain_vs_visible": 0.014696872132587913,
+        "equal_group_gain_vs_visible": 0.010378433038378349,
+        "group_gains": [
+          0.020756866076756697,
+          0.0
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 0.07
+      },
+      "selected": {
+        "pooled_ap50": 0.41135158997103677,
+        "pooled_gain_vs_visible": 0.014883807713225672,
+        "equal_group_gain_vs_visible": 0.010466661846129571,
+        "group_gains": [
+          0.020933323692259143,
+          0.0
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 0.065
+      },
+      "no_shield": {
+        "pooled_ap50": 0.40041300155914833,
+        "pooled_gain_vs_visible": 0.003945219301337233,
+        "equal_group_gain_vs_visible": -0.0027484478435867987,
+        "group_gains": [
+          0.021047541100917555,
+          -0.026544436788091152
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 0.46
+      },
+      "always_cdf": {
+        "pooled_ap50": 0.38604483682046603,
+        "pooled_gain_vs_visible": -0.010422945437345066,
+        "equal_group_gain_vs_visible": -0.010406254557464634,
+        "group_gains": [
+          0.004450336940387656,
+          -0.025262846055316923
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 1.0
+      }
+    },
+    {
+      "model": "yolo26_m3fd6_s2",
+      "visible_ap50": 0.3951648359649788,
+      "groups": 2,
+      "full": {
+        "pooled_ap50": 0.40131168032648173,
+        "pooled_gain_vs_visible": 0.006146844361502923,
+        "equal_group_gain_vs_visible": 0.00439670588188712,
+        "group_gains": [
+          0.00879341176377424,
+          0.0
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 0.065
+      },
+      "selected": {
+        "pooled_ap50": 0.4006227561869788,
+        "pooled_gain_vs_visible": 0.005457920221999979,
+        "equal_group_gain_vs_visible": 0.0037604562084812,
+        "group_gains": [
+          0.0075209124169624,
+          0.0
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 0.055
+      },
+      "no_shield": {
+        "pooled_ap50": 0.4030675147356138,
+        "pooled_gain_vs_visible": 0.007902678770634997,
+        "equal_group_gain_vs_visible": 0.00496279480749276,
+        "group_gains": [
+          0.011389851649042493,
+          -0.0014642620340569734
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 0.435
+      },
+      "always_cdf": {
+        "pooled_ap50": 0.4024437558212681,
+        "pooled_gain_vs_visible": 0.007278919856289312,
+        "equal_group_gain_vs_visible": 0.0024384032007462586,
+        "group_gains": [
+          0.003616519218748726,
+          0.0012602871827437911
+        ],
+        "positive_groups": 2,
+        "switch_fraction": 1.0
+      }
+    },
+    {
+      "model": "yolo8n_m3fd6_s0",
+      "visible_ap50": 0.3710556884996512,
+      "groups": 2,
+      "full": {
+        "pooled_ap50": 0.38914959179092407,
+        "pooled_gain_vs_visible": 0.01809390329127286,
+        "equal_group_gain_vs_visible": 0.01277870501467901,
+        "group_gains": [
+          0.02555741002935802,
+          0.0
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 0.08
+      },
+      "selected": {
+        "pooled_ap50": 0.3892069577936037,
+        "pooled_gain_vs_visible": 0.0181512692939525,
+        "equal_group_gain_vs_visible": 0.012871993565249984,
+        "group_gains": [
+          0.025743987130499968,
+          0.0
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 0.075
+      },
+      "no_shield": {
+        "pooled_ap50": 0.38645860775328117,
+        "pooled_gain_vs_visible": 0.015402919253629965,
+        "equal_group_gain_vs_visible": 0.014418611179783963,
+        "group_gains": [
+          0.033524163637213555,
+          -0.004686941277645629
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 0.485
+      },
+      "always_cdf": {
+        "pooled_ap50": 0.37107807278315225,
+        "pooled_gain_vs_visible": 2.238428350104238e-05,
+        "equal_group_gain_vs_visible": -0.004287596915845515,
+        "group_gains": [
+          -0.0007896014257243733,
+          -0.007785592405966657
+        ],
+        "positive_groups": 0,
+        "switch_fraction": 1.0
+      }
+    },
+    {
+      "model": "yolo8n_m3fd6_s1",
+      "visible_ap50": 0.37959505871711546,
+      "groups": 2,
+      "full": {
+        "pooled_ap50": 0.3813888932321614,
+        "pooled_gain_vs_visible": 0.0017938345150459445,
+        "equal_group_gain_vs_visible": 0.0017549140430740129,
+        "group_gains": [
+          0.0035098280861480258,
+          0.0
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 0.065
+      },
+      "selected": {
+        "pooled_ap50": 0.38296781929908735,
+        "pooled_gain_vs_visible": 0.0033727605819718898,
+        "equal_group_gain_vs_visible": 0.0025479119961868413,
+        "group_gains": [
+          0.0050958239923736826,
+          0.0
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 0.055
+      },
+      "no_shield": {
+        "pooled_ap50": 0.35738199729695563,
+        "pooled_gain_vs_visible": -0.02221306142015983,
+        "equal_group_gain_vs_visible": -0.016238221429855343,
+        "group_gains": [
+          -0.021557541396897417,
+          -0.010918901462813269
+        ],
+        "positive_groups": 0,
+        "switch_fraction": 0.5
+      },
+      "always_cdf": {
+        "pooled_ap50": 0.361245956916648,
+        "pooled_gain_vs_visible": -0.01834910180046745,
+        "equal_group_gain_vs_visible": -0.012446471696059919,
+        "group_gains": [
+          0.0010259309271327677,
+          -0.025918874319252605
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 1.0
+      }
+    },
+    {
+      "model": "yolo8n_m3fd6_s2",
+      "visible_ap50": 0.3032797780973862,
+      "groups": 2,
+      "full": {
+        "pooled_ap50": 0.3095654552197966,
+        "pooled_gain_vs_visible": 0.006285677122410405,
+        "equal_group_gain_vs_visible": 0.004788030519825348,
+        "group_gains": [
+          0.009576061039650696,
+          0.0
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 0.06
+      },
+      "selected": {
+        "pooled_ap50": 0.3102807179118685,
+        "pooled_gain_vs_visible": 0.007000939814482299,
+        "equal_group_gain_vs_visible": 0.0048667009417593665,
+        "group_gains": [
+          0.009733401883518733,
+          0.0
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 0.06
+      },
+      "no_shield": {
+        "pooled_ap50": 0.31284952068733635,
+        "pooled_gain_vs_visible": 0.009569742589950136,
+        "equal_group_gain_vs_visible": 0.008012142877548284,
+        "group_gains": [
+          0.019694862704694338,
+          -0.0036705769495977703
+        ],
+        "positive_groups": 1,
+        "switch_fraction": 0.48
+      },
+      "always_cdf": {
+        "pooled_ap50": 0.3145990397677592,
+        "pooled_gain_vs_visible": 0.011319261670373004,
+        "equal_group_gain_vs_visible": 0.024272567127371414,
+        "group_gains": [
+          0.01736899450295437,
+          0.031176139751788456
+        ],
+        "positive_groups": 2,
+        "switch_fraction": 1.0
+      }
+    }
+  ],
+  "families": {
+    "YOLO26n": {
+      "full": {
+        "runs": 3,
+        "pooled_mean": 0.008306079522353202,
+        "pooled_sd": 0.005630746181205632,
+        "pooled_min": 0.004074522072968767,
+        "pooled_max": 0.014696872132587913,
+        "equal_group_mean": 0.005901493394346359,
+        "equal_group_sd": 0.003945951236848409,
+        "equal_group_min": 0.0029293412627736104,
+        "equal_group_max": 0.010378433038378349,
+        "positive_runs": 3
+      },
+      "selected": {
+        "runs": 3,
+        "pooled_mean": 0.008355001011959259,
+        "pooled_sd": 0.005666031553958729,
+        "pooled_min": 0.0047232751006521245,
+        "pooled_max": 0.014883807713225672,
+        "equal_group_mean": 0.005850758888296022,
+        "equal_group_sd": 0.0040034099324017395,
+        "equal_group_min": 0.0033251586102772956,
+        "equal_group_max": 0.010466661846129571,
+        "positive_runs": 3
+      },
+      "no_shield": {
+        "runs": 3,
+        "pooled_mean": -0.000383202326521818,
+        "pooled_sd": 0.01110206495619354,
+        "pooled_min": -0.012997505051537683,
+        "pooled_max": 0.007902678770634997,
+        "equal_group_mean": -0.0016094685394894188,
+        "equal_group_sd": 0.006083276043708444,
+        "equal_group_min": -0.007042752582374218,
+        "equal_group_max": 0.00496279480749276,
+        "positive_runs": 2
+      },
+      "always_cdf": {
+        "runs": 3,
+        "pooled_mean": -0.0031559754418687227,
+        "pooled_sd": 0.009266381265684166,
+        "pooled_min": -0.010422945437345066,
+        "pooled_max": 0.007278919856289312,
+        "equal_group_mean": -0.006370134658794334,
+        "equal_group_sd": 0.007637295864788783,
+        "equal_group_min": -0.011142552619664625,
+        "equal_group_max": 0.0024384032007462586,
+        "positive_runs": 1
+      }
+    },
+    "YOLOv8n": {
+      "full": {
+        "runs": 3,
+        "pooled_mean": 0.008724471642909737,
+        "pooled_sd": 0.008419254691618795,
+        "pooled_min": 0.0017938345150459445,
+        "pooled_max": 0.01809390329127286,
+        "equal_group_mean": 0.00644054985919279,
+        "equal_group_sd": 0.005694656001168773,
+        "equal_group_min": 0.0017549140430740129,
+        "equal_group_max": 0.01277870501467901,
+        "positive_runs": 3
+      },
+      "selected": {
+        "runs": 3,
+        "pooled_mean": 0.009508323230135562,
+        "pooled_sd": 0.0077017081632804974,
+        "pooled_min": 0.0033727605819718898,
+        "pooled_max": 0.0181512692939525,
+        "equal_group_mean": 0.006762202167732064,
+        "equal_group_sd": 0.005416766446360349,
+        "equal_group_min": 0.0025479119961868413,
+        "equal_group_max": 0.012871993565249984,
+        "positive_runs": 3
+      },
+      "no_shield": {
+        "runs": 3,
+        "pooled_mean": 0.0009198668078067573,
+        "pooled_sd": 0.02024489475886735,
+        "pooled_min": -0.02221306142015983,
+        "pooled_max": 0.015402919253629965,
+        "equal_group_mean": 0.0020641775424923015,
+        "equal_group_sd": 0.01617077812395346,
+        "equal_group_min": -0.016238221429855343,
+        "equal_group_max": 0.014418611179783963,
+        "positive_runs": 2
+      },
+      "always_cdf": {
+        "runs": 3,
+        "pooled_mean": -0.0023358186155311342,
+        "pooled_sd": 0.014974103927922628,
+        "pooled_min": -0.01834910180046745,
+        "pooled_max": 0.011319261670373004,
+        "equal_group_mean": 0.00251283283848866,
+        "equal_group_sd": 0.01928098380949192,
+        "equal_group_min": -0.012446471696059919,
+        "equal_group_max": 0.024272567127371414,
+        "positive_runs": 2
+      }
+    }
+  },
+  "all_runs": {
+    "full": {
+      "runs": 6,
+      "pooled_mean": 0.008515275582631468,
+      "pooled_sd": 0.006410005962381463,
+      "pooled_min": 0.0017938345150459445,
+      "pooled_max": 0.01809390329127286,
+      "equal_group_mean": 0.006171021626769575,
+      "equal_group_sd": 0.004391700105401212,
+      "equal_group_min": 0.0017549140430740129,
+      "equal_group_max": 0.01277870501467901,
+      "positive_runs": 6
+    },
+    "selected": {
+      "runs": 6,
+      "pooled_mean": 0.00893166212104741,
+      "pooled_sd": 0.006080060404535527,
+      "pooled_min": 0.0033727605819718898,
+      "pooled_max": 0.0181512692939525,
+      "equal_group_mean": 0.006306480528014043,
+      "equal_group_sd": 0.004289134945883147,
+      "equal_group_min": 0.0025479119961868413,
+      "equal_group_max": 0.012871993565249984,
+      "positive_runs": 6
+    },
+    "no_shield": {
+      "runs": 6,
+      "pooled_mean": 0.0002683322406424697,
+      "pooled_sd": 0.01462032970853647,
+      "pooled_min": -0.02221306142015983,
+      "pooled_max": 0.015402919253629965,
+      "equal_group_mean": 0.0002273545015014413,
+      "equal_group_sd": 0.011110752795555007,
+      "equal_group_min": -0.016238221429855343,
+      "equal_group_max": 0.014418611179783963,
+      "positive_runs": 4
+    },
+    "always_cdf": {
+      "runs": 6,
+      "pooled_mean": -0.0027458970286999285,
+      "pooled_sd": 0.01114619402522837,
+      "pooled_min": -0.01834910180046745,
+      "pooled_max": 0.011319261670373004,
+      "equal_group_mean": -0.0019286509101528366,
+      "equal_group_sd": 0.01398949546562061,
+      "equal_group_min": -0.012446471696059919,
+      "equal_group_max": 0.024272567127371414,
+      "positive_runs": 3
+    }
+  },
+  "note": "Seed variance is conditional on the fixed M3FD test frames and two training recipes. Range and SD describe observed runs, not a population confidence guarantee."
+}

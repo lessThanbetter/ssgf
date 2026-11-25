@@ -1,0 +1,75 @@
+diff --git a/ultralytics/data/augment.py b/ultralytics/data/augment.py
+index cdb2938..ea1450d 100644
+--- a/ultralytics/data/augment.py
++++ b/ultralytics/data/augment.py
+@@ -1067,8 +1067,19 @@ class RandomPerspective:
+         T[0, 2] = random.uniform(0.5 - self.translate, 0.5 + self.translate) * self.size[0]  # x translation (pixels)
+         T[1, 2] = random.uniform(0.5 - self.translate, 0.5 + self.translate) * self.size[1]  # y translation (pixels)
+ 
+-        # Combined rotation matrix
+-        M = T @ S @ R @ P @ C  # order of operations (right to left) is IMPORTANT
++        # Combine the 3x3 transforms without BLAS. The bundled NumPy/OpenBLAS
++        # combination on this Windows host aborts inside small matmuls.
++        M = np.eye(3, dtype=np.float32)
++        for right in (C, P, R, S, T):
++            product = np.zeros((3, 3), dtype=np.float32)
++            for row in range(3):
++                for col in range(3):
++                    product[row, col] = (
++                        M[row, 0] * right[0, col]
++                        + M[row, 1] * right[1, col]
++                        + M[row, 2] * right[2, col]
++                    )
++            M = product
+         value = (114, 114, 114)  # RGB  RGBRGB6C Gray
+         # 2025-03-03 'yzc'
+         if len(img.shape) > 2:
+@@ -1083,15 +1094,23 @@ class RandomPerspective:
+ 
+         if (border[0] != 0) or (border[1] != 0) or (M != np.eye(3)).any():  # image changed
+             # 2025-03-03 'yzc'
+-            if channels == 6:
++            if channels in {4, 6}:
+                 if self.perspective:
+-                    rbg = cv2.warpPerspective(img[:, :, :3], M, dsize=self.size, borderValue=value)
+-                    ir = cv2.warpPerspective(img[:, :, 3:], M, dsize=self.size, borderValue=value)
++                    rbg = cv2.warpPerspective(
++                        img[:, :, :3], M, dsize=self.size, borderValue=(114, 114, 114)
++                    )
++                    ir = cv2.warpPerspective(img[:, :, 3:], M, dsize=self.size, borderValue=114)
++                    if ir.ndim == 2:
++                        ir = ir[:, :, None]
+                     img = np.concatenate((rbg, ir), axis=2)
+ 
+                 else:  # affine
+-                    rbg = cv2.warpAffine(img[:, :, :3], M[:2], dsize=self.size, borderValue=value)
+-                    ir = cv2.warpAffine(img[:, :, 3:], M[:2], dsize=self.size, borderValue=value)
++                    rbg = cv2.warpAffine(
++                        img[:, :, :3], M[:2], dsize=self.size, borderValue=(114, 114, 114)
++                    )
++                    ir = cv2.warpAffine(img[:, :, 3:], M[:2], dsize=self.size, borderValue=114)
++                    if ir.ndim == 2:
++                        ir = ir[:, :, None]
+                     img = np.concatenate((rbg, ir), axis=2)
+ 
+             else:
+@@ -1128,7 +1147,18 @@ class RandomPerspective:
+ 
+         xy = np.ones((n * 4, 3), dtype=bboxes.dtype)
+         xy[:, :2] = bboxes[:, [0, 1, 2, 3, 0, 3, 2, 1]].reshape(n * 4, 2)  # x1y1, x2y2, x1y2, x2y1
+-        xy = xy @ M.T  # transform
++        # Transform corner points without BLAS, as above.
++        x = xy[:, 0].copy()
++        y = xy[:, 1].copy()
++        w = xy[:, 2].copy()
++        xy = np.stack(
++            (
++                x * M[0, 0] + y * M[1, 0] + w * M[2, 0],
++                x * M[0, 1] + y * M[1, 1] + w * M[2, 1],
++                x * M[0, 2] + y * M[1, 2] + w * M[2, 2],
++            ),
++            axis=1,
++        )
+         xy = (xy[:, :2] / xy[:, 2:3] if self.perspective else xy[:, :2]).reshape(n, 8)  # perspective rescale or affine
+ 
+         # Create new boxes

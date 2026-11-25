@@ -1,0 +1,72 @@
+{
+  "predictions": "D:\\Code\\_server_handoff_v2\\ssgf\\paper\\CS_ECF_IPT_Submission\\submission_package_v24\\evidence\\yolo11rgbt_baseline\\runs\\yolo11n_rgbt_earlyfusion_e40_resize_auto_test\\predictions.json",
+  "annotations": "D:\\Code\\_ssgf_external\\mrtdetr_m3fd\\annotations\\test.json",
+  "n_images": 200,
+  "n_ground_truth_boxes": 2022,
+  "n_predictions": 12895,
+  "metric": {
+    "ap50": 0.09632278485103622,
+    "ap50_95": 0.04667175468112831,
+    "per_class": {
+      "0": {
+        "ap50": 0.02134610900546546,
+        "ap50_95": 0.006790351627023546,
+        "n_ground_truth_boxes": 166
+      },
+      "1": {
+        "ap50": 0.32503484280468486,
+        "ap50_95": 0.17268360706484848,
+        "n_ground_truth_boxes": 1597
+      },
+      "2": {
+        "ap50": 0.009310389283897698,
+        "ap50_95": 0.004728415387004267,
+        "n_ground_truth_boxes": 16
+      },
+      "3": {
+        "ap50": 0.21263903684801988,
+        "ap50_95": 0.09298700012585454,
+        "n_ground_truth_boxes": 189
+      },
+      "4": {
+        "ap50": 0.0,
+        "ap50_95": 0.0,
+        "n_ground_truth_boxes": 20
+      },
+      "5": {
+        "ap50": 0.00961448815760794,
+        "ap50_95": 0.0028417853264521894,
+        "n_ground_truth_boxes": 34
+      }
+    },
+    "groups": {
+      "014": {
+        "n_images": 100,
+        "ap50": 0.021445908222709,
+        "ap50_95": 0.006989672964245404
+      },
+      "032": {
+        "n_images": 100,
+        "ap50": 0.1502106140660118,
+        "ap50_95": 0.07796550268990785
+      }
+    }
+  },
+  "protocol": {
+    "iou_thresholds": [
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8,
+      0.85,
+      0.8999999999999999,
+      0.95
+    ],
+    "matching": "maximum-cardinality one-to-one matching",
+    "pooling": "detections pooled within the test split",
+    "precision_recall_integration": "101-point interpolated AP"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "archive": "https://hf-mirror.com/datasets/jsonhash/LLVIP/resolve/main/LLVIP.zip",
+  "official_test_pairs": 3463,
+  "official_test_pairs_with_nonempty_labels": 3463,
+  "filtered_empty_test_pairs": 0,
+  "selected_test_pairs": 300,
+  "unselected_eligible_test_pairs": 3163,
+  "sampling": "uniform random shuffle with seed 0",
+  "training_subset": {
+    "pairs": 1500,
+    "selection": "lexicographically first non-empty official training labels",
+    "train_pairs": 1350,
+    "validation_pairs": 150
+  }
+}

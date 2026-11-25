@@ -1,0 +1,44 @@
+{
+  "model": "yolo26_s0",
+  "selection_rule": "Top-five confidence with a visible-relative margin of 1.5.",
+  "selection_method": "Among switched images with a detector response at or above the display threshold in either input, select the largest positive AP50 change for which the fused input adds a matched true positive, and the largest negative change for which it loses a matched true positive.",
+  "display_confidence_threshold": 0.25,
+  "success": {
+    "sequence": "070",
+    "stem": "070142",
+    "model": "yolo26_s0",
+    "selected": "SPGFusion",
+    "visible_score": 0.06781933456659317,
+    "selected_score": 0.1698535680770874,
+    "visible_ap50": 0.0,
+    "selected_ap50": 1.0,
+    "ap50_gain": 1.0,
+    "n_gt": 1,
+    "visible_true_positives": 0,
+    "selected_true_positives": 1,
+    "visible_max_confidence": 0.09719394147396088,
+    "selected_max_confidence": 0.6654521226882935
+  },
+  "failure": {
+    "sequence": "070",
+    "stem": "070162",
+    "model": "yolo26_s0",
+    "selected": "SPGFusion",
+    "visible_score": 0.09565242379903793,
+    "selected_score": 0.18242713809013367,
+    "visible_ap50": 0.4183168316831683,
+    "selected_ap50": 0.33663366336633666,
+    "ap50_gain": -0.08168316831683164,
+    "n_gt": 3,
+    "visible_true_positives": 2,
+    "selected_true_positives": 1,
+    "visible_max_confidence": 0.26857152581214905,
+    "selected_max_confidence": 0.29799684882164
+  },
+  "counts": {
+    "images": 1395,
+    "switched": 17,
+    "improved": 8,
+    "degraded": 5
+  }
+}

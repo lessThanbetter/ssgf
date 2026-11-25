@@ -1,0 +1,27 @@
+{
+  "matching": "confidence-ordered one-to-one matching",
+  "iou": "probabilistic rotated-box IoU",
+  "iou_thresholds": [
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8,
+    0.85,
+    0.8999999999999999,
+    0.95
+  ],
+  "purpose": "Sensitivity analysis for the all-at-once maximum-cardinality matching used in the primary scores.",
+  "files": [
+    "vedai_run1__cdf.npz",
+    "vedai_run1__pia.npz",
+    "vedai_run1__spg.npz",
+    "vedai_run1__vis.npz",
+    "vedai_run2__cdf.npz",
+    "vedai_run2__pia.npz",
+    "vedai_run2__spg.npz",
+    "vedai_run2__vis.npz"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "run": "vedai_run1",
+  "seed": 0,
+  "data": "D:\\Code\\_ssgf_external\\vedai_fold01\\data.yaml",
+  "weights_initialization": "D:\\Code\\_server_handoff_v2\\ssgf\\yolo11n-obb.pt",
+  "epochs": 30,
+  "batch": 4,
+  "imgsz": 640,
+  "save_dir": "D:\\Code\\_server_handoff_v2\\ssgf\\results\\vedai_20261029\\vedai_run1",
+  "last_weights": "D:\\Code\\_server_handoff_v2\\ssgf\\results\\vedai_20261029\\vedai_run1\\weights\\last.pt",
+  "best_weights": "D:\\Code\\_server_handoff_v2\\ssgf\\results\\vedai_20261029\\vedai_run1\\weights\\best.pt",
+  "checkpoint_used_for_test": "last.pt"
+}

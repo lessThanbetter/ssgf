@@ -1,0 +1,48 @@
+{
+  "yolov9t_coco": {
+    "family": "fourteen fused inputs against the colour-scored visible source",
+    "correction": "Benjamini-Hochberg",
+    "alpha": 0.05,
+    "n_tests": 3,
+    "tests": {
+      "cdf": {
+        "delta50_observed": 0.019,
+        "p_boot50": 0.027972,
+        "q_bh50": 0.044955
+      },
+      "piafusion": {
+        "delta50_observed": 0.0384,
+        "p_boot50": 0.02997,
+        "q_bh50": 0.044955
+      },
+      "spgfusion": {
+        "delta50_observed": 0.0054,
+        "p_boot50": 0.743257,
+        "q_bh50": 0.743257
+      }
+    }
+  },
+  "yolov10s_coco": {
+    "family": "fourteen fused inputs against the colour-scored visible source",
+    "correction": "Benjamini-Hochberg",
+    "alpha": 0.05,
+    "n_tests": 3,
+    "tests": {
+      "cdf": {
+        "delta50_observed": 0.0273,
+        "p_boot50": 0.001998,
+        "q_bh50": 0.005994
+      },
+      "piafusion": {
+        "delta50_observed": 0.0118,
+        "p_boot50": 0.495504,
+        "q_bh50": 0.703297
+      },
+      "spgfusion": {
+        "delta50_observed": -0.0074,
+        "p_boot50": 0.703297,
+        "q_bh50": 0.703297
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+panel,stage,latency_ms,extra_peak_mib,parameters_m
+a,CDF,22.282,,
+a,PIAFusion,37.7,,
+a,SPGFusion,516.3,,
+a,4 detector forwards,130.0,,
+b,Detector,32.5,115.6,1
+b,PIAFusion,37.7,869.1,1.18
+b,SPGFusion,516.3,1453.5,75.86

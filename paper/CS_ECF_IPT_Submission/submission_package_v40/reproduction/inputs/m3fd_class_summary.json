@@ -1,0 +1,149 @@
+{
+  "annotations": {
+    "people": 166,
+    "car": 1597,
+    "bus": 16,
+    "motorcycle": 189,
+    "lamp": 20,
+    "truck": 34
+  },
+  "total_annotations": 2022,
+  "models": {
+    "yolo26_m3fd6": {
+      "people": {
+        "annotations": 166,
+        "visible_ap50": 0.512,
+        "csecf_ap50": 0.5334,
+        "gain": 0.0214,
+        "image_ci95": [
+          -0.007,
+          0.0498
+        ],
+        "share_of_positive_class_mean_gain": 0.8770491803278688
+      },
+      "car": {
+        "annotations": 1597,
+        "visible_ap50": 0.6214,
+        "csecf_ap50": 0.6214,
+        "gain": 0.0,
+        "image_ci95": [
+          0.0,
+          0.0
+        ],
+        "share_of_positive_class_mean_gain": 0.0
+      },
+      "bus": {
+        "annotations": 16,
+        "visible_ap50": 0.3399,
+        "csecf_ap50": 0.3399,
+        "gain": 0.0,
+        "image_ci95": [
+          0.0,
+          0.0
+        ],
+        "share_of_positive_class_mean_gain": 0.0
+      },
+      "motorcycle": {
+        "annotations": 189,
+        "visible_ap50": 0.478,
+        "csecf_ap50": 0.478,
+        "gain": 0.0,
+        "image_ci95": [
+          0.0,
+          0.0
+        ],
+        "share_of_positive_class_mean_gain": 0.0
+      },
+      "lamp": {
+        "annotations": 20,
+        "visible_ap50": 0.2365,
+        "csecf_ap50": 0.2395,
+        "gain": 0.003,
+        "image_ci95": [
+          0.0,
+          0.0102
+        ],
+        "share_of_positive_class_mean_gain": 0.12295081967213116
+      },
+      "truck": {
+        "annotations": 34,
+        "visible_ap50": 0.0423,
+        "csecf_ap50": 0.0423,
+        "gain": 0.0,
+        "image_ci95": [
+          0.0,
+          0.0
+        ],
+        "share_of_positive_class_mean_gain": 0.0
+      }
+    },
+    "yolo8n_m3fd6": {
+      "people": {
+        "annotations": 166,
+        "visible_ap50": 0.4364,
+        "csecf_ap50": 0.5454,
+        "gain": 0.109,
+        "image_ci95": [
+          0.044,
+          0.1913
+        ],
+        "share_of_positive_class_mean_gain": 0.9963436928702011
+      },
+      "car": {
+        "annotations": 1597,
+        "visible_ap50": 0.5637,
+        "csecf_ap50": 0.5636,
+        "gain": -0.0001,
+        "image_ci95": [
+          -0.0003,
+          0.0
+        ],
+        "share_of_positive_class_mean_gain": 0.0
+      },
+      "bus": {
+        "annotations": 16,
+        "visible_ap50": 0.638,
+        "csecf_ap50": 0.638,
+        "gain": 0.0,
+        "image_ci95": [
+          0.0,
+          0.0
+        ],
+        "share_of_positive_class_mean_gain": 0.0
+      },
+      "motorcycle": {
+        "annotations": 189,
+        "visible_ap50": 0.4355,
+        "csecf_ap50": 0.4355,
+        "gain": 0.0,
+        "image_ci95": [
+          -0.0001,
+          0.0
+        ],
+        "share_of_positive_class_mean_gain": 0.0
+      },
+      "lamp": {
+        "annotations": 20,
+        "visible_ap50": 0.1549,
+        "csecf_ap50": 0.155,
+        "gain": 0.0001,
+        "image_ci95": [
+          0.0,
+          0.0002
+        ],
+        "share_of_positive_class_mean_gain": 0.0009140767824497259
+      },
+      "truck": {
+        "annotations": 34,
+        "visible_ap50": 0.0456,
+        "csecf_ap50": 0.0459,
+        "gain": 0.0003,
+        "image_ci95": [
+          0.0,
+          0.001
+        ],
+        "share_of_positive_class_mean_gain": 0.002742230347349177
+      }
+    }
+  }
+}

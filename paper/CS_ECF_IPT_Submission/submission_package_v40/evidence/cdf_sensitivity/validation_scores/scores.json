@@ -1,0 +1,54 @@
+{
+  "yolo26_m3fd6": {
+    "consensus_intersection_pixel_mean_ifcnn_q090_a020_s05": {
+      "mAP50": 0.4767,
+      "mAP50_95": 0.3504
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q095_a010_s05": {
+      "mAP50": 0.4759,
+      "mAP50_95": 0.3498
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q095_a020_s03": {
+      "mAP50": 0.4771,
+      "mAP50_95": 0.3505
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q095_a020_s07": {
+      "mAP50": 0.4768,
+      "mAP50_95": 0.3509
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q095_a030_s05": {
+      "mAP50": 0.4824,
+      "mAP50_95": 0.3513
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q099_a020_s05": {
+      "mAP50": 0.4747,
+      "mAP50_95": 0.3517
+    }
+  },
+  "yolo8n_m3fd6": {
+    "consensus_intersection_pixel_mean_ifcnn_q090_a020_s05": {
+      "mAP50": 0.4734,
+      "mAP50_95": 0.3286
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q095_a010_s05": {
+      "mAP50": 0.469,
+      "mAP50_95": 0.3269
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q095_a020_s03": {
+      "mAP50": 0.4698,
+      "mAP50_95": 0.3273
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q095_a020_s07": {
+      "mAP50": 0.474,
+      "mAP50_95": 0.3282
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q095_a030_s05": {
+      "mAP50": 0.4759,
+      "mAP50_95": 0.3303
+    },
+    "consensus_intersection_pixel_mean_ifcnn_q099_a020_s05": {
+      "mAP50": 0.4729,
+      "mAP50_95": 0.3289
+    }
+  }
+}

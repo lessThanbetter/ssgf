@@ -1,0 +1,72 @@
+{
+  "recorded": "2026-10-29T05:31:16+08:00",
+  "purpose": "Controlled system-level comparison with a recent end-to-end visible-infrared fusion and detection framework on the existing M3FD split.",
+  "method": {
+    "name": "YOLOv11-RGBT early fusion",
+    "doi": "10.48550/arXiv.2506.14696",
+    "repository": "https://github.com/wandahangFY/YOLOv11-RGBT",
+    "commit": "9cc2e208a3d3e8452e15b5ef47e1c536766aa1f7",
+    "license": "AGPL-3.0",
+    "architecture": "YOLO11n with a four-channel early-fusion input stem",
+    "parameters": 2591154,
+    "gflops_at_640": 6.47
+  },
+  "dataset": {
+    "name": "M3FD",
+    "train_images": 1600,
+    "validation_images": 400,
+    "test_images": 200,
+    "test_groups": [
+      "014",
+      "032"
+    ],
+    "classes": [
+      "people",
+      "car",
+      "bus",
+      "motorcycle",
+      "lamp",
+      "truck"
+    ],
+    "split_source": "The fixed M3FD split used by the CS-ECF experiments."
+  },
+  "input": {
+    "channels": 4,
+    "order": "visible BGR plus grayscale infrared",
+    "size": 640
+  },
+  "initialization": {
+    "source": "public yolo11n.pt COCO weights",
+    "source_sha256": "0EBBC80D4A7680D14987A577CD21342B65ECFD94632BD9A8DA63AE6417644EE1",
+    "stem": "The three-channel source stem was copied to the first three channels and the infrared channel was initialized to their mean.",
+    "head": "The six-class M3FD detection head was reinitialized."
+  },
+  "training": {
+    "epochs": 40,
+    "batch_size": 16,
+    "optimizer": "auto (AdamW, learning rate 0.001, momentum 0.9)",
+    "seed": 0,
+    "deterministic": true,
+    "amp": false,
+    "augmentation": "resize only",
+    "mosaic": 0.0,
+    "checkpoint_selection": "best validation fitness",
+    "test_scoring": "single evaluation after the 40-epoch run"
+  },
+  "test_protocol": {
+    "confidence_floor": 0.001,
+    "nms_iou": 0.7,
+    "max_detections": 300,
+    "matching": "one-to-one maximum-cardinality matching",
+    "precision_recall_integration": "101-point interpolated AP"
+  },
+  "artifacts": {
+    "best_weights": "weights/yolo11n_rgbt_earlyfusion_best.pt",
+    "best_weights_sha256": "4BBA948CA850EFEC1DFAA4614040469C0F0AAE79D96D139C95C9AE03537C9769",
+    "predictions": "predictions.json",
+    "predictions_sha256": "79267E0B705ACCA0AC3D0E4C4408DCC7A6E5C9ADC1D83CB886236AD0A14C21BF",
+    "metrics": "metrics.json",
+    "metrics_sha256": "4DC49370F5C5AEC642E37AB61EE7350549D8822AF0F1AB7C6D13C1D51C3D5FC3"
+  },
+  "comparison_boundary": "The baseline changes fusion representation and detector jointly. It is a recent system-level reference on the same test split, not an architecture-matched estimate of the CS-ECF selection effect."
+}

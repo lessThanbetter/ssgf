@@ -1,0 +1,344 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{ma2019survey}
+J.~Ma, Y.~Ma, C.~Li, Infrared and visible image fusion methods and
+  applications: A survey, Information Fusion 45 (2019) 153--178.
+\newblock \href {https://doi.org/10.1016/j.inffus.2018.02.004}
+  {\path{doi:10.1016/j.inffus.2018.02.004}}.
+
+\bibitem{mudavath2026review}
+T.~Mudavath, V.~Niranjan, Seeing beyond the visible: A comprehensive review of
+  thermal image enhancement and object detection techniques, Infrared Physics
+  \& Technology (2026).
+\newblock \href {https://doi.org/10.1016/j.infrared.2026.106573}
+  {\path{doi:10.1016/j.infrared.2026.106573}}.
+
+\bibitem{zhu2017tophat}
+P.~Zhu, X.~Ma, Z.~Huang, Fusion of infrared-visible images using improved
+  multi-scale top-hat transform and suitable fusion rules, Infrared Physics \&
+  Technology 81 (2017) 282--295.
+\newblock \href {https://doi.org/10.1016/j.infrared.2017.01.013}
+  {\path{doi:10.1016/j.infrared.2017.01.013}}.
+
+\bibitem{zhang2020}
+Y.~Zhang, Y.~Liu, P.~Sun, H.~Yan, X.~Zhao, L.~Zhang, {IFCNN}: A general image
+  fusion framework based on convolutional neural network, Information Fusion 54
+  (2020) 99--118.
+\newblock \href {https://doi.org/10.1016/j.inffus.2019.07.011}
+  {\path{doi:10.1016/j.inffus.2019.07.011}}.
+
+\bibitem{ma2019fusiongan}
+J.~Ma, W.~Yu, P.~Liang, C.~Li, J.~Jiang, {FusionGAN}: A generative adversarial
+  network for infrared and visible image fusion, Information Fusion 48 (2019)
+  11--26.
+\newblock \href {https://doi.org/10.1016/j.inffus.2018.09.004}
+  {\path{doi:10.1016/j.inffus.2018.09.004}}.
+
+\bibitem{li2019densefuse}
+H.~Li, X.-J. Wu, {DenseFuse}: A fusion approach to infrared and visible images,
+  IEEE Transactions on Image Processing 28~(5) (2019) 2614--2623.
+\newblock \href {https://doi.org/10.1109/TIP.2018.2887342}
+  {\path{doi:10.1109/TIP.2018.2887342}}.
+
+\bibitem{xu2022u2fusion}
+H.~Xu, J.~Ma, J.~Jiang, X.~Guo, H.~Ling, {U2Fusion}: A unified unsupervised
+  image fusion network, IEEE Transactions on Pattern Analysis and Machine
+  Intelligence 44~(1) (2022) 502--518.
+\newblock \href {https://doi.org/10.1109/TPAMI.2020.3012548}
+  {\path{doi:10.1109/TPAMI.2020.3012548}}.
+
+\bibitem{li2021rfn}
+H.~Li, X.-J. Wu, J.~Kittler, {RFN-Nest}: An end-to-end residual fusion network
+  for infrared and visible images, Information Fusion 73 (2021) 72--86.
+\newblock \href {https://doi.org/10.1016/j.inffus.2021.02.023}
+  {\path{doi:10.1016/j.inffus.2021.02.023}}.
+
+\bibitem{yi2024diffif}
+X.~Yi, L.~Tang, H.~Zhang, H.~Xu, J.~Ma, {Diff-IF}: Multi-modality image fusion
+  via diffusion model with fusion knowledge prior, Information Fusion 110
+  (2024) 102450.
+\newblock \href {https://doi.org/10.1016/j.inffus.2024.102450}
+  {\path{doi:10.1016/j.inffus.2024.102450}}.
+
+\bibitem{yang2025lfdt}
+B.~Yang, Z.~Jiang, D.~Pan, H.~Yu, G.~Gui, W.~Gui, {LFDT-Fusion}: A latent
+  feature-guided diffusion transformer model for general image fusion,
+  Information Fusion 113 (2025) 102639.
+\newblock \href {https://doi.org/10.1016/j.inffus.2024.102639}
+  {\path{doi:10.1016/j.inffus.2024.102639}}.
+
+\bibitem{abdar2021uncertainty}
+M.~Abdar, F.~Pourpanah, S.~Hussain, D.~Rezazadegan, L.~Liu, M.~Ghavamzadeh,
+  P.~Fieguth, X.~Cao, A.~Khosravi, U.~R. Acharya, V.~Makarenkov, S.~Nahavandi,
+  A review of uncertainty quantification in deep learning: Techniques,
+  applications and challenges, Information Fusion 76 (2021) 243--297.
+\newblock \href {https://doi.org/10.1016/j.inffus.2021.05.008}
+  {\path{doi:10.1016/j.inffus.2021.05.008}}.
+
+\bibitem{gawlikowski2023uncertainty}
+J.~Gawlikowski, C.~R.~N. Tassi, M.~Ali, J.~Lee, M.~Humt, J.~Feng, A.~Kruspe,
+  R.~Triebel, P.~Jung, R.~Roscher, M.~Shahzad, W.~Yang, R.~Bamler, X.~X. Zhu, A
+  survey of uncertainty in deep neural networks, Artificial Intelligence Review
+  56~(S1) (2023) 1513--1589.
+\newblock \href {https://doi.org/10.1007/s10462-023-10562-9}
+  {\path{doi:10.1007/s10462-023-10562-9}}.
+
+\bibitem{chow1970reject}
+C.~Chow, On optimum recognition error and reject tradeoff, IEEE Transactions on
+  Information Theory 16~(1) (1970) 41--46.
+\newblock \href {https://doi.org/10.1109/TIT.1970.1054406}
+  {\path{doi:10.1109/TIT.1970.1054406}}.
+
+\bibitem{zhao2025cmifdf}
+C.~Zhao, B.~Mo, J.~Zhao, Y.~Tao, D.~Zhao, {CMIFDF}: A lightweight cross-modal
+  image fusion and weight-sharing object detection network framework, Infrared
+  Physics \& Technology (2025).
+\newblock \href {https://doi.org/10.1016/j.infrared.2024.105631}
+  {\path{doi:10.1016/j.infrared.2024.105631}}.
+
+\bibitem{gao2026coifsd}
+X.~Gao, Y.~Xi, Y.~Yang, {CoIFSD}: A co-optimization framework for
+  infrared-visible image fusion and salient object detection, Infrared Physics
+  \& Technology (2026).
+\newblock \href {https://doi.org/10.1016/j.infrared.2026.106605}
+  {\path{doi:10.1016/j.infrared.2026.106605}}.
+
+\bibitem{an2026mrtdetr}
+R.~An, Y.~Guo, Z.~Wang, Z.~Zhao, C.~Deng, J.~Li, {MRT-DETR}: A robust
+  visible-infrared object detector with adaptive cross-modal feature fusion,
+  Infrared Physics \& Technology (2026).
+\newblock \href {https://doi.org/10.1016/j.infrared.2025.106346}
+  {\path{doi:10.1016/j.infrared.2025.106346}}.
+
+\bibitem{zhang2026hffn}
+J.~Zhang, M.~Gao, Y.~Wang, C.~Li, D.~Fang, Z.~Wei, {HFFN}: Hierarchical feature
+  fusion network for {RGB}-infrared object detection, Infrared Physics \&
+  Technology (2026).
+\newblock \href {https://doi.org/10.1016/j.infrared.2026.106429}
+  {\path{doi:10.1016/j.infrared.2026.106429}}.
+
+\bibitem{wan2025yolo11rgbt}
+D.~Wan, R.~Lu, Y.~Fang, X.~Lang, S.~Shu, J.~Chen, S.~Shen, T.~Xu, Z.~Ye,
+  \href{https://arxiv.org/abs/2506.14696}{{YOLOv11-RGBT}: Towards a
+  comprehensive single-stage multispectral object detection framework} (2025).
+\newblock \href {http://arxiv.org/abs/2506.14696} {\path{arXiv:2506.14696}},
+  \href {https://doi.org/10.48550/arXiv.2506.14696}
+  {\path{doi:10.48550/arXiv.2506.14696}}.
+\newline\urlprefix\url{https://arxiv.org/abs/2506.14696}
+
+\bibitem{redmon2016yolo}
+J.~Redmon, S.~Divvala, R.~Girshick, A.~Farhadi, You only look once: Unified,
+  real-time object detection, in: 2016 IEEE Conference on Computer Vision and
+  Pattern Recognition, 2016, pp. 779--788.
+\newblock \href {https://doi.org/10.1109/CVPR.2016.91}
+  {\path{doi:10.1109/CVPR.2016.91}}.
+
+\bibitem{zhao2024rtdetr}
+Y.~Zhao, W.~Lv, S.~Xu, J.~Wei, G.~Wang, Q.~Dang, Y.~Liu, J.~Chen, {DETRs} beat
+  {YOLOs} on real-time object detection, in: 2024 IEEE/CVF Conference on
+  Computer Vision and Pattern Recognition, 2024, pp. 16965--16974.
+\newblock \href {https://doi.org/10.1109/CVPR52733.2024.01605}
+  {\path{doi:10.1109/CVPR52733.2024.01605}}.
+
+\bibitem{zhang2016nsct}
+Q.~Zhang, X.~Maldague, An adaptive fusion approach for infrared and visible
+  images based on {NSCT} and compressed sensing, Infrared Physics \& Technology
+  74 (2016) 11--20.
+\newblock \href {https://doi.org/10.1016/j.infrared.2015.11.003}
+  {\path{doi:10.1016/j.infrared.2015.11.003}}.
+
+\bibitem{zhang2021twoscale}
+S.~Zhang, X.~Li, X.~Zhang, S.~Zhang, Infrared and visible image fusion based on
+  saliency detection and two-scale transform decomposition, Infrared Physics \&
+  Technology 114 (2021) 103626.
+\newblock \href {https://doi.org/10.1016/j.infrared.2020.103626}
+  {\path{doi:10.1016/j.infrared.2020.103626}}.
+
+\bibitem{wei2017threescale}
+C.~Wei, B.~Zhou, W.~Guo, A three scale image transformation for infrared and
+  visible image fusion, in: 2017 20th International Conference on Information
+  Fusion, 2017, pp. 1--6.
+\newblock \href {https://doi.org/10.23919/icif.2017.8009748}
+  {\path{doi:10.23919/icif.2017.8009748}}.
+
+\bibitem{yin2013sparsefusion}
+H.~Yin, S.~Li, L.~Fang, Simultaneous image fusion and super-resolution using
+  sparse representation, Information Fusion 14~(3) (2013) 229--240.
+\newblock \href {https://doi.org/10.1016/j.inffus.2012.01.008}
+  {\path{doi:10.1016/j.inffus.2012.01.008}}.
+
+\bibitem{yin2015multiscale}
+H.~Yin, Sparse representation with learned multiscale dictionary for image
+  fusion, Neurocomputing 148 (2015) 600--610.
+\newblock \href {https://doi.org/10.1016/j.neucom.2014.07.003}
+  {\path{doi:10.1016/j.neucom.2014.07.003}}.
+
+\bibitem{hou2021ssgan}
+J.~Hou, D.~Zhang, W.~Wu, J.~Ma, H.~Zhou, A generative adversarial network for
+  infrared and visible image fusion based on semantic segmentation, Entropy
+  23~(3) (2021) 376.
+\newblock \href {https://doi.org/10.3390/e23030376}
+  {\path{doi:10.3390/e23030376}}.
+
+\bibitem{yi2021dfpgan}
+S.~Yi, J.~Li, X.~Yuan, {DFPGAN}: Dual fusion path generative adversarial
+  network for infrared and visible image fusion, Infrared Physics \& Technology
+  119 (2021) 103947.
+\newblock \href {https://doi.org/10.1016/j.infrared.2021.103947}
+  {\path{doi:10.1016/j.infrared.2021.103947}}.
+
+\bibitem{song2022tdgan}
+A.~Song, H.~Duan, H.~Pei, L.~Ding, Triple-discriminator generative adversarial
+  network for infrared and visible image fusion, Neurocomputing 483 (2022)
+  183--194.
+\newblock \href {https://doi.org/10.1016/j.neucom.2022.02.025}
+  {\path{doi:10.1016/j.neucom.2022.02.025}}.
+
+\bibitem{liu2023dualpath}
+R.~Liu, H.~Wang, S.~Du, Y.~Liu, A visible and infrared image fusion framework
+  based on dual-path encoder-decoder and multi-scale discrete wavelet
+  transform, in: 2023 IEEE International Conference on Image Processing, 2023,
+  pp. 1995--1999.
+\newblock \href {https://doi.org/10.1109/icip49359.2023.10222863}
+  {\path{doi:10.1109/icip49359.2023.10222863}}.
+
+\bibitem{hao2022vdfefuse}
+S.~Hao, T.~He, B.~An, X.~Ma, H.~Wen, F.~Wang, {VDFEFuse}: A novel fusion
+  approach to infrared and visible images, Infrared Physics \& Technology 121
+  (2022) 104048.
+\newblock \href {https://doi.org/10.1016/j.infrared.2022.104048}
+  {\path{doi:10.1016/j.infrared.2022.104048}}.
+
+\bibitem{yang2023dglt}
+X.~Yang, H.~Huo, R.~Wang, C.~Li, X.~Liu, J.~Li, {DGLT-Fusion}: A decoupled
+  global-local infrared and visible image fusion transformer, Infrared Physics
+  \& Technology 128 (2023) 104522.
+\newblock \href {https://doi.org/10.1016/j.infrared.2022.104522}
+  {\path{doi:10.1016/j.infrared.2022.104522}}.
+
+\bibitem{an2024mras}
+R.~An, G.~Liu, Y.~Qian, M.~Xing, H.~Tang, {MRASFusion}: A multi-scale residual
+  attention infrared and visible image fusion network based on semantic
+  segmentation guidance, Infrared Physics \& Technology 139 (2024) 105343.
+\newblock \href {https://doi.org/10.1016/j.infrared.2024.105343}
+  {\path{doi:10.1016/j.infrared.2024.105343}}.
+
+\bibitem{tang2022}
+L.~Tang, J.~Yuan, H.~Zhang, X.~Jiang, J.~Ma, {PIAFusion}: A progressive
+  infrared and visible image fusion network based on illumination aware,
+  Information Fusion 83--84 (2022) 79--92.
+\newblock \href {https://doi.org/10.1016/j.inffus.2022.03.007}
+  {\path{doi:10.1016/j.inffus.2022.03.007}}.
+
+\bibitem{zhang2026}
+H.~Zhang, S.~Yao, J.~Ma, J.~Jiang, Y.~Zhang, H.~Zhou, {SPGFusion}: Semantic
+  prior guided infrared and visible image fusion via pretrained vision models,
+  Information Fusion 125 (2026) 103433.
+\newblock \href {https://doi.org/10.1016/j.inffus.2025.103433}
+  {\path{doi:10.1016/j.inffus.2025.103433}}.
+
+\bibitem{zhou2026mtfusion}
+Y.~Zhou, Q.~Yang, K.~Ren, Q.~Chen, {MTFusion}: A semantic segmentation-guided
+  infrared and visible image fusion network based on an attention-enhanced
+  hybrid {Mamba-Transformer} architecture, Infrared Physics \& Technology 153
+  (2026) 106325.
+\newblock \href {https://doi.org/10.1016/j.infrared.2025.106325}
+  {\path{doi:10.1016/j.infrared.2025.106325}}.
+
+\bibitem{xu2021classsaliency}
+H.~Xu, H.~Zhang, J.~Ma, Classification saliency-based rule for visible and
+  infrared image fusion, IEEE Transactions on Computational Imaging 7 (2021)
+  824--836.
+\newblock \href {https://doi.org/10.1109/tci.2021.3100986}
+  {\path{doi:10.1109/tci.2021.3100986}}.
+
+\bibitem{wang2025smae}
+Q.~Wang, Z.~Li, S.~Zhang, Y.~Luo, W.~Chen, T.~Wang, N.~Chi, Q.~Dai,
+  {SMAE-Fusion}: Integrating saliency-aware masked autoencoder with hybrid
+  attention transformer for infrared-visible image fusion, Information Fusion
+  117 (2025) 102841.
+\newblock \href {https://doi.org/10.1016/j.inffus.2024.102841}
+  {\path{doi:10.1016/j.inffus.2024.102841}}.
+
+\bibitem{wang2024yolov9}
+C.-Y. Wang, I.-H. Yeh, H.-Y. Mark~Liao, {YOLOv9}: Learning what you want to
+  learn using programmable gradient information, in: Computer Vision -- ECCV
+  2024, Lecture Notes in Computer Science, 2025, pp. 1--21.
+\newblock \href {https://doi.org/10.1007/978-3-031-72751-1_1}
+  {\path{doi:10.1007/978-3-031-72751-1_1}}.
+
+\bibitem{wang2024yolov10}
+A.~Wang, H.~Chen, L.~Liu, K.~Chen, Z.~Lin, J.~Han, G.~Ding, {YOLOv10}:
+  Real-time end-to-end object detection, in: Advances in Neural Information
+  Processing Systems 37, 2024, pp. 107984--108011.
+\newblock \href {https://doi.org/10.52202/079017-3429}
+  {\path{doi:10.52202/079017-3429}}.
+
+\bibitem{xiang2025unifusod}
+X.~Xiang, G.~Zhou, B.~Niu, Z.~Pan, L.~Huang, W.~Li, Z.~Wen, J.~Qi, W.~Gao,
+  Infrared-visible image fusion meets object detection: Towards unified
+  optimization for multimodal perception, Remote Sensing 17~(21) (2025) 3637.
+\newblock \href {https://doi.org/10.3390/rs17213637}
+  {\path{doi:10.3390/rs17213637}}.
+
+\bibitem{yue2022lowlight}
+G.~Yue, Z.~Li, Y.~Tao, T.~Jin, Low-illumination traffic object detection using
+  the saliency region of infrared image masking on infrared-visible fusion
+  image, Journal of Electronic Imaging 31~(3) (2022) 1--17.
+\newblock \href {https://doi.org/10.1117/1.JEI.31.3.033029}
+  {\path{doi:10.1117/1.JEI.31.3.033029}}.
+
+\bibitem{li2010thermal}
+J.~Li, W.~Gong, W.~Li, X.~Liu, Robust pedestrian detection in thermal infrared
+  imagery using the wavelet transform, Infrared Physics \& Technology 53~(4)
+  (2010) 267--273.
+\newblock \href {https://doi.org/10.1016/j.infrared.2010.03.005}
+  {\path{doi:10.1016/j.infrared.2010.03.005}}.
+
+\bibitem{guo2024prior}
+J.~Guo, Z.~Huang, Y.~Tao, Multispectral pedestrian detection based on
+  prior-saliency attention and image fusion, Electronics 13~(9) (2024) 1770.
+\newblock \href {https://doi.org/10.3390/electronics13091770}
+  {\path{doi:10.3390/electronics13091770}}.
+
+\bibitem{jia2021}
+X.~Jia, C.~Zhu, M.~Li, W.~Tang, W.~Zhou, {LLVIP}: A visible-infrared paired
+  dataset for low-light vision, in: 2021 IEEE/CVF International Conference on
+  Computer Vision Workshops, 2021, pp. 3489--3497.
+\newblock \href {https://doi.org/10.1109/iccvw54120.2021.00389}
+  {\path{doi:10.1109/iccvw54120.2021.00389}}.
+
+\bibitem{liu2022}
+J.~Liu, X.~Fan, Z.~Huang, G.~Wu, R.~Liu, W.~Zhong, Z.~Luo, Target-aware dual
+  adversarial learning and a multi-scenario multi-modality benchmark to fuse
+  infrared and visible for object detection, in: 2022 IEEE/CVF Conference on
+  Computer Vision and Pattern Recognition, 2022, pp. 5792--5801.
+\newblock \href {https://doi.org/10.1109/cvpr52688.2022.00571}
+  {\path{doi:10.1109/cvpr52688.2022.00571}}.
+
+\bibitem{sun2022}
+Y.~Sun, B.~Cao, P.~Zhu, Q.~Hu, Drone-based {RGB}-infrared cross-modality
+  vehicle detection via uncertainty-aware learning, IEEE Transactions on
+  Circuits and Systems for Video Technology 32~(10) (2022) 6700--6713.
+\newblock \href {https://doi.org/10.1109/tcsvt.2022.3168279}
+  {\path{doi:10.1109/tcsvt.2022.3168279}}.
+
+\bibitem{razakarivony2016vedai}
+S.~Razakarivony, F.~Jurie, Vehicle detection in aerial imagery: A small target
+  detection benchmark, Journal of Visual Communication and Image Representation
+  34 (2016) 187--203.
+\newblock \href {https://doi.org/10.1016/j.jvcir.2015.11.002}
+  {\path{doi:10.1016/j.jvcir.2015.11.002}}.
+
+\bibitem{jocher2026ultralytics}
+G.~Jocher, J.~Qiu,
+  \href{https://github.com/ultralytics/ultralytics}{Ultralytics {YOLO}},
+  version 8.4.189 (2026).
+\newline\urlprefix\url{https://github.com/ultralytics/ultralytics}
+
+\end{thebibliography}

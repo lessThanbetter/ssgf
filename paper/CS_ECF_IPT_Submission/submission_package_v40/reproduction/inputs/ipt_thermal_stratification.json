@@ -1,0 +1,281 @@
+{
+  "llvip": {
+    "n_images": 300,
+    "feature_thresholds": {
+      "thermal_tophat_q95_median": 0.109804,
+      "visible_luma_median": 0.159403
+    },
+    "correlation_with_switch_fraction": {
+      "thermal_rho": 0.1505,
+      "thermal_p": 0.009018,
+      "visible_rho": -0.1044,
+      "visible_p": 0.071098,
+      "thermal_mask_rho": -0.0293,
+      "thermal_mask_p": 0.613493
+    },
+    "models": {
+      "yolo11": {
+        "high_thermal_low_visible": {
+          "n_images": 108,
+          "switch_rate": 0.0833,
+          "visible_ap50": 0.8978,
+          "selected_ap50": 0.8952,
+          "gain": -0.0027
+        },
+        "rest": {
+          "n_images": 192,
+          "switch_rate": 0.0781,
+          "visible_ap50": 0.8771,
+          "selected_ap50": 0.8845,
+          "gain": 0.0075
+        },
+        "switch_rate_difference": 0.0052,
+        "fisher_odds_ratio": 1.0727,
+        "fisher_p": 1.0
+      },
+      "agnostic": {
+        "high_thermal_low_visible": {
+          "n_images": 108,
+          "switch_rate": 0.0741,
+          "visible_ap50": 0.8182,
+          "selected_ap50": 0.8354,
+          "gain": 0.0172
+        },
+        "rest": {
+          "n_images": 192,
+          "switch_rate": 0.0312,
+          "visible_ap50": 0.8803,
+          "selected_ap50": 0.8809,
+          "gain": 0.0006
+        },
+        "switch_rate_difference": 0.0428,
+        "fisher_odds_ratio": 2.48,
+        "fisher_p": 0.150718
+      },
+      "yolo26_s0": {
+        "high_thermal_low_visible": {
+          "n_images": 108,
+          "switch_rate": 0.0463,
+          "visible_ap50": 0.8067,
+          "selected_ap50": 0.8112,
+          "gain": 0.0045
+        },
+        "rest": {
+          "n_images": 192,
+          "switch_rate": 0.0365,
+          "visible_ap50": 0.8209,
+          "selected_ap50": 0.8132,
+          "gain": -0.0077
+        },
+        "switch_rate_difference": 0.0098,
+        "fisher_odds_ratio": 1.2829,
+        "fisher_p": 0.761507
+      },
+      "rtdetr": {
+        "high_thermal_low_visible": {
+          "n_images": 108,
+          "switch_rate": 0.0,
+          "visible_ap50": 0.7845,
+          "selected_ap50": 0.7845,
+          "gain": 0.0
+        },
+        "rest": {
+          "n_images": 192,
+          "switch_rate": 0.0365,
+          "visible_ap50": 0.8299,
+          "selected_ap50": 0.8361,
+          "gain": 0.0062
+        },
+        "switch_rate_difference": -0.0365,
+        "fisher_odds_ratio": 0.0,
+        "fisher_p": 0.052026
+      },
+      "yolo26_s1": {
+        "high_thermal_low_visible": {
+          "n_images": 108,
+          "switch_rate": 0.2037,
+          "visible_ap50": 0.8048,
+          "selected_ap50": 0.798,
+          "gain": -0.0068
+        },
+        "rest": {
+          "n_images": 192,
+          "switch_rate": 0.0677,
+          "visible_ap50": 0.7891,
+          "selected_ap50": 0.7905,
+          "gain": 0.0015
+        },
+        "switch_rate_difference": 0.136,
+        "fisher_odds_ratio": 3.5224,
+        "fisher_p": 0.000655
+      },
+      "yolo26_s2": {
+        "high_thermal_low_visible": {
+          "n_images": 108,
+          "switch_rate": 0.1111,
+          "visible_ap50": 0.8027,
+          "selected_ap50": 0.8157,
+          "gain": 0.0129
+        },
+        "rest": {
+          "n_images": 192,
+          "switch_rate": 0.0312,
+          "visible_ap50": 0.8098,
+          "selected_ap50": 0.806,
+          "gain": -0.0038
+        },
+        "switch_rate_difference": 0.0799,
+        "fisher_odds_ratio": 3.875,
+        "fisher_p": 0.009316
+      },
+      "yolo8_s0": {
+        "high_thermal_low_visible": {
+          "n_images": 108,
+          "switch_rate": 0.1389,
+          "visible_ap50": 0.7884,
+          "selected_ap50": 0.7813,
+          "gain": -0.0071
+        },
+        "rest": {
+          "n_images": 192,
+          "switch_rate": 0.0156,
+          "visible_ap50": 0.7756,
+          "selected_ap50": 0.7748,
+          "gain": -0.0008
+        },
+        "switch_rate_difference": 0.1233,
+        "fisher_odds_ratio": 10.1613,
+        "fisher_p": 3.1e-05
+      },
+      "yolo8_s1": {
+        "high_thermal_low_visible": {
+          "n_images": 108,
+          "switch_rate": 0.0463,
+          "visible_ap50": 0.7908,
+          "selected_ap50": 0.805,
+          "gain": 0.0142
+        },
+        "rest": {
+          "n_images": 192,
+          "switch_rate": 0.026,
+          "visible_ap50": 0.8186,
+          "selected_ap50": 0.8201,
+          "gain": 0.0015
+        },
+        "switch_rate_difference": 0.0203,
+        "fisher_odds_ratio": 1.8155,
+        "fisher_p": 0.504113
+      }
+    }
+  },
+  "m3fd": {
+    "n_images": 200,
+    "feature_thresholds": {
+      "thermal_tophat_q95_median": 0.180392,
+      "visible_luma_median": 0.568681
+    },
+    "correlation_with_switch_fraction": {
+      "thermal_rho": 0.3198,
+      "thermal_p": 4e-06,
+      "visible_rho": -0.0656,
+      "visible_p": 0.356068,
+      "thermal_mask_rho": -0.3315,
+      "thermal_mask_p": 2e-06
+    },
+    "models": {
+      "yolo26_m3fd6": {
+        "high_thermal_low_visible": {
+          "n_images": 65,
+          "switch_rate": 0.1385,
+          "visible_ap50": 0.3418,
+          "selected_ap50": 0.3427,
+          "gain": 0.0009
+        },
+        "rest": {
+          "n_images": 135,
+          "switch_rate": 0.0444,
+          "visible_ap50": 0.344,
+          "selected_ap50": 0.3516,
+          "gain": 0.0076
+        },
+        "switch_rate_difference": 0.094,
+        "fisher_odds_ratio": 3.4554,
+        "fisher_p": 0.02369
+      },
+      "yolo8n_m3fd6": {
+        "high_thermal_low_visible": {
+          "n_images": 65,
+          "switch_rate": 0.1538,
+          "visible_ap50": 0.3311,
+          "selected_ap50": 0.3395,
+          "gain": 0.0084
+        },
+        "rest": {
+          "n_images": 135,
+          "switch_rate": 0.0444,
+          "visible_ap50": 0.3349,
+          "selected_ap50": 0.3733,
+          "gain": 0.0384
+        },
+        "switch_rate_difference": 0.1094,
+        "fisher_odds_ratio": 3.9091,
+        "fisher_p": 0.011505
+      }
+    }
+  },
+  "dronevehicle_test": {
+    "n_images": 300,
+    "feature_thresholds": {
+      "thermal_tophat_q95_median": 0.34902,
+      "visible_luma_median": 0.257295
+    },
+    "correlation_with_switch_fraction": {
+      "thermal_rho": -0.4027,
+      "thermal_p": 0.0,
+      "visible_rho": -0.4413,
+      "visible_p": 0.0,
+      "thermal_mask_rho": 0.064,
+      "thermal_mask_p": 0.268922
+    },
+    "models": {
+      "best": {
+        "high_thermal_low_visible": {
+          "n_images": 52,
+          "switch_rate": 0.1923,
+          "visible_ap50": 0.6339,
+          "selected_ap50": 0.6275,
+          "gain": -0.0064
+        },
+        "rest": {
+          "n_images": 248,
+          "switch_rate": 0.1976,
+          "visible_ap50": 0.6725,
+          "selected_ap50": 0.7077,
+          "gain": 0.0352
+        },
+        "switch_rate_difference": -0.0053,
+        "fisher_odds_ratio": 0.967,
+        "fisher_p": 1.0
+      },
+      "last": {
+        "high_thermal_low_visible": {
+          "n_images": 52,
+          "switch_rate": 0.2115,
+          "visible_ap50": 0.6335,
+          "selected_ap50": 0.6433,
+          "gain": 0.0099
+        },
+        "rest": {
+          "n_images": 248,
+          "switch_rate": 0.2258,
+          "visible_ap50": 0.6647,
+          "selected_ap50": 0.7002,
+          "gain": 0.0355
+        },
+        "switch_rate_difference": -0.0143,
+        "fisher_odds_ratio": 0.9199,
+        "fisher_p": 1.0
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "recorded_utc": "2026-10-28T21:47:09.581589+00:00",
+  "method": "YOLO11-RGBT early fusion",
+  "framework_commit": "9cc2e208a3d3e8452e15b5ef47e1c536766aa1f7",
+  "model_yaml": "D:\\Code\\_ssgf_external\\YOLOv11-RGBT\\ultralytics\\cfg\\models\\11-RGBT\\yolo11-RGBT-earlyfusion.yaml",
+  "initial_weights": "D:\\Code\\_ssgf_external\\yolo11rgbt_m3fd\\weights\\yolo11n.pt",
+  "initial_weights_sha256": "0ebbc80d4a7680d14987a577cd21342b65ecfd94632bd9a8da63ae6417644ee1",
+  "best_weights": "D:\\Code\\_server_handoff_v2\\ssgf\\paper\\CS_ECF_IPT_Submission\\submission_package_v24\\evidence\\yolo11rgbt_baseline\\runs\\yolo11n_rgbt_earlyfusion_e40_resize_auto\\weights\\best.pt",
+  "best_weights_sha256": "4bba948ca850efec1dfaa4614040469c0f0aae79d96d139c95c9ae03537c9769",
+  "data": "D:\\Code\\_server_handoff_v2\\tmp\\yolo11rgbt_m3fd.yaml",
+  "training": {
+    "epochs": 40,
+    "batch_size": 16,
+    "input_size": 640,
+    "optimizer": "auto",
+    "seed": 0,
+    "single_class": false,
+    "input_channels": 4,
+    "amp": false,
+    "mosaic": 0.0,
+    "augmentation": "resize only",
+    "initialization": "3-channel COCO YOLO11n weights with the input stem adapted to four channels"
+  },
+  "test_metrics": {
+    "ap50_95": 0.05489535305498956,
+    "ap50": 0.11684357921951787,
+    "ap75": 0.045117180457471255,
+    "precision": 0.18598423432285474,
+    "recall": 0.12633776625820256
+  }
+}

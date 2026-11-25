@@ -1,0 +1,270 @@
+{
+  "protocol": {
+    "matching": "confidence-ordered one-to-one matching",
+    "sequences": [
+      "050",
+      "060",
+      "070"
+    ],
+    "models": [
+      "yolo26_s0",
+      "yolo26_s1",
+      "yolo26_s2",
+      "yolo8_s0",
+      "yolo8_s1",
+      "rtdetr_l"
+    ],
+    "top_k": 5,
+    "frozen_margin": 1.5,
+    "block_size_frames": 50,
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 2917
+  },
+  "confirmation": {
+    "frozen_policy": {
+      "sequence_equal_point": 0.00012160449439087139,
+      "per_sequence": {
+        "050": -0.003563742832810281,
+        "060": 0.00036193766354943334,
+        "070": 0.003566618652433462
+      },
+      "per_checkpoint": {
+        "yolo26_s0": 0.0008352055105671887,
+        "yolo26_s1": 5.806900108707831e-05,
+        "yolo26_s2": -0.00274424470141465,
+        "yolo8_s0": 0.005730013036360254,
+        "yolo8_s1": -0.004509664261908183,
+        "rtdetr_l": 0.00136024838165354
+      },
+      "positive_checkpoints": 4,
+      "worst_checkpoint": -0.004509664261908183,
+      "switch_fraction": 0.09269055000657099,
+      "image_win_fraction": 0.024722530697407305,
+      "image_loss_fraction": 0.036253741293215416
+    },
+    "conditional_sequence_by_run_interval": [
+      -0.004836545500051585,
+      0.0066956586201504
+    ],
+    "comparisons": {
+      "csecf_minus_visible": {
+        "summary": {
+          "sequence_equal_point": 0.00012160449439087139,
+          "per_sequence": {
+            "050": -0.003563742832810281,
+            "060": 0.00036193766354943334,
+            "070": 0.003566618652433462
+          },
+          "per_checkpoint": {
+            "yolo26_s0": 0.0008352055105671887,
+            "yolo26_s1": 5.806900108707831e-05,
+            "yolo26_s2": -0.00274424470141465,
+            "yolo8_s0": 0.005730013036360254,
+            "yolo8_s1": -0.004509664261908183,
+            "rtdetr_l": 0.00136024838165354
+          },
+          "positive_checkpoints": 4,
+          "worst_checkpoint": -0.004509664261908183,
+          "switch_fraction": 0.0,
+          "image_win_fraction": 0.0,
+          "image_loss_fraction": 0.0
+        },
+        "conditional_sequence_by_run_interval": [
+          -0.004836545500051585,
+          0.0066956586201504
+        ]
+      },
+      "cdf_minus_visible": {
+        "summary": {
+          "sequence_equal_point": 0.004577225787511508,
+          "per_sequence": {
+            "050": 0.0013013573478377943,
+            "060": 0.00013338430364806192,
+            "070": 0.012296935711048666
+          },
+          "per_checkpoint": {
+            "yolo26_s0": -0.0013624269441780822,
+            "yolo26_s1": 0.007244964910158432,
+            "yolo26_s2": 0.001733842060076999,
+            "yolo8_s0": 0.010630727578549286,
+            "yolo8_s1": 0.007564347392625911,
+            "rtdetr_l": 0.0016518997278365023
+          },
+          "positive_checkpoints": 5,
+          "worst_checkpoint": -0.0013624269441780822,
+          "switch_fraction": 0.0,
+          "image_win_fraction": 0.0,
+          "image_loss_fraction": 0.0
+        },
+        "conditional_sequence_by_run_interval": [
+          -0.0017829306762403253,
+          0.012299971488640512
+        ]
+      },
+      "csecf_minus_cdf": {
+        "summary": {
+          "sequence_equal_point": -0.004455621293120635,
+          "per_sequence": {
+            "050": -0.004865100180648074,
+            "060": 0.0002285533599013712,
+            "070": -0.008730317058615208
+          },
+          "per_checkpoint": {
+            "yolo26_s0": 0.0021976324547452707,
+            "yolo26_s1": -0.007186895909071354,
+            "yolo26_s2": -0.004478086761491649,
+            "yolo8_s0": -0.004900714542189033,
+            "yolo8_s1": -0.012074011654534094,
+            "rtdetr_l": -0.00029165134618296205
+          },
+          "positive_checkpoints": 1,
+          "worst_checkpoint": -0.012074011654534094,
+          "switch_fraction": 0.0,
+          "image_win_fraction": 0.0,
+          "image_loss_fraction": 0.0
+        },
+        "conditional_sequence_by_run_interval": [
+          -0.011089486835663093,
+          0.0017244733671896843
+        ]
+      },
+      "no_shield_minus_visible": {
+        "summary": {
+          "sequence_equal_point": -0.008813475981542057,
+          "per_sequence": {
+            "050": -0.019700120616594114,
+            "060": -0.0051753009530516245,
+            "070": -0.0015650063749804279
+          },
+          "per_checkpoint": {
+            "yolo26_s0": 0.00029106994102378117,
+            "yolo26_s1": -0.005005711913211399,
+            "yolo26_s2": -0.007139594175472449,
+            "yolo8_s0": -0.008710596744802715,
+            "yolo8_s1": -0.032701156897269,
+            "rtdetr_l": 0.00038513390047944927
+          },
+          "positive_checkpoints": 2,
+          "worst_checkpoint": -0.032701156897269,
+          "switch_fraction": 0.0,
+          "image_win_fraction": 0.0,
+          "image_loss_fraction": 0.0
+        },
+        "conditional_sequence_by_run_interval": [
+          -0.025925234861040078,
+          0.002563360895019523
+        ]
+      },
+      "csecf_minus_no_shield": {
+        "summary": {
+          "sequence_equal_point": 0.008935080475932928,
+          "per_sequence": {
+            "050": 0.016136377783783833,
+            "060": 0.005537238616601058,
+            "070": 0.0051316250274138905
+          },
+          "per_checkpoint": {
+            "yolo26_s0": 0.0005441355695434078,
+            "yolo26_s1": 0.0050637809142984784,
+            "yolo26_s2": 0.0043953494740578,
+            "yolo8_s0": 0.01444060978116297,
+            "yolo8_s1": 0.028191492635360815,
+            "rtdetr_l": 0.0009751144811740911
+          },
+          "positive_checkpoints": 6,
+          "worst_checkpoint": 0.0005441355695434078,
+          "switch_fraction": 0.0,
+          "image_win_fraction": 0.0,
+          "image_loss_fraction": 0.0
+        },
+        "conditional_sequence_by_run_interval": [
+          0.0009609908997479101,
+          0.021547108085744338
+        ]
+      }
+    },
+    "ap50_95_descriptive": {
+      "csecf_minus_visible": {
+        "equal_checkpoint_mean": 0.00019017520347092728,
+        "conditional_sequence_by_run_interval": [
+          -0.0030614256540225622,
+          0.004917640215737175
+        ],
+        "positive_checkpoints": 4,
+        "per_checkpoint": {
+          "yolo26_s0": 0.00021448245982503287,
+          "yolo26_s1": 0.0003521074388188723,
+          "yolo26_s2": -0.002979197562286108,
+          "yolo8_s0": 0.005822136885862046,
+          "yolo8_s1": -0.0031312692228725614,
+          "rtdetr_l": 0.0008627912214782818
+        }
+      },
+      "always_cdf_minus_visible": {
+        "equal_checkpoint_mean": 0.007354369151273255,
+        "conditional_sequence_by_run_interval": [
+          0.0028854725845388015,
+          0.01185576297163189
+        ],
+        "positive_checkpoints": 6,
+        "per_checkpoint": {
+          "yolo26_s0": 0.004671237270792661,
+          "yolo26_s1": 0.01083983050308556,
+          "yolo26_s2": 0.005684761809191373,
+          "yolo8_s0": 0.010384966800351501,
+          "yolo8_s1": 0.006601359220594845,
+          "rtdetr_l": 0.0059440593036235966
+        }
+      },
+      "csecf_minus_always_cdf": {
+        "equal_checkpoint_mean": -0.007164193947802329,
+        "conditional_sequence_by_run_interval": [
+          -0.010997172377118588,
+          -0.0032927070040048513
+        ],
+        "positive_checkpoints": 0,
+        "per_checkpoint": {
+          "yolo26_s0": -0.0044567548109676275,
+          "yolo26_s1": -0.010487723064266685,
+          "yolo26_s2": -0.008663959371477481,
+          "yolo8_s0": -0.004562829914489455,
+          "yolo8_s1": -0.009732628443467407,
+          "rtdetr_l": -0.005081268082145315
+        }
+      },
+      "no_shield_minus_visible": {
+        "equal_checkpoint_mean": 0.00028033160021838626,
+        "conditional_sequence_by_run_interval": [
+          -0.010470136973996748,
+          0.008304136169893589
+        ],
+        "positive_checkpoints": 4,
+        "per_checkpoint": {
+          "yolo26_s0": 0.00397951653822279,
+          "yolo26_s1": 0.0025355232271731423,
+          "yolo26_s2": -0.0010416363700690389,
+          "yolo8_s0": 0.003630159559021335,
+          "yolo8_s1": -0.012249148781333536,
+          "rtdetr_l": 0.004827575428295625
+        }
+      },
+      "csecf_minus_no_shield": {
+        "equal_checkpoint_mean": -9.015639674745891e-05,
+        "conditional_sequence_by_run_interval": [
+          -0.005834766040319205,
+          0.007999653801170964
+        ],
+        "positive_checkpoints": 2,
+        "per_checkpoint": {
+          "yolo26_s0": -0.0037650340783977575,
+          "yolo26_s1": -0.0021834157883542696,
+          "yolo26_s2": -0.0019375611922170695,
+          "yolo8_s0": 0.0021919773268407106,
+          "yolo8_s1": 0.009117879558460976,
+          "rtdetr_l": -0.003964784206817343
+        }
+      }
+    }
+  },
+  "purpose": "Sensitivity analysis of the prospective LLVIP conclusion to the matching rule. The primary score arrays use all-at-once maximum-cardinality matching; these arrays use the conventional confidence-ordered one-to-one matching."
+}

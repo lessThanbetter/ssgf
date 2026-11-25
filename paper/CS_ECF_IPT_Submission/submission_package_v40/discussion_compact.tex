@@ -1,0 +1,74 @@
+\section{Discussion}
+
+The principal finding is that fusion utility is not an intrinsic property of a
+fused image. The fixed-candidate matrix shows the CDF, PIAFusion, and SPGFusion
+contrasts changing in magnitude or sign across detectors and domains. A policy
+that selects the strongest detector response without an additional margin also
+accumulated a larger observed AP50 downside. CS-ECF addresses this specific
+problem by requiring a large visible-relative confidence margin before it
+departs from the visible fallback. The budgeted candidate-library analysis adds
+a second decision: a fused candidate should be evaluated only if the target
+detector requires it. At the frozen score and margin, visible plus PIAFusion
+was the smallest development-feasible subset. On a later 900-frame LLVIP
+holdout, the frozen two-candidate policy gained \(+0.01560\) AP50 and
+\(+0.00946\) AP50--95 over visible input, with positive results across all
+three sequences and six checkpoints.
+
+The held-out evidence supports a narrow AP50 risk-control role rather than a
+general accuracy gain. Standard confidence-ordered matching preserved the
+qualitative result for the full library: CS-ECF did not exceed visible input,
+remained below fixed CDF, and exceeded no-shield selection by \(+0.00894\) on
+LLVIP. A random control matched to the same switching count and candidate mix
+showed a \(+0.01392\) deficit, so the AP50 result is not explained by switch
+frequency alone. The selected two-candidate policy had a larger descriptive
+mean than the full library in the earlier LLVIP evaluation and a positive
+no-shield contrast. Its later temporal holdout was also positive. Ungated
+PIAFusion nevertheless lost \(0.15891\) AP50 on the third confirmation
+sequence, showing why the confidence gate remains necessary. The policy still
+failed to improve on visible in VEDAI and the independent DroneVehicle runs.
+Candidate-library reduction is therefore a compute decision made after
+target-specific validation, not a replacement for that validation.
+
+We additionally document a same-split YOLOv11-RGBT system-level pilot. Because
+its fusion representation and detector are optimized together,
+its score cannot isolate the effect of fusion selection. The single-seed,
+resize-only run has different optimization and rare-class conditions from the
+visible comparators. We therefore use it only as an implementation pilot,
+while the claims about CS-ECF remain based on within-checkpoint comparisons
+against visible, Always CDF, and no shield.
+
+Mechanistic and portability claims are therefore limited. Matched
+image-statistic controls did not provide a usable operating point. Two
+zero-shot evaluators reversed the no-shield ordering, while an LLVIP-trained
+evaluator reversed the visible-relative sign. These observations may reflect
+calibration, train-to-test shift, or other checkpoint-specific differences;
+the present design does not separate those explanations. CDF is study-internal,
+so the selector and this particular fusion construction should not be treated
+as separable published-method effects.
+
+For operation, visible input should remain the default. A candidate subset and
+confidence margin are justified only after target-checkpoint and
+target-domain validation, a switch-budget-matched comparison, and confirmation
+that AP50 is the decision-relevant endpoint. The smallest feasible subset
+should then be selected under the measured latency and memory budget. If no
+fused subset passes the development constraint, or if the selected subset
+fails target-domain validation, the procedure returns visible input. The
+measured end-to-end medians were 1.67 s for the selected pipeline and 2.52 s
+for the full library. The selected pipeline reduces cost by one third but does
+not satisfy a low-latency deployment claim.
+
+\subsection*{Limitations}
+
+The two-candidate subset was selected during revision, outside the original
+prospective protocol. Its later confirmation uses three new sequences and 900
+frames selected by a resource amendment recorded before scoring. The interval
+is conditional on those three sequences and six fixed runs. The development
+split is image-disjoint but not scene-group-disjoint for LLVIP. DroneVehicle
+contributes two independent runs, M3FD contributes two held-out frame groups,
+and the external-evaluator interval spans seven scene groups. These designs
+quantify observed heterogeneity but do not estimate population-level coverage.
+The full policy did not preserve its AP50--95 direction, and matched
+image-statistic controls did not identify a mechanism. The YOLOv11-RGBT
+comparison changes representation and detector together and remains a
+single-seed implementation pilot. CDF is a study-internal construction rather
+than a published fixed baseline.

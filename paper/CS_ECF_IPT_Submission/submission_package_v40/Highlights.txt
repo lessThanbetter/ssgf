@@ -1,0 +1,5 @@
+Fixed fusion rankings change across detector checkpoints and domains.
+A frozen visible-PIA gate improved AP50 on three new LLVIP sequences.
+The same gate improved AP50-95 on the 900-frame temporal holdout.
+Measured end-to-end median fell from 2.52 to 1.67 s, not real time.
+VEDAI and DroneVehicle still require visible fallback after failed transfer.

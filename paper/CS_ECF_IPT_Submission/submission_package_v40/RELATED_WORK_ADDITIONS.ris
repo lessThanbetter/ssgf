@@ -1,0 +1,357 @@
+TY  - JOUR
+TI  - Infrared and visible image fusion based on saliency detection and two-scale transform decomposition
+AU  - Zhang, Siqi
+AU  - Li, Xiongfei
+AU  - Zhang, Xiaoli
+AU  - Zhang, Shuhan
+T2  - Infrared Physics &amp; Technology
+JO  - Infrared Physics &amp; Technology
+PY  - 2021
+Y1  - 2021/05/01
+VL  - 114
+SP  - 103626
+DO  - 10.1016/j.infrared.2020.103626
+UR  - https://doi.org/10.1016/j.infrared.2020.103626
+SN  - 1350-4495
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - Simultaneous image fusion and super-resolution using sparse representation
+AU  - Yin, Haitao
+AU  - Li, Shutao
+AU  - Fang, Leyuan
+T2  - Information Fusion
+JO  - Information Fusion
+PY  - 2013
+Y1  - 2013/07/01
+VL  - 14
+IS  - 3
+SP  - 229
+EP  - 240
+DO  - 10.1016/j.inffus.2012.01.008
+UR  - https://doi.org/10.1016/j.inffus.2012.01.008
+SN  - 1566-2535
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - Sparse representation with learned multiscale dictionary for image fusion
+AU  - Yin, Haitao
+T2  - Neurocomputing
+JO  - Neurocomputing
+PY  - 2015
+Y1  - 2015/01/01
+VL  - 148
+SP  - 600
+EP  - 610
+DO  - 10.1016/j.neucom.2014.07.003
+UR  - https://doi.org/10.1016/j.neucom.2014.07.003
+SN  - 0925-2312
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - An adaptive fusion approach for infrared and visible images based on NSCT and compressed sensing
+AU  - Zhang, Qiong
+AU  - Maldague, Xavier
+T2  - Infrared Physics &amp; Technology
+JO  - Infrared Physics &amp; Technology
+PY  - 2016
+Y1  - 2016/01/01
+VL  - 74
+SP  - 11
+EP  - 20
+DO  - 10.1016/j.infrared.2015.11.003
+UR  - https://doi.org/10.1016/j.infrared.2015.11.003
+SN  - 1350-4495
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - A three scale image transformation for infrared and visible image fusion
+AU  - Wei, Chunyu
+AU  - Zhou, Bingyin
+AU  - Guo, Wei
+T2  - 2017 20th International Conference on Information Fusion (Fusion)
+JO  - 2017 20th International Conference on Information Fusion (Fusion)
+PY  - 2017
+Y1  - 2017/07/01
+SP  - 1
+EP  - 6
+DO  - 10.23919/icif.2017.8009748
+UR  - https://doi.org/10.23919/icif.2017.8009748
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - A Generative Adversarial Network for Infrared and Visible Image Fusion Based on Semantic Segmentation
+AU  - Hou, Jilei
+AU  - Zhang, Dazhi
+AU  - Wu, Wei
+AU  - Ma, Jiayi
+AU  - Zhou, Huabing
+T2  - Entropy
+JO  - Entropy
+PY  - 2021
+Y1  - 2021/03/21
+VL  - 23
+IS  - 3
+SP  - 376
+DO  - 10.3390/e23030376
+UR  - https://doi.org/10.3390/e23030376
+SN  - 1099-4300
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - DFPGAN: Dual fusion path generative adversarial network for infrared and visible image fusion
+AU  - Yi, Shi
+AU  - Li, Junjie
+AU  - Yuan, Xuesong
+T2  - Infrared Physics &amp; Technology
+JO  - Infrared Physics &amp; Technology
+PY  - 2021
+Y1  - 2021/12/01
+VL  - 119
+SP  - 103947
+DO  - 10.1016/j.infrared.2021.103947
+UR  - https://doi.org/10.1016/j.infrared.2021.103947
+SN  - 1350-4495
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - Triple-discriminator generative adversarial network for infrared and visible image fusion
+AU  - Song, Anyang
+AU  - Duan, Huixian
+AU  - Pei, Haodong
+AU  - Ding, Lei
+T2  - Neurocomputing
+JO  - Neurocomputing
+PY  - 2022
+Y1  - 2022/04/01
+VL  - 483
+SP  - 183
+EP  - 194
+DO  - 10.1016/j.neucom.2022.02.025
+UR  - https://doi.org/10.1016/j.neucom.2022.02.025
+SN  - 0925-2312
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - A Visible and Infrared Image Fusion Framework Based on Dual-Path Encoder-Decoder and Multi-Scale Discrete Wavelet Transform
+AU  - Liu, Renhe
+AU  - Wang, Han
+AU  - Du, Shan
+AU  - Liu, Yu
+T2  - 2023 IEEE International Conference on Image Processing (ICIP)
+JO  - 2023 IEEE International Conference on Image Processing (ICIP)
+PY  - 2023
+Y1  - 2023/10/08
+SP  - 1995
+EP  - 1999
+DO  - 10.1109/icip49359.2023.10222863
+UR  - https://doi.org/10.1109/icip49359.2023.10222863
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - VDFEFuse: A novel fusion approach to infrared and visible images
+AU  - Hao, Shuai
+AU  - He, Tian
+AU  - An, Beiyi
+AU  - Ma, Xu
+AU  - Wen, Hu
+AU  - Wang, Feng
+T2  - Infrared Physics &amp; Technology
+JO  - Infrared Physics &amp; Technology
+PY  - 2022
+Y1  - 2022/03/01
+VL  - 121
+SP  - 104048
+DO  - 10.1016/j.infrared.2022.104048
+UR  - https://doi.org/10.1016/j.infrared.2022.104048
+SN  - 1350-4495
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - DGLT-Fusion: A decoupled global–local infrared and visible image fusion transformer
+AU  - Yang, Xin
+AU  - Huo, Hongtao
+AU  - Wang, Renhua
+AU  - Li, Chang
+AU  - Liu, Xiaowen
+AU  - Li, Jing
+T2  - Infrared Physics &amp; Technology
+JO  - Infrared Physics &amp; Technology
+PY  - 2023
+Y1  - 2023/01/01
+VL  - 128
+SP  - 104522
+DO  - 10.1016/j.infrared.2022.104522
+UR  - https://doi.org/10.1016/j.infrared.2022.104522
+SN  - 1350-4495
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - MRASFusion: A multi-scale residual attention infrared and visible image fusion network based on semantic segmentation guidance
+AU  - An, Rongsheng
+AU  - Liu, Gang
+AU  - Qian, Yao
+AU  - Xing, Mengliang
+AU  - Tang, Haojie
+T2  - Infrared Physics &amp; Technology
+JO  - Infrared Physics &amp; Technology
+PY  - 2024
+Y1  - 2024/06/01
+VL  - 139
+SP  - 105343
+DO  - 10.1016/j.infrared.2024.105343
+UR  - https://doi.org/10.1016/j.infrared.2024.105343
+SN  - 1350-4495
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - MTFusion: A semantic segmentation-guided infrared and visible image fusion network based on an attention-enhanced hybrid Mamba-Transformer architecture
+AU  - Zhou, Yuhang
+AU  - Yang, Qimin
+AU  - Ren, Kan
+AU  - Chen, Qian
+T2  - Infrared Physics &amp; Technology
+JO  - Infrared Physics &amp; Technology
+PY  - 2026
+Y1  - 2026/01/01
+VL  - 153
+SP  - 106325
+DO  - 10.1016/j.infrared.2025.106325
+UR  - https://doi.org/10.1016/j.infrared.2025.106325
+SN  - 1350-4495
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - SMAE-Fusion: Integrating saliency-aware masked autoencoder with hybrid attention transformer for infrared–visible image fusion
+AU  - Wang, Qinghua
+AU  - Li, Ziwei
+AU  - Zhang, Shuqi
+AU  - Luo, Yuhong
+AU  - Chen, Wentao
+AU  - Wang, Tianyun
+AU  - Chi, Nan
+AU  - Dai, Qionghai
+T2  - Information Fusion
+JO  - Information Fusion
+PY  - 2025
+Y1  - 2025/05/01
+VL  - 117
+SP  - 102841
+DO  - 10.1016/j.inffus.2024.102841
+UR  - https://doi.org/10.1016/j.inffus.2024.102841
+SN  - 1566-2535
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - Classification Saliency-Based Rule for Visible and Infrared Image Fusion
+AU  - Xu, Han
+AU  - Zhang, Hao
+AU  - Ma, Jiayi
+T2  - IEEE Transactions on Computational Imaging
+JO  - IEEE Transactions on Computational Imaging
+PY  - 2021
+Y1  - 2021/01/01
+VL  - 7
+SP  - 824
+EP  - 836
+DO  - 10.1109/tci.2021.3100986
+UR  - https://doi.org/10.1109/tci.2021.3100986
+SN  - 2333-9403
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - Multispectral Pedestrian Detection Based on Prior-Saliency Attention and Image Fusion
+AU  - Guo, Jiaren
+AU  - Huang, Zihao
+AU  - Tao, Yanyun
+T2  - Electronics
+JO  - Electronics
+PY  - 2024
+Y1  - 2024/05/03
+VL  - 13
+IS  - 9
+SP  - 1770
+DO  - 10.3390/electronics13091770
+UR  - https://doi.org/10.3390/electronics13091770
+SN  - 2079-9292
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - Robust pedestrian detection in thermal infrared imagery using the wavelet transform
+AU  - Li, Jianfu
+AU  - Gong, Weiguo
+AU  - Li, Weihong
+AU  - Liu, Xiaoying
+T2  - Infrared Physics &amp; Technology
+JO  - Infrared Physics &amp; Technology
+PY  - 2010
+Y1  - 2010/07/01
+VL  - 53
+IS  - 4
+SP  - 267
+EP  - 273
+DO  - 10.1016/j.infrared.2010.03.005
+UR  - https://doi.org/10.1016/j.infrared.2010.03.005
+SN  - 1350-4495
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - Infrared-Visible Image Fusion Meets Object Detection: Towards Unified Optimization for Multimodal Perception
+AU  - Xiang, Xiantai
+AU  - Zhou, Guangyao
+AU  - Niu, Ben
+AU  - Pan, Zongxu
+AU  - Huang, Lijia
+AU  - Li, Wenshuai
+AU  - Wen, Zixiao
+AU  - Qi, Jiamin
+AU  - Gao, Wanxin
+T2  - Remote Sensing
+JO  - Remote Sensing
+PY  - 2025
+Y1  - 2025/11/04
+VL  - 17
+IS  - 21
+SP  - 3637
+DO  - 10.3390/rs17213637
+UR  - https://doi.org/10.3390/rs17213637
+SN  - 2072-4292
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -
+
+TY  - JOUR
+TI  - Low-illumination traffic object detection using the saliency region of infrared image masking on infrared-visible fusion image
+AU  - Yue, Guoqi
+AU  - Li, Zuoyong
+AU  - Tao, Yanyun
+AU  - Jin, Tianhu
+T2  - Journal of Electronic Imaging
+JO  - Journal of Electronic Imaging
+PY  - 2022
+Y1  - 2022/06/07
+VL  - 31
+IS  - 03
+SP  - 1
+EP  - 17
+DO  - 10.1117/1.jei.31.3.033029
+UR  - https://doi.org/10.1117/1.jei.31.3.033029
+SN  - 1017-9909
+N1  - Metadata-only candidate. Inspect abstract or publisher page before citing as support.
+ER  -

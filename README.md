@@ -9,7 +9,7 @@ The current release accompanies the revised manuscript
 **“Fusion Utility Depends on the Evaluator: A Boundary Study of
 Confidence-Shielded Input Selection for Infrared--Visible Object Detection.”**
 
-The version-specific archival release for this revision is **v3.0.0**. The
+The version-specific archival release for this revision is **v3.0.1**. The
 shared software-series concept DOI is
 [`10.5281/zenodo.22984388`](https://doi.org/10.5281/zenodo.22984388).
 
@@ -27,6 +27,8 @@ Key results in the revised evidence set:
   AP50 `+0.01560 [+0.00249,+0.02874]` and
   AP50--95 `+0.00946 [+0.00113,+0.01769]`, positive in 3/3 sequences and
   6/6 detector checkpoints;
+- leave-one-sequence-out AP50 gains of `+0.01068`, `+0.01378`, and
+  `+0.02233`, with all checkpoint means positive after omitting any sequence;
 - ungated PIAFusion was unstable on sequence 100 (`-0.15891` AP50), so the
   result supported the gate rather than PIAFusion as a universal input;
 - measured complete-pipeline median: `1.67 s` for visible plus PIAFusion and
@@ -50,7 +52,7 @@ Artifacts:
 - `analysis/cs_ecf/` — analysis and interval-reproduction scripts;
 - `results/selective_fusion/` — aggregate JSON, source-data CSV and per-image
   compressed score files;
-- `paper/CS_ECF_IPT_Submission/submission_package_v39/` — final 21-page
+- `paper/CS_ECF_IPT_Submission/submission_package_v40/` — final 21-page
   manuscript, 23-page supplement, marked manuscript, response letters,
   six main figures, eight supplementary figures, source data, evidence, and
   reproduction scripts;
